@@ -17,3 +17,4 @@ data_rules_related/cleaned_attack_vectors.csv
 
 # Symbolic links to external data (for anonymity)
 structured_traces
+src/__pycache__

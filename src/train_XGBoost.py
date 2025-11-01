@@ -50,7 +50,7 @@ scorers = {
 
 def train():
     """ 训练 XGBoost 模型 """
-    trace_rules_df = load_data('/home/bowen/Github/DeFiHackLabs/data_rules_related/noloop_encoded_trace.csv')
+    trace_rules_df = load_data('./data_rules_related/noloop_encoded_trace.csv')
 
     attack_data = trace_rules_df.iloc[:534].copy()
     benign_data = trace_rules_df.iloc[534:].copy()

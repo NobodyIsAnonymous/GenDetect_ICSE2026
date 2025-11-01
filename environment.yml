@@ -11,4 +11,3 @@ dependencies:
   - pyzmq[version='<25']
   - jupyter_client[version='<8']
   - notebook
-prefix: /home/lanfear/opt/miniconda3

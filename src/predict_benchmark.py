@@ -45,45 +45,45 @@ def run_benchmark():
             'match': match
         }])
 
-        # 用 pd.concat() 追加数据
+        # Use pd.concat() to append data
         test_results = pd.concat([test_results, new_row], ignore_index=True)
         
     test_results.to_csv('dune_tx/benchmark-results.csv', index=False)
 
-# 加载数据
+# Load data
 def load_data(file_path):
     df = pd.read_csv(file_path)
 
-    # 确保 `encoded_trace` 是正确的 Python 列表格式
+    # Ensure `encoded_trace` is in the correct Python list format
     def safe_eval(x):
         if isinstance(x, str):
             try:
                 return ast.literal_eval(x)
             except:
-                return x  # 直接返回原始值（已经是列表）
-        return x  # 直接返回原始值（已经是列表）
+                return x  # Return original value directly (already a list)
+        return x  # Return original value directly (already a list)
 
     df['encoded_trace'] = df['encoded_trace'].apply(safe_eval)
     return df
 
-# 自定义分类器
+# Custom classifier
 class SimilarityBasedClassifier(BaseEstimator, ClassifierMixin):
     def __init__(self):
-        self.train_rules = None  # 训练集规则数据
-        self.classes_ = None  # 添加 classes_ 属性
+        self.train_rules = None  # Training set rule data
+        self.classes_ = None  # Add classes_ attribute
 
     def fit(self, X, y):
-        """存储训练数据并初始化 classes_"""
+        """Store training data and initialize classes_"""
         self.train_rules = pd.DataFrame({'encoded_trace': X, 'label': y})
         
         if len(y) == 0:
             raise ValueError("Error: `y` in fit() is empty!")
 
-        self.classes_ = np.unique(y)  # 让 sklearn 识别类别
+        self.classes_ = np.unique(y)
         return self
 
     def predict(self, X):
-        """基于相似度匹配进行预测"""
+        """Make predictions based on similarity matching"""
         predictions = []
         for no_loop_sequence in X:
             similarity_list = []
@@ -106,30 +106,30 @@ class SimilarityBasedClassifier(BaseEstimator, ClassifierMixin):
 
         return np.array(predictions)
 
-# 交叉验证流程
+# Cross-validation process
 def cross_validation():
-    trace_rules_df = load_data('/home/bowen/Github/DeFiHackLabs/data_rules_related/noloop_encoded_trace.csv')
-    # 数据划分（前 534 行是攻击，剩下是正常）
+    trace_rules_df = load_data('./data_rules_related/noloop_encoded_trace.csv')
+    # Data split (first 534 rows are attacks, rest are benign)
     attack_data = trace_rules_df.iloc[:534].copy()
     benign_data = trace_rules_df.iloc[534:].copy()
 
-    # 添加标签
+    # Add labels
     attack_data['label'] = 1
     benign_data['label'] = 0
-    # 合并数据
+    # Merge data
     df = pd.concat([attack_data, benign_data]).reset_index(drop=True)
-    # 分离特征和标签
+    # Separate features and labels
     X = df['encoded_trace']
     y = df['label'].values
 
-    # 交叉验证
+    # Cross-validation
     skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
-    # 使用 make_scorer 计算 accuracy
+    # Use make_scorer to calculate accuracy
     scorer = make_scorer(accuracy_score)
-    # 运行 cross_val_score
+    # Run cross_val_score
     model = SimilarityBasedClassifier()
     scores = cross_val_score(model, X, y, cv=skf, scoring=scorer)
-    # 输出结果
+    # Output results
     print(f"K-Fold Cross-Validation Accuracy: {scores.mean():.4f} ± {scores.std():.4f}")
 
     

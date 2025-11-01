@@ -28,10 +28,10 @@ class Replayer:
     
     def __init__(self, network='mainnet'):
         self.network = network
-        with open('/home/bowen/Github/GenDetect/dune_tx/signature.json', 'r') as f:
-            signature_data = json.load(f)
-        self.hash_to_signature = {item["hash"]: item["signature"] for item in signature_data}
-        self.no_loop_rule_file = '/home/bowen/Github/GenDetect/data_rules_related/noloop_encoded_trace.csv'
+        # with open('/home/bowen/Github/GenDetect/dune_tx/signature.json', 'r') as f:
+        #     signature_data = json.load(f)
+        # self.hash_to_signature = {item["hash"]: item["signature"] for item in signature_data}
+        self.no_loop_rule_file = './data_rules_related/noloop_encoded_trace.csv'
         self.clusters, self.remaining_non_cluster, self.unique_non_cluster, self.model, self.centroids = read_data('data_rules_related/final_classified_functions.csv')
         self.trace_rules_df = load_data(self.no_loop_rule_file)
         self.logger = None

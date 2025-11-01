@@ -5,6 +5,15 @@ Complementary Data for ICSE Research Paper: GenDetect
 
 A comprehensive tool for analyzing and matching DeFi transaction traces against known attack patterns.
 
+## Table of Contents
+- [Overview](#overview)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Cross-Validation Test](#cross-validation-test-for-classifier)
+- [Transaction Replayer](#transaction-replayer-tx_replayerpy)
+- [File Structure](#file-structure)
+- [Acknowledgments](#acknowledgments)
+
 ## Overview
 
 GenDetect provides functionality to:
@@ -27,7 +36,7 @@ GenDetect provides functionality to:
    # Restart your terminal or source your shell profile
    source ~/.bashrc  # or ~/.zshrc if using zsh
    
-   # Install the latest version
+   # Install the latest version (Ubuntu 22.04 required, otherwise issues may occur)
    foundryup
    ```
 
@@ -55,23 +64,13 @@ GenDetect provides functionality to:
 
 3. **Set up Python environment**
    
-   **Option A: Using Conda (Recommended)**
+   **Using Conda (Recommended)**
    ```bash
    # Create conda environment
-   conda env create -f environment.yml
+   conda env create -f environment.yml -n gendetect
    conda activate gendetect
    
    # Install additional dependencies
-   pip install -r requirements.txt
-   ```
-   
-   **Option B: Using pip + venv**
-   ```bash
-   # Create virtual environment
-   python -m venv gendetect-env
-   source gendetect-env/bin/activate  # On Windows: gendetect-env\Scripts\activate
-   
-   # Install dependencies
    pip install -r requirements.txt
    ```
 
@@ -90,32 +89,19 @@ GenDetect provides functionality to:
    
    **⚠️ Performance Note:** The tool uses Infura API for trace retrieval. Analysis speed depends on API response time. For better performance, consider using a local full node.
 
-5. **Verify installation**
-   ```bash
-   # Check all dependencies automatically
-   python check_dependencies.py
-   
-   # Auto-install missing dependencies (if any)
-   python check_dependencies.py --install
-   
-   # Test the main tool
-   python src/tx_replayer.py -h
-   ```
+## Cross-Validation Test for Classifier
 
-### Dependencies Overview
+Because the labeled dataset used for address classification contains proprietary data from partner companies, so the usage of the ASND model from the main paper is limited in this open-source release. **BUT**, to demonstrate the functionality, we provide a cross-validation test using a custom similarity-based ([Edit Distance](https://www.geeksforgeeks.org/dsa/edit-distance-dp-5/)) classifier.
 
-The project requires the following main categories of dependencies:
+The performance of this custom classifier is degraded compared to the ASND model, but it serves to validate the overall framework.
 
-- **Core Data Science**: pandas, numpy, scikit-learn, scipy, matplotlib
-- **Machine Learning**: sentence-transformers, tslearn, xgboost  
-- **NLP & Text Processing**: python-Levenshtein
-- **APIs**: openai, requests, pydantic
-- **Blockchain Data**: dune-client, opensearch-py
-- **Utilities**: tqdm, joblib
+To validate detector performance, run the cross-validation script:
 
-All dependencies are listed in `requirements.txt` with version specifications.
+```bash
+python src/predict_benchmark.py
+```
 
-## Usage
+## The Other Tools
 
 ### Transaction Replayer (`tx_replayer.py`)
 
@@ -144,7 +130,7 @@ python src/tx_replayer.py add-rule <tx_hash> <rule_name>
 
 **Examples:**
 ```bash
-python src/tx_replayer.py add-rule 0x1106418384414ed56cd7cbb9fedc66a02d39b663d580abc618f2d387348354ab "New_Rule"
+python src/tx_replayer.py add-rule 0x1106418384414ed56cd7cbb9fedc66a02d39b663d580abc618f2d387348354ab "Rule_Name_Example"
 python src/tx_replayer.py add-rule 0xdef456... "Reentrancy_Exploit"
 python src/tx_replayer.py add-rule 0x789abc... "Price_Manipulation"
 ```
@@ -178,16 +164,15 @@ python src/tx_replayer.py add-rule 0x1106418384414ed56cd7cbb9fedc66a02d39b663d58
 ```
 ├── src/
 │   ├── tx_replayer.py          # Main transaction replay tool
-│   ├── tx_runner.py            # Transaction parsing utilities
-│   ├── es_api.py              # ElasticSearch API interface
-├── data_rules_related/        # Attack pattern rules and ML models
+│   └── tx_runner.py            # Transaction parsing utilities
+├── data_rules_related/        # Attack pattern rules
 └── README.md                  # This file
 ```
 
 ## Important Notes & Limitations
 
 ### Performance Considerations
-- **API Performance**: This tool uses Infura API for blockchain trace retrieval. Analysis speed heavily depends on API response time
+- **API Performance**: This tool uses [Infura API](https://infura.io/) for blockchain trace retrieval. Analysis speed heavily depends on API response time
 - **Performance Optimization**: Using a local full node instead of Infura will significantly improve performance
 - **Rate Limits**: Be mindful of API rate limits when processing large batches of transactions
 
@@ -205,11 +190,11 @@ python src/tx_replayer.py add-rule 0x1106418384414ed56cd7cbb9fedc66a02d39b663d58
 
 ### Data Sources
 - **Attack Patterns**: Our attack rule database is built upon the comprehensive DeFi attack dataset from [DeFiHackLabs](https://github.com/SunWeb3Sec/DeFiHackLabs)
-- **Transaction Data**: Blockchain transaction traces are retrieved via Infura API infrastructure
+- **Transaction Data**: Blockchain transaction traces are retrieved via [Infura API](https://docs.infura.io/) infrastructure
 
 ### Special Thanks
 - **DeFiHackLabs Team**: For providing an excellent open-source collection of DeFi attack vectors and PoCs that serve as the foundation for our attack pattern analysis
-- **Foundry Team**: For the robust smart contract testing framework used throughout this project
+- **[Foundry Team](https://github.com/foundry-rs/foundry)**: For the robust smart contract testing framework used throughout this project
 
 ## License & Citation
 
