@@ -26,7 +26,7 @@ GenDetect provides functionality to:
 
 ### Required Dependencies
 
-1. **Foundry Forge** - Ethereum development framework for smart contract testing and deployment
+**Foundry Forge** - Ethereum development framework for smart contract testing and deployment
    
    **Installation:**
    ```bash
@@ -39,13 +39,7 @@ GenDetect provides functionality to:
    # Install the latest version (Ubuntu 22.04 required, otherwise issues may occur)
    foundryup
    ```
-
-2. **Git Submodules** - Required for Solidity smart contract compilation
-
-   This project uses `forge-std` (Foundry's standard library) for Solidity testing
-   ```bash
-   git submodule update --init --recursive
-   ```
+   
 ## Installation
 
 ### Step-by-Step Setup
