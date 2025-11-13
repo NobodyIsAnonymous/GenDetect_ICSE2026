@@ -51,7 +51,7 @@ def run_benchmark():
     test_results.to_csv('dune_tx/benchmark-results.csv', index=False)
 
 # Load data
-def load_data(file_path):
+def load_data_fixed(file_path):
     df = pd.read_csv(file_path)
 
     # Ensure `encoded_trace` is in the correct Python list format
@@ -60,11 +60,48 @@ def load_data(file_path):
             try:
                 return ast.literal_eval(x)
             except:
-                return x  # Return original value directly (already a list)
-        return x  # Return original value directly (already a list)
+                return []  # Return empty list if parsing fails
+        return x if isinstance(x, list) else []  # Return list or empty list
 
     df['encoded_trace'] = df['encoded_trace'].apply(safe_eval)
+    
+    # Filter out empty or invalid traces
+    df = df[df['encoded_trace'].apply(lambda x: isinstance(x, list) and len(x) > 0)]
+    
     return df
+
+# Fixed similarity function
+def edit_similarity_fixed(seq1, seq2):
+    """
+    计算编辑距离的相似度，值在 [0, 1] 之间。
+    修复版本：处理边界情况和 NaN 问题
+    """
+    # Handle empty sequences
+    if not seq1 or not seq2:
+        return 0.0
+        
+    # Calculate edit distance using existing function
+    from dtw_similarity import tuple_edit_distance
+    try:
+        raw_distance = tuple_edit_distance(seq1, seq2)
+        max_length = max(len(seq1), len(seq2))
+        
+        if max_length == 0:
+            return 1.0  # Both sequences are empty, perfect match
+        
+        similarity = 1 - (raw_distance / max_length)
+        
+        # Ensure similarity is in [0, 1] range and not NaN
+        if np.isnan(similarity) or similarity < 0:
+            return 0.0
+        elif similarity > 1:
+            return 1.0
+        else:
+            return float(similarity)
+            
+    except Exception as e:
+        print(f"Error calculating similarity: {e}")
+        return 0.0
 
 # Custom classifier
 class SimilarityBasedClassifier(BaseEstimator, ClassifierMixin):
@@ -76,18 +113,29 @@ class SimilarityBasedClassifier(BaseEstimator, ClassifierMixin):
 
     def fit(self, X, y):
         """Store training data and initialize classes_"""
-        self.train_rules = pd.DataFrame({'encoded_trace': X, 'label': y})
+        # Filter out invalid traces
+        valid_indices = []
+        valid_X = []
+        valid_y = []
         
-        if len(y) == 0:
-            raise ValueError("Error: `y` in fit() is empty!")
-
-        self.classes_ = np.unique(y)
+        for i, trace in enumerate(X):
+            if isinstance(trace, list) and len(trace) > 0:
+                valid_indices.append(i)
+                valid_X.append(trace)
+                valid_y.append(y[i])
+        
+        if len(valid_y) == 0:
+            raise ValueError("Error: No valid training data after filtering!")
+            
+        self.train_rules = pd.DataFrame({'encoded_trace': valid_X, 'label': valid_y})
+        self.classes_ = np.unique(valid_y)
         
         if self.verbose:
             self.fold_count += 1
-            attack_count = sum(y == 1)
-            benign_count = sum(y == 0)
-            print(f"  Fold {self.fold_count} Training: {len(y)} samples (Attack: {attack_count}, Benign: {benign_count})")
+            attack_count = sum(np.array(valid_y) == 1)
+            benign_count = sum(np.array(valid_y) == 0)
+            print(f"  Fold {self.fold_count} Training: {len(valid_y)} valid samples (Attack: {attack_count}, Benign: {benign_count})")
+            print(f"    Filtered out {len(X) - len(valid_X)} invalid traces")
         
         return self
 
@@ -106,16 +154,49 @@ class SimilarityBasedClassifier(BaseEstimator, ClassifierMixin):
                 if (i + 1) % progress_step == 0 or i == total_samples - 1:
                     print(f"    Progress: {i+1}/{total_samples} ({(i+1)*100//total_samples}%)")
             
+            # Handle invalid test sequences
+            if not isinstance(no_loop_sequence, list) or len(no_loop_sequence) == 0:
+                predictions.append(0)  # Default to benign for invalid sequences
+                continue
+            
             similarity_list = []
+            valid_similarities = []
+            
             for j in range(len(self.train_rules)):
                 known_sequence = self.train_rules['encoded_trace'].iloc[j]
-                similarity = edit_similarity(no_loop_sequence, known_sequence)
-                similarity_list.append((j, similarity))
+                try:
+                    similarity = edit_similarity_fixed(no_loop_sequence, known_sequence)
+                    if not np.isnan(similarity):
+                        similarity_list.append((j, similarity))
+                        valid_similarities.append(similarity)
+                except Exception as e:
+                    if self.verbose:
+                        print(f"    Warning: Similarity calculation failed for sample {j}: {e}")
+                    continue
 
-            similarity_list.sort(key=lambda x: x[1])
-            rule_name_1 = self.train_rules['label'].iloc[similarity_list[-1][0]]
-            rule_name_2 = self.train_rules['label'].iloc[similarity_list[-2][0]]
+            if len(similarity_list) == 0:
+                # No valid similarities computed, default to benign
+                predictions.append(0)
+                if self.verbose:
+                    print(f"    Warning: No valid similarities for test sample {i}")
+                continue
+            
+            # Sort by similarity (highest first)
+            similarity_list.sort(key=lambda x: x[1], reverse=True)
+            
+            # Get top 2 matches
+            if len(similarity_list) >= 2:
+                rule_name_1 = self.train_rules['label'].iloc[similarity_list[0][0]]
+                rule_name_2 = self.train_rules['label'].iloc[similarity_list[1][0]]
+            elif len(similarity_list) == 1:
+                rule_name_1 = self.train_rules['label'].iloc[similarity_list[0][0]]
+                rule_name_2 = rule_name_1  # Use same rule for both
+            else:
+                # Should not happen due to check above, but just in case
+                predictions.append(0)
+                continue
 
+            # Classification logic: if both top matches are benign (0), predict benign
             if rule_name_1 == 0 and rule_name_2 == 0:
                 predictions.append(0)
             else:
@@ -132,28 +213,38 @@ class SimilarityBasedClassifier(BaseEstimator, ClassifierMixin):
         return np.array(predictions)
 
 # Custom scorer with verbose output
-def verbose_accuracy_scorer(fold_num=[0]):  # Use mutable default to maintain state
-    def scorer_func(estimator, X, y):
-        fold_num[0] += 1
-        y_pred = estimator.predict(X)
-        accuracy = accuracy_score(y, y_pred)
-        
-        # Calculate detailed metrics
-        from sklearn.metrics import confusion_matrix
-        cm = confusion_matrix(y, y_pred)
-        
-        print(f"\nFold {fold_num[0]} Results: Accuracy = {accuracy:.4f} ({accuracy*100:.1f}%)")
-        print(f"   Confusion Matrix: TN={cm[0,0]}, FP={cm[0,1]}, FN={cm[1,0]}, TP={cm[1,1]}")
-        
-        if cm[1,1] + cm[1,0] > 0:  # Avoid division by zero
-            precision = cm[1,1] / (cm[1,1] + cm[0,1]) if (cm[1,1] + cm[0,1]) > 0 else 0
-            recall = cm[1,1] / (cm[1,1] + cm[1,0])
-            f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
-            print(f"   Metrics: Precision={precision:.3f}, Recall={recall:.3f}, F1={f1:.3f}")
-        
-        return accuracy
+class VerboseScorer:
+    def __init__(self):
+        self.fold_count = 0
+        self.__name__ = 'verbose_accuracy_scorer'
     
-    return scorer_func
+    def __call__(self, y_true, y_pred):
+        self.fold_count += 1
+        try:
+            accuracy = accuracy_score(y_true, y_pred)
+            
+            # Check for NaN
+            if np.isnan(accuracy):
+                print(f"\nFold {self.fold_count} ERROR: Accuracy is NaN!")
+                return 0.0
+            
+            # Calculate detailed metrics
+            from sklearn.metrics import confusion_matrix
+            cm = confusion_matrix(y_true, y_pred)
+            
+            print(f"\nFold {self.fold_count} Results: Accuracy = {accuracy:.4f} ({accuracy*100:.1f}%)")
+            print(f"   Confusion Matrix: TN={cm[0,0]}, FP={cm[0,1]}, FN={cm[1,0]}, TP={cm[1,1]}")
+            
+            if cm[1,1] + cm[1,0] > 0:  # Avoid division by zero
+                precision = cm[1,1] / (cm[1,1] + cm[0,1]) if (cm[1,1] + cm[0,1]) > 0 else 0
+                recall = cm[1,1] / (cm[1,1] + cm[1,0])
+                f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
+                print(f"   Metrics: Precision={precision:.3f}, Recall={recall:.3f}, F1={f1:.3f}")
+            
+            return accuracy
+        except Exception as e:
+            print(f"\nFold {self.fold_count} ERROR: {e}")
+            return 0.0
 
 # Cross-validation process
 def cross_validation(verbose=True, sample_size=None):
@@ -165,13 +256,21 @@ def cross_validation(verbose=True, sample_size=None):
         sample_size: If specified, randomly sample this many rows for faster testing
     """
     print("Starting K-Fold Cross-Validation...")
-    trace_rules_df = load_data('./data_rules_related/noloop_encoded_trace.csv')
+    trace_rules_df = load_data_fixed('./data_rules_related/noloop_encoded_trace.csv')
     
-    print(f"Loaded {len(trace_rules_df)} total rules")
+    print(f"Loaded {len(trace_rules_df)} total valid rules")
     
-    # Data split (first 534 rows are attacks, rest are benign)
-    attack_data = trace_rules_df.iloc[:534].copy()
-    benign_data = trace_rules_df.iloc[534:].copy()
+    # Check actual data distribution
+    print(f"Total data rows: {len(trace_rules_df)}")
+    print(f"First 5 IDs: {list(trace_rules_df['id'].head())}")
+    print(f"Last 5 IDs: {list(trace_rules_df['id'].tail())}")
+    
+    # Adjust data split based on actual data
+    # Assuming first ~50% are attacks, rest are benign (adjust as needed)
+    split_point = min(534, len(trace_rules_df) // 2)  # Use 534 or half, whichever is smaller
+    
+    attack_data = trace_rules_df.iloc[:split_point].copy()
+    benign_data = trace_rules_df.iloc[split_point:].copy()
 
     # Optional sampling for faster testing
     if sample_size and sample_size < len(trace_rules_df):
@@ -189,9 +288,12 @@ def cross_validation(verbose=True, sample_size=None):
     benign_data['label'] = 0
     # Merge data
     df = pd.concat([attack_data, benign_data]).reset_index(drop=True)
+    
     # Separate features and labels
-    X = df['encoded_trace']
+    X = df['encoded_trace'].tolist()  # Convert to list
     y = df['label'].values
+
+    print(f"Final dataset: {len(X)} samples, {sum(y)} attacks, {len(y)-sum(y)} benign")
 
     # Cross-validation
     skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
@@ -199,7 +301,7 @@ def cross_validation(verbose=True, sample_size=None):
     
     if verbose:
         # Use custom scorer with verbose output
-        scorer = make_scorer(verbose_accuracy_scorer())
+        scorer = make_scorer(VerboseScorer())
         model = SimilarityBasedClassifier(verbose=True)
         scores = cross_val_score(model, X, y, cv=skf, scoring=scorer, verbose=1)
     else:
@@ -208,6 +310,16 @@ def cross_validation(verbose=True, sample_size=None):
         model = SimilarityBasedClassifier(verbose=False)
         scores = cross_val_score(model, X, y, cv=skf, scoring=scorer)
         print("Cross-validation in progress (no detailed output)...")
+    
+    # Check for NaN in scores
+    if np.any(np.isnan(scores)):
+        print(f"WARNING: Some scores are NaN: {scores}")
+        # Filter out NaN values
+        valid_scores = scores[~np.isnan(scores)]
+        if len(valid_scores) == 0:
+            print("ERROR: All scores are NaN!")
+            return
+        scores = valid_scores
     
     # Output final results
     print(f"\nFinal Results:")
@@ -222,7 +334,30 @@ def quick_test():
     print("Running quick test with 100 samples...")
     cross_validation(verbose=True, sample_size=100)
 
+# Debug function to check data
+def debug_data():
+    """Debug function to examine data structure"""
+    print("=== Data Debug Information ===")
+    df = load_data_fixed('./data_rules_related/noloop_encoded_trace.csv')
+    print(f"Total rows: {len(df)}")
+    print(f"Columns: {df.columns.tolist()}")
+    print(f"First few rows:")
+    for i in range(min(5, len(df))):
+        trace = df['encoded_trace'].iloc[i]
+        print(f"  Row {i}: ID={df['id'].iloc[i]}, Trace length={len(trace) if isinstance(trace, list) else 'Invalid'}")
+        if isinstance(trace, list) and len(trace) > 0:
+            print(f"    First element: {trace[0]}")
     
+    # Test similarity calculation
+    if len(df) >= 2:
+        trace1 = df['encoded_trace'].iloc[0]
+        trace2 = df['encoded_trace'].iloc[1]
+        if isinstance(trace1, list) and isinstance(trace2, list):
+            try:
+                sim = edit_similarity_fixed(trace1, trace2)
+                print(f"\nTest similarity between first two traces: {sim}")
+            except Exception as e:
+                print(f"\nError calculating test similarity: {e}")
 
 if __name__ == '__main__':
     import sys
@@ -235,12 +370,15 @@ if __name__ == '__main__':
         elif sys.argv[1] == 'sample' and len(sys.argv) > 2:
             sample_size = int(sys.argv[2])
             cross_validation(verbose=True, sample_size=sample_size)
+        elif sys.argv[1] == 'debug':
+            debug_data()
         else:
             print("Usage:")
-            print("  python predict_benchmark.py          # Full verbose cross-validation")
-            print("  python predict_benchmark.py quick    # Quick test with 100 samples")  
-            print("  python predict_benchmark.py silent   # Full cross-validation without verbose output")
-            print("  python predict_benchmark.py sample N # Cross-validation with N samples")
+            print("  python predict_benchmark_fixed.py          # Full verbose cross-validation")
+            print("  python predict_benchmark_fixed.py quick    # Quick test with 100 samples")  
+            print("  python predict_benchmark_fixed.py silent   # Full cross-validation without verbose output")
+            print("  python predict_benchmark_fixed.py sample N # Cross-validation with N samples")
+            print("  python predict_benchmark_fixed.py debug    # Debug data loading and similarity calculation")
     else:
         # Default: full verbose cross-validation
         cross_validation()

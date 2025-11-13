@@ -51,18 +51,12 @@ GenDetect provides functionality to:
 ### Step-by-Step Setup
 
 1. **Clone the repository**
-   ```bash
-   git clone https://github.com/NobodyIsAnonymous/ICSE2026Anonym.git
-   cd ICSE2026Anonym
+   Since the ristricted access, `git clone` is not avlailable. Please manually download the code package from the anonymous link and unzip it from:
+   ```
+   https://anonymous.4open.science/r/ICSE2026Anonym-821B/README.md
    ```
 
-2. **Initialize Git submodules** (Required for Solidity compilation)
-   ```bash
-   git submodule update --init --recursive
-   ```
-   *This downloads the `forge-std` library needed by the smart contract test files*
-
-3. **Set up Python environment**
+2. **Set up Python environment**
    
    **Using Conda (Recommended)**
    ```bash
@@ -74,7 +68,7 @@ GenDetect provides functionality to:
    pip install -r requirements.txt
    ```
 
-4. **Configure environment variables**
+3. **Configure environment variables**
    ```bash
    # Copy example configuration
    cp .env.example .env
