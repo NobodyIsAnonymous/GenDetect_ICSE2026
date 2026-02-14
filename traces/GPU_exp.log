@@ -1,0 +1,665 @@
+Compiling 28 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.17s
+Compiler run successful with warnings:
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/interface.sol:886:5:
+    |
+886 |     function WETH() external view returns (address);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1598:5:
+     |
+1598 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1850:5:
+     |
+1850 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:2560:5:
+     |
+2560 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:3759:5:
+     |
+3759 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 252.05ms (420.50µs CPU time)
+
+Ran 1 test for src/test/2024-05/GPU_exp.sol:GPUExploit
+[PASS] testExploit() (gas: 1272971)
+Logs:
+  Attacker BUSD Balance Before exploit: 26.542161622221038197
+  Attacker BUSD Balance After exploit: 32624.621653691010246187
+
+Traces:
+  [1309671] GPUExploit::testExploit()
+    ├─ [2531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 26542161622221038197 [2.654e19]
+    ├─ emit log_named_decimal_uint(key: "Attacker BUSD Balance Before exploit", val: 26542161622221038197 [2.654e19], decimals: 18)
+    ├─ [1290947] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::swap(22600000000000000000000 [2.26e22], 0, GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x30783432)
+    │   ├─ [10871] 0x55d398326f99059fF775485246999027B3197955::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 22600000000000000000000 [2.26e22])
+    │   │   ├─ emit Transfer(from: 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 22600000000000000000000 [2.26e22])
+    │   │   └─ ← [Return] true
+    │   ├─ [1249140] GPUExploit::pancakeCall(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 22600000000000000000000 [2.26e22], 0, 0x30783432)
+    │   │   ├─ [167902] 0x10ED43C718714eb63d5aA57B78B54704E256024E::swapExactTokensForTokensSupportingFeeOnTransferTokens(22600000000000000000000 [2.26e22], 0, [0x55d398326f99059fF775485246999027B3197955, 0xf51CBf9F8E089Ca48e454EB79731037a405972ce], GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1715162496 [1.715e9])
+    │   │   │   ├─ [15634] 0x55d398326f99059fF775485246999027B3197955::transferFrom(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x61373083F4dEef88ba449AD82218059781962D76, 22600000000000000000000 [2.26e22])
+    │   │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x61373083F4dEef88ba449AD82218059781962D76, value: 22600000000000000000000 [2.26e22])
+    │   │   │   │   ├─ emit Approval(owner: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564016857584007913129639935 [1.157e77])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [4828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   ├─ [2893] 0x61373083F4dEef88ba449AD82218059781962D76::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 32666057895841703902864 [3.266e22], 30903990987461173215594 [3.09e22], 1715157349 [1.715e9]
+    │   │   │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(0x61373083F4dEef88ba449AD82218059781962D76) [staticcall]
+    │   │   │   │   └─ ← [Return] 55266057895841703902864 [5.526e22]
+    │   │   │   ├─ [131046] 0x61373083F4dEef88ba449AD82218059781962D76::swap(0, 12618904178515512046536 [1.261e22], GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   ├─ [96337] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 12618904178515512046536 [1.261e22])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x61373083F4dEef88ba449AD82218059781962D76, to: 0x000000000000000000000000000000000000dEaD, value: 252378083570310240930 [2.523e20])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x61373083F4dEef88ba449AD82218059781962D76, to: 0xf51CBf9F8E089Ca48e454EB79731037a405972ce, value: 126189041785155120465 [1.261e20])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x61373083F4dEef88ba449AD82218059781962D76, to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 12240337053160046685105 [1.224e22])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(0x61373083F4dEef88ba449AD82218059781962D76) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 55266057895841703902864 [5.526e22]
+    │   │   │   │   ├─ [858] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(0x61373083F4dEef88ba449AD82218059781962D76) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 18285086808945661169094 [1.828e22]
+    │   │   │   │   ├─ emit Sync(reserve0: 55266057895841703902864 [5.526e22], reserve1: 18285086808945661169094 [1.828e22])
+    │   │   │   │   ├─ emit Swap(sender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, amount0In: 22600000000000000000000 [2.26e22], amount1In: 36, amount0Out: 0, amount1Out: 12618904178515512046536 [1.261e22], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 12240337053160046685105 [1.224e22]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 12240337053160046685105 [1.224e22]
+    │   │   ├─ [13163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 12240337053160046685105 [1.224e22])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 12239113019454730675332 [1.223e22])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 24479450072614777360437 [2.447e22]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 24479450072614777360437 [2.447e22])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 24477002127607515882264 [2.447e22])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 48956452200222293242701 [4.895e22]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 48956452200222293242701 [4.895e22])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 48951556555002271010676 [4.895e22])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 97908008755224564253377 [9.79e22]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 97908008755224564253377 [9.79e22])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 97898217954349041793575 [9.789e22])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 195806226709573606046952 [1.958e23]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 195806226709573606046952 [1.958e23])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 195786646086902648679396 [1.957e23])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 391592872796476254726348 [3.915e23]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 391592872796476254726348 [3.915e23])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 391553713509196607094528 [3.915e23])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 783146586305672861820876 [7.831e23]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 783146586305672861820876 [7.831e23])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 783068271647042294533818 [7.83e23])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 1566214857952715156354694 [1.566e24]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1566214857952715156354694 [1.566e24])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1566058236466919884834365 [1.566e24])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 3132273094419635041189059 [3.132e24]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3132273094419635041189059 [3.132e24])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3131959867110193077675882 [3.131e24])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 6264232961529828118864941 [6.264e24]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 6264232961529828118864941 [6.264e24])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 6263606538233675136048114 [6.263e24])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 12527839499763503254913055 [1.252e25]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 12527839499763503254913055 [1.252e25])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 12526586715813526904584509 [1.252e25])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 25054426215577030159497564 [2.505e25]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 25054426215577030159497564 [2.505e25])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 25051920772955472456474051 [2.505e25])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 50106346988532502615971615 [5.01e25]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 50106346988532502615971615 [5.01e25])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 50101336353833649365708403 [5.01e25])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 100207683342366151981680018 [1.002e26]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 100207683342366151981680018 [1.002e26])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 100197662574031915366481832 [1.001e26])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 200405345916398067348161850 [2.004e26]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 200405345916398067348161850 [2.004e26])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 200385305381806427541425184 [2.003e26])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 400790651298204494889587034 [4.007e26]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 400790651298204494889587034 [4.007e26])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 400750572233074674440091042 [4.007e26])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 801541223531279169329678076 [8.015e26]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 801541223531279169329678076 [8.015e26])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 801461069408926041412737033 [8.014e26])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 1603002292940205210742415109 [1.603e27]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1603002292940205210742415109 [1.603e27])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1602841992710911190221335759 [1.602e27])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 3205844285651116400963750868 [3.205e27]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3205844285651116400963750868 [3.205e27])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3205523701222551289323653625 [3.205e27])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 6411367986873667690287404493 [6.411e27]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 6411367986873667690287404493 [6.411e27])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 6410726850074980323518371260 [6.41e27])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 12822094836948648013805775753 [1.282e28]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 12822094836948648013805775753 [1.282e28])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 12820812627464953149004389423 [1.282e28])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 25642907464413601162810165176 [2.564e28]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 25642907464413601162810165176 [2.564e28])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 25640343173667159802693878984 [2.564e28])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 51283250638080760965504044160 [5.128e28]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 51283250638080760965504044160 [5.128e28])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 51278122313016952889407489596 [5.127e28])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 102561372951097713854911533756 [1.025e29]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 102561372951097713854911533756 [1.025e29])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 102551116813802604083526038847 [1.025e29])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 205112489764900317938437572603 [2.051e29]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 205112489764900317938437572603 [2.051e29])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 205091978515923827906643726243 [2.05e29])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 410204468280824145845081298846 [4.102e29]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 410204468280824145845081298846 [4.102e29])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 410163447833996063430496781871 [4.101e29])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 820367916114820209275578080717 [8.203e29]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 820367916114820209275578080717 [8.203e29])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 820285879323208727254650522192 [8.202e29])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 1640653795438028936530228602909 [1.64e30]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1640653795438028936530228602909 [1.64e30])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1640489730058485133636575577140 [1.64e30])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 3281143525496514070166804180049 [3.281e30]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3281143525496514070166804180049 [3.281e30])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3280815411143964418759787499582 [3.28e30])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 6561958936640478488926591679631 [6.561e30]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 6561958936640478488926591679631 [6.561e30])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 6561302740746814441077699010833 [6.561e30])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 13123261677387292930004290690464 [1.312e31]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 13123261677387292930004290690464 [1.312e31])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 13121949351219554200711290260931 [1.312e31])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 26245211028606847130715580951395 [2.624e31]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 26245211028606847130715580951395 [2.624e31])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 26242586507503986446002509391905 [2.624e31])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 52487797536110833576718090343300 [5.248e31]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 52487797536110833576718090343300 [5.248e31])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 52482548756357222493360418530966 [5.248e31])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 104970346292468056070078508874266 [1.049e32]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 104970346292468056070078508874266 [1.049e32])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 104959849257838809264471501019113 [1.049e32])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 209930195550306865334550009893379 [2.099e32]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 209930195550306865334550009893379 [2.099e32])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 209909202530751834648016554889011 [2.099e32])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 419839398081058699982566564782390 [4.198e32]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 419839398081058699982566564782390 [4.198e32])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 419797414141250594112568308123522 [4.197e32])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 839636812222309294095134872905912 [8.396e32]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 839636812222309294095134872905912 [8.396e32])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 839552848541087063165725359412710 [8.395e32])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 1679189660763396357260860232318622 [1.679e33]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1679189660763396357260860232318622 [1.679e33])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1679021741797320017625134146286769 [1.679e33])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 3358211402560716374885994378605391 [3.358e33]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3358211402560716374885994378605391 [3.358e33])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3357875581420460303248505779162140 [3.357e33])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 6716086983981176678134500157767531 [6.716e33]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 6716086983981176678134500157767531 [6.716e33])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 6715415375282778560466686707744224 [6.715e33])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 13431502359263955238601186865511755 [1.343e34]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 13431502359263955238601186865511755 [1.343e34])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 13430159209028028843077326746823449 [1.343e34])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 26861661568291984081678513612335204 [2.686e34]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 26861661568291984081678513612335204 [2.686e34])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 26858975402135154883270345760968767 [2.685e34])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 53720636970427138964948859373303971 [5.372e34]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 53720636970427138964948859373303971 [5.372e34])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 53715264906730096251052364487362670 [5.371e34])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 107435901877157235216001223860666641 [1.074e35]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 107435901877157235216001223860666641 [1.074e35])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 107425158286969519492479623738273934 [1.074e35])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 214861060164126754708480847598940575 [2.148e35]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 214861060164126754708480847598940575 [2.148e35])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 214839574058110342033009999514180106 [2.148e35])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 429700634222237096741490847113120681 [4.297e35]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 429700634222237096741490847113120681 [4.297e35])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 429657664158814873031816698028408688 [4.296e35])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 859358298381051969773307545141529369 [8.593e35]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 859358298381051969773307545141529369 [8.593e35])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 859272362551213864576330214387005848 [8.592e35])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 1718630660932265834349637759528535217 [1.718e36]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1718630660932265834349637759528535217 [1.718e36])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1718458797866172607766202795752577147 [1.718e36])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 3437089458798438442115840555281112364 [3.437e36]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3437089458798438442115840555281112364 [3.437e36])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3436745749852558598271628971225581889 [3.436e36])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 6873835208650997040387469526506694253 [6.873e36]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 6873835208650997040387469526506694253 [6.873e36])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 6873147825130131940683430779554039331 [6.873e36])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 13746983033781128981070900306060733584 [1.374e37]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 13746983033781128981070900306060733584 [1.374e37])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 13745608335477750868172793216030123927 [1.374e37])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 27492591369258879849243693522090857511 [2.749e37]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 27492591369258879849243693522090857511 [2.749e37])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 27489842110121953961258769152738640915 [2.748e37])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 54982433479380833810502462674829498426 [5.498e37]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 54982433479380833810502462674829498426 [5.498e37])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 54976935236032895727121412428562007051 [5.497e37])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 109959368715413729537623875103391505477 [1.099e38]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 109959368715413729537623875103391505477 [1.099e38])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 109948372778542188164670112715881160850 [1.099e38])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 219907741493955917702293987819272666327 [2.199e38]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 219907741493955917702293987819272666327 [2.199e38])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 219885750719806522110523758420490732734 [2.198e38])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 439793492213762439812817746239763399061 [4.397e38]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 439793492213762439812817746239763399061 [4.397e38])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 439749512864541063568836464465139413661 [4.397e38])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 879543005078303503381654210704902812722 [8.795e38]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 879543005078303503381654210704902812722 [8.795e38])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 879455050777795673031316045283832319719 [8.794e38])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 1758998055856099176412970255988735132441 [1.758e39]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1758998055856099176412970255988735132441 [1.758e39])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1758822156050513566495328958963136256487 [1.758e39])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 3517820211906612742908299214951871388928 [3.517e39]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3517820211906612742908299214951871388928 [3.517e39])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3517468429885422081634008385030376192862 [3.517e39])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 7035288641792034824542307599982247581790 [7.035e39]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 7035288641792034824542307599982247581790 [7.035e39])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 7034585112927855621059853369222249355242 [7.034e39])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 14069873754719890445602160969204496937032 [1.406e40]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 14069873754719890445602160969204496937032 [1.406e40])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 14068466767344418456557600753107576480307 [1.406e40])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 28138340522064308902159761722312073417339 [2.813e40]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 28138340522064308902159761722312073417339 [2.813e40])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 28135526688012102471269545746139842202659 [2.813e40])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 56273867210076411373429307468451915619998 [5.627e40]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 56273867210076411373429307468451915619998 [5.627e40])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 56268239823355403732291964537705070418439 [5.626e40])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 112542107033431815105721272006156986038437 [1.125e41]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 112542107033431815105721272006156986038437 [1.125e41])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 112530852822728471924210699878956370331397 [1.125e41])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 225072959856160287029931971885113356369834 [2.25e41]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 225072959856160287029931971885113356369834 [2.25e41])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 225050452560174671001228978687924845024364 [2.25e41])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 450123412416334958031160950573038201394198 [4.501e41]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 450123412416334958031160950573038201394198 [4.501e41])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 450078400075093324535357834477980897569861 [4.5e41])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 900201812491428282566518785051019098964059 [9.002e41]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 900201812491428282566518785051019098964059 [9.002e41])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 900111792310179139738262133172513997050104 [9.001e41])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 1800313604801607422304780918223533096014163 [1.8e42]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1800313604801607422304780918223533096014163 [1.8e42])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1800133573441127261562550440131710742700399 [1.8e42])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 3600447178242734683867331358355243838714562 [3.6e42]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3600447178242734683867331358355243838714562 [3.6e42])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3600087133524910410398944625219408314326129 [3.6e42])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 7200534311767645094266275983574652153040691 [7.2e42]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 7200534311767645094266275983574652153040691 [7.2e42])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 7199814258336468329756849355976294687824696 [7.199e42])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 14400348570104113424023125339550946840865387 [1.44e43]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 14400348570104113424023125339550946840865387 [1.44e43])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 14398908535247103012680723027016991746175914 [1.439e43])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 28799257105351216436703848366567938587041301 [2.879e43]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 28799257105351216436703848366567938587041301 [2.879e43])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 28796377179640681315060177981731281793181296 [2.879e43])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 57595634284991897751764026348299220380222597 [5.759e43]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 57595634284991897751764026348299220380222597 [5.759e43])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 57589874721563398561988849945664390458181978 [5.758e43])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 115185509006555296313752876293963610838404575 [1.151e44]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 115185509006555296313752876293963610838404575 [1.151e44])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 115173990455654640784121501006334214477316160 [1.151e44])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 230359499462209937097874377300297825315720735 [2.303e44]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 230359499462209937097874377300297825315720735 [2.303e44])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 230336463512263716104164589862567795533188428 [2.303e44])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 460695962974473653202038967162865620848909163 [4.606e44]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 460695962974473653202038967162865620848909163 [4.606e44])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 460649893378176205836718763266149334286815110 [4.606e44])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 921345856352649859038757730429014955135724273 [9.213e44]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 921345856352649859038757730429014955135724273 [9.213e44])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 921253721767014594052853854655972053640206428 [9.212e44])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 1842599578119664453091611585084987008775930701 [1.842e45]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1842599578119664453091611585084987008775930701 [1.842e45])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1842415318161852486646302423926478510075052407 [1.842e45])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 3685014896281516939737914009011465518850983108 [3.685e45]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3685014896281516939737914009011465518850983108 [3.685e45])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3684646394791888788043940217610564372299094902 [3.684e45])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 7369661291073405727781854226622029891150078010 [7.369e45]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 7369661291073405727781854226622029891150078010 [7.369e45])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 7368924324944298387209076041199367688160954993 [7.368e45])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 14738585616017704114990930267821397579311033003 [1.473e46]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 14738585616017704114990930267821397579311033003 [1.473e46])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 14737111757456102344579431174794615439553098897 [1.473e46])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 29475697373473806459570361442616013018864131900 [2.947e46]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 29475697373473806459570361442616013018864131900 [2.947e46])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 29472749803736459078924404406471751417562243587 [2.947e46])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 58948447177210265538494765849087764436426375487 [5.894e46]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 58948447177210265538494765849087764436426375487 [5.894e46])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 58942552332492544511940916372502855659982727363 [5.894e46])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 117890999509702810050435682221590620096409102850 [1.178e47]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 117890999509702810050435682221590620096409102850 [1.178e47])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 117879210409751839769430638653368461034399459090 [1.178e47])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 235770209919454649819866320874959081130808561940 [2.357e47]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 235770209919454649819866320874959081130808561940 [2.357e47])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 235746632898462704354884334242871585222695479144 [2.357e47])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 471516842817917354174750655117830666353504041084 [4.715e47]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 471516842817917354174750655117830666353504041084 [4.715e47])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 471469691133635562439333180052318883286868689596 [4.714e47])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [828] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 942986533951552916614083835170149549640372730680 [9.429e47]
+    │   │   ├─ [7163] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 942986533951552916614083835170149549640372730680 [9.429e47])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 942892235298157761322422426786632534685408692727 [9.428e47])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [277347] 0x10ED43C718714eb63d5aA57B78B54704E256024E::swapExactTokensForTokensSupportingFeeOnTransferTokens(5192296858534827628530496329220095 [5.192e33], 0, [0xf51CBf9F8E089Ca48e454EB79731037a405972ce, 0x55d398326f99059fF775485246999027B3197955], GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1715162496 [1.715e9])
+    │   │   │   ├─ [245854] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transferFrom(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x61373083F4dEef88ba449AD82218059781962D76, 5192296858534827628530496329220095 [5.192e33])
+    │   │   │   │   ├─ [465] 0x61373083F4dEef88ba449AD82218059781962D76::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0x55d398326f99059fF775485246999027B3197955
+    │   │   │   │   ├─ [893] 0x61373083F4dEef88ba449AD82218059781962D76::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 55266057895841703902864 [5.526e22], 18285086808945661169094 [1.828e22], 1715162496 [1.715e9]
+    │   │   │   │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(0x61373083F4dEef88ba449AD82218059781962D76) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 55266057895841703902864 [5.526e22]
+    │   │   │   │   ├─ [64355] 0x10ED43C718714eb63d5aA57B78B54704E256024E::swapExactTokensForTokensSupportingFeeOnTransferTokens(63094520892577560232 [6.309e19], 0, [0xf51CBf9F8E089Ca48e454EB79731037a405972ce, 0x55d398326f99059fF775485246999027B3197955], 0x301f7eD8C7644Ab576016224cb8760D62605B73E, 1715162496 [1.715e9])
+    │   │   │   │   │   ├─ [13762] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transferFrom(0xf51CBf9F8E089Ca48e454EB79731037a405972ce, 0x61373083F4dEef88ba449AD82218059781962D76, 63094520892577560232 [6.309e19])
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0xf51CBf9F8E089Ca48e454EB79731037a405972ce, to: 0x61373083F4dEef88ba449AD82218059781962D76, value: 63094520892577560232 [6.309e19])
+    │   │   │   │   │   │   ├─ emit Approval(owner: 0xf51CBf9F8E089Ca48e454EB79731037a405972ce, spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 9999999999999999999999999999999999999999999936905479107422439768 [9.999e63])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [2531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(0x301f7eD8C7644Ab576016224cb8760D62605B73E) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   ├─ [893] 0x61373083F4dEef88ba449AD82218059781962D76::getReserves() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 55266057895841703902864 [5.526e22], 18285086808945661169094 [1.828e22], 1715162496 [1.715e9]
+    │   │   │   │   │   ├─ [858] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(0x61373083F4dEef88ba449AD82218059781962D76) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 18348181329838238729326 [1.834e22]
+    │   │   │   │   │   ├─ [38588] 0x61373083F4dEef88ba449AD82218059781962D76::swap(189571806642628105051 [1.895e20], 0, 0x301f7eD8C7644Ab576016224cb8760D62605B73E, 0x)
+    │   │   │   │   │   │   ├─ [23171] 0x55d398326f99059fF775485246999027B3197955::transfer(0x301f7eD8C7644Ab576016224cb8760D62605B73E, 189571806642628105051 [1.895e20])
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x61373083F4dEef88ba449AD82218059781962D76, to: 0x301f7eD8C7644Ab576016224cb8760D62605B73E, value: 189571806642628105051 [1.895e20])
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(0x61373083F4dEef88ba449AD82218059781962D76) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 55076486089199075797813 [5.507e22]
+    │   │   │   │   │   │   ├─ [858] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(0x61373083F4dEef88ba449AD82218059781962D76) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 18348181329838238729326 [1.834e22]
+    │   │   │   │   │   │   ├─ emit Sync(reserve0: 55076486089199075797813 [5.507e22], reserve1: 18348181329838238729326 [1.834e22])
+    │   │   │   │   │   │   ├─ emit Swap(sender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, amount0In: 0, amount1In: 63094520892577560232 [6.309e19], amount0Out: 189571806642628105051 [1.895e20], amount1Out: 0, to: 0x301f7eD8C7644Ab576016224cb8760D62605B73E)
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(0x301f7eD8C7644Ab576016224cb8760D62605B73E) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 189571806642628105051 [1.895e20]
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [28910] 0x301f7eD8C7644Ab576016224cb8760D62605B73E::withdraw()
+    │   │   │   │   │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(0x301f7eD8C7644Ab576016224cb8760D62605B73E) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 189571806642628105051 [1.895e20]
+    │   │   │   │   │   ├─ [25171] 0x55d398326f99059fF775485246999027B3197955::transfer(0xf51CBf9F8E089Ca48e454EB79731037a405972ce, 189571806642628105051 [1.895e20])
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x301f7eD8C7644Ab576016224cb8760D62605B73E, to: 0xf51CBf9F8E089Ca48e454EB79731037a405972ce, value: 189571806642628105051 [1.895e20])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000001
+    │   │   │   │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(0xf51CBf9F8E089Ca48e454EB79731037a405972ce) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 189571806642628105051 [1.895e20]
+    │   │   │   │   ├─ [109400] 0x10ED43C718714eb63d5aA57B78B54704E256024E::addLiquidity(0x55d398326f99059fF775485246999027B3197955, 0xf51CBf9F8E089Ca48e454EB79731037a405972ce, 189571806642628105051 [1.895e20], 63094520892577560232 [6.309e19], 0, 0, 0x5bB6FA11c4C96393A9c5add7f92f957997bF8DEB, 1715162496 [1.715e9])
+    │   │   │   │   │   ├─ [2676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(0x55d398326f99059fF775485246999027B3197955, 0xf51CBf9F8E089Ca48e454EB79731037a405972ce) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0x61373083F4dEef88ba449AD82218059781962D76
+    │   │   │   │   │   ├─ [893] 0x61373083F4dEef88ba449AD82218059781962D76::getReserves() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 55076486089199075797813 [5.507e22], 18348181329838238729326 [1.834e22], 1715162496 [1.715e9]
+    │   │   │   │   │   ├─ [10834] 0x55d398326f99059fF775485246999027B3197955::transferFrom(0xf51CBf9F8E089Ca48e454EB79731037a405972ce, 0x61373083F4dEef88ba449AD82218059781962D76, 189393403072246886775 [1.893e20])
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0xf51CBf9F8E089Ca48e454EB79731037a405972ce, to: 0x61373083F4dEef88ba449AD82218059781962D76, value: 189393403072246886775 [1.893e20])
+    │   │   │   │   │   │   ├─ emit Approval(owner: 0xf51CBf9F8E089Ca48e454EB79731037a405972ce, spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 9999999999999999999999999999999999999999999810606596927753113225 [9.999e63])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [6962] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::transferFrom(0xf51CBf9F8E089Ca48e454EB79731037a405972ce, 0x61373083F4dEef88ba449AD82218059781962D76, 63094520892577560232 [6.309e19])
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0xf51CBf9F8E089Ca48e454EB79731037a405972ce, to: 0x61373083F4dEef88ba449AD82218059781962D76, value: 63094520892577560232 [6.309e19])
+    │   │   │   │   │   │   ├─ emit Approval(owner: 0xf51CBf9F8E089Ca48e454EB79731037a405972ce, spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 9999999999999999999999999999999999999999999873810958214844879536 [9.999e63])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [78548] 0x61373083F4dEef88ba449AD82218059781962D76::mint(0x5bB6FA11c4C96393A9c5add7f92f957997bF8DEB)
+    │   │   │   │   │   │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(0x61373083F4dEef88ba449AD82218059781962D76) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 55265879492271322684588 [5.526e22]
+    │   │   │   │   │   │   ├─ [858] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(0x61373083F4dEef88ba449AD82218059781962D76) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 18411275850730816289558 [1.841e22]
+    │   │   │   │   │   │   ├─ [2354] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::feeTo() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 0x0ED943Ce24BaEBf257488771759F9BF482C39706
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: 0x0ED943Ce24BaEBf257488771759F9BF482C39706, value: 53066167894413368803 [5.306e19])
+    │   │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: 0x5bB6FA11c4C96393A9c5add7f92f957997bF8DEB, value: 108924807722770299564 [1.089e20])
+    │   │   │   │   │   │   ├─ emit Sync(reserve0: 55265879492271322684588 [5.526e22], reserve1: 18411275850730816289558 [1.841e22])
+    │   │   │   │   │   │   ├─ emit Mint(sender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, amount0: 189393403072246886775 [1.893e20], amount1: 63094520892577560232 [6.309e19])
+    │   │   │   │   │   │   └─ ← [Return] 108924807722770299564 [1.089e20]
+    │   │   │   │   │   └─ ← [Return] 189393403072246886775 [1.893e20], 63094520892577560232 [6.309e19], 108924807722770299564 [1.089e20]
+    │   │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x000000000000000000000000000000000000dEaD, value: 103845937170696552570609926584400 [1.038e32])
+    │   │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xf51CBf9F8E089Ca48e454EB79731037a405972ce, value: 51922968585348276285304963292200 [5.192e31])
+    │   │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x61373083F4dEef88ba449AD82218059781962D76, value: 5036527952778782799674581439343400 [5.036e33])
+    │   │   │   │   ├─ emit Approval(owner: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269979473343705504629955477416800419840 [1.157e77])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 26542161622221038197 [2.654e19]
+    │   │   │   ├─ [893] 0x61373083F4dEef88ba449AD82218059781962D76::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 55265879492271322684588 [5.526e22], 18411275850730816289558 [1.841e22], 1715162496 [1.715e9]
+    │   │   │   ├─ [858] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(0x61373083F4dEef88ba449AD82218059781962D76) [staticcall]
+    │   │   │   │   └─ ← [Return] 5036527952797194075525312255632958 [5.036e33]
+    │   │   │   ├─ [21488] 0x61373083F4dEef88ba449AD82218059781962D76::swap(55265879492068789207991 [5.526e22], 0, GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   ├─ [6071] 0x55d398326f99059fF775485246999027B3197955::transfer(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 55265879492068789207991 [5.526e22])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x61373083F4dEef88ba449AD82218059781962D76, to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 55265879492068789207991 [5.526e22])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(0x61373083F4dEef88ba449AD82218059781962D76) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 202533476597 [2.025e11]
+    │   │   │   │   ├─ [858] 0xf51CBf9F8E089Ca48e454EB79731037a405972ce::balanceOf(0x61373083F4dEef88ba449AD82218059781962D76) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 5036527952797194075525312255632958 [5.036e33]
+    │   │   │   │   ├─ emit Sync(reserve0: 202533476597 [2.025e11], reserve1: 5036527952797194075525312255632958 [5.036e33])
+    │   │   │   │   ├─ emit Swap(sender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, amount0In: 0, amount1In: 5036527952778782799674581439343400 [5.036e33], amount0Out: 55265879492068789207991 [5.526e22], amount1Out: 0, to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 55292421653691010246188 [5.529e22]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [3271] 0x55d398326f99059fF775485246999027B3197955::transfer(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, 22667800000000000000001 [2.266e22])
+    │   │   │   ├─ emit Transfer(from: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, value: 22667800000000000000001 [2.266e22])
+    │   │   │   └─ ← [Return] true
+    │   │   └─ ← [Stop] 
+    │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   └─ ← [Return] 6218233864390696602036284 [6.218e24]
+    │   ├─ [2534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   └─ ← [Return] 10716066967206997879194 [1.071e22]
+    │   ├─ emit Sync(reserve0: 6218233864390696602036284 [6.218e24], reserve1: 10716066967206997879194 [1.071e22])
+    │   ├─ emit Swap(sender: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0In: 22667800000000000000001 [2.266e22], amount1In: 0, amount0Out: 22600000000000000000000 [2.26e22], amount1Out: 0, to: GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   └─ ← [Stop] 
+    ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(GPUExploit: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 32624621653691010246187 [3.262e22]
+    ├─ emit log_named_decimal_uint(key: "Attacker BUSD Balance After exploit", val: 32624621653691010246187 [3.262e22], decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 3.77s (2.92s CPU time)
+
+Ran 2 test suites in 3.78s (4.02s CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)

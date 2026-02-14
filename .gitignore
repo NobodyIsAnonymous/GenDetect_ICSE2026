@@ -20,3 +20,5 @@ structured_traces
 src/__pycache__
 
 error.log
+
+__pycache__/

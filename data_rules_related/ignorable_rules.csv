@@ -1,8 +1,0 @@
-Swapos,"[('Common', 'test'), ('Common', 'deposit'), ('Common', 'transfer'), ('Common', 'swap'), ('Common', 'transfer')]"
-Qixi,"[('Common', 'test'), ('Common', 'swap'), ('Common', 'transfer'), ('Common', 'call'), ('Common', 'transfer')]"
-PANDORA,"[('Common', 'test'), ('Common', 'transfer'), ('Cluster', 'Common Cluster 0'), ('Common', 'transfer'), ('Common', 'swap'), ('Common', 'transfer')]"
-LPC,"[('Common', 'test'), ('Common', 'swap'), ('Common', 'transfer'), ('Common', 'call'), ('Common', 'loop start'), ('Common', 'transfer'), ('Common', 'loop stop')]"
-Uranium,"[('Common', 'test'), ('Common', 'deposit'), ('Common', 'transfer'), ('Common', 'swap'), ('Common', 'loop start'), ('Common', 'transfer'), ('Common', 'loop stop'), ('Common', 'swap'), ('Common', 'transfer')]"
-STRAC,"[('Common', 'test'), ('Common', 'approve'), ('Cluster', 'Non-Meaningful'), ('Common', 'transfer'), ('Common', 'loop start'), ('Common', 'transfer'), ('Common', 'loop stop'), ('Common', 'swap'), ('Common', 'transfer')]"
-Miner,"[('Common', 'test'), ('Common', 'transfer'), ('Common', 'swap'), ('Common', 'transfer'), ('Common', 'callback'), ('Common', 'loop start'), ('Common', 'transfer'), ('Common', 'loop stop')]"
-FAPEN,"[('Unique', 'test'), ('Common', 'stake'), ('Common', 'approve'), ('Common', 'fee'), ('Common', 'transfer'), ('Common', 'swap'), ('Common', 'transfer'), ('Common', 'withdraw'), ('Common', 'back'), ('Common', 'receive')]"

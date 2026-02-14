@@ -1,0 +1,120 @@
+Compiling 28 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.41s
+Compiler run successful with warnings:
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/interface.sol:886:5:
+    |
+886 |     function WETH() external view returns (address);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1598:5:
+     |
+1598 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1850:5:
+     |
+1850 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:2560:5:
+     |
+2560 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:3759:5:
+     |
+3759 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 346.62ms (111.30µs CPU time)
+
+Ran 1 test for src/test/2023-11/grok_exp.sol:ContractTest
+[FAIL. Reason: EvmError: Revert] testExpolit() (gas: 1008173514)
+Logs:
+  attaker balance before attack:: 0.000000000000000000
+
+Traces:
+  [7745] ContractTest::setUp()
+    ├─ [0] VM::createSelectFork("mainnet", 18538678 [1.853e7])
+    │   └─ ← [Return] 0
+    ├─ [0] VM::label(WETH: [0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2], "WETH")
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [1008173514] ContractTest::testExpolit()
+    ├─ [2534] WETH::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 0
+    ├─ [2444] WETH::decimals() [staticcall]
+    │   └─ ← [Return] 18
+    ├─ emit log_named_decimal_uint(key: "attaker balance before attack:", val: 0, decimals: 18)
+    ├─ [1008155212] 0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa::flash(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0, 30000000000000000000 [3e19], 0x00)
+    │   ├─ [2534] 0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0::balanceOf(0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa) [staticcall]
+    │   │   └─ ← [Return] 7463189077965464780474 [7.463e21]
+    │   ├─ [2534] WETH::balanceOf(0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa) [staticcall]
+    │   │   └─ ← [Return] 3830213572683420764516 [3.83e21]
+    │   ├─ [25962] WETH::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 30000000000000000000 [3e19])
+    │   │   ├─ emit Transfer(from: 0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 30000000000000000000 [3e19])
+    │   │   └─ ← [Return] true
+    │   ├─ [1008109889] ContractTest::uniswapV3FlashCallback(0, 3000000000000000 [3e15], 0x00)
+    │   │   ├─ [1008103809] 0x66bA59cBD09E75B209D1D7E8Cf97f4Ab34DA413B::flash(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 63433590767572373 [6.343e16], 0, 0x00)
+    │   │   │   ├─ [39] 0x8390a1DA07E376ef7aDd4Be859BA74Fb83aA02D5::balanceOf(0x66bA59cBD09E75B209D1D7E8Cf97f4Ab34DA413B) [staticcall]
+    │   │   │   │   └─ ← [NotActivated] EvmError: NotActivated
+    │   │   │   └─ ← [Revert] EvmError: Revert
+    │   │   └─ ← [Revert] EvmError: Revert
+    │   └─ ← [Revert] EvmError: Revert
+    └─ ← [Revert] EvmError: Revert
+
+Suite result: FAILED. 0 passed; 1 failed; 0 skipped; finished in 436.38ms (1.41ms CPU time)
+
+Ran 2 test suites in 438.63ms (783.00ms CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in src/test/2023-11/grok_exp.sol:ContractTest
+[FAIL. Reason: EvmError: Revert] testExpolit() (gas: 1008173514)
+
+Encountered a total of 1 failing tests, 1 tests succeeded

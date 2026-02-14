@@ -1,0 +1,597 @@
+Compiling 27 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.23s
+Compiler run successful!
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20453)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20453] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 223.00ms (129.80µs CPU time)
+
+Ran 1 test for src/test/2024-05/RedKeysCoin_exp.sol:RedKeysCoin
+[PASS] testExploit() (gas: 5554049)
+Logs:
+  Attacker REDKEYS Balance Before exploit: 100000.0000
+  Attacker REDKEYS Balance After exploit: 10100000.0000
+
+Traces:
+  [5694049] RedKeysCoin::testExploit()
+    ├─ [3262] REDKEYS::symbol() [staticcall]
+    │   └─ ← [Return] "REDKEYS"
+    ├─ [2585] REDKEYS::balanceOf(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 1000000000 [1e9]
+    ├─ [267] REDKEYS::decimals() [staticcall]
+    │   └─ ← [Return] 4
+    ├─ emit log_named_decimal_uint(key: "Attacker REDKEYS Balance Before exploit", val: 1000000000 [1e9], decimals: 4)
+    ├─ [2329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 122
+    ├─ [188797] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [20264] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [6474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 123)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 123
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 124)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 124
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 125)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 125
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 126)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 126
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 127)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 127
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 128)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 128
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 129)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 129
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 130)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 130
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 131)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 131
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 132)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 132
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 133)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 133
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 134)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 134
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 135)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 135
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 136)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 136
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 137)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 137
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 138)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 138
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 139)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 139
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 140)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 140
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 141)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 141
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 142)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 142
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 143)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 143
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 144)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 144
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 145)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 145
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 146)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 146
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 147)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 147
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 148)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 148
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 149)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 149
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 150)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 150
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 151)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 151
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 152)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 152
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 153)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 153
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 154)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 154
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 155)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 155
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 156)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 156
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 157)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 157
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 158)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 158
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 159)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 159
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 160)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 160
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 161)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 161
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 162)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 162
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 163)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 163
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 164)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 164
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 165)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 165
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 166)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 166
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 167)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 167
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 168)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 168
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 169)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 169
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 170)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 170
+    ├─ [108897] RedKeysGame::playGame(0, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 171)
+    │   └─ ← [Stop] 
+    ├─ [329] RedKeysGame::counter() [staticcall]
+    │   └─ ← [Return] 171
+    ├─ [108897] RedKeysGame::playGame(1, 2, 1000000000 [1e9])
+    │   ├─ [4664] REDKEYS::transferFrom(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], 1000000000 [1e9])
+    │   │   ├─ emit Transfer(from: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], value: 1000000000 [1e9])
+    │   │   └─ ← [Return] true
+    │   ├─ [4474] REDKEYS::transfer(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000 [3e9])
+    │   │   ├─ emit Transfer(from: RedKeysGame: [0x71e3056aa4985de9f5441f079E6C74454A3C95f0], to: RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 3000000000 [3e9])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Game(param0: 172)
+    │   └─ ← [Stop] 
+    ├─ [1262] REDKEYS::symbol() [staticcall]
+    │   └─ ← [Return] "REDKEYS"
+    ├─ [585] REDKEYS::balanceOf(RedKeysCoin: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 101000000000 [1.01e11]
+    ├─ [267] REDKEYS::decimals() [staticcall]
+    │   └─ ← [Return] 4
+    ├─ emit log_named_decimal_uint(key: "Attacker REDKEYS Balance After exploit", val: 101000000000 [1.01e11], decimals: 4)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 17.88s (17.19s CPU time)
+
+Ran 2 test suites in 18.14s (18.10s CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)

