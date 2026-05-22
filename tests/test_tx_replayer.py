@@ -1,11 +1,12 @@
-from tx_replayer import Replayer
+from detection.replayer import Replayer
 import json
-from new_function_name_cluster import read_data
-from dtw_similarity import load_data
+from core.function_cluster import read_data
+from core.similarity import load_data
+import config
 
-clusters, remaining_non_cluster, unique_non_cluster, model, centroids = read_data('data_rules_related/final_classified_functions.csv')
-trace_rules_df = load_data('data_rules_related/noloop_encoded_trace.csv')
-replayer = Replayer(transaction_file='dune_tx/es-data/new_dune_results_*_100k_*.csv')
+clusters, remaining_non_cluster, unique_non_cluster, model, centroids = read_data(str(config.FINAL_CLASSIFIED_FUNCTIONS))
+trace_rules_df = load_data(str(config.NOLOOP_ENCODED_TRACE))
+replayer = Replayer()
 
 # def test_match_tx_trace():
 #     tx_hash = "0x41a48c815a4958e53df17609d5212e133d7bcf5d626666da6feca3b0a06fb6fe"

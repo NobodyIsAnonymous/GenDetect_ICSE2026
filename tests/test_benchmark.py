@@ -1,14 +1,15 @@
 import pytest
 import numpy as np
-from src.dtw_similarity import embed_sequence, calculate_dtw_distance, load_data
+from core.similarity import embed_sequence, calculate_dtw_distance, load_data
 import timeit
 import pandas as pd
 
-df = load_data('data_rules_related/encoded_trace.csv')
+import config
+df = load_data(str(config.ENCODED_TRACE))
 
 @pytest.mark.benchmark
 def test_load_data_benchmark(benchmark):
-    data = benchmark(load_data, 'data_rules_related/encoded_trace.csv')
+    data = benchmark(load_data, str(config.ENCODED_TRACE))
 
 @pytest.mark.benchmark
 def test_embed_sequence_benchmark(benchmark):

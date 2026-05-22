@@ -11,12 +11,16 @@ git-filter-repo
 
 # Large data files
 *.csv
-dune_tx/signature.json
-data_rules_related/attack_vectors_to_list.csv
-data_rules_related/cleaned_attack_vectors.csv
+data/benchmark/signature.json
+data/rules/attack_vectors_to_list.csv
+data/rules/cleaned_attack_vectors.csv
 
 # Symbolic links to external data (for anonymity)
 structured_traces
 src/__pycache__
+tests/__pycache__
 
 error.log
+
+# Generated output in docs/
+docs/hierarchical_clustering_high_res.png

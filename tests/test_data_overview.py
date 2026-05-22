@@ -1,4 +1,4 @@
-from src.data_overview import clean_data
+from collection.cleaner import clean_data
 import pandas as pd
 
 def test_clean_data():

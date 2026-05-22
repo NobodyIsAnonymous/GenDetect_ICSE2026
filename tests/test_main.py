@@ -1,4 +1,4 @@
-from src.main import extract_contract_name, read_error_log
+from pipeline.batch_runner import extract_contract_name, read_error_log
 
 def test_extract_contract_name():
     command = "forge test --contracts ./src/test/2021-04/Uranium_exp.sol -vvvv"

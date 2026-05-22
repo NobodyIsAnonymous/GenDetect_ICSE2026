@@ -1,7 +1,8 @@
-from src.new_function_name_cluster import classify_new_function_names, read_data
+from core.function_cluster import classify_new_function_names, read_data
+import config
 
 def test_classify_new_function_names():
-    clusters, remaining_non_cluster, unique_non_cluster, model, centroids = read_data('final_classified_functions.csv')
+    clusters, remaining_non_cluster, unique_non_cluster, model, centroids = read_data(str(config.FINAL_CLASSIFIED_FUNCTIONS))
     assert classify_new_function_names('test', clusters, remaining_non_cluster, unique_non_cluster, model, centroids) == ('Common', 'test')
     assert classify_new_function_names('callback', clusters, remaining_non_cluster, unique_non_cluster, model, centroids) == ('Common', 'callback')
     assert classify_new_function_names('call', clusters, remaining_non_cluster, unique_non_cluster, model, centroids) == ('Unique', 'call')

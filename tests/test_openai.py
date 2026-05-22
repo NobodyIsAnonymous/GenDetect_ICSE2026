@@ -1,4 +1,4 @@
-from src.gpt_main import get_ABI, create_gpt_chat, create_gpt_assistant
+from integrations.gpt import get_ABI, create_gpt_chat, create_gpt_assistant
 import json
 import os
 

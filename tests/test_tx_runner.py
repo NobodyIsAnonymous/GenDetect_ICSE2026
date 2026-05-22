@@ -1,4 +1,4 @@
-from src.tx_runner import obtain_traces, parse_trace_line, parse_trace_lines, read_second_trace
+from pipeline.runner import obtain_traces, parse_trace_line, parse_trace_lines, read_second_trace
 import json
 import os 
 
