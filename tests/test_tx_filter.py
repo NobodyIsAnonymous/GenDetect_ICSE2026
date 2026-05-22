@@ -1,4 +1,4 @@
-from src.tx_filter import get_internal_tx, check_address_verified, filter_internal_tx, check_address_contract, check_address_contract_and_not_verified, get_transaction_by_hash
+from collection.tx_filter import get_internal_tx, check_address_verified, filter_internal_tx, check_address_contract, check_address_contract_and_not_verified, get_transaction_by_hash
 
 def test_check_address_verified():
     assert check_address_verified('0xBA12222222228d8Ba445958a75a0704d566BF2C8') == True

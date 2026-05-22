@@ -1,12 +1,13 @@
-from src.trace_encoder import read_data_frame, encode_trace
-from src.new_function_name_cluster import read_data
+from pipeline.encoder import read_data_frame, encode_trace
+from core.function_cluster import read_data
 from ast import literal_eval
 import timeit
 import csv
 import pandas as pd
+import config
 
 def test_read_cleaned_frame():
-    attack_ids, addresses, func_names, func_params = read_data_frame('data_rules_related/cleaned_attack_vectors.csv')
+    attack_ids, addresses, func_names, func_params = read_data_frame(str(config.DATA_RULES_DIR / 'cleaned_attack_vectors.csv'))
     addresses = [literal_eval(address) for address in addresses]
     func_names = [literal_eval(func_name) for func_name in func_names]
     func_params = [literal_eval(func_param) for func_param in func_params]
@@ -17,8 +18,8 @@ def test_read_cleaned_frame():
     
 
 def test_encode_trace():
-    clusters, remaining_non_cluster, unique_non_cluster, model, centroids = read_data('data_rules_related/final_classified_functions.csv')
-    attack_ids, addresses, func_names, func_params = read_data_frame('data_rules_related/cleaned_attack_vectors.csv')
+    clusters, remaining_non_cluster, unique_non_cluster, model, centroids = read_data(str(config.FINAL_CLASSIFIED_FUNCTIONS))
+    attack_ids, addresses, func_names, func_params = read_data_frame(str(config.DATA_RULES_DIR / 'cleaned_attack_vectors.csv'))
     addresses = [literal_eval(address) for address in addresses]
     func_names = [literal_eval(func_name) for func_name in func_names]
     func_params = [literal_eval(func_param) for func_param in func_params]
@@ -27,8 +28,8 @@ def test_encode_trace():
 
 def test_encode_trace_time():
     # 加载数据
-    clusters, remaining_non_cluster, unique_non_cluster, model, centroids = read_data('data_rules_related/final_classified_functions.csv')
-    attack_ids, addresses, func_names, func_params = read_data_frame('data_rules_related/cleaned_attack_vectors.csv')
+    clusters, remaining_non_cluster, unique_non_cluster, model, centroids = read_data(str(config.FINAL_CLASSIFIED_FUNCTIONS))
+    attack_ids, addresses, func_names, func_params = read_data_frame(str(config.DATA_RULES_DIR / 'cleaned_attack_vectors.csv'))
 
     # 解析字符串为列表
     func_names = [literal_eval(func_name) for func_name in func_names]

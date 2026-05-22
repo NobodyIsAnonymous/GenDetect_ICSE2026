@@ -1,6 +1,6 @@
-from simple_loop import simplify_sequence_with_loops
-from dtw_similarity import load_data
-from trace_encoder import read_data_frame
+from core.loop import simplify_sequence_with_loops
+from core.similarity import load_data
+from pipeline.encoder import read_data_frame
 from ast import literal_eval
 
 def test_simplify_sequence_with_loops():

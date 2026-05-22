@@ -1,4 +1,4 @@
-from src.read_trace_func import read_structured_trace, read_structured_traces, preorder_traversal, separate_content, create_csv_file, separate_attack_vector, preorder_traversal_ignore_static_call_children
+from pipeline.parser import read_structured_trace, read_structured_traces, preorder_traversal, separate_content, create_csv_file, separate_attack_vector, preorder_traversal_ignore_static_call_children
 import json
 import os
 

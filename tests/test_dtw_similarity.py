@@ -1,7 +1,8 @@
-from src.dtw_similarity import embed_sequence, calculate_dtw_distance, load_data
+from core.similarity import embed_sequence, calculate_dtw_distance, load_data
 import pandas as pd
-df = load_data('encoded_trace.csv')
-df_no_loop = load_data('noloop_encoded_trace.csv')
+import config
+df = load_data(str(config.ENCODED_TRACE))
+df_no_loop = load_data(str(config.NOLOOP_ENCODED_TRACE))
 
 def test_data():
     assert len(df) == 530
